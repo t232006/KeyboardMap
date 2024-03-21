@@ -1,0 +1,40 @@
+unit KeyboardUnit;
+
+interface
+uses SysUtils;
+type
+TKeyboardMap=array[0..255] of word;
+TCharArray=array of char;
+TKeyboard=class
+   private
+    mas: TKeyboardMap ;
+    s:string;
+    chars:PAnsiChar;
+    function toChar: PAnsiChar;
+   public
+      procedure addPress(ws:word; ls: longint);
+     property map:TKeyboardMap read mas;
+     property st:PAnsiChar read chars;
+     constructor create;
+
+end;
+
+implementation
+procedure TKeyboard.addPress(ws:word; ls: longint);
+begin
+   s:=s+'Key ='+Chr(ws)+' Key(wParam) =$'+IntToHex(ws)+' lParam=$'+InttoHex(ls)+chr(13);
+   inc(mas[ws]);
+end;
+
+constructor TKeyboard.create;
+begin
+  for var i := Low(mas) to High(mas) do
+    mas[i]:=0;
+end;
+
+function TKeyboard.ToChar: PAnsiChar;
+begin
+  StrPLCopy(chars, s, length(s));
+end;
+
+end.

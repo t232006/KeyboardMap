@@ -1,0 +1,38 @@
+unit KeyboardUnit;
+
+interface
+uses Sharemem, SysUtils, windows;
+type
+TKeyboardMap=array[0..255] of word;
+TKeyboard=class
+   private
+    mas: TKeyboardMap ;
+    s:string;
+    Fst: Pchar;
+   public
+     handle: Hwnd;
+     procedure addPress(ws:word; ls: longint);
+     property map:TKeyboardMap read mas;
+     property     st:Pchar read Fst;
+     //property  handle: Hwnd write _handle, read _handle;
+     //property st:string read s;
+     constructor create;
+end;
+
+implementation
+procedure TKeyboard.addPress(ws:word; ls: longint);
+begin
+   s:=s+'Key ='+Chr(ws)+' Key(wParam) =$'+IntToHex(ws)+' lParam=$'+InttoHex(ls)+chr(13);
+   //StrPLCopy(chars, s, length(s));
+   Fst:=addr(s[1]);
+   inc(mas[ws]);
+end;
+
+constructor TKeyboard.create;
+begin
+  for var i := Low(mas) to High(mas) do
+    mas[i]:=0;
+end;
+
+
+end.

@@ -1,0 +1,70 @@
+unit MainUnit;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.AppEvnts,
+  Vcl.Menus;
+
+type
+  TForm1 = class(TForm)
+    Memo1: TMemo;
+    TrayIcon: TTrayIcon;
+    ApplicationEvents1: TApplicationEvents;
+    TrayMenu: TPopupMenu;
+    exit1: TMenuItem;
+    N1: TMenuItem;
+    N2: TMenuItem;
+    procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure ApplicationEvents1Minimize(Sender: TObject);
+    procedure TrayIconDblClick(Sender: TObject);
+    procedure exit1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm1.ApplicationEvents1Minimize(Sender: TObject);
+begin
+  WindowState:=wsMinimized;
+  TrayIcon.Visible := True;
+  TrayIcon.Animate := True;
+  TrayIcon.ShowBalloonHint;
+end;
+
+procedure TForm1.exit1Click(Sender: TObject);
+begin
+  close;
+end;
+
+procedure TForm1.FormKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+var
+  st: string;
+  xscan: integer;
+begin
+  xscan:= MapVirtualKey(Key, 0);
+  st:= ' Scan ='+IntToStr(xscan)+ ' ' + IntToHex(byte(xscan)) + ' Key=' +
+  IntToStr(Key) +' ' + IntToHex(byte(Key));
+  Memo1.Lines.Clear;
+  Memo1.Lines.Add(st);
+end;
+
+procedure TForm1.TrayIconDblClick(Sender: TObject);
+begin
+  TrayIcon.Visible := False;
+  Show();
+  WindowState := wsNormal;
+  Application.BringToFront();
+end;
+
+end.

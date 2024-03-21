@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{3DF5AA74-B65B-4F88-A3D3-D86A633F655C}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="KeyboardSpy.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="KeyboardHook.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="KeyboardSpy">
+        <MSBuild Projects="KeyboardSpy.dproj"/>
+    </Target>
+    <Target Name="KeyboardSpy:Clean">
+        <MSBuild Projects="KeyboardSpy.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="KeyboardSpy:Make">
+        <MSBuild Projects="KeyboardSpy.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="KeyboardHook">
+        <MSBuild Projects="KeyboardHook.dproj"/>
+    </Target>
+    <Target Name="KeyboardHook:Clean">
+        <MSBuild Projects="KeyboardHook.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="KeyboardHook:Make">
+        <MSBuild Projects="KeyboardHook.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="KeyboardSpy;KeyboardHook"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="KeyboardSpy:Clean;KeyboardHook:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="KeyboardSpy:Make;KeyboardHook:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

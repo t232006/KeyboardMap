@@ -1,0 +1,22 @@
+unit saver;
+
+interface
+procedure save(filename, sometext:string);
+
+implementation
+procedure save(filename, sometext:string);
+var f:textfile;
+begin
+  assignfile(f, filename);
+  try
+    append(f);
+    writeln(f,sometext);
+  except
+    rewrite(f);
+  end;
+
+  closefile(f);
+
+end;
+
+end.
