@@ -80,16 +80,13 @@ begin
 end;
 
 procedure TForm1.N2Click(Sender: TObject);
-var textname, logname, mapname, st: string;
+var textname, mapname, st: string;
 begin
     keyboard:=GetKeyboard;
-    textname:=ExtractFileDir( Paramstr(0))+'\text.txt' ;
-    logname:=ExtractFileDir(Paramstr(0))+'\log.txt';
+    textname:=ExtractFileDir( Paramstr(0))+'\log.txt' ;
     mapname:=ExtractFileDir( Paramstr(0))+'\map.b' ;
-    st:=string(keyboard.log);
+    st:=string(keyboard.st);
     savetext(textname,st);
-    st:=string(keyboard.text);
-    savetext(textname, st);
     savemap(mapname, keyboard.map);
 
 end;

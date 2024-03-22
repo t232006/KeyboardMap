@@ -14,16 +14,15 @@ end;
 TKeyboard=class
    private
     mas: TKeyboardMap ;
-    _log, _text:string;
-    logChar, textChar: Pchar;
+    s:string;
+    Fst: Pchar;
     _param:TParam;
     _WM_MYKEYPRESS:Integer;
    public
      handle: Hwnd;
      procedure addPress(ws:word; ls: longint; letter:char; isPressed:boolean);
      property map:TKeyboardMap read mas;
-     property     log:Pchar read logChar;
-     property text:Pchar read textChar;
+     property     st:Pchar read Fst;
      property param:TParam read _param;
      property WM_MYKEYPRESS1:integer read _WM_MYKEYPRESS;
      constructor create;
@@ -39,17 +38,15 @@ end;
 procedure TKeyboard.addPress(ws:word; ls: longint; letter:char; isPressed:boolean);
 //var ss:string;
 begin
-   _log:=_log+string.Format('Key = %s; Letter = %s; Virtual = %s; %s; Time: %s; %s',
-   [Chr(ws), letter, IntToHex(ls), IfThen(isPressed,' Up ','Down'), TimeToStr(now), chr(13)]);
-   _text:=_text+letter;
+   s:=s+string.Format('Key = %s; Letter = %s; Virtual = %s; %s; Time: %s; %s',
+   [Chr(ws), letter, IntToHex(ls), IfThen(isPressed,'Up','Down'), TimeToStr(now), chr(13)]);
    //'Key ='+Chr(ws)+' Key(wParam) =$'+IntToHex(ws)+' lParam=$'+InttoHex(ls)+chr(13);
    //StrPLCopy(chars, s, length(s));
    _param.letter:=letter;
    _param.isPressed:=isPressed;
    _param.virtCode:=ws;
    _param.scanCode:=ls;
-   logChar:=addr(_log[1]);
-   textChar:=addr(_text[1]);
+   Fst:=addr(s[1]);
    if isPressed then
    begin
     inc(mas[ws]);
