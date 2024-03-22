@@ -38,8 +38,8 @@ end;
 procedure TKeyboard.addPress(ws:word; ls: longint; letter:char; isPressed:boolean);
 //var ss:string;
 begin
-   s:=s+string.Format('Key = %s; Letter = %s; Virtual = %s; %s; Time: %s; %s',
-   [Chr(ws), letter, IntToHex(ls), IfThen(isPressed,'Up','Down'), TimeToStr(now), chr(13)]);
+   s:=s+string.Format('Key = %s; Letter = %s; Virtual = %s %s',
+   [Chr(ws), letter, IntToHex(ws), IfThen(isPressed,'Up','Down')]);
    //'Key ='+Chr(ws)+' Key(wParam) =$'+IntToHex(ws)+' lParam=$'+InttoHex(ls)+chr(13);
    //StrPLCopy(chars, s, length(s));
    _param.letter:=letter;
@@ -49,6 +49,7 @@ begin
    Fst:=addr(s[1]);
    if isPressed then
    begin
+
     inc(mas[ws]);
    end;
 
