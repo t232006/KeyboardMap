@@ -30,7 +30,7 @@ end;
 procedure savemap(filename: string; map:TKeyboardMap);
 var f: file of word;
     tempmap: TKeyboardMap;
-    i:byte;
+    i:word;
 begin
     i:=0;
     cleanmap(tempmap);

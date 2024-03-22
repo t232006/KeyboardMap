@@ -72,8 +72,9 @@ procedure TForm1.GetPressing(var msg: TMessage);
 var st:string;
 begin
    Keyboard:=GetKeyboard;
-   st:=string.Format('Key = %s; Scan = %s; LParam = %s',
-   [Chr(Keyboard.Param.wParam),InttoHex(Keyboard.param.wParam), InttoHex(Keyboard.param.lParam)]);
+   st:=string.Format('Key = %s; Letter =%s; Scan = %s; LParam = %s',
+   [Chr(Keyboard.Param.virtCode), Keyboard.param.letter,
+   InttoHex(Keyboard.param.virtCode), InttoHex(Keyboard.param.scanCode)]);
    Memo1.Lines.Clear;
    Memo1.Lines.Add(st);
 end;

@@ -19,12 +19,22 @@ begin
 end;
 
 function KeyboardProc(Code: Integer; wParam: WParam; LParam: LParam): integer; stdcall;
+var myHKL: HKL;
+    KS: TKeyboardState;
+    SC: integer;
+    key: char;
 begin
   if code<0 then result:=CallNexthookEx(SysHook, code, WParam, LParam)
   else
   begin
+    myHKL:=GetKeyboardLayout(LParam);
+    SC:=MapVirtualKeyEx(WParam, MAPVK_VK_TO_VSC, MyHKL);
+    GetKeyboardState(KS);
+    ToUnicodeEx(WParam, SC, KS, @Key, sizeof(key), 0, MyHKL);
     if byte(LParam shr 24)<$80 then //key is pressed
-        keyboard.addPress(wParam, lParam);
+        keyboard.addPress(wParam, lParam, key, true)
+    else
+        keyboard.addPress(wParam, lParam, key, false);
   end;
   result:=CallNexthookEx(SysHook, code, WParam, LParam);
 
