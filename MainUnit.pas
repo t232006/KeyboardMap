@@ -180,6 +180,8 @@ begin
   N2Click(sender);  StopHook;
   dWin:=GetModuleHandle('KeyboardHook.dll');
   FreeLibrary(dWin);
+  dWin:=FindWindow(nil, 'KeyboardMap');
+  if dWin<>0 then SendMessage(dWin, WM_DESTROY, 0,0);
 
   //halt;
 end;
@@ -189,11 +191,13 @@ begin
   RunHook(self.Handle);
   Keyboard:=TKeyboard.create;
 
-  //WM_MYKEYPRESS:=Keyboard.WM_MYKEYPRESS;
+  Key59.Pressed:=Odd(GetKeyState(VK_CAPITAL));
+  Key35.Pressed:=Odd(GetKeyState(VK_NUMLOCK));
+  Key15.Pressed:=Odd(GetKeyState(VK_SCROLL));
 end;
 
 procedure TForm1.GetPressing(var msg: TMessage);
-var st:string; ScanHex:string;
+var st:string; ScanHex:string; _key:Tkey;
 begin
    Keyboard:=GetKeyboard;
    ScanHex:=InttoHex(Keyboard.param.scanCode);
@@ -202,10 +206,18 @@ begin
    InttoHex(Keyboard.param.virtCode), ScanHex]);
    Memo1.Lines.Clear;
    Memo1.Lines.Add(st);
-   if Keyboard.param.isPressed then
-       FindKey(ScanHex).MouseDown
-      else
-       FindKey(ScanHex).MouseUp;
+
+   _key:=FindKey(ScanHex);
+   _key.Pressed:=Keyboard.param.isPressed;
+   if _key.Name='Key59' then  //CapsLock
+      _key.Pressed:=Odd(GetKeyState(VK_CAPITAL)) else
+   if _Key.Name='Key35' then
+      _key.Pressed:=Odd(GetKeyState(VK_NUMLOCK)) else
+   if _key.Name='Key15' then
+      _key.Pressed:= Odd(GetKeyState(VK_SCROLL));
+
+
+
 end;
 
 procedure TForm1.Key13Click(Sender: TObject);
