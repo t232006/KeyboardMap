@@ -37,10 +37,11 @@ begin
 end;
 
 procedure TKeyboard.addPress(ws:word; ls: longint; letter:char; isPressed:boolean);
-//var ss:string;
+var ss:string;
 begin
-   _log:=_log+string.Format('Key = %s; Letter = %s; Virtual = %s; %s; Time: %s; %s',
-   [Chr(ws), letter, IntToHex(ls), IfThen(isPressed,' Up ','Down'), TimeToStr(now), chr(13)]);
+   ss:=string.Format('Key = %s; Letter = %s; Scan = %s; %s; Time: %s; %s',
+   [Chr(ws), letter, IntToHex(ls), IfThen(isPressed,'Down',' Up '), TimeToStr(now), chr(13)]);
+   _log:=_log+ss;
    _text:=_text+letter;
    //'Key ='+Chr(ws)+' Key(wParam) =$'+IntToHex(ws)+' lParam=$'+InttoHex(ls)+chr(13);
    //StrPLCopy(chars, s, length(s));

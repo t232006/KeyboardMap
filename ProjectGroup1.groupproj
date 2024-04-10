@@ -3,10 +3,13 @@
         <ProjectGuid>{3DF5AA74-B65B-4F88-A3D3-D86A633F655C}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
-        <Projects Include="KeyboardSpy.dproj">
+        <Projects Include="KeyboardMap.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="KeyboardHook.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\My components\KeyboardButton\keyboardButton.dproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -17,14 +20,14 @@
             <Default.Personality/>
         </BorlandProject>
     </ProjectExtensions>
-    <Target Name="KeyboardSpy">
-        <MSBuild Projects="KeyboardSpy.dproj"/>
+    <Target Name="KeyboardMap">
+        <MSBuild Projects="KeyboardMap.dproj"/>
     </Target>
-    <Target Name="KeyboardSpy:Clean">
-        <MSBuild Projects="KeyboardSpy.dproj" Targets="Clean"/>
+    <Target Name="KeyboardMap:Clean">
+        <MSBuild Projects="KeyboardMap.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="KeyboardSpy:Make">
-        <MSBuild Projects="KeyboardSpy.dproj" Targets="Make"/>
+    <Target Name="KeyboardMap:Make">
+        <MSBuild Projects="KeyboardMap.dproj" Targets="Make"/>
     </Target>
     <Target Name="KeyboardHook">
         <MSBuild Projects="KeyboardHook.dproj"/>
@@ -35,14 +38,23 @@
     <Target Name="KeyboardHook:Make">
         <MSBuild Projects="KeyboardHook.dproj" Targets="Make"/>
     </Target>
+    <Target Name="keyboardButton">
+        <MSBuild Projects="..\My components\KeyboardButton\keyboardButton.dproj"/>
+    </Target>
+    <Target Name="keyboardButton:Clean">
+        <MSBuild Projects="..\My components\KeyboardButton\keyboardButton.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="keyboardButton:Make">
+        <MSBuild Projects="..\My components\KeyboardButton\keyboardButton.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="KeyboardSpy;KeyboardHook"/>
+        <CallTarget Targets="KeyboardMap;KeyboardHook;keyboardButton"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="KeyboardSpy:Clean;KeyboardHook:Clean"/>
+        <CallTarget Targets="KeyboardMap:Clean;KeyboardHook:Clean;keyboardButton:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="KeyboardSpy:Make;KeyboardHook:Make"/>
+        <CallTarget Targets="KeyboardMap:Make;KeyboardHook:Make;keyboardButton:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

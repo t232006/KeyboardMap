@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.021,=Z:\Программирование\repos\KeyboardSpy\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.515,Z:\Программирование\repos\KeyboardSpy\MainUnit.dfm=Z:\Программирование\repos\Unit1.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.736,Z:\Программирование\repos\KeyboardSpy\saver.pas=Z:\Программирование\repos\KeyboardSpy\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.108,Z:\Программирование\repos\KeyboardSpy\KeyboardSpy.dproj=Z:\Программирование\repos\Project1.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.515,Z:\Программирование\repos\KeyboardSpy\MainUnit.pas=Z:\Программирование\repos\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.090,=Z:\Программирование\repos\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.451,=Z:\Программирование\repos\My components\keyboardKey\Key.pas</Transaction>
+    <Transaction>2024.04.10 11:47:54.173,Z:\Программирование\repos\KeyboardMap\KeyboardMap.dproj=Z:\Программирование\repos\KeyboardMap\KeyboardSpy.dproj</Transaction>
+  </Transactions>
+	<ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="MainUnit.pas"/>
+    <File Path="MainUnit.dfm"/>
+    <File Path="saver.pas"/>
+  </ProjectSortOrder>
+</BorlandProject>
