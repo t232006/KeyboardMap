@@ -126,7 +126,6 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure GetPressing(var msg: TMessage); message WM_MYKEYPRESS;
-    procedure Key13Click(Sender: TObject);
   private
     function FindKey(ScanCode: string):TKey;
   public
@@ -181,7 +180,8 @@ begin
   dWin:=GetModuleHandle('KeyboardHook.dll');
   FreeLibrary(dWin);
   dWin:=FindWindow(nil, 'KeyboardMap');
-  if dWin<>0 then SendMessage(dWin, WM_DESTROY, 0,0);
+  if dWin<>0 then
+  SendMessage(dWin, WM_DESTROY, 0,0);
 
   //halt;
 end;
@@ -218,11 +218,6 @@ begin
 
 
 
-end;
-
-procedure TForm1.Key13Click(Sender: TObject);
-begin
-    key14.MiddleFont.Size:=8;
 end;
 
 procedure TForm1.N2Click(Sender: TObject);

@@ -2,8 +2,8 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'Form1'
-  ClientHeight = 391
-  ClientWidth = 1078
+  ClientHeight = 390
+  ClientWidth = 1074
   Color = clWhite
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -438,7 +438,6 @@ object Form1: TForm1
     Top = 96
     Width = 42
     Height = 42
-    OnClick = Key13Click
     ScanCodes.Strings = (
       '10580001'
       'C0580001'
@@ -619,7 +618,7 @@ object Form1: TForm1
     PicturePos.Top = 4
     PicturePos.Right = 38
     PicturePos.Bottom = 38
-    MiddleText = '!      1'
+    MiddleText = '!       1'
     UpFont.Charset = DEFAULT_CHARSET
     UpFont.Color = clRed
     UpFont.Height = -17
@@ -632,7 +631,7 @@ object Form1: TForm1
     DownFont.Style = []
     MiddleFont.Charset = DEFAULT_CHARSET
     MiddleFont.Color = clWhite
-    MiddleFont.Height = -17
+    MiddleFont.Height = -16
     MiddleFont.Name = 'Segoe UI'
     MiddleFont.Style = [fsItalic]
     Color = 3223601
@@ -668,7 +667,7 @@ object Form1: TForm1
     DownFont.Style = []
     MiddleFont.Charset = DEFAULT_CHARSET
     MiddleFont.Color = clWhite
-    MiddleFont.Height = -17
+    MiddleFont.Height = -16
     MiddleFont.Name = 'Segoe UI'
     MiddleFont.Style = [fsItalic]
     Color = 3223601
@@ -691,7 +690,7 @@ object Form1: TForm1
     PicturePos.Right = 38
     PicturePos.Bottom = 38
     UpText = ' '#8470
-    MiddleText = '#     3'
+    MiddleText = '#      3'
     UpFont.Charset = DEFAULT_CHARSET
     UpFont.Color = clRed
     UpFont.Height = -13
@@ -704,7 +703,7 @@ object Form1: TForm1
     DownFont.Style = []
     MiddleFont.Charset = DEFAULT_CHARSET
     MiddleFont.Color = clWhite
-    MiddleFont.Height = -17
+    MiddleFont.Height = -16
     MiddleFont.Name = 'Segoe UI'
     MiddleFont.Style = [fsItalic]
     Color = 3223601
@@ -727,7 +726,7 @@ object Form1: TForm1
     PicturePos.Right = 38
     PicturePos.Bottom = 38
     UpText = ';'
-    MiddleText = '$     4'
+    MiddleText = '$      4'
     UpFont.Charset = DEFAULT_CHARSET
     UpFont.Color = clRed
     UpFont.Height = -15
@@ -740,7 +739,7 @@ object Form1: TForm1
     DownFont.Style = []
     MiddleFont.Charset = DEFAULT_CHARSET
     MiddleFont.Color = clWhite
-    MiddleFont.Height = -17
+    MiddleFont.Height = -16
     MiddleFont.Name = 'Segoe UI'
     MiddleFont.Style = [fsItalic]
     Color = 3223601
@@ -776,7 +775,7 @@ object Form1: TForm1
     DownFont.Style = []
     MiddleFont.Charset = DEFAULT_CHARSET
     MiddleFont.Color = clWhite
-    MiddleFont.Height = -17
+    MiddleFont.Height = -16
     MiddleFont.Name = 'Segoe UI'
     MiddleFont.Style = [fsItalic]
     Color = 3223601
@@ -799,7 +798,7 @@ object Form1: TForm1
     PicturePos.Right = 38
     PicturePos.Bottom = 38
     UpText = ':'
-    MiddleText = '^     6'
+    MiddleText = '^      6'
     UpFont.Charset = DEFAULT_CHARSET
     UpFont.Color = clRed
     UpFont.Height = -15
@@ -812,7 +811,7 @@ object Form1: TForm1
     DownFont.Style = []
     MiddleFont.Charset = DEFAULT_CHARSET
     MiddleFont.Color = clWhite
-    MiddleFont.Height = -17
+    MiddleFont.Height = -16
     MiddleFont.Name = 'Segoe UI'
     MiddleFont.Style = [fsItalic]
     Color = 3223601
@@ -835,7 +834,7 @@ object Form1: TForm1
     PicturePos.Right = 38
     PicturePos.Bottom = 38
     UpText = ' '
-    MiddleText = '&     7'
+    MiddleText = '&      7'
     UpFont.Charset = DEFAULT_CHARSET
     UpFont.Color = clRed
     UpFont.Height = -17
@@ -848,7 +847,7 @@ object Form1: TForm1
     DownFont.Style = []
     MiddleFont.Charset = DEFAULT_CHARSET
     MiddleFont.Color = clWhite
-    MiddleFont.Height = -17
+    MiddleFont.Height = -16
     MiddleFont.Name = 'Segoe UI'
     MiddleFont.Style = [fsItalic]
     Color = 3223601
@@ -871,7 +870,7 @@ object Form1: TForm1
     PicturePos.Right = 38
     PicturePos.Bottom = 38
     UpText = ' '
-    MiddleText = '*      8'
+    MiddleText = '*       8'
     UpFont.Charset = DEFAULT_CHARSET
     UpFont.Color = clRed
     UpFont.Height = -17
@@ -884,7 +883,7 @@ object Form1: TForm1
     DownFont.Style = []
     MiddleFont.Charset = DEFAULT_CHARSET
     MiddleFont.Color = clWhite
-    MiddleFont.Height = -17
+    MiddleFont.Height = -16
     MiddleFont.Name = 'Segoe UI'
     MiddleFont.Style = [fsItalic]
     Color = 3223601
@@ -907,7 +906,7 @@ object Form1: TForm1
     PicturePos.Right = 38
     PicturePos.Bottom = 38
     UpText = ' '
-    MiddleText = '(      9'
+    MiddleText = '(       9'
     UpFont.Charset = DEFAULT_CHARSET
     UpFont.Color = clRed
     UpFont.Height = -17
@@ -920,7 +919,7 @@ object Form1: TForm1
     DownFont.Style = []
     MiddleFont.Charset = DEFAULT_CHARSET
     MiddleFont.Color = clWhite
-    MiddleFont.Height = -17
+    MiddleFont.Height = -16
     MiddleFont.Name = 'Segoe UI'
     MiddleFont.Style = [fsItalic]
     Color = 3223601
@@ -943,7 +942,7 @@ object Form1: TForm1
     PicturePos.Right = 38
     PicturePos.Bottom = 38
     UpText = ' '
-    MiddleText = ')      0'
+    MiddleText = ')       0'
     UpFont.Charset = DEFAULT_CHARSET
     UpFont.Color = clRed
     UpFont.Height = -17
@@ -956,7 +955,7 @@ object Form1: TForm1
     DownFont.Style = []
     MiddleFont.Charset = DEFAULT_CHARSET
     MiddleFont.Color = clWhite
-    MiddleFont.Height = -17
+    MiddleFont.Height = -16
     MiddleFont.Name = 'Segoe UI'
     MiddleFont.Style = [fsItalic]
     Color = 3223601
@@ -979,7 +978,7 @@ object Form1: TForm1
     PicturePos.Right = 38
     PicturePos.Bottom = 38
     UpText = ' '
-    MiddleText = '--     -'
+    MiddleText = '--      -'
     UpFont.Charset = DEFAULT_CHARSET
     UpFont.Color = clRed
     UpFont.Height = -17
@@ -992,7 +991,7 @@ object Form1: TForm1
     DownFont.Style = []
     MiddleFont.Charset = DEFAULT_CHARSET
     MiddleFont.Color = clWhite
-    MiddleFont.Height = -17
+    MiddleFont.Height = -16
     MiddleFont.Name = 'Segoe UI'
     MiddleFont.Style = [fsItalic]
     Color = 3223601
@@ -1015,7 +1014,7 @@ object Form1: TForm1
     PicturePos.Right = 38
     PicturePos.Bottom = 38
     UpText = ' '
-    MiddleText = '+     ='
+    MiddleText = '+      ='
     UpFont.Charset = DEFAULT_CHARSET
     UpFont.Color = clRed
     UpFont.Height = -17
@@ -1028,7 +1027,7 @@ object Form1: TForm1
     DownFont.Style = []
     MiddleFont.Charset = DEFAULT_CHARSET
     MiddleFont.Color = clWhite
-    MiddleFont.Height = -17
+    MiddleFont.Height = -16
     MiddleFont.Name = 'Segoe UI'
     MiddleFont.Style = [fsItalic]
     Color = 3223601
@@ -2081,7 +2080,7 @@ object Form1: TForm1
     PicturePos.Right = 38
     PicturePos.Bottom = 38
     DownText = '/'
-    MiddleText = '|             \'
+    MiddleText = '|               \'
     UpFont.Charset = DEFAULT_CHARSET
     UpFont.Color = clWhite
     UpFont.Height = -19
@@ -2094,7 +2093,7 @@ object Form1: TForm1
     DownFont.Style = []
     MiddleFont.Charset = DEFAULT_CHARSET
     MiddleFont.Color = clWhite
-    MiddleFont.Height = -17
+    MiddleFont.Height = -16
     MiddleFont.Name = 'Segoe UI'
     MiddleFont.Style = [fsItalic]
     Color = 3223601
@@ -2510,7 +2509,7 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktLetters
+    KeyType = ktSticked
     UpPosX = 0
     DownPosX = 25
   end
@@ -5374,13 +5373,13 @@ object Form1: TForm1
   object Memo1: TMemo
     Left = 0
     Top = 0
-    Width = 1078
+    Width = 1074
     Height = 90
     Align = alTop
     Lines.Strings = (
       'Memo1')
     TabOrder = 0
-    ExplicitWidth = 1074
+    ExplicitWidth = 1070
   end
   object TrayIcon: TTrayIcon
     Hint = #1069#1090#1086' '#1090#1080#1087#1072' '#1082#1083#1072#1074#1080#1072#1090#1091#1088#1085#1099#1081' '#1096#1087#1080#1086#1085
