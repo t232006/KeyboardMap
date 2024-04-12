@@ -31,7 +31,7 @@ begin
     GetKeyboardState(KS);
     ToUnicodeEx(WParam, SC, KS, @Key, sizeof(key), 0, MyHKL);
     if byte(LParam shr 24)<$80 then //key is pressed
-        keyboard.addPress(wParam, lParam, key, true)
+       keyboard.addPress(wParam, lParam, key, true)
     else
         keyboard.addPress(wParam, lParam, key, false);
   end;

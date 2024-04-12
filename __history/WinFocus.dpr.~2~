@@ -1,0 +1,48 @@
+library WinFocus;
+
+{$R *.res}
+uses
+  windows,
+  Messages;
+
+type
+  TWindowHandle=class
+    hdl:HWnd;
+  end;
+var SysHook: hHook = 0;
+    WindowHandle: TWindowHandle;
+    MyOwnHandle: HWnd;
+
+function GetWinHandle:Hwnd export; stdcall;
+begin
+  result:=WindowHandle.hdl;
+end;
+
+function CBTProc(Code: Integer; wParam: WParam; LParam: LParam):longint; export; stdcall;
+var temp:Hwnd;
+begin
+   if code=HC_ACTION then
+   begin
+     temp:=getforegroundwindow;
+     if temp<>MyOwnHandle then
+        WindowHandle.hdl:=temp;//TMsg(Pointer(lParam)^).hwnd;
+   end;
+   result:=CallNexthookEx(SysHook, code, Wparam, LParam);
+end;
+
+procedure RunHookWinFocus(hdl: HWnd) export; stdcall;
+begin
+    WindowHandle:=TwindowHandle.Create;
+    MyOwnHandle:=hdl;
+    SysHook := SetWindowsHookEx(WH_GETMESSAGE, @CBTProc, hInstance, 0);
+end;
+
+procedure StopHookWinFocus export; stdcall;
+begin
+  UnhookWindowsHookEx(SysHook);
+  SysHook:=0;
+  WindowHandle.Destroy;
+end;
+
+exports StopHook, RunHook, GetWinHandle;
+end.

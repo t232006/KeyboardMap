@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.726,=Z:\Программирование\repos\Unit2.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.908,=Z:\Программирование\repos\Unit2.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.997,=Z:\Программирование\repos\Unit2.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.314,Z:\Программирование\пробы\temp\WinFocus.dproj=Z:\Программирование\repos\Project2.dproj</Transaction>
+    <Transaction>2024.04.12 16:28:46.794,=Z:\Программирование\repos\KeyboardMap\Unit1.pas</Transaction>
+    <Transaction>2024.04.12 16:29:20.162,Z:\Программирование\repos\KeyboardMap\Utilites.pas=Z:\Программирование\repos\KeyboardMap\Unit1.pas</Transaction>
+    <Transaction>2024.04.12 16:31:16.098,Z:\Программирование\repos\KeyboardMap\Utilites.pas=</Transaction>
+  </Transactions>
+</BorlandProject>

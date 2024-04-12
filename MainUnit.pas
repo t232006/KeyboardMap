@@ -132,8 +132,11 @@ type
     { Public declarations }
   end;
   procedure RunHook(wnd:Hwnd) stdcall; external 'KeyboardHook.dll';
+  procedure RunHookWinFocus(hdl:HWnd) stdcall; external 'WinFocus.dll';
+  procedure StopHookWinFocus; stdcall; external 'WinFocus.dll';
   procedure StopHook; stdcall; external 'KeyboardHook.dll';
   function GetKeyboard: TKeyboard stdcall; external 'KeyboardHook.dll';
+  function GetWinHandle: HWnd stdcall; external 'WinFocus.dll';
 
 var
   Form1: TForm1;
@@ -176,8 +179,10 @@ procedure TForm1.FormClose(Sender: TObject; var Action: TCloseAction);
 var dWin:Hwnd;
 begin
 
-  N2Click(sender);  StopHook;
+  N2Click(sender);  StopHook;  StopHookWinFocus;
   dWin:=GetModuleHandle('KeyboardHook.dll');
+  FreeLibrary(dWin);
+  dWin:=GetModuleHandle('WinFocus.dll');
   FreeLibrary(dWin);
   dWin:=FindWindow(nil, 'KeyboardMap');
   if dWin<>0 then
@@ -189,6 +194,7 @@ end;
 procedure TForm1.FormCreate(Sender: TObject);
 begin
   RunHook(self.Handle);
+  RunHookWinFocus(self.Handle);
   Keyboard:=TKeyboard.create;
 
   Key59.Pressed:=Odd(GetKeyState(VK_CAPITAL));
