@@ -2,8 +2,8 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'Form1'
-  ClientHeight = 390
-  ClientWidth = 1074
+  ClientHeight = 389
+  ClientWidth = 1070
   Color = clWhite
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -14,11 +14,12 @@ object Form1: TForm1
   OnClose = FormClose
   OnCreate = FormCreate
   TextHeight = 15
-  object Key1: TKey
+  object Key27: TKey
     Left = 8
     Top = 96
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00010001'
       'C0010001')
@@ -44,15 +45,16 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktLetters
+    KeyType = ktScroll
     UpPosX = 0
     DownPosX = 25
   end
-  object Key2: TKey
+  object Key112: TKey
     Left = 104
     Top = 96
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '003B0001'
       'C03B0001'
@@ -83,11 +85,12 @@ object Form1: TForm1
     UpPosX = 0
     DownPosX = 25
   end
-  object Key3: TKey
+  object Key113: TKey
     Left = 152
     Top = 96
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '003C0001'
       'C03C0001'
@@ -118,11 +121,12 @@ object Form1: TForm1
     UpPosX = 0
     DownPosX = 25
   end
-  object Key4: TKey
+  object Key114: TKey
     Left = 200
     Top = 96
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '003D0001'
       'C03D0001'
@@ -153,11 +157,12 @@ object Form1: TForm1
     UpPosX = 0
     DownPosX = 25
   end
-  object Key5: TKey
+  object Key115: TKey
     Left = 248
     Top = 96
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '003E0001'
       'C03E0001'
@@ -188,11 +193,12 @@ object Form1: TForm1
     UpPosX = 0
     DownPosX = 25
   end
-  object Key6: TKey
+  object Key116: TKey
     Left = 320
     Top = 96
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '003F0001'
       'C03F0001'
@@ -223,11 +229,12 @@ object Form1: TForm1
     UpPosX = 0
     DownPosX = 25
   end
-  object Key7: TKey
+  object Key117: TKey
     Left = 368
     Top = 96
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00400001'
       'C0400001'
@@ -258,11 +265,12 @@ object Form1: TForm1
     UpPosX = 0
     DownPosX = 25
   end
-  object Key8: TKey
+  object Key118: TKey
     Left = 416
     Top = 96
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00410001'
       'C0410001'
@@ -293,11 +301,12 @@ object Form1: TForm1
     UpPosX = 0
     DownPosX = 25
   end
-  object Key9: TKey
+  object Key119: TKey
     Left = 464
     Top = 96
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00420001'
       'C0420001'
@@ -328,11 +337,12 @@ object Form1: TForm1
     UpPosX = 0
     DownPosX = 25
   end
-  object Key10: TKey
+  object Key120: TKey
     Left = 536
     Top = 96
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00430001'
       'C0430001'
@@ -363,11 +373,12 @@ object Form1: TForm1
     UpPosX = 0
     DownPosX = 25
   end
-  object Key11: TKey
+  object Key121: TKey
     Left = 584
     Top = 96
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00440001'
       'C0440001'
@@ -398,11 +409,12 @@ object Form1: TForm1
     UpPosX = 0
     DownPosX = 25
   end
-  object Key12: TKey
+  object Key122: TKey
     Left = 632
     Top = 96
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '10570001'
       'C0570001'
@@ -433,11 +445,12 @@ object Form1: TForm1
     UpPosX = 0
     DownPosX = 25
   end
-  object Key13: TKey
+  object Key123: TKey
     Left = 680
     Top = 96
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '10580001'
       'C0580001'
@@ -468,11 +481,12 @@ object Form1: TForm1
     UpPosX = 0
     DownPosX = 25
   end
-  object Key14: TKey
+  object Key44: TKey
     Left = 736
     Top = 96
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       'C1370001')
     PicturePos.Left = 4
@@ -497,15 +511,16 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktLetters
+    KeyType = ktScroll
     UpPosX = 0
     DownPosX = 25
   end
-  object Key15: TKey
+  object Key145: TKey
     Left = 784
     Top = 96
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00460001'
       'C0460001')
@@ -540,6 +555,7 @@ object Form1: TForm1
     Top = 96
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00450001'
       'C0450001')
@@ -565,15 +581,16 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktLetters
+    KeyType = ktScroll
     UpPosX = 0
     DownPosX = 25
   end
-  object Key17: TKey
+  object Key41: TKey
     Left = 8
     Top = 152
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '10290001'
       'C0290001'
@@ -601,15 +618,16 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktLetters
+    KeyType = ktNum
     UpPosX = 25
     DownPosX = 25
   end
-  object Key18: TKey
+  object Key77: TKey
     Left = 56
     Top = 152
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00020001'
       'C0020001'
@@ -636,15 +654,16 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktLetters
+    KeyType = ktNum
     UpPosX = 25
     DownPosX = 25
   end
-  object Key19: TKey
+  object Key42: TKey
     Left = 104
     Top = 152
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00030001'
       'C0030001'
@@ -672,15 +691,16 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktLetters
+    KeyType = ktNum
     UpPosX = 28
     DownPosX = 25
   end
-  object Key20: TKey
+  object Key43: TKey
     Left = 152
     Top = 152
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00040001'
       'C0040001'
@@ -708,15 +728,16 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktLetters
+    KeyType = ktNum
     UpPosX = 18
     DownPosX = 25
   end
-  object Key21: TKey
+  object Key73: TKey
     Left = 200
     Top = 152
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00050001'
       'C0050001'
@@ -744,15 +765,16 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktLetters
+    KeyType = ktNum
     UpPosX = 30
     DownPosX = 25
   end
-  object Key22: TKey
+  object Key31: TKey
     Left = 248
     Top = 152
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00060001'
       'C0060001'
@@ -780,15 +802,16 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktLetters
+    KeyType = ktNum
     UpPosX = 25
     DownPosX = 25
   end
-  object Key23: TKey
+  object Key74: TKey
     Left = 296
     Top = 152
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00070001'
       'C0070001'
@@ -816,15 +839,16 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktLetters
+    KeyType = ktNum
     UpPosX = 30
     DownPosX = 25
   end
-  object Key24: TKey
+  object Key47: TKey
     Left = 344
     Top = 152
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00080001'
       'C0080001'
@@ -852,15 +876,16 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktLetters
+    KeyType = ktNum
     UpPosX = 25
     DownPosX = 25
   end
-  object Key25: TKey
+  object Key95: TKey
     Left = 392
     Top = 152
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00090001'
       'C0090001'
@@ -888,15 +913,16 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktLetters
+    KeyType = ktNum
     UpPosX = 25
     DownPosX = 25
   end
-  object Key26: TKey
+  object Key89: TKey
     Left = 440
     Top = 152
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '000A0001'
       'C00A0001'
@@ -924,15 +950,16 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktLetters
+    KeyType = ktNum
     UpPosX = 25
     DownPosX = 25
   end
-  object Key27: TKey
+  object Key78: TKey
     Left = 488
     Top = 152
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '000B0001'
       'C00B0001'
@@ -960,15 +987,16 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktLetters
+    KeyType = ktNum
     UpPosX = 25
     DownPosX = 25
   end
-  object Key28: TKey
+  object Key14: TKey
     Left = 536
     Top = 152
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '000C0001'
       'C00C0001'
@@ -996,15 +1024,16 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktLetters
+    KeyType = ktNum
     UpPosX = 25
     DownPosX = 25
   end
-  object Key29: TKey
+  object Key90: TKey
     Left = 584
     Top = 152
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '000D0001'
       'C00D0001'
@@ -1032,15 +1061,16 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktLetters
+    KeyType = ktNum
     UpPosX = 25
     DownPosX = 25
   end
-  object Key31: TKey
+  object Key8: TKey
     Left = 632
     Top = 152
     Width = 90
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '000E0001'
       'C00E0001'
@@ -1180,7 +1210,6 @@ object Form1: TForm1
     PicturePos.Top = 14
     PicturePos.Right = 4
     PicturePos.Bottom = 28
-    MiddleText = 'Esc'
     UpFont.Charset = DEFAULT_CHARSET
     UpFont.Color = clWhite
     UpFont.Height = -19
@@ -1198,15 +1227,16 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktLetters
+    KeyType = ktScroll
     UpPosX = 0
     DownPosX = 25
   end
-  object Key32: TKey
+  object Key45: TKey
     Left = 736
     Top = 152
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '01520001'
       'C1520001'
@@ -1237,11 +1267,12 @@ object Form1: TForm1
     UpPosX = 0
     DownPosX = 25
   end
-  object Key33: TKey
+  object Key36: TKey
     Left = 784
     Top = 152
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '01470001'
       'C1470001'
@@ -1272,11 +1303,12 @@ object Form1: TForm1
     UpPosX = 0
     DownPosX = 25
   end
-  object Key34: TKey
+  object Key33: TKey
     Left = 832
     Top = 152
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '01490001'
       'C1490001'
@@ -1307,11 +1339,12 @@ object Form1: TForm1
     UpPosX = 0
     DownPosX = 25
   end
-  object Key35: TKey
+  object Key144: TKey
     Left = 888
     Top = 152
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '01450001'
       'C1450001')
@@ -1341,11 +1374,12 @@ object Form1: TForm1
     UpPosX = 4
     DownPosX = 5
   end
-  object Key36: TKey
+  object Key111: TKey
     Left = 936
     Top = 152
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '01350001'
       'C1350001'
@@ -1372,15 +1406,16 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktLetters
+    KeyType = ktScroll
     UpPosX = 4
     DownPosX = 5
   end
-  object Key37: TKey
+  object Key106: TKey
     Left = 984
     Top = 152
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00370001'
       'C0370001'
@@ -1407,15 +1442,16 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktLetters
+    KeyType = ktScroll
     UpPosX = 4
     DownPosX = 5
   end
-  object Key38: TKey
+  object Key109: TKey
     Left = 1032
     Top = 152
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '004A0001'
       'C04A0001'
@@ -1442,15 +1478,16 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktLetters
+    KeyType = ktScroll
     UpPosX = 0
     DownPosX = 5
   end
-  object Key39: TKey
+  object Key9: TKey
     Left = 8
     Top = 200
     Width = 65
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '000F0001'
       'C00F0001'
@@ -1640,15 +1677,16 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktLetters
+    KeyType = ktScroll
     UpPosX = 0
     DownPosX = 25
   end
-  object Key40: TKey
+  object Key76: TKey
     Left = 79
     Top = 200
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00100001'
       'C0100001'
@@ -1679,11 +1717,12 @@ object Form1: TForm1
     KeyType = ktLetters
     DownPosX = 25
   end
-  object Key41: TKey
+  object Key5: TKey
     Left = 127
     Top = 200
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00110001'
       'C0110001'
@@ -1714,11 +1753,12 @@ object Form1: TForm1
     KeyType = ktLetters
     DownPosX = 25
   end
-  object Key42: TKey
+  object Key4: TKey
     Left = 175
     Top = 200
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00120001'
       'C0120001'
@@ -1749,11 +1789,12 @@ object Form1: TForm1
     KeyType = ktLetters
     DownPosX = 25
   end
-  object Key43: TKey
+  object Key3: TKey
     Left = 223
     Top = 200
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00130001'
       'C0130001'
@@ -1784,11 +1825,12 @@ object Form1: TForm1
     KeyType = ktLetters
     DownPosX = 25
   end
-  object Key44: TKey
+  object Key2: TKey
     Left = 271
     Top = 200
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00140001'
       'C0140001'
@@ -1819,11 +1861,12 @@ object Form1: TForm1
     KeyType = ktLetters
     DownPosX = 25
   end
-  object Key45: TKey
+  object Key1: TKey
     Left = 319
     Top = 200
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00150001'
       'C0150001'
@@ -1854,11 +1897,12 @@ object Form1: TForm1
     KeyType = ktLetters
     DownPosX = 25
   end
-  object Key46: TKey
+  object Key52: TKey
     Left = 367
     Top = 200
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00160001'
       'C0160001'
@@ -1889,11 +1933,12 @@ object Form1: TForm1
     KeyType = ktLetters
     DownPosX = 25
   end
-  object Key47: TKey
+  object Key51: TKey
     Left = 415
     Top = 200
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00170001'
       'C0170001'
@@ -1929,6 +1974,7 @@ object Form1: TForm1
     Top = 200
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00180001'
       'C0180001'
@@ -1964,6 +2010,7 @@ object Form1: TForm1
     Top = 200
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00190001'
       'C0190001'
@@ -1991,14 +2038,15 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktLetters
+    KeyType = ktScroll
     DownPosX = 25
   end
-  object Key50: TKey
+  object Key53: TKey
     Left = 559
     Top = 200
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '001A0001'
       'C01A0001'
@@ -2026,15 +2074,16 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktLetters
+    KeyType = ktNum
     UpPosX = 0
     DownPosX = 25
   end
-  object Key51: TKey
+  object Key94: TKey
     Left = 607
     Top = 200
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '001B0001'
       'C01B0001'
@@ -2062,15 +2111,16 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktLetters
+    KeyType = ktNum
     UpPosX = 0
     DownPosX = 25
   end
-  object Key52: TKey
+  object Key72: TKey
     Left = 655
     Top = 200
     Width = 67
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '002B0001'
       'C02B0001'
@@ -2098,15 +2148,16 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktLetters
+    KeyType = ktNum
     UpPosX = 45
     DownPosX = 25
   end
-  object Key53: TKey
+  object Key46: TKey
     Left = 736
     Top = 200
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '01530001'
       'C1530001'
@@ -2137,11 +2188,12 @@ object Form1: TForm1
     UpPosX = 0
     DownPosX = 25
   end
-  object Key30: TKey
+  object Key35: TKey
     Left = 784
     Top = 200
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '014F0001'
       'C14F0001'
@@ -2172,11 +2224,12 @@ object Form1: TForm1
     UpPosX = 0
     DownPosX = 25
   end
-  object Key54: TKey
+  object Key34: TKey
     Left = 832
     Top = 200
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '01510001'
       'C1510001'
@@ -2207,11 +2260,12 @@ object Form1: TForm1
     UpPosX = 0
     DownPosX = 25
   end
-  object Key55: TKey
+  object Key103: TKey
     Left = 888
     Top = 200
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00470001'
       'C0470001'
@@ -2239,15 +2293,16 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktNum
+    KeyType = ktExNum
     UpPosX = 4
     DownPosX = 5
   end
-  object Key56: TKey
+  object Key104: TKey
     Left = 936
     Top = 200
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00480001'
       'C0480001'
@@ -2403,15 +2458,16 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktNum
+    KeyType = ktExNum
     UpPosX = 4
     DownPosX = 5
   end
-  object Key57: TKey
+  object Key105: TKey
     Left = 984
     Top = 200
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00490001'
       'C0490001'
@@ -2439,15 +2495,16 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktNum
+    KeyType = ktExNum
     UpPosX = 4
     DownPosX = 5
   end
-  object Key58: TKey
+  object Key107: TKey
     Left = 1032
     Top = 200
     Width = 42
     Height = 90
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '004E0001'
       'C04E0001'
@@ -2474,15 +2531,16 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktLetters
+    KeyType = ktScroll
     UpPosX = 0
     DownPosX = 5
   end
-  object Key59: TKey
+  object Key20: TKey
     Left = 8
     Top = 248
     Width = 81
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '003A0001'
       'C03A0001'
@@ -2518,6 +2576,7 @@ object Form1: TForm1
     Top = 248
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '001E0001'
       'C01E0001'
@@ -2553,6 +2612,7 @@ object Form1: TForm1
     Top = 248
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '001F0001'
       'C01F0001'
@@ -2588,6 +2648,7 @@ object Form1: TForm1
     Top = 248
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00200001'
       'C0200001'
@@ -2623,6 +2684,7 @@ object Form1: TForm1
     Top = 248
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00210001'
       'C0210001'
@@ -2658,6 +2720,7 @@ object Form1: TForm1
     Top = 248
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00220001'
       'C0220001'
@@ -2693,6 +2756,7 @@ object Form1: TForm1
     Top = 248
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00230001'
       'C0230001'
@@ -2728,6 +2792,7 @@ object Form1: TForm1
     Top = 248
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00240001'
       'C0240001'
@@ -2763,6 +2828,7 @@ object Form1: TForm1
     Top = 248
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00250001'
       'C0250001'
@@ -2798,6 +2864,7 @@ object Form1: TForm1
     Top = 248
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00260001'
       'C0260001'
@@ -2833,6 +2900,7 @@ object Form1: TForm1
     Top = 248
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00270001'
       'C0270001'
@@ -2860,7 +2928,7 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktLetters
+    KeyType = ktNum
     UpPosX = 0
     DownPosX = 21
   end
@@ -2869,6 +2937,7 @@ object Form1: TForm1
     Top = 248
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00280001'
       'C0280001'
@@ -2896,15 +2965,16 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktLetters
+    KeyType = ktNum
     UpPosX = 0
     DownPosX = 25
   end
-  object Key71: TKey
+  object Key13: TKey
     Left = 623
     Top = 248
     Width = 99
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '001C0001'
       'C01C0001'
@@ -2931,15 +3001,16 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktLetters
+    KeyType = ktScroll
     UpPosX = 0
     DownPosX = 25
   end
-  object Key72: TKey
+  object Key100: TKey
     Left = 888
     Top = 248
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '004B0001'
       'C04B0001'
@@ -3097,15 +3168,16 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktNum
+    KeyType = ktExNum
     UpPosX = 4
     DownPosX = 5
   end
-  object Key73: TKey
+  object Key101: TKey
     Left = 936
     Top = 248
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '004C0001'
       'C04C0001')
@@ -3131,15 +3203,16 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktNum
+    KeyType = ktExNum
     UpPosX = 4
     DownPosX = 5
   end
-  object Key74: TKey
+  object Key102: TKey
     Left = 984
     Top = 248
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '004D0001'
       'C04D0001')
@@ -3296,15 +3369,16 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktNum
+    KeyType = ktExNum
     UpPosX = 4
     DownPosX = 5
   end
-  object Key75: TKey
+  object Key97: TKey
     Left = 888
     Top = 296
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '004F0001'
       'C04F0001'
@@ -3332,15 +3406,16 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktNum
+    KeyType = ktExNum
     UpPosX = 4
     DownPosX = 5
   end
-  object Key76: TKey
+  object Key98: TKey
     Left = 936
     Top = 296
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00500001'
       'C0500001'
@@ -3496,15 +3571,16 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktNum
+    KeyType = ktExNum
     UpPosX = 4
     DownPosX = 5
   end
-  object Key77: TKey
+  object Key99: TKey
     Left = 984
     Top = 296
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00510001'
       'C0510001'
@@ -3532,15 +3608,16 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktNum
+    KeyType = ktExNum
     UpPosX = 4
     DownPosX = 5
   end
-  object Key78: TKey
+  object Key160: TKey
     Left = 8
     Top = 296
     Width = 97
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '002A0001'
       'C02A0001'
@@ -3705,6 +3782,7 @@ object Form1: TForm1
     Top = 296
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '002C0001'
       'C02C0001'
@@ -3740,6 +3818,7 @@ object Form1: TForm1
     Top = 296
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '002D0001'
       'C02D0001'
@@ -3775,6 +3854,7 @@ object Form1: TForm1
     Top = 296
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '002E0001'
       'C02E0001'
@@ -3810,6 +3890,7 @@ object Form1: TForm1
     Top = 296
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '002F0001'
       'C02F0001'
@@ -3845,6 +3926,7 @@ object Form1: TForm1
     Top = 296
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00300001'
       'C0300001'
@@ -3880,6 +3962,7 @@ object Form1: TForm1
     Top = 296
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00310001'
       'C0310001'
@@ -3915,6 +3998,7 @@ object Form1: TForm1
     Top = 296
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00320001'
       'C0320001'
@@ -3950,6 +4034,7 @@ object Form1: TForm1
     Top = 296
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00330001'
       'C0330001'
@@ -3977,7 +4062,7 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktLetters
+    KeyType = ktNum
     UpPosX = 0
     DownPosX = 25
   end
@@ -3986,6 +4071,7 @@ object Form1: TForm1
     Top = 296
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00340001'
       'C0340001'
@@ -4013,7 +4099,7 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktLetters
+    KeyType = ktNum
     UpPosX = 0
     DownPosX = 20
   end
@@ -4022,6 +4108,7 @@ object Form1: TForm1
     Top = 296
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00350001'
       'C0350001'
@@ -4049,15 +4136,16 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktLetters
+    KeyType = ktNum
     UpPosX = 0
     DownPosX = 25
   end
-  object Key89: TKey
+  object Key161: TKey
     Left = 591
     Top = 296
     Width = 131
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00360001'
       'C1360001'
@@ -4217,11 +4305,12 @@ object Form1: TForm1
     UpPosX = 0
     DownPosX = 25
   end
-  object Key90: TKey
+  object Key162: TKey
     Left = 8
     Top = 344
     Width = 52
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '001D0001'
       'C01D0001'
@@ -4257,6 +4346,7 @@ object Form1: TForm1
     Top = 344
     Width = 52
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '015B0001'
       'C15B0001'
@@ -4343,11 +4433,12 @@ object Form1: TForm1
     UpPosX = 0
     DownPosX = 25
   end
-  object Key92: TKey
+  object Key164: TKey
     Left = 124
     Top = 344
     Width = 52
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '20380001'
       'C0380001'
@@ -4378,11 +4469,12 @@ object Form1: TForm1
     UpPosX = 0
     DownPosX = 25
   end
-  object Key93: TKey
+  object Key32: TKey
     Left = 182
     Top = 344
     Width = 307
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00390001'
       'C0390001'
@@ -4408,15 +4500,16 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktLetters
+    KeyType = ktScroll
     UpPosX = 0
     DownPosX = 25
   end
-  object Key94: TKey
+  object Key165: TKey
     Left = 495
     Top = 344
     Width = 52
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '21380001'
       'C1380001'
@@ -4447,11 +4540,12 @@ object Form1: TForm1
     UpPosX = 0
     DownPosX = 25
   end
-  object Key96: TKey
+  object Key93: TKey
     Left = 612
     Top = 344
     Width = 52
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '015D0001'
       'C15D0001'
@@ -4477,15 +4571,16 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktLetters
+    KeyType = ktScroll
     UpPosX = 0
     DownPosX = 25
   end
-  object Key97: TKey
+  object Key163: TKey
     Left = 670
     Top = 344
     Width = 52
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '111D0001'
       'C11D0001'
@@ -4516,11 +4611,12 @@ object Form1: TForm1
     UpPosX = 0
     DownPosX = 25
   end
-  object Key98: TKey
+  object Key37: TKey
     Left = 736
     Top = 344
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '114B0001'
       'C14B0001'
@@ -4681,11 +4777,12 @@ object Form1: TForm1
     UpPosX = 0
     DownPosX = 25
   end
-  object Key99: TKey
+  object Key40: TKey
     Left = 784
     Top = 344
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '11500001'
       'C1500001'
@@ -4844,11 +4941,12 @@ object Form1: TForm1
     UpPosX = 0
     DownPosX = 25
   end
-  object Key100: TKey
+  object Key39: TKey
     Left = 832
     Top = 344
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '114D0001'
       'C14D0001'
@@ -5009,11 +5107,12 @@ object Form1: TForm1
     UpPosX = 0
     DownPosX = 25
   end
-  object Key101: TKey
+  object Key38: TKey
     Left = 784
     Top = 296
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '01480001'
       'C1480001'
@@ -5172,11 +5271,12 @@ object Form1: TForm1
     UpPosX = 0
     DownPosX = 25
   end
-  object Key102: TKey
+  object Key96: TKey
     Left = 888
     Top = 344
     Width = 90
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '10520001'
       'C0520001'
@@ -5204,15 +5304,16 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktNum
+    KeyType = ktExNum
     UpPosX = 4
     DownPosX = 5
   end
-  object Key103: TKey
+  object Key110: TKey
     Left = 984
     Top = 344
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '10530001'
       'C0530001'
@@ -5240,15 +5341,16 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktNum
+    KeyType = ktExNum
     UpPosX = 6
     DownPosX = 5
   end
-  object Key104: TKey
+  object Key130: TKey
     Left = 1032
     Top = 296
     Width = 42
     Height = 90
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '011C0001'
       'C11C0001'
@@ -5275,15 +5377,16 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktLetters
+    KeyType = ktScroll
     UpPosX = 0
     DownPosX = 5
   end
-  object Key95: TKey
+  object Key92: TKey
     Left = 553
     Top = 344
     Width = 52
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '015C0001'
       'C15C0001'
@@ -5373,13 +5476,13 @@ object Form1: TForm1
   object Memo1: TMemo
     Left = 0
     Top = 0
-    Width = 1074
+    Width = 1070
     Height = 90
     Align = alTop
     Lines.Strings = (
       'Memo1')
     TabOrder = 0
-    ExplicitWidth = 1070
+    ExplicitWidth = 1064
   end
   object TrayIcon: TTrayIcon
     Hint = #1069#1090#1086' '#1090#1080#1087#1072' '#1082#1083#1072#1074#1080#1072#1090#1091#1088#1085#1099#1081' '#1096#1087#1080#1086#1085
@@ -5547,5 +5650,10 @@ object Form1: TForm1
       Caption = #1074#1099#1093#1086#1076
       OnClick = exit1Click
     end
+  end
+  object WinMonitor: TTimer
+    OnTimer = WinMonitorTimer
+    Left = 336
+    Top = 24
   end
 end

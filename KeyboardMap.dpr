@@ -3,7 +3,8 @@ program KeyboardMap;
 uses
   Vcl.Forms,
   MainUnit in 'MainUnit.pas' {Form1},
-  saver in 'saver.pas';
+  saver in 'saver.pas',
+  SendKeyPressProc in 'SendKeyPressProc.pas';
 
 {$R *.res}
 

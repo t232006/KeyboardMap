@@ -15,3 +15,64 @@ Key = 1; Letter = 1; Scan = 00520001; Down; Time: 16:45:13; Key = 1; Letter = 1
 
 Key = 1; Letter = 1; Scan = 00520001; Down; Time: 17:05:13; Key = 1; Letter = 1; Scan = 40520001; Down; Time: 17:05:15; 
 Key = 1; Letter = 1; Scan = 00520001; Down; Time: 17:05:48; Key = 1; Letter = 1; Scan = 40520001; Down; Time: 17:05:49; 
+Key = 1; Letter = 1; Scan = 007B0001; Down; Time: 19:11:28; Key = 1; Letter = 1; Scan = 407B0001; Down; Time: 19:11:30; Key = 1; Letter = 1; Scan = 407B0001; Down; Time: 19:11:31; Key = 1; Letter = 1; Scan = 407B0001; Down; Time: 19:11:31; Key = 1; Letter = 1; Scan = 407B0001; Down; Time: 19:11:32; Key = 1; Letter = 1; Scan = 407B0001; Down; Time: 19:11:35; Key = 1; Letter = 1; Scan = 407B0001; Down; Time: 19:11:36; Key = 1; Letter = 1; Scan = 407B0001; Down; Time: 19:11:36; 
+Key = 2; Letter = 2; Scan = 00760001; Down; Time: 19:16:06; Key = 4; Letter = 4; Scan = 00760001; Down; Time: 19:16:09; Key = -; Letter = ; Scan = 00760001; Down; Time: 19:16:12; Key = 0; Letter = 0; Scan = 00760001; Down; Time: 19:16:17; Key = 8; Letter = 8; Scan = 00760001; Down; Time: 19:16:20; Key = 6; Letter = 6; Scan = 00760001; Down; Time: 19:16:22; Key = 5; Letter = 5; Scan = 40760001; Down; Time: 19:16:26; 
+
+Key = -; Letter = ; Scan = 40760001; Down; Time: 19:19:11; 
+
+Key = c; Letter = ; Scan = 80000001;  Up ; Time: 11:26:22; 
+
+Key = c; Letter = ; Scan = 00000001; Down; Time: 11:31:03; 
+Key = c; Letter = ; Scan = 00000001; Down; Time: 16:45:08; 
+Key = c; Letter = ; Scan = 00000001; Down; Time: 16:47:35; 
+Key = ; Letter = ; Scan = 001D0001; Down; Time: 18:46:56; 
+Key = F; Letter = à; Scan = 00210001; Down; Time: 18:47:15; Key = F; Letter = à; Scan = C0210001;  Up ; Time: 18:47:15; Key = ?; Letter = á; Scan = 00330001; Down; Time: 18:47:18; Key = ?; Letter = á; Scan = C0330001;  Up ; Time: 18:47:18; Key = D; Letter = â; Scan = 00200001; Down; Time: 18:47:19; Key = D; Letter = â; Scan = C0200001;  Up ; Time: 18:47:19; Key = U; Letter = ã; Scan = 00160001; Down; Time: 18:47:20; Key = U; Letter = ã; Scan = C0160001;  Up ; Time: 18:47:21; Key = L; Letter = ä; Scan = 00260001; Down; Time: 18:47:21; Key = L; Letter = ä; Scan = C0260001;  Up ; Time: 18:47:21; Key = ; Letter = ; Scan = 001D0001; Down; Time: 18:47:22; Key = ; Letter = ; Scan = 002A0001; Down; Time: 18:47:22; Key = ; Letter = ; Scan = C01D0001;  Up ; Time: 18:47:23; Key = ; Letter = ; Scan = 801D0001;  Up ; Time: 18:47:23; Key = ; Letter = ; Scan = 801D0001;  Up ; Time: 18:47:23; Key = ; Letter = ; Scan = C02A0001;  Up ; Time: 18:47:23; Key = A; Letter = a; Scan = 001E0001; Down; Time: 18:47:26; Key = A; Letter = a; Scan = C01E0001;  Up ; Time: 18:47:26; Key = B; Letter = b; Scan = 00300001; Down; Time: 18:47:27; Key = B; Letter = b; Scan = C0300001;  Up ; Time: 18:47:27; Key = C; Letter = c; Scan = 002E0001; Down; Time: 18:47:27; Key = C; Letter = c; Scan = C02E0001;  Up ; Time: 18:47:27; Key = D; Letter = d; Scan = 00200001; Down; Time: 18:47:28; Key = D; Letter = d; Scan = C0200001;  Up ; Time: 18:47:28; Key = E; Letter = e; Scan = 00120001; Down; Time: 18:47:29; Key = E; Letter = e; Scan = C0120001;  Up ; Time: 18:47:29; Key = F; Letter = f; Scan = 00210001; Down; Time: 18:47:31; Key = F; Letter = f; Scan = C0210001;  Up ; Time: 18:47:31; 
+Key = A; Letter = a; Scan = 001E0001; Down; Time: 18:48:35; Key = A; Letter = a; Scan = C01E0001;  Up ; Time: 18:48:35; 
+
+Key = c; Letter = Ô; Scan = 00000001; Down; Time: 19:36:57; Key = c; Letter = Ô; Scan = C0000001;  Up ; Time: 19:36:57; Key = c; Letter = Ô; Scan = 00000001; Down; Time: 19:37:08; Key = c; Letter = Ô; Scan = 00000001; Down; Time: 19:37:09; Key = c; Letter = Ô; Scan = 00000001; Down; Time: 19:37:15; Key = c; Letter = Ô; Scan = 00000001; Down; Time: 19:37:16; Key = c; Letter = Ô; Scan = 00000001; Down; Time: 19:37:17; Key = ; Letter = ; Scan = 001D0001; Down; Time: 19:37:44; Key = ; Letter = ; Scan = 002A0001; Down; Time: 19:37:44; Key = ; Letter = ; Scan = C02A0001;  Up ; Time: 19:37:44; Key = ; Letter = ; Scan = C01D0001;  Up ; Time: 19:37:44; Key = ; Letter = ; Scan = C01D0001;  Up ; Time: 19:37:44; Key = ; Letter = ; Scan = 801D0001;  Up ; Time: 19:37:44; Key = c; Letter = Ô; Scan = C0000001;  Up ; Time: 19:37:48; Key = c; Letter = Ô; Scan = C0000001;  Up ; Time: 19:37:51; Key = c; Letter = Ô; Scan = C0000001;  Up ; Time: 19:37:53; Key = c; Letter = Ô; Scan = C0000001;  Up ; Time: 19:37:59; 
+
+
+Key = c; Letter = ; Scan = 00000001; Down; Time: 19:51:47; 
+Key = c; Letter = ; Scan = 00000001; Down; Time: 19:53:27; 
+Key = s; Letter = ; Scan = 00000001; Down; Time: 20:03:20; 
+Key = r; Letter = ; Scan = 00000001; Down; Time: 20:48:21; 
+Key = c; Letter = ; Scan = 00000001; Down; Time: 23:23:54; 
+
+Key = g; Letter = 7; Scan = 00000001; Down; Time: 23:37:47; Key = g; Letter = 7; Scan = C0000001;  Up ; Time: 23:37:47; 
+
+
+
+Key = %; Letter = ; Scan = 00000001; Down; Time: 0:22:38; 
+
+
+
+
+Key = %; Letter = ; Scan = 00000001; Down; Time: 1:44:22; 
+
+
+Key =  ; Letter =  ; Scan = 00000001; Down; Time: 2:06:10; Key =  ; Letter =  ; Scan = C0000001;  Up ; Time: 2:06:10; 
+
+Key = ; Letter = ; Scan = 00000001; Down; Time: 2:10:21; Key =  ; Letter =  ; Scan = 00000001; Down; Time: 2:10:43; Key = c; Letter = ; Scan = 00000001; Down; Time: 2:11:05; 
+
+Key = ; Letter = ; Scan = 00000001; Down; Time: 2:14:38; Key = c; Letter = ; Scan = 00000001; Down; Time: 2:14:51; 
+Key = &; Letter = ; Scan = 01480001; Down; Time: 2:15:33; 
+Key = F; Letter = f; Scan = 00210001; Down; Time: 2:15:46; Key = F; Letter = f; Scan = C0210001;  Up ; Time: 2:15:47; Key = ; Letter = ; Scan = C11C0001;  Up ; Time: 2:15:48; Key = ; Letter = ; Scan = C11C0001;  Up ; Time: 2:15:52; Key = ; Letter = ; Scan = C01C0001;  Up ; Time: 2:16:01; Key = ; Letter = ; Scan = C01C0001;  Up ; Time: 2:16:02; Key = R; Letter = r; Scan = C0130001;  Up ; Time: 2:16:03; Key = E; Letter = e; Scan = C0120001;  Up ; Time: 2:16:04; Key = A; Letter = a; Scan = 001E0001; Down; Time: 2:16:23; Key = c; Letter = k; Scan = 00000001; Down; Time: 2:16:36; Key = c; Letter = k; Scan = C0000001;  Up ; Time: 2:16:36; Key = D; Letter = d; Scan = C0200001;  Up ; Time: 2:16:45; 
+Key = A; Letter = a; Scan = 001E0001; Down; Time: 2:17:14; Key = A; Letter = a; Scan = C01E0001;  Up ; Time: 2:17:14; 
+Key = F; Letter = f; Scan = 00210001; Down; Time: 2:20:19; Key = F; Letter = f; Scan = C0210001;  Up ; Time: 2:20:19; Key = F; Letter = f; Scan = 00210001; Down; Time: 2:20:26; Key = F; Letter = f; Scan = 00210001; Down; Time: 2:20:46; 
+Key = F; Letter = f; Scan = 00210001; Down; Time: 2:21:05; Key = F; Letter = f; Scan = C0210001;  Up ; Time: 2:21:05; 
+Key = F; Letter = f; Scan = 00210001; Down; Time: 2:21:21; 
+Key = G; Letter = g; Scan = 00220001; Down; Time: 2:21:36; 
+Key = V; Letter = v; Scan = 002F0001; Down; Time: 2:18:57; Key = V; Letter = v; Scan = C02F0001;  Up ; Time: 2:18:57; Key = V; Letter = v; Scan = 002F0001; Down; Time: 2:19:36; Key = F; Letter = f; Scan = 00210001; Down; Time: 2:19:36; Key = V; Letter = v; Scan = 002F0001; Down; Time: 2:19:36; Key = F; Letter = f; Scan = 00210001; Down; Time: 2:19:37; 
+
+
+
+
+
+Key = [; Letter = ; Scan = 015B0001; Down; Time: 10:03:27; 
+
+Key = g; Letter = 7; Scan = 00000001; Down; Time: 10:12:20; Key = g; Letter = 7; Scan = 00000001; Down; Time: 10:12:21; Key = ?; Letter = ; Scan = 00000001; Down; Time: 10:12:23; Key = %; Letter = ; Scan = 00000001; Down; Time: 10:12:24; Key = %; Letter = ; Scan = 00000001; Down; Time: 10:12:25; Key = %; Letter = ; Scan = 00000001; Down; Time: 10:12:25; 
+Key = c; Letter = ; Scan = 00000001; Down; Time: 10:18:37; 
+
+Key = c; Letter = ; Scan = 00000001; Down; Time: 10:34:47; 
+
+Key = V; Letter = v; Scan = 002F0001; Down; Time: 10:46:34; Key = F; Letter = f; Scan = 00210001; Down; Time: 10:46:35; Key = V; Letter = v; Scan = 002F0001; Down; Time: 10:46:36; Key = F; Letter = f; Scan = 00210001; Down; Time: 10:46:37; Key = ; Letter = ; Scan = 001D0001; Down; Time: 10:46:40; Key = ; Letter = ; Scan = C01D0001;  Up ; Time: 10:46:40; Key = V; Letter = v; Scan = 002F0001; Down; Time: 10:46:41; Key = F; Letter = f; Scan = 00210001; Down; Time: 10:46:41; Key = V; Letter = v; Scan = 002F0001; Down; Time: 10:46:41; Key = F; Letter = f; Scan = 00210001; Down; Time: 10:46:41; Key =  ; Letter =  ; Scan = 00390001; Down; Time: 10:46:41; Key =  ; Letter =  ; Scan = C0390001;  Up ; Time: 10:46:42; Key = V; Letter = v; Scan = C02F0001;  Up ; Time: 10:46:42; Key = K; Letter = k; Scan = 00250001; Down; Time: 10:46:42; Key = K; Letter = k; Scan = C0250001;  Up ; Time: 10:46:42; Key =  ; Letter =  ; Scan = 00390001; Down; Time: 10:46:42; Key = H; Letter = h; Scan = 00230001; Down; Time: 10:46:42; Key = H; Letter = h; Scan = C0230001;  Up ; Time: 10:46:42; Key = V; Letter = v; Scan = 002F0001; Down; Time: 10:46:42; Key = E; Letter = e; Scan = 00120001; Down; Time: 10:46:43; 

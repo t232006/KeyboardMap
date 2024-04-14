@@ -2,18 +2,49 @@ unit Utilites;
 
 interface
 uses Windows;
-procedure SendKeyPress(Key: Word; release:boolean);
+procedure SendKeyPress(Key: WideChar);
+procedure SendKeyDown(Key: WideChar);
+procedure SendKeyUp(Key: WideChar);
 
 implementation
-procedure SendKeyPress(Key: Word; release:boolean);
+
+procedure SendKeyDown(Key: WideChar);
 var
-  Inputs: array[0..0] of TInput;
+  Input: array[0..0] of TInput;
 begin
-  Inputs[0].Itype := INPUT_KEYBOARD;
-  Inputs[0].ki.wVk := Key;
-  if release then Inputs[0].ki.dwFlags := KEYEVENTF_KEYUP else
-  Inputs[0].ki.dwFlags := 0;
-  SendInput(1, Inputs[0], SizeOf(Inputs[0]));
+  FillChar(Input, SizeOf(Input), 0);
+  with Input[0] do
+  begin
+    Itype := INPUT_KEYBOARD;
+    with ki do
+    begin
+      wScan := Word(Key);
+      dwFlags := KEYEVENTF_UNICODE
+    end;
+  end;
+  SendInput(Length(Input), Input[0], SizeOf(TInput));
 end;
+
+procedure SendKeyUp(Key: WideChar);
+var Input: array[0..0] of TInput;
+begin
+  with Input[0] do
+  begin
+    Itype := INPUT_KEYBOARD;
+    with ki do
+    begin
+      wScan := Word(Key);
+      dwFlags := KEYEVENTF_UNICODE or KEYEVENTF_KEYUP;
+    end;
+  end;
+  SendInput(Length(Input), Input[0], SizeOf(TInput));
+end;
+
+procedure SendKeyPress(Key: WideChar);
+begin
+  SendKeyDown(Key);
+  SendKeyUp(Key);
+end;
+
 
 end.

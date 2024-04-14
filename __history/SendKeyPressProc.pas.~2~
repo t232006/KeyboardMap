@@ -1,0 +1,107 @@
+unit SendKeyPressProc;
+
+interface
+uses Windows;
+procedure SendKeyPress(Key: WideChar);  overload;
+procedure SendKeyPress(Key: integer); overload;
+procedure SendKeyDown(Key: WideChar); overload;
+procedure SendKeyUp(Key: WideChar); overload;
+procedure SendKeyDown(Key: integer); overload;
+procedure SendKeyUp(Key: integer); overload;
+procedure KeyClick(Key: TKey, ShiftDown: boolean);
+
+
+implementation
+
+procedure SendKeyDown(Key: WideChar);
+var
+  Input: array[0..0] of TInput;
+begin
+  FillChar(Input, SizeOf(Input), 0);
+  with Input[0] do
+  begin
+    Itype := INPUT_KEYBOARD;
+    with ki do
+    begin
+      wScan := Word(Key);
+      dwFlags := KEYEVENTF_UNICODE
+    end;
+  end;
+  SendInput(Length(Input), Input[0], SizeOf(TInput));
+end;
+
+procedure SendKeyUp(Key: WideChar);
+var Input: array[0..0] of TInput;
+begin
+  with Input[0] do
+  begin
+    Itype := INPUT_KEYBOARD;
+    with ki do
+    begin
+      wScan := Word(Key);
+      dwFlags := KEYEVENTF_UNICODE or KEYEVENTF_KEYUP;
+    end;
+  end;
+  SendInput(Length(Input), Input[0], SizeOf(TInput));
+end;
+
+procedure SendKeyPress(Key: WideChar);
+begin
+  SendKeyDown(Key);
+  SendKeyUp(Key);
+end;
+
+procedure SendKeyPress(Key: integer);
+begin
+   keybd_event(key,0,0,0);
+   keybd_event(key, 0, KEYEVENTF_KEYUP, 0);
+end;
+
+procedure SendKeyDown(Key: integer);
+begin
+   keybd_event(key,0,0,0);
+end;
+
+procedure SendKeyUp(Key: integer);
+begin
+    keybd_event(key, 0, KEYEVENTF_KEYUP, 0);
+end;
+
+procedure KeyClick(Key: TKey, ShiftDown: boolean);
+var
+    state: WindowPlacement; c
+    h:char;
+    temp:string;
+begin
+    state.length:=sizeof(windowplacement);
+    GetWindowPlacement(hwin, state);
+    ShowWindow(hwin, state.showCmd);
+    BringWindowToTop(hwin);
+    case button.KeyType of
+    ktNum:
+      begin
+        if ShiftDown then
+        ch:=button.MiddleText[1]
+        else
+        ch:=button.MiddleText[length(button.MiddleText)];
+      SendKeypress(ch);
+      end;
+    ktLetters:
+      begin
+        if word(GetKeyboardLayout(0))=$409 then
+        ch:=button.UpText[1] else
+        ch:=button.DownText[1];
+        if not(ShiftDown) then
+          ch:=chr(ord(ch)+32);
+        SendKeypress(ch);
+      end;
+    ktFunc:
+      begin
+        temp:=button.Name;
+        delete(temp, 1, 3);
+        sendkeypress(strtoint(temp)+110);
+
+      end;
+    end;
+
+end.
