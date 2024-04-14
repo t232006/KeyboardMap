@@ -1,9 +1,9 @@
 object Form1: TForm1
   Left = 0
   Top = 0
-  Caption = 'Form1'
+  Caption = '464'
   ClientHeight = 389
-  ClientWidth = 1070
+  ClientWidth = 1079
   Color = clWhite
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -13,12 +13,14 @@ object Form1: TForm1
   KeyPreview = True
   OnClose = FormClose
   OnCreate = FormCreate
+  OnMouseEnter = FormMouseEnter
   TextHeight = 15
   object Key27: TKey
     Left = 8
     Top = 96
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00010001'
       'C0010001')
@@ -44,7 +46,7 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktLetters
+    KeyType = ktScroll
     UpPosX = 0
     DownPosX = 25
   end
@@ -53,6 +55,7 @@ object Form1: TForm1
     Top = 96
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '003B0001'
       'C03B0001'
@@ -88,6 +91,7 @@ object Form1: TForm1
     Top = 96
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '003C0001'
       'C03C0001'
@@ -123,6 +127,7 @@ object Form1: TForm1
     Top = 96
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '003D0001'
       'C03D0001'
@@ -158,6 +163,7 @@ object Form1: TForm1
     Top = 96
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '003E0001'
       'C03E0001'
@@ -193,6 +199,7 @@ object Form1: TForm1
     Top = 96
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '003F0001'
       'C03F0001'
@@ -228,6 +235,7 @@ object Form1: TForm1
     Top = 96
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00400001'
       'C0400001'
@@ -263,6 +271,7 @@ object Form1: TForm1
     Top = 96
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00410001'
       'C0410001'
@@ -298,6 +307,7 @@ object Form1: TForm1
     Top = 96
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00420001'
       'C0420001'
@@ -333,6 +343,7 @@ object Form1: TForm1
     Top = 96
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00430001'
       'C0430001'
@@ -368,6 +379,7 @@ object Form1: TForm1
     Top = 96
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00440001'
       'C0440001'
@@ -403,8 +415,9 @@ object Form1: TForm1
     Top = 96
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
-      '10570001'
+      '00570001'
       'C0570001'
       '40570001')
     PicturePos.Left = 4
@@ -438,8 +451,9 @@ object Form1: TForm1
     Top = 96
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
-      '10580001'
+      '00580001'
       'C0580001'
       '40580001')
     PicturePos.Left = 4
@@ -473,7 +487,9 @@ object Form1: TForm1
     Top = 96
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
+      '01370001'
       'C1370001')
     PicturePos.Left = 4
     PicturePos.Top = 4
@@ -497,7 +513,7 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktLetters
+    KeyType = ktScroll
     UpPosX = 0
     DownPosX = 25
   end
@@ -506,6 +522,7 @@ object Form1: TForm1
     Top = 96
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00460001'
       'C0460001')
@@ -540,6 +557,7 @@ object Form1: TForm1
     Top = 96
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00450001'
       'C0450001')
@@ -565,7 +583,7 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktLetters
+    KeyType = ktScroll
     UpPosX = 0
     DownPosX = 25
   end
@@ -574,6 +592,7 @@ object Form1: TForm1
     Top = 152
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '10290001'
       'C0290001'
@@ -610,6 +629,7 @@ object Form1: TForm1
     Top = 152
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00020001'
       'C0020001'
@@ -645,6 +665,7 @@ object Form1: TForm1
     Top = 152
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00030001'
       'C0030001'
@@ -681,6 +702,7 @@ object Form1: TForm1
     Top = 152
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00040001'
       'C0040001'
@@ -717,6 +739,7 @@ object Form1: TForm1
     Top = 152
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00050001'
       'C0050001'
@@ -753,6 +776,7 @@ object Form1: TForm1
     Top = 152
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00060001'
       'C0060001'
@@ -789,6 +813,7 @@ object Form1: TForm1
     Top = 152
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00070001'
       'C0070001'
@@ -825,6 +850,7 @@ object Form1: TForm1
     Top = 152
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00080001'
       'C0080001'
@@ -861,6 +887,7 @@ object Form1: TForm1
     Top = 152
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00090001'
       'C0090001'
@@ -897,6 +924,7 @@ object Form1: TForm1
     Top = 152
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '000A0001'
       'C00A0001'
@@ -933,6 +961,7 @@ object Form1: TForm1
     Top = 152
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '000B0001'
       'C00B0001'
@@ -969,6 +998,7 @@ object Form1: TForm1
     Top = 152
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '000C0001'
       'C00C0001'
@@ -1005,6 +1035,7 @@ object Form1: TForm1
     Top = 152
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '000D0001'
       'C00D0001'
@@ -1041,6 +1072,7 @@ object Form1: TForm1
     Top = 152
     Width = 90
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '000E0001'
       'C00E0001'
@@ -1180,7 +1212,6 @@ object Form1: TForm1
     PicturePos.Top = 14
     PicturePos.Right = 4
     PicturePos.Bottom = 28
-    MiddleText = 'Esc'
     UpFont.Charset = DEFAULT_CHARSET
     UpFont.Color = clWhite
     UpFont.Height = -19
@@ -1198,7 +1229,7 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktLetters
+    KeyType = ktScroll
     UpPosX = 0
     DownPosX = 25
   end
@@ -1207,6 +1238,7 @@ object Form1: TForm1
     Top = 152
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '01520001'
       'C1520001'
@@ -1242,6 +1274,7 @@ object Form1: TForm1
     Top = 152
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '01470001'
       'C1470001'
@@ -1277,6 +1310,7 @@ object Form1: TForm1
     Top = 152
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '01490001'
       'C1490001'
@@ -1307,11 +1341,12 @@ object Form1: TForm1
     UpPosX = 0
     DownPosX = 25
   end
-  object Key35: TKey
+  object Key144: TKey
     Left = 888
     Top = 152
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '01450001'
       'C1450001')
@@ -1346,6 +1381,7 @@ object Form1: TForm1
     Top = 152
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '01350001'
       'C1350001'
@@ -1372,6 +1408,7 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
+    KeyType = ktScroll
     UpPosX = 4
     DownPosX = 5
   end
@@ -1380,6 +1417,7 @@ object Form1: TForm1
     Top = 152
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00370001'
       'C0370001'
@@ -1406,6 +1444,7 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
+    KeyType = ktScroll
     UpPosX = 4
     DownPosX = 5
   end
@@ -1414,6 +1453,7 @@ object Form1: TForm1
     Top = 152
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '004A0001'
       'C04A0001'
@@ -1440,6 +1480,7 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
+    KeyType = ktScroll
     UpPosX = 0
     DownPosX = 5
   end
@@ -1448,6 +1489,7 @@ object Form1: TForm1
     Top = 200
     Width = 65
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '000F0001'
       'C00F0001'
@@ -1637,7 +1679,7 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktLetters
+    KeyType = ktScroll
     UpPosX = 0
     DownPosX = 25
   end
@@ -1646,6 +1688,7 @@ object Form1: TForm1
     Top = 200
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00100001'
       'C0100001'
@@ -1676,11 +1719,12 @@ object Form1: TForm1
     KeyType = ktLetters
     DownPosX = 25
   end
-  object Key410: TKey
+  object Key5: TKey
     Left = 127
     Top = 200
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00110001'
       'C0110001'
@@ -1711,11 +1755,12 @@ object Form1: TForm1
     KeyType = ktLetters
     DownPosX = 25
   end
-  object Key420: TKey
+  object Key4: TKey
     Left = 175
     Top = 200
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00120001'
       'C0120001'
@@ -1746,11 +1791,12 @@ object Form1: TForm1
     KeyType = ktLetters
     DownPosX = 25
   end
-  object Key430: TKey
+  object Key3: TKey
     Left = 223
     Top = 200
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00130001'
       'C0130001'
@@ -1781,11 +1827,12 @@ object Form1: TForm1
     KeyType = ktLetters
     DownPosX = 25
   end
-  object Key440: TKey
+  object Key2: TKey
     Left = 271
     Top = 200
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00140001'
       'C0140001'
@@ -1816,11 +1863,12 @@ object Form1: TForm1
     KeyType = ktLetters
     DownPosX = 25
   end
-  object Key450: TKey
+  object Key1: TKey
     Left = 319
     Top = 200
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00150001'
       'C0150001'
@@ -1851,11 +1899,12 @@ object Form1: TForm1
     KeyType = ktLetters
     DownPosX = 25
   end
-  object Key460: TKey
+  object Key52: TKey
     Left = 367
     Top = 200
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00160001'
       'C0160001'
@@ -1886,11 +1935,12 @@ object Form1: TForm1
     KeyType = ktLetters
     DownPosX = 25
   end
-  object Key470: TKey
+  object Key51: TKey
     Left = 415
     Top = 200
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00170001'
       'C0170001'
@@ -1921,11 +1971,12 @@ object Form1: TForm1
     KeyType = ktLetters
     DownPosX = 23
   end
-  object Key480: TKey
+  object Key48: TKey
     Left = 463
     Top = 200
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00180001'
       'C0180001'
@@ -1956,11 +2007,12 @@ object Form1: TForm1
     KeyType = ktLetters
     DownPosX = 21
   end
-  object Key490: TKey
+  object Key49: TKey
     Left = 511
     Top = 200
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00190001'
       'C0190001'
@@ -1988,7 +2040,7 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktLetters
+    KeyType = ktScroll
     DownPosX = 25
   end
   object Key53: TKey
@@ -1996,6 +2048,7 @@ object Form1: TForm1
     Top = 200
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '001A0001'
       'C01A0001'
@@ -2032,6 +2085,7 @@ object Form1: TForm1
     Top = 200
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '001B0001'
       'C01B0001'
@@ -2068,6 +2122,7 @@ object Form1: TForm1
     Top = 200
     Width = 67
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '002B0001'
       'C02B0001'
@@ -2104,6 +2159,7 @@ object Form1: TForm1
     Top = 200
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '01530001'
       'C1530001'
@@ -2134,11 +2190,12 @@ object Form1: TForm1
     UpPosX = 0
     DownPosX = 25
   end
-  object Key30: TKey
+  object Key35: TKey
     Left = 784
     Top = 200
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '014F0001'
       'C14F0001'
@@ -2174,6 +2231,7 @@ object Form1: TForm1
     Top = 200
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '01510001'
       'C1510001'
@@ -2209,6 +2267,7 @@ object Form1: TForm1
     Top = 200
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00470001'
       'C0470001'
@@ -2236,7 +2295,7 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktNum
+    KeyType = ktExNum
     UpPosX = 4
     DownPosX = 5
   end
@@ -2245,6 +2304,7 @@ object Form1: TForm1
     Top = 200
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00480001'
       'C0480001'
@@ -2400,7 +2460,7 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktNum
+    KeyType = ktExNum
     UpPosX = 4
     DownPosX = 5
   end
@@ -2409,6 +2469,7 @@ object Form1: TForm1
     Top = 200
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00490001'
       'C0490001'
@@ -2436,7 +2497,7 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktNum
+    KeyType = ktExNum
     UpPosX = 4
     DownPosX = 5
   end
@@ -2445,6 +2506,7 @@ object Form1: TForm1
     Top = 200
     Width = 42
     Height = 90
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '004E0001'
       'C04E0001'
@@ -2471,6 +2533,7 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
+    KeyType = ktScroll
     UpPosX = 0
     DownPosX = 5
   end
@@ -2479,6 +2542,7 @@ object Form1: TForm1
     Top = 248
     Width = 81
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '003A0001'
       'C03A0001'
@@ -2514,6 +2578,7 @@ object Form1: TForm1
     Top = 248
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '001E0001'
       'C01E0001'
@@ -2549,6 +2614,7 @@ object Form1: TForm1
     Top = 248
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '001F0001'
       'C01F0001'
@@ -2584,6 +2650,7 @@ object Form1: TForm1
     Top = 248
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00200001'
       'C0200001'
@@ -2619,6 +2686,7 @@ object Form1: TForm1
     Top = 248
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00210001'
       'C0210001'
@@ -2654,6 +2722,7 @@ object Form1: TForm1
     Top = 248
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00220001'
       'C0220001'
@@ -2689,6 +2758,7 @@ object Form1: TForm1
     Top = 248
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00230001'
       'C0230001'
@@ -2724,6 +2794,7 @@ object Form1: TForm1
     Top = 248
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00240001'
       'C0240001'
@@ -2759,6 +2830,7 @@ object Form1: TForm1
     Top = 248
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00250001'
       'C0250001'
@@ -2794,6 +2866,7 @@ object Form1: TForm1
     Top = 248
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00260001'
       'C0260001'
@@ -2829,6 +2902,7 @@ object Form1: TForm1
     Top = 248
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00270001'
       'C0270001'
@@ -2865,6 +2939,7 @@ object Form1: TForm1
     Top = 248
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00280001'
       'C0280001'
@@ -2901,6 +2976,7 @@ object Form1: TForm1
     Top = 248
     Width = 99
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '001C0001'
       'C01C0001'
@@ -2927,7 +3003,7 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktLetters
+    KeyType = ktScroll
     UpPosX = 0
     DownPosX = 25
   end
@@ -2936,7 +3012,7 @@ object Form1: TForm1
     Top = 248
     Width = 42
     Height = 42
-    OnClick = Key100Click
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '004B0001'
       'C04B0001'
@@ -3094,7 +3170,7 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktNum
+    KeyType = ktExNum
     UpPosX = 4
     DownPosX = 5
   end
@@ -3103,6 +3179,7 @@ object Form1: TForm1
     Top = 248
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '004C0001'
       'C04C0001')
@@ -3128,7 +3205,7 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktNum
+    KeyType = ktExNum
     UpPosX = 4
     DownPosX = 5
   end
@@ -3137,6 +3214,7 @@ object Form1: TForm1
     Top = 248
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '004D0001'
       'C04D0001')
@@ -3293,7 +3371,7 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktNum
+    KeyType = ktExNum
     UpPosX = 4
     DownPosX = 5
   end
@@ -3302,6 +3380,7 @@ object Form1: TForm1
     Top = 296
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '004F0001'
       'C04F0001'
@@ -3329,7 +3408,7 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktNum
+    KeyType = ktExNum
     UpPosX = 4
     DownPosX = 5
   end
@@ -3338,6 +3417,7 @@ object Form1: TForm1
     Top = 296
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00500001'
       'C0500001'
@@ -3493,7 +3573,7 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktNum
+    KeyType = ktExNum
     UpPosX = 4
     DownPosX = 5
   end
@@ -3502,6 +3582,7 @@ object Form1: TForm1
     Top = 296
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00510001'
       'C0510001'
@@ -3529,7 +3610,7 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktNum
+    KeyType = ktExNum
     UpPosX = 4
     DownPosX = 5
   end
@@ -3538,6 +3619,7 @@ object Form1: TForm1
     Top = 296
     Width = 97
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '002A0001'
       'C02A0001'
@@ -3702,6 +3784,7 @@ object Form1: TForm1
     Top = 296
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '002C0001'
       'C02C0001'
@@ -3737,6 +3820,7 @@ object Form1: TForm1
     Top = 296
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '002D0001'
       'C02D0001'
@@ -3772,6 +3856,7 @@ object Form1: TForm1
     Top = 296
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '002E0001'
       'C02E0001'
@@ -3807,6 +3892,7 @@ object Form1: TForm1
     Top = 296
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '002F0001'
       'C02F0001'
@@ -3842,6 +3928,7 @@ object Form1: TForm1
     Top = 296
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00300001'
       'C0300001'
@@ -3877,6 +3964,7 @@ object Form1: TForm1
     Top = 296
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00310001'
       'C0310001'
@@ -3912,6 +4000,7 @@ object Form1: TForm1
     Top = 296
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00320001'
       'C0320001'
@@ -3947,6 +4036,7 @@ object Form1: TForm1
     Top = 296
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00330001'
       'C0330001'
@@ -3983,6 +4073,7 @@ object Form1: TForm1
     Top = 296
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00340001'
       'C0340001'
@@ -4019,6 +4110,7 @@ object Form1: TForm1
     Top = 296
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00350001'
       'C0350001'
@@ -4055,6 +4147,7 @@ object Form1: TForm1
     Top = 296
     Width = 131
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00360001'
       'C1360001'
@@ -4219,6 +4312,7 @@ object Form1: TForm1
     Top = 344
     Width = 52
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '001D0001'
       'C01D0001'
@@ -4254,6 +4348,7 @@ object Form1: TForm1
     Top = 344
     Width = 52
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '015B0001'
       'C15B0001'
@@ -4345,6 +4440,7 @@ object Form1: TForm1
     Top = 344
     Width = 52
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '20380001'
       'C0380001'
@@ -4380,6 +4476,7 @@ object Form1: TForm1
     Top = 344
     Width = 307
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '00390001'
       'C0390001'
@@ -4405,7 +4502,7 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktLetters
+    KeyType = ktScroll
     UpPosX = 0
     DownPosX = 25
   end
@@ -4414,6 +4511,7 @@ object Form1: TForm1
     Top = 344
     Width = 52
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '21380001'
       'C1380001'
@@ -4449,6 +4547,7 @@ object Form1: TForm1
     Top = 344
     Width = 52
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '015D0001'
       'C15D0001'
@@ -4474,7 +4573,7 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktLetters
+    KeyType = ktScroll
     UpPosX = 0
     DownPosX = 25
   end
@@ -4483,8 +4582,9 @@ object Form1: TForm1
     Top = 344
     Width = 52
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
-      '111D0001'
+      '011D0001'
       'C11D0001'
       '411D0001')
     PicturePos.Left = 4
@@ -4518,8 +4618,9 @@ object Form1: TForm1
     Top = 344
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
-      '114B0001'
+      '014B0001'
       'C14B0001'
       '414B0001')
     Picture.Data = {
@@ -4683,8 +4784,9 @@ object Form1: TForm1
     Top = 344
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
-      '11500001'
+      '01500001'
       'C1500001'
       '41500001')
     Picture.Data = {
@@ -4846,8 +4948,9 @@ object Form1: TForm1
     Top = 344
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
-      '114D0001'
+      '014D0001'
       'C14D0001'
       '414D0001')
     Picture.Data = {
@@ -5011,6 +5114,7 @@ object Form1: TForm1
     Top = 296
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '01480001'
       'C1480001'
@@ -5174,6 +5278,7 @@ object Form1: TForm1
     Top = 344
     Width = 90
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '10520001'
       'C0520001'
@@ -5201,7 +5306,7 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktNum
+    KeyType = ktExNum
     UpPosX = 4
     DownPosX = 5
   end
@@ -5210,6 +5315,7 @@ object Form1: TForm1
     Top = 344
     Width = 42
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '10530001'
       'C0530001'
@@ -5237,7 +5343,7 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktNum
+    KeyType = ktExNum
     UpPosX = 6
     DownPosX = 5
   end
@@ -5246,6 +5352,7 @@ object Form1: TForm1
     Top = 296
     Width = 42
     Height = 90
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '011C0001'
       'C11C0001'
@@ -5272,6 +5379,7 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
+    KeyType = ktScroll
     UpPosX = 0
     DownPosX = 5
   end
@@ -5280,6 +5388,7 @@ object Form1: TForm1
     Top = 344
     Width = 52
     Height = 42
+    OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
       '015C0001'
       'C15C0001'
@@ -5369,162 +5478,15 @@ object Form1: TForm1
   object Memo1: TMemo
     Left = 0
     Top = 0
-    Width = 1070
+    Width = 1079
     Height = 90
     Align = alTop
     Lines.Strings = (
       'Memo1')
     TabOrder = 0
-    ExplicitWidth = 1066
-  end
-  object TrayIcon: TTrayIcon
-    Hint = #1069#1090#1086' '#1090#1080#1087#1072' '#1082#1083#1072#1074#1080#1072#1090#1091#1088#1085#1099#1081' '#1096#1087#1080#1086#1085
-    BalloonHint = #1069#1082#1088#1072#1085#1085#1072#1103' '#1082#1083#1072#1074#1080#1072#1090#1091#1088#1072
-    BalloonTitle = #1050#1083#1072#1074#1080#1072#1090#1091#1088#1072
-    BalloonTimeout = 30000
-    BalloonFlags = bfWarning
-    Icon.Data = {
-      0000010001002020000001002000A81000001600000028000000200000004000
-      0000010020000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000333333013333330133333301333333013333330133333301333333013333
-      3301333333013333330133333301333333013333330133333301333333013333
-      3301333333013333330133333301333333013333330133333301333333013333
-      3301333333013333330133333301333333013333330133333301000000003333
-      3375333333CA333333B7333333B7333333B7333333B7333333B7333333B73333
-      33B7333333B7333333B7333333B7333333B7333333B7333333B7333333B73333
-      33B7333333B7333333B7333333B7333333B7333333B7333333B7333333B73333
-      33B7333333B7333333B7333333B7333333B7333333B7333333CA333333755550
-      2FF7A79A0EFBA79A0EFEA79A0EFEA79A0EFEA79A0EFEA79A0EFEA79A0EFEA79A
-      0EFEA79A0EFEA79A0EFEA79A0EFEA79A0EFEA79A0EFEA79A0EFEA79A0EFEA79A
-      0EFEA79A0EFEA79A0EFEA79A0EFEA79A0EFEA79A0EFEA79A0EFEA79A0EFEA79A
-      0EFEA79A0EFEA79A0EFEA79A0EFEA79A0EFEA79A0EFEA79A0EB2333333CF5B55
-      2EFFA79A0EFF7E7525E659542EF45A542EF259542EF459532EF95A542EF25A54
-      2EF25A542EF25A542EF25A542EF25A542EF25A542EF25A542EF258532EFC5A54
-      2EF25A542EF259532EFA5A542EF25A542EF259542EF4897F21FF6C652ADE5B56
-      2ED65B562ED657522FF75B562ED65A552EDE817824FFA79A0EF1333333CC5B55
-      2EFFA79A0EFF5F592DC45F65E2D6696FFECC595ED088478BADE75BCBFFCC5BCB
-      FFCC5BCBFFCC5BCBFFCC5BCBFFCC5BCBFFCC5BCBFFCC5BCBFFCB333333C4696F
-      FDCC696FFECC333334A6666CF5CF696FFECC595DCF847D7425FE333333BB5BCA
-      FECC5BCBFF9A3C647AF35BCBFFCC50AAD595746C28FFA79A0EF1333333CC5B55
-      2EFFA79A0EFF5F592DC46166E7FF696FFEFF5C61D79D4992B6FF5BCBFFFF5BCB
-      FFFF5BCBFFFF5BCBFFFF5BCBFFFF5BCBFFFF5BCBFFFF5BCBFFFD333333C4696F
-      FEFF696FFEFF333335A6676CF6FF696FFEFF5B60D6987D7425FE333333BB5BCA
-      FEFF5BCBFFC03E6B83FE5BCBFFFF52AFDCAD746C28FFA79A0EF1333333CC5B55
-      2EFFA79A0EFF5F592DC44E52ADFF5458BEFF464991CD3F708AFF4B99BFFF4B99
-      BFFF4A99BFFF4B99BFFF4B99BFFF4A99BFFF4B99BFFF4B99BFFE333333E15458
-      BEFF5458BEFF333334D1666CF5FF696FFEFF5B60D6987D7425FE333333BD468B
-      ADFF4482A2E6384F5EFE468CAEFF3F6F88DE746C28FFA79A0EF1333333CC5B55
-      2EFFA79A0EFF5F592DC45155B6B25A5FD29F494B9A8B444687D25A5FD29F5155
-      B687404178DC5A5FD29F575CCA8B3A3B5ED75A5FD29F5A5ED29E333333D25A5E
-      D19F5A5FD29F333334BA676CF6FF696FFEFF5B60D6987D7425FE333333BB54B6
-      E4C552B1DE9F3A5B6EF254B6E5C54993B7A0746C28FFA79A0EF1333333CC5B55
-      2EFFA79A0EFF5F592DC46166E7FF696FFEFF5C61D79D5155B6FF696FFEFF646A
-      F1AE4C4FA4FF696FFEFF696FFECC424482E1696FFEFF696FFEFD333333C4696F
-      FEFF696FFEFF333335A6676CF6FF696FFEFF5B60D6987D7425FE333333BB5BCA
-      FEFF5BCBFFC03E6B83FE5BCBFFFF52AFDCAD746C28FFA79A0EF1333333CC5B55
-      2EFFA79A0EFF5F592DC44A4D9EFF4E52ADFF424482D841437DFF4E52ADFF474A
-      94DF3E4072FF4E52ADFF4B4EA3EB393A5AF34E52ADFF4E51ADFE333333E84E51
-      ACFF4E52ADFF333333DC4D50A7FF4E52ADFF414380D67D7425FE333333BD468A
-      ACFF4381A0E6374F5DFE468BADFF3E6E87DF746C28FFA79A0EF1333333CC5B55
-      2EFFA79A0EFF5F592DC4565AC6C85E64E0BA4E51AB93474A95DE5E64E0BA565B
-      C794434585E65E64E0BA5D62DA9E3C3D68DB5E64E0BA5E64E0B9333333CF5E64
-      DFBA5E64E0BA333334B75C61D7BD5E64E0BA4D50A9907D7425FE333333BB52B0
-      DCB350AAD593395667EF52B0DDB3468BAD99746C28FFA79A0EF1333333CC5B55
-      2EFFA79A0EFF5F592DC46166E7FF696FFEFF5C61D79D5155B6FF696FFEFF646A
-      F1AE4C4FA4FF696FFEFF696FFECC424482E1696FFEFF696FFEFD333333C4696F
-      FEFF696FFEFF333335A6676CF6FF696FFEFF5B60D6987D7425FE333333BB5BCA
-      FEFF5BCBFFC03E6B83FE5BCBFFFF52AFDCAD746C28FFA79A0EF1333333CC5B55
-      2EFFA79A0EFF5F592DC45256B8FF585CCAFF494C9CC5474991FF585CCAFF5053
-      B2CF434583FF585CCAFF5559C2E13C3D68EE585CCAFF575CC9FE333333DC575C
-      C9FF585CCAFF333334CB565AC3FF585CCAFF494C9AC27D7425FE333333BB4DA2
-      CAFF4B9AC0DA39596BFE4DA2CBFF4483A3CF746C28FFA79A0EF1333333CC5B55
-      2EFFA79A0EFF978B1BA9837924BB837924BB837924BB837924BB837924BB8379
-      24BB837924BB837924BB837924BB837924BB837924BB837924BB837924BB8379
-      24BB837924BB837924BB837924BB837924BB837924BB9E9216F78F841F9A8379
-      24BB837924BB837924BB837924BB837924BB9C9017F4A79A0EF1333333CC4240
-      31D090851EFF998D1AFF998D1AFF998D1AFF998D1AFF998D1AFF998D1AFF998D
-      1AFF998D1AFF998D1AFF998D1AFF998D1AFF998D1AFF998D1AFF998D1AFF998D
-      1AFF998D1AFF998D1AFF998D1AFF998D1AFF998D1AFF998D1AFF998D1AFF998D
-      1AFF998D1AFF998D1AFF998D1AFF998D1AFF998D1AFF8F841EF0333333C23333
-      3319333333793333338533333390394646E74F7977BC4B7170B2333333E73333
-      3385333333853333338533333385333333853333338533333385333333853333
-      3385333333853333338533333385333333853333338533333385333333853333
-      3385333333853333338533333385333333853333338533333379333333190000
-      0000000000000000000039393900405857E37DD0CEFF6FB6B4C7333333930000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      00000000000000000000000000003333339B64A2A0FF4D7473DC333333460000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      000000000000000000000000000033333327333333B733333389343434030000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000003333333C3333339D000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000033333387333333AB3333
-      3356333333433333334333333343333333433333334333333343333333433333
-      3343333333433333334333333343333333433333334333333343333333433333
-      332E292929000000000000000000000000000000000000000000000000000000
-      00000000000000000000000000000000000000000000000000003333332D3333
-      336C333333753333337533333375333333753333337533333375333333753333
-      3375333333753333337533333375333333753333337533333375333333753333
-      339C333333B53333330D00000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      000033333344333333A900000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      000000000000333333B233333319000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000003333339333333333000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      000000000000333333BC33333313000000000000000000000000000000000000
-      0000000000000000000033333376333333A2333333C8333333C1333333903333
-      3300000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000003232
-      3200333333793333338800000000000000000000000000000000000000000000
-      00000000000000000000363B3BCB5A8E8D96578887E97DD0CEBE384342AC3333
-      33CF333333CC333333CC333333CC333333CC333333CC333333CC333333CC3333
-      33CC333333CC333333CC333333CC333333CC333333CC333333CC333333CB3333
-      33CF3333337A3434340000000000000000000000000000000000000000000000
-      000000000000000000003333339F333434D4405757FF4F7675FF353838BD3333
-      3304000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000080808003333330133333301484848000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      000000000000000000000000000000000000000000000000000000000000FFFF
-      FFFF800000010000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000F0FFFFFFF0FFFFFFF0FFFFFFF9FFFFFFFC00007FFE00001FFFFFFF9FFFFF
-      FFCFFFFFFFCFFFFFFFCFE0FFFF9FE000003FE07FFFFFF9FFFFFFFFFFFFFF}
-    PopupMenu = TrayMenu
-    OnDblClick = TrayIconDblClick
-    Left = 912
-    Top = 96
+    ExplicitWidth = 1075
   end
   object ApplicationEvents1: TApplicationEvents
-    OnMinimize = ApplicationEvents1Minimize
     Left = 120
     Top = 40
   end
@@ -5533,7 +5495,6 @@ object Form1: TForm1
     Top = 48
     object N1: TMenuItem
       Caption = #1088#1072#1079#1074#1077#1088#1085#1091#1090#1100
-      OnClick = TrayIconDblClick
     end
     object N2: TMenuItem
       Caption = #1079#1072#1087#1080#1089#1072#1090#1100

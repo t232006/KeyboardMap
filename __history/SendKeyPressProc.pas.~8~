@@ -9,9 +9,16 @@ procedure SendKeyUp(Key: WideChar); overload;
 procedure SendKeyDown(Key: integer); overload;
 procedure SendKeyUp(Key: integer); overload;
 procedure KeyClick(But: TKey; ShiftDown: boolean);
+function IfElse(const bool:boolean; const a, b: string): char;
 
 implementation
 uses MainUnit;
+
+function IfElse(const bool:boolean; const a, b: string): char;
+begin
+  if bool then result:=a[1] else result:=b[1];
+
+end;
 
 procedure SendKeyDown(Key: WideChar);
 var
@@ -70,49 +77,28 @@ end;
 procedure KeyClick(But: TKey; ShiftDown: boolean);
 var
     state: WindowPlacement;
-    ch:char;  en:boolean;
+    ch:char;
     temp:string;
 begin
-    state.length:=sizeof(windowplacement);
+    {state.length:=sizeof(windowplacement);
     GetWindowPlacement(hwin, state);
     ShowWindow(hwin, state.showCmd);
-    BringWindowToTop(hwin);
-    en:=word(GetKeyboardLayout(0))=$409;
+    BringWindowToTop(hwin);}
     case But.KeyType of
     ktNum:
       begin
         if ShiftDown then
-          begin
-          if not(en) then
-            if But.UpText<>'' then ch:=But.UpText[1] else ch:=But.MiddleText[1]
-             else
-            ch:=But.MiddleText[1]
-          end
+        if word(GetKeyboardLayout(0))=$409 then
+          ch:= ifElse(But.UpText[1]<>'', But.UpText[1], But.MiddleText[1])
+           else
+          ch:=But.MiddleText[1]
         else
-          ch:=But.MiddleText[length(But.MiddleText)];
-        SendKeypress(ch);
-
-      end;
-    ktTrippleLetters:
-      begin
-        if en then
-          begin
-            if ShiftDown then
-              ch:=But.MiddleText[1]
-            else
-              ch:=But.MiddleText[length(But.MiddleText)];
-          end
-        else
-          begin
-            ch:=But.DownText[1];
-            if not(ShiftDown) then
-              ch:=chr(ord(ch)+32);
-          end;
-        SendKeypress(ch);
+        ch:=But.MiddleText[length(But.MiddleText)];
+      SendKeypress(ch);
       end;
     ktLetters:
       begin
-        if en then
+        if word(GetKeyboardLayout(0))=$409 then
         ch:=But.UpText[1] else
         ch:=But.downtext[1];
         if not(ShiftDown) then

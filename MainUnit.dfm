@@ -1,9 +1,9 @@
 object Form1: TForm1
   Left = 0
   Top = 0
-  Caption = 'Form1'
+  Caption = 'KeyboardMap'
   ClientHeight = 389
-  ClientWidth = 1070
+  ClientWidth = 1079
   Color = clWhite
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -13,6 +13,7 @@ object Form1: TForm1
   KeyPreview = True
   OnClose = FormClose
   OnCreate = FormCreate
+  OnMouseEnter = FormMouseEnter
   TextHeight = 15
   object Key27: TKey
     Left = 8
@@ -48,6 +49,7 @@ object Form1: TForm1
     KeyType = ktScroll
     UpPosX = 0
     DownPosX = 25
+    MidPosX = 5
   end
   object Key112: TKey
     Left = 104
@@ -84,6 +86,7 @@ object Form1: TForm1
     KeyType = ktFunc
     UpPosX = 0
     DownPosX = 25
+    MidPosX = 5
   end
   object Key113: TKey
     Left = 152
@@ -120,6 +123,7 @@ object Form1: TForm1
     KeyType = ktFunc
     UpPosX = 0
     DownPosX = 25
+    MidPosX = 5
   end
   object Key114: TKey
     Left = 200
@@ -156,6 +160,7 @@ object Form1: TForm1
     KeyType = ktFunc
     UpPosX = 0
     DownPosX = 25
+    MidPosX = 5
   end
   object Key115: TKey
     Left = 248
@@ -192,6 +197,7 @@ object Form1: TForm1
     KeyType = ktFunc
     UpPosX = 0
     DownPosX = 25
+    MidPosX = 5
   end
   object Key116: TKey
     Left = 320
@@ -228,6 +234,7 @@ object Form1: TForm1
     KeyType = ktFunc
     UpPosX = 0
     DownPosX = 25
+    MidPosX = 5
   end
   object Key117: TKey
     Left = 368
@@ -264,6 +271,7 @@ object Form1: TForm1
     KeyType = ktFunc
     UpPosX = 0
     DownPosX = 25
+    MidPosX = 5
   end
   object Key118: TKey
     Left = 416
@@ -300,6 +308,7 @@ object Form1: TForm1
     KeyType = ktFunc
     UpPosX = 0
     DownPosX = 25
+    MidPosX = 5
   end
   object Key119: TKey
     Left = 464
@@ -336,6 +345,7 @@ object Form1: TForm1
     KeyType = ktFunc
     UpPosX = 0
     DownPosX = 25
+    MidPosX = 5
   end
   object Key120: TKey
     Left = 536
@@ -372,6 +382,7 @@ object Form1: TForm1
     KeyType = ktFunc
     UpPosX = 0
     DownPosX = 25
+    MidPosX = 5
   end
   object Key121: TKey
     Left = 584
@@ -408,6 +419,7 @@ object Form1: TForm1
     KeyType = ktFunc
     UpPosX = 0
     DownPosX = 25
+    MidPosX = 5
   end
   object Key122: TKey
     Left = 632
@@ -416,7 +428,7 @@ object Form1: TForm1
     Height = 42
     OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
-      '10570001'
+      '00570001'
       'C0570001'
       '40570001')
     PicturePos.Left = 4
@@ -444,6 +456,7 @@ object Form1: TForm1
     KeyType = ktFunc
     UpPosX = 0
     DownPosX = 25
+    MidPosX = 5
   end
   object Key123: TKey
     Left = 680
@@ -452,7 +465,7 @@ object Form1: TForm1
     Height = 42
     OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
-      '10580001'
+      '00580001'
       'C0580001'
       '40580001')
     PicturePos.Left = 4
@@ -480,6 +493,7 @@ object Form1: TForm1
     KeyType = ktFunc
     UpPosX = 0
     DownPosX = 25
+    MidPosX = 5
   end
   object Key44: TKey
     Left = 736
@@ -488,6 +502,7 @@ object Form1: TForm1
     Height = 42
     OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
+      '01370001'
       'C1370001')
     PicturePos.Left = 4
     PicturePos.Top = 4
@@ -514,6 +529,7 @@ object Form1: TForm1
     KeyType = ktScroll
     UpPosX = 0
     DownPosX = 25
+    MidPosX = 5
   end
   object Key145: TKey
     Left = 784
@@ -549,6 +565,7 @@ object Form1: TForm1
     KeyType = ktSticked
     UpPosX = 0
     DownPosX = 25
+    MidPosX = 5
   end
   object Key16: TKey
     Left = 832
@@ -584,6 +601,7 @@ object Form1: TForm1
     KeyType = ktScroll
     UpPosX = 0
     DownPosX = 25
+    MidPosX = 5
   end
   object Key41: TKey
     Left = 8
@@ -621,6 +639,7 @@ object Form1: TForm1
     KeyType = ktNum
     UpPosX = 25
     DownPosX = 25
+    MidPosX = 5
   end
   object Key77: TKey
     Left = 56
@@ -657,6 +676,7 @@ object Form1: TForm1
     KeyType = ktNum
     UpPosX = 25
     DownPosX = 25
+    MidPosX = 5
   end
   object Key42: TKey
     Left = 104
@@ -694,6 +714,7 @@ object Form1: TForm1
     KeyType = ktNum
     UpPosX = 28
     DownPosX = 25
+    MidPosX = 5
   end
   object Key43: TKey
     Left = 152
@@ -709,7 +730,7 @@ object Form1: TForm1
     PicturePos.Top = 4
     PicturePos.Right = 38
     PicturePos.Bottom = 38
-    UpText = ' '#8470
+    UpText = #8470
     MiddleText = '#      3'
     UpFont.Charset = DEFAULT_CHARSET
     UpFont.Color = clRed
@@ -731,6 +752,7 @@ object Form1: TForm1
     KeyType = ktNum
     UpPosX = 18
     DownPosX = 25
+    MidPosX = 5
   end
   object Key73: TKey
     Left = 200
@@ -768,6 +790,7 @@ object Form1: TForm1
     KeyType = ktNum
     UpPosX = 30
     DownPosX = 25
+    MidPosX = 5
   end
   object Key31: TKey
     Left = 248
@@ -783,7 +806,6 @@ object Form1: TForm1
     PicturePos.Top = 4
     PicturePos.Right = 38
     PicturePos.Bottom = 38
-    UpText = ' '
     MiddleText = '%     5'
     UpFont.Charset = DEFAULT_CHARSET
     UpFont.Color = clRed
@@ -805,6 +827,7 @@ object Form1: TForm1
     KeyType = ktNum
     UpPosX = 25
     DownPosX = 25
+    MidPosX = 5
   end
   object Key74: TKey
     Left = 296
@@ -842,6 +865,7 @@ object Form1: TForm1
     KeyType = ktNum
     UpPosX = 30
     DownPosX = 25
+    MidPosX = 5
   end
   object Key47: TKey
     Left = 344
@@ -857,7 +881,6 @@ object Form1: TForm1
     PicturePos.Top = 4
     PicturePos.Right = 38
     PicturePos.Bottom = 38
-    UpText = ' '
     MiddleText = '&      7'
     UpFont.Charset = DEFAULT_CHARSET
     UpFont.Color = clRed
@@ -879,6 +902,7 @@ object Form1: TForm1
     KeyType = ktNum
     UpPosX = 25
     DownPosX = 25
+    MidPosX = 5
   end
   object Key95: TKey
     Left = 392
@@ -894,7 +918,6 @@ object Form1: TForm1
     PicturePos.Top = 4
     PicturePos.Right = 38
     PicturePos.Bottom = 38
-    UpText = ' '
     MiddleText = '*       8'
     UpFont.Charset = DEFAULT_CHARSET
     UpFont.Color = clRed
@@ -916,6 +939,7 @@ object Form1: TForm1
     KeyType = ktNum
     UpPosX = 25
     DownPosX = 25
+    MidPosX = 5
   end
   object Key89: TKey
     Left = 440
@@ -931,7 +955,6 @@ object Form1: TForm1
     PicturePos.Top = 4
     PicturePos.Right = 38
     PicturePos.Bottom = 38
-    UpText = ' '
     MiddleText = '(       9'
     UpFont.Charset = DEFAULT_CHARSET
     UpFont.Color = clRed
@@ -953,6 +976,7 @@ object Form1: TForm1
     KeyType = ktNum
     UpPosX = 25
     DownPosX = 25
+    MidPosX = 5
   end
   object Key78: TKey
     Left = 488
@@ -968,7 +992,6 @@ object Form1: TForm1
     PicturePos.Top = 4
     PicturePos.Right = 38
     PicturePos.Bottom = 38
-    UpText = ' '
     MiddleText = ')       0'
     UpFont.Charset = DEFAULT_CHARSET
     UpFont.Color = clRed
@@ -990,6 +1013,7 @@ object Form1: TForm1
     KeyType = ktNum
     UpPosX = 25
     DownPosX = 25
+    MidPosX = 5
   end
   object Key14: TKey
     Left = 536
@@ -1005,7 +1029,6 @@ object Form1: TForm1
     PicturePos.Top = 4
     PicturePos.Right = 38
     PicturePos.Bottom = 38
-    UpText = ' '
     MiddleText = '--      -'
     UpFont.Charset = DEFAULT_CHARSET
     UpFont.Color = clRed
@@ -1027,6 +1050,7 @@ object Form1: TForm1
     KeyType = ktNum
     UpPosX = 25
     DownPosX = 25
+    MidPosX = 5
   end
   object Key90: TKey
     Left = 584
@@ -1042,7 +1066,6 @@ object Form1: TForm1
     PicturePos.Top = 4
     PicturePos.Right = 38
     PicturePos.Bottom = 38
-    UpText = ' '
     MiddleText = '+      ='
     UpFont.Charset = DEFAULT_CHARSET
     UpFont.Color = clRed
@@ -1064,6 +1087,7 @@ object Form1: TForm1
     KeyType = ktNum
     UpPosX = 25
     DownPosX = 25
+    MidPosX = 5
   end
   object Key8: TKey
     Left = 632
@@ -1230,6 +1254,7 @@ object Form1: TForm1
     KeyType = ktScroll
     UpPosX = 0
     DownPosX = 25
+    MidPosX = 5
   end
   object Key45: TKey
     Left = 736
@@ -1266,6 +1291,7 @@ object Form1: TForm1
     KeyType = ktScroll
     UpPosX = 0
     DownPosX = 25
+    MidPosX = 5
   end
   object Key36: TKey
     Left = 784
@@ -1302,6 +1328,7 @@ object Form1: TForm1
     KeyType = ktScroll
     UpPosX = 0
     DownPosX = 25
+    MidPosX = 5
   end
   object Key33: TKey
     Left = 832
@@ -1338,6 +1365,7 @@ object Form1: TForm1
     KeyType = ktScroll
     UpPosX = 0
     DownPosX = 25
+    MidPosX = 5
   end
   object Key144: TKey
     Left = 888
@@ -1373,6 +1401,7 @@ object Form1: TForm1
     KeyType = ktSticked
     UpPosX = 4
     DownPosX = 5
+    MidPosX = 5
   end
   object Key111: TKey
     Left = 936
@@ -1409,6 +1438,7 @@ object Form1: TForm1
     KeyType = ktScroll
     UpPosX = 4
     DownPosX = 5
+    MidPosX = 5
   end
   object Key106: TKey
     Left = 984
@@ -1445,6 +1475,7 @@ object Form1: TForm1
     KeyType = ktScroll
     UpPosX = 4
     DownPosX = 5
+    MidPosX = 5
   end
   object Key109: TKey
     Left = 1032
@@ -1481,6 +1512,7 @@ object Form1: TForm1
     KeyType = ktScroll
     UpPosX = 0
     DownPosX = 5
+    MidPosX = 5
   end
   object Key9: TKey
     Left = 8
@@ -1680,6 +1712,7 @@ object Form1: TForm1
     KeyType = ktScroll
     UpPosX = 0
     DownPosX = 25
+    MidPosX = 5
   end
   object Key76: TKey
     Left = 79
@@ -1716,6 +1749,7 @@ object Form1: TForm1
     PressColor = 9222870
     KeyType = ktLetters
     DownPosX = 25
+    MidPosX = 5
   end
   object Key5: TKey
     Left = 127
@@ -1752,6 +1786,7 @@ object Form1: TForm1
     PressColor = 9222870
     KeyType = ktLetters
     DownPosX = 25
+    MidPosX = 5
   end
   object Key4: TKey
     Left = 175
@@ -1788,6 +1823,7 @@ object Form1: TForm1
     PressColor = 9222870
     KeyType = ktLetters
     DownPosX = 25
+    MidPosX = 5
   end
   object Key3: TKey
     Left = 223
@@ -1824,6 +1860,7 @@ object Form1: TForm1
     PressColor = 9222870
     KeyType = ktLetters
     DownPosX = 25
+    MidPosX = 5
   end
   object Key2: TKey
     Left = 271
@@ -1860,6 +1897,7 @@ object Form1: TForm1
     PressColor = 9222870
     KeyType = ktLetters
     DownPosX = 25
+    MidPosX = 5
   end
   object Key1: TKey
     Left = 319
@@ -1896,6 +1934,7 @@ object Form1: TForm1
     PressColor = 9222870
     KeyType = ktLetters
     DownPosX = 25
+    MidPosX = 5
   end
   object Key52: TKey
     Left = 367
@@ -1932,6 +1971,7 @@ object Form1: TForm1
     PressColor = 9222870
     KeyType = ktLetters
     DownPosX = 25
+    MidPosX = 5
   end
   object Key51: TKey
     Left = 415
@@ -1968,6 +2008,7 @@ object Form1: TForm1
     PressColor = 9222870
     KeyType = ktLetters
     DownPosX = 23
+    MidPosX = 5
   end
   object Key48: TKey
     Left = 463
@@ -2004,6 +2045,7 @@ object Form1: TForm1
     PressColor = 9222870
     KeyType = ktLetters
     DownPosX = 21
+    MidPosX = 5
   end
   object Key49: TKey
     Left = 511
@@ -2040,6 +2082,7 @@ object Form1: TForm1
     PressColor = 9222870
     KeyType = ktScroll
     DownPosX = 25
+    MidPosX = 5
   end
   object Key53: TKey
     Left = 559
@@ -2074,9 +2117,10 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktNum
+    KeyType = ktTrippleLetters
     UpPosX = 0
     DownPosX = 25
+    MidPosX = 5
   end
   object Key94: TKey
     Left = 607
@@ -2111,9 +2155,10 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktNum
+    KeyType = ktTrippleLetters
     UpPosX = 0
     DownPosX = 25
+    MidPosX = 5
   end
   object Key72: TKey
     Left = 655
@@ -2148,9 +2193,10 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktNum
+    KeyType = ktTrippleLetters
     UpPosX = 45
     DownPosX = 25
+    MidPosX = 5
   end
   object Key46: TKey
     Left = 736
@@ -2187,6 +2233,7 @@ object Form1: TForm1
     KeyType = ktScroll
     UpPosX = 0
     DownPosX = 25
+    MidPosX = 5
   end
   object Key35: TKey
     Left = 784
@@ -2223,6 +2270,7 @@ object Form1: TForm1
     KeyType = ktScroll
     UpPosX = 0
     DownPosX = 25
+    MidPosX = 5
   end
   object Key34: TKey
     Left = 832
@@ -2259,6 +2307,7 @@ object Form1: TForm1
     KeyType = ktScroll
     UpPosX = 0
     DownPosX = 25
+    MidPosX = 5
   end
   object Key103: TKey
     Left = 888
@@ -2296,6 +2345,7 @@ object Form1: TForm1
     KeyType = ktExNum
     UpPosX = 4
     DownPosX = 5
+    MidPosX = 5
   end
   object Key104: TKey
     Left = 936
@@ -2461,6 +2511,7 @@ object Form1: TForm1
     KeyType = ktExNum
     UpPosX = 4
     DownPosX = 5
+    MidPosX = 5
   end
   object Key105: TKey
     Left = 984
@@ -2498,6 +2549,7 @@ object Form1: TForm1
     KeyType = ktExNum
     UpPosX = 4
     DownPosX = 5
+    MidPosX = 5
   end
   object Key107: TKey
     Left = 1032
@@ -2534,6 +2586,7 @@ object Form1: TForm1
     KeyType = ktScroll
     UpPosX = 0
     DownPosX = 5
+    MidPosX = 5
   end
   object Key20: TKey
     Left = 8
@@ -2570,6 +2623,7 @@ object Form1: TForm1
     KeyType = ktSticked
     UpPosX = 0
     DownPosX = 25
+    MidPosX = 5
   end
   object Key60: TKey
     Left = 95
@@ -2606,6 +2660,7 @@ object Form1: TForm1
     PressColor = 9222870
     KeyType = ktLetters
     DownPosX = 25
+    MidPosX = 5
   end
   object Key61: TKey
     Left = 143
@@ -2642,6 +2697,7 @@ object Form1: TForm1
     PressColor = 9222870
     KeyType = ktLetters
     DownPosX = 25
+    MidPosX = 5
   end
   object Key62: TKey
     Left = 191
@@ -2678,6 +2734,7 @@ object Form1: TForm1
     PressColor = 9222870
     KeyType = ktLetters
     DownPosX = 25
+    MidPosX = 5
   end
   object Key63: TKey
     Left = 239
@@ -2714,6 +2771,7 @@ object Form1: TForm1
     PressColor = 9222870
     KeyType = ktLetters
     DownPosX = 25
+    MidPosX = 5
   end
   object Key64: TKey
     Left = 287
@@ -2750,6 +2808,7 @@ object Form1: TForm1
     PressColor = 9222870
     KeyType = ktLetters
     DownPosX = 25
+    MidPosX = 5
   end
   object Key65: TKey
     Left = 335
@@ -2786,6 +2845,7 @@ object Form1: TForm1
     PressColor = 9222870
     KeyType = ktLetters
     DownPosX = 25
+    MidPosX = 5
   end
   object Key66: TKey
     Left = 383
@@ -2822,6 +2882,7 @@ object Form1: TForm1
     PressColor = 9222870
     KeyType = ktLetters
     DownPosX = 25
+    MidPosX = 5
   end
   object Key67: TKey
     Left = 431
@@ -2858,6 +2919,7 @@ object Form1: TForm1
     PressColor = 9222870
     KeyType = ktLetters
     DownPosX = 25
+    MidPosX = 5
   end
   object Key68: TKey
     Left = 479
@@ -2894,6 +2956,7 @@ object Form1: TForm1
     PressColor = 9222870
     KeyType = ktLetters
     DownPosX = 25
+    MidPosX = 5
   end
   object Key69: TKey
     Left = 527
@@ -2928,9 +2991,10 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktNum
+    KeyType = ktTrippleLetters
     UpPosX = 0
     DownPosX = 21
+    MidPosX = 5
   end
   object Key70: TKey
     Left = 575
@@ -2965,9 +3029,10 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktNum
+    KeyType = ktTrippleLetters
     UpPosX = 0
     DownPosX = 25
+    MidPosX = 5
   end
   object Key13: TKey
     Left = 623
@@ -3004,6 +3069,7 @@ object Form1: TForm1
     KeyType = ktScroll
     UpPosX = 0
     DownPosX = 25
+    MidPosX = 5
   end
   object Key100: TKey
     Left = 888
@@ -3171,6 +3237,7 @@ object Form1: TForm1
     KeyType = ktExNum
     UpPosX = 4
     DownPosX = 5
+    MidPosX = 5
   end
   object Key101: TKey
     Left = 936
@@ -3206,6 +3273,7 @@ object Form1: TForm1
     KeyType = ktExNum
     UpPosX = 4
     DownPosX = 5
+    MidPosX = 5
   end
   object Key102: TKey
     Left = 984
@@ -3372,6 +3440,7 @@ object Form1: TForm1
     KeyType = ktExNum
     UpPosX = 4
     DownPosX = 5
+    MidPosX = 5
   end
   object Key97: TKey
     Left = 888
@@ -3409,6 +3478,7 @@ object Form1: TForm1
     KeyType = ktExNum
     UpPosX = 4
     DownPosX = 5
+    MidPosX = 5
   end
   object Key98: TKey
     Left = 936
@@ -3574,6 +3644,7 @@ object Form1: TForm1
     KeyType = ktExNum
     UpPosX = 4
     DownPosX = 5
+    MidPosX = 5
   end
   object Key99: TKey
     Left = 984
@@ -3611,6 +3682,7 @@ object Form1: TForm1
     KeyType = ktExNum
     UpPosX = 4
     DownPosX = 5
+    MidPosX = 5
   end
   object Key160: TKey
     Left = 8
@@ -3755,7 +3827,7 @@ object Form1: TForm1
     PicturePos.Top = 12
     PicturePos.Right = 28
     PicturePos.Bottom = 30
-    MiddleText = '      Shift'
+    MiddleText = 'Shift'
     UpFont.Charset = DEFAULT_CHARSET
     UpFont.Color = clWindowText
     UpFont.Height = -12
@@ -3776,6 +3848,7 @@ object Form1: TForm1
     KeyType = ktSticked
     UpPosX = 0
     DownPosX = 25
+    MidPosX = 28
   end
   object Key79: TKey
     Left = 111
@@ -3812,6 +3885,7 @@ object Form1: TForm1
     PressColor = 9222870
     KeyType = ktLetters
     DownPosX = 25
+    MidPosX = 5
   end
   object Key80: TKey
     Left = 159
@@ -3848,6 +3922,7 @@ object Form1: TForm1
     PressColor = 9222870
     KeyType = ktLetters
     DownPosX = 25
+    MidPosX = 5
   end
   object Key81: TKey
     Left = 207
@@ -3884,6 +3959,7 @@ object Form1: TForm1
     PressColor = 9222870
     KeyType = ktLetters
     DownPosX = 25
+    MidPosX = 5
   end
   object Key82: TKey
     Left = 255
@@ -3920,6 +3996,7 @@ object Form1: TForm1
     PressColor = 9222870
     KeyType = ktLetters
     DownPosX = 25
+    MidPosX = 5
   end
   object Key83: TKey
     Left = 303
@@ -3956,6 +4033,7 @@ object Form1: TForm1
     PressColor = 9222870
     KeyType = ktLetters
     DownPosX = 25
+    MidPosX = 5
   end
   object Key84: TKey
     Left = 351
@@ -3992,6 +4070,7 @@ object Form1: TForm1
     PressColor = 9222870
     KeyType = ktLetters
     DownPosX = 25
+    MidPosX = 5
   end
   object Key85: TKey
     Left = 399
@@ -4028,6 +4107,7 @@ object Form1: TForm1
     PressColor = 9222870
     KeyType = ktLetters
     DownPosX = 25
+    MidPosX = 5
   end
   object Key86: TKey
     Left = 447
@@ -4062,9 +4142,10 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktNum
+    KeyType = ktTrippleLetters
     UpPosX = 0
     DownPosX = 25
+    MidPosX = 5
   end
   object Key87: TKey
     Left = 495
@@ -4099,9 +4180,10 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktNum
+    KeyType = ktTrippleLetters
     UpPosX = 0
     DownPosX = 20
+    MidPosX = 5
   end
   object Key88: TKey
     Left = 543
@@ -4136,9 +4218,10 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktNum
+    KeyType = ktTrippleLetters
     UpPosX = 0
     DownPosX = 25
+    MidPosX = 5
   end
   object Key161: TKey
     Left = 591
@@ -4283,7 +4366,7 @@ object Form1: TForm1
     PicturePos.Top = 12
     PicturePos.Right = 28
     PicturePos.Bottom = 30
-    MiddleText = '      Shift'
+    MiddleText = 'Shift'
     UpFont.Charset = DEFAULT_CHARSET
     UpFont.Color = clWindowText
     UpFont.Height = -12
@@ -4304,6 +4387,7 @@ object Form1: TForm1
     KeyType = ktSticked
     UpPosX = 0
     DownPosX = 25
+    MidPosX = 28
   end
   object Key162: TKey
     Left = 8
@@ -4340,6 +4424,7 @@ object Form1: TForm1
     KeyType = ktSticked
     UpPosX = 0
     DownPosX = 25
+    MidPosX = 5
   end
   object Key91: TKey
     Left = 66
@@ -4432,6 +4517,7 @@ object Form1: TForm1
     KeyType = ktSticked
     UpPosX = 0
     DownPosX = 25
+    MidPosX = 5
   end
   object Key164: TKey
     Left = 124
@@ -4468,6 +4554,7 @@ object Form1: TForm1
     KeyType = ktSticked
     UpPosX = 0
     DownPosX = 25
+    MidPosX = 5
   end
   object Key32: TKey
     Left = 182
@@ -4503,6 +4590,7 @@ object Form1: TForm1
     KeyType = ktScroll
     UpPosX = 0
     DownPosX = 25
+    MidPosX = 5
   end
   object Key165: TKey
     Left = 495
@@ -4539,6 +4627,7 @@ object Form1: TForm1
     KeyType = ktSticked
     UpPosX = 0
     DownPosX = 25
+    MidPosX = 5
   end
   object Key93: TKey
     Left = 612
@@ -4574,6 +4663,7 @@ object Form1: TForm1
     KeyType = ktScroll
     UpPosX = 0
     DownPosX = 25
+    MidPosX = 5
   end
   object Key163: TKey
     Left = 670
@@ -4582,7 +4672,7 @@ object Form1: TForm1
     Height = 42
     OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
-      '111D0001'
+      '011D0001'
       'C11D0001'
       '411D0001')
     PicturePos.Left = 4
@@ -4610,6 +4700,7 @@ object Form1: TForm1
     KeyType = ktSticked
     UpPosX = 0
     DownPosX = 25
+    MidPosX = 5
   end
   object Key37: TKey
     Left = 736
@@ -4618,7 +4709,7 @@ object Form1: TForm1
     Height = 42
     OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
-      '114B0001'
+      '014B0001'
       'C14B0001'
       '414B0001')
     Picture.Data = {
@@ -4776,6 +4867,7 @@ object Form1: TForm1
     KeyType = ktScroll
     UpPosX = 0
     DownPosX = 25
+    MidPosX = 5
   end
   object Key40: TKey
     Left = 784
@@ -4784,7 +4876,7 @@ object Form1: TForm1
     Height = 42
     OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
-      '11500001'
+      '01500001'
       'C1500001'
       '41500001')
     Picture.Data = {
@@ -4940,6 +5032,7 @@ object Form1: TForm1
     KeyType = ktScroll
     UpPosX = 0
     DownPosX = 25
+    MidPosX = 5
   end
   object Key39: TKey
     Left = 832
@@ -4948,7 +5041,7 @@ object Form1: TForm1
     Height = 42
     OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
-      '114D0001'
+      '014D0001'
       'C14D0001'
       '414D0001')
     Picture.Data = {
@@ -5106,6 +5199,7 @@ object Form1: TForm1
     KeyType = ktScroll
     UpPosX = 0
     DownPosX = 25
+    MidPosX = 5
   end
   object Key38: TKey
     Left = 784
@@ -5270,6 +5364,7 @@ object Form1: TForm1
     KeyType = ktScroll
     UpPosX = 0
     DownPosX = 25
+    MidPosX = 5
   end
   object Key96: TKey
     Left = 888
@@ -5307,6 +5402,7 @@ object Form1: TForm1
     KeyType = ktExNum
     UpPosX = 4
     DownPosX = 5
+    MidPosX = 5
   end
   object Key110: TKey
     Left = 984
@@ -5344,6 +5440,7 @@ object Form1: TForm1
     KeyType = ktExNum
     UpPosX = 6
     DownPosX = 5
+    MidPosX = 5
   end
   object Key130: TKey
     Left = 1032
@@ -5380,6 +5477,7 @@ object Form1: TForm1
     KeyType = ktScroll
     UpPosX = 0
     DownPosX = 5
+    MidPosX = 5
   end
   object Key92: TKey
     Left = 553
@@ -5472,166 +5570,20 @@ object Form1: TForm1
     KeyType = ktSticked
     UpPosX = 0
     DownPosX = 25
+    MidPosX = 5
   end
   object Memo1: TMemo
     Left = 0
     Top = 0
-    Width = 1070
+    Width = 1079
     Height = 90
     Align = alTop
     Lines.Strings = (
       'Memo1')
     TabOrder = 0
-    ExplicitWidth = 1064
-  end
-  object TrayIcon: TTrayIcon
-    Hint = #1069#1090#1086' '#1090#1080#1087#1072' '#1082#1083#1072#1074#1080#1072#1090#1091#1088#1085#1099#1081' '#1096#1087#1080#1086#1085
-    BalloonHint = #1069#1082#1088#1072#1085#1085#1072#1103' '#1082#1083#1072#1074#1080#1072#1090#1091#1088#1072
-    BalloonTitle = #1050#1083#1072#1074#1080#1072#1090#1091#1088#1072
-    BalloonTimeout = 30000
-    BalloonFlags = bfWarning
-    Icon.Data = {
-      0000010001002020000001002000A81000001600000028000000200000004000
-      0000010020000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000333333013333330133333301333333013333330133333301333333013333
-      3301333333013333330133333301333333013333330133333301333333013333
-      3301333333013333330133333301333333013333330133333301333333013333
-      3301333333013333330133333301333333013333330133333301000000003333
-      3375333333CA333333B7333333B7333333B7333333B7333333B7333333B73333
-      33B7333333B7333333B7333333B7333333B7333333B7333333B7333333B73333
-      33B7333333B7333333B7333333B7333333B7333333B7333333B7333333B73333
-      33B7333333B7333333B7333333B7333333B7333333B7333333CA333333755550
-      2FF7A79A0EFBA79A0EFEA79A0EFEA79A0EFEA79A0EFEA79A0EFEA79A0EFEA79A
-      0EFEA79A0EFEA79A0EFEA79A0EFEA79A0EFEA79A0EFEA79A0EFEA79A0EFEA79A
-      0EFEA79A0EFEA79A0EFEA79A0EFEA79A0EFEA79A0EFEA79A0EFEA79A0EFEA79A
-      0EFEA79A0EFEA79A0EFEA79A0EFEA79A0EFEA79A0EFEA79A0EB2333333CF5B55
-      2EFFA79A0EFF7E7525E659542EF45A542EF259542EF459532EF95A542EF25A54
-      2EF25A542EF25A542EF25A542EF25A542EF25A542EF25A542EF258532EFC5A54
-      2EF25A542EF259532EFA5A542EF25A542EF259542EF4897F21FF6C652ADE5B56
-      2ED65B562ED657522FF75B562ED65A552EDE817824FFA79A0EF1333333CC5B55
-      2EFFA79A0EFF5F592DC45F65E2D6696FFECC595ED088478BADE75BCBFFCC5BCB
-      FFCC5BCBFFCC5BCBFFCC5BCBFFCC5BCBFFCC5BCBFFCC5BCBFFCB333333C4696F
-      FDCC696FFECC333334A6666CF5CF696FFECC595DCF847D7425FE333333BB5BCA
-      FECC5BCBFF9A3C647AF35BCBFFCC50AAD595746C28FFA79A0EF1333333CC5B55
-      2EFFA79A0EFF5F592DC46166E7FF696FFEFF5C61D79D4992B6FF5BCBFFFF5BCB
-      FFFF5BCBFFFF5BCBFFFF5BCBFFFF5BCBFFFF5BCBFFFF5BCBFFFD333333C4696F
-      FEFF696FFEFF333335A6676CF6FF696FFEFF5B60D6987D7425FE333333BB5BCA
-      FEFF5BCBFFC03E6B83FE5BCBFFFF52AFDCAD746C28FFA79A0EF1333333CC5B55
-      2EFFA79A0EFF5F592DC44E52ADFF5458BEFF464991CD3F708AFF4B99BFFF4B99
-      BFFF4A99BFFF4B99BFFF4B99BFFF4A99BFFF4B99BFFF4B99BFFE333333E15458
-      BEFF5458BEFF333334D1666CF5FF696FFEFF5B60D6987D7425FE333333BD468B
-      ADFF4482A2E6384F5EFE468CAEFF3F6F88DE746C28FFA79A0EF1333333CC5B55
-      2EFFA79A0EFF5F592DC45155B6B25A5FD29F494B9A8B444687D25A5FD29F5155
-      B687404178DC5A5FD29F575CCA8B3A3B5ED75A5FD29F5A5ED29E333333D25A5E
-      D19F5A5FD29F333334BA676CF6FF696FFEFF5B60D6987D7425FE333333BB54B6
-      E4C552B1DE9F3A5B6EF254B6E5C54993B7A0746C28FFA79A0EF1333333CC5B55
-      2EFFA79A0EFF5F592DC46166E7FF696FFEFF5C61D79D5155B6FF696FFEFF646A
-      F1AE4C4FA4FF696FFEFF696FFECC424482E1696FFEFF696FFEFD333333C4696F
-      FEFF696FFEFF333335A6676CF6FF696FFEFF5B60D6987D7425FE333333BB5BCA
-      FEFF5BCBFFC03E6B83FE5BCBFFFF52AFDCAD746C28FFA79A0EF1333333CC5B55
-      2EFFA79A0EFF5F592DC44A4D9EFF4E52ADFF424482D841437DFF4E52ADFF474A
-      94DF3E4072FF4E52ADFF4B4EA3EB393A5AF34E52ADFF4E51ADFE333333E84E51
-      ACFF4E52ADFF333333DC4D50A7FF4E52ADFF414380D67D7425FE333333BD468A
-      ACFF4381A0E6374F5DFE468BADFF3E6E87DF746C28FFA79A0EF1333333CC5B55
-      2EFFA79A0EFF5F592DC4565AC6C85E64E0BA4E51AB93474A95DE5E64E0BA565B
-      C794434585E65E64E0BA5D62DA9E3C3D68DB5E64E0BA5E64E0B9333333CF5E64
-      DFBA5E64E0BA333334B75C61D7BD5E64E0BA4D50A9907D7425FE333333BB52B0
-      DCB350AAD593395667EF52B0DDB3468BAD99746C28FFA79A0EF1333333CC5B55
-      2EFFA79A0EFF5F592DC46166E7FF696FFEFF5C61D79D5155B6FF696FFEFF646A
-      F1AE4C4FA4FF696FFEFF696FFECC424482E1696FFEFF696FFEFD333333C4696F
-      FEFF696FFEFF333335A6676CF6FF696FFEFF5B60D6987D7425FE333333BB5BCA
-      FEFF5BCBFFC03E6B83FE5BCBFFFF52AFDCAD746C28FFA79A0EF1333333CC5B55
-      2EFFA79A0EFF5F592DC45256B8FF585CCAFF494C9CC5474991FF585CCAFF5053
-      B2CF434583FF585CCAFF5559C2E13C3D68EE585CCAFF575CC9FE333333DC575C
-      C9FF585CCAFF333334CB565AC3FF585CCAFF494C9AC27D7425FE333333BB4DA2
-      CAFF4B9AC0DA39596BFE4DA2CBFF4483A3CF746C28FFA79A0EF1333333CC5B55
-      2EFFA79A0EFF978B1BA9837924BB837924BB837924BB837924BB837924BB8379
-      24BB837924BB837924BB837924BB837924BB837924BB837924BB837924BB8379
-      24BB837924BB837924BB837924BB837924BB837924BB9E9216F78F841F9A8379
-      24BB837924BB837924BB837924BB837924BB9C9017F4A79A0EF1333333CC4240
-      31D090851EFF998D1AFF998D1AFF998D1AFF998D1AFF998D1AFF998D1AFF998D
-      1AFF998D1AFF998D1AFF998D1AFF998D1AFF998D1AFF998D1AFF998D1AFF998D
-      1AFF998D1AFF998D1AFF998D1AFF998D1AFF998D1AFF998D1AFF998D1AFF998D
-      1AFF998D1AFF998D1AFF998D1AFF998D1AFF998D1AFF8F841EF0333333C23333
-      3319333333793333338533333390394646E74F7977BC4B7170B2333333E73333
-      3385333333853333338533333385333333853333338533333385333333853333
-      3385333333853333338533333385333333853333338533333385333333853333
-      3385333333853333338533333385333333853333338533333379333333190000
-      0000000000000000000039393900405857E37DD0CEFF6FB6B4C7333333930000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      00000000000000000000000000003333339B64A2A0FF4D7473DC333333460000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      000000000000000000000000000033333327333333B733333389343434030000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000003333333C3333339D000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000033333387333333AB3333
-      3356333333433333334333333343333333433333334333333343333333433333
-      3343333333433333334333333343333333433333334333333343333333433333
-      332E292929000000000000000000000000000000000000000000000000000000
-      00000000000000000000000000000000000000000000000000003333332D3333
-      336C333333753333337533333375333333753333337533333375333333753333
-      3375333333753333337533333375333333753333337533333375333333753333
-      339C333333B53333330D00000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      000033333344333333A900000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      000000000000333333B233333319000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000003333339333333333000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      000000000000333333BC33333313000000000000000000000000000000000000
-      0000000000000000000033333376333333A2333333C8333333C1333333903333
-      3300000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000003232
-      3200333333793333338800000000000000000000000000000000000000000000
-      00000000000000000000363B3BCB5A8E8D96578887E97DD0CEBE384342AC3333
-      33CF333333CC333333CC333333CC333333CC333333CC333333CC333333CC3333
-      33CC333333CC333333CC333333CC333333CC333333CC333333CC333333CB3333
-      33CF3333337A3434340000000000000000000000000000000000000000000000
-      000000000000000000003333339F333434D4405757FF4F7675FF353838BD3333
-      3304000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000080808003333330133333301484848000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      000000000000000000000000000000000000000000000000000000000000FFFF
-      FFFF800000010000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000F0FFFFFFF0FFFFFFF0FFFFFFF9FFFFFFFC00007FFE00001FFFFFFF9FFFFF
-      FFCFFFFFFFCFFFFFFFCFE0FFFF9FE000003FE07FFFFFF9FFFFFFFFFFFFFF}
-    PopupMenu = TrayMenu
-    OnDblClick = TrayIconDblClick
-    Left = 912
-    Top = 96
+    ExplicitWidth = 1075
   end
   object ApplicationEvents1: TApplicationEvents
-    OnMinimize = ApplicationEvents1Minimize
     Left = 120
     Top = 40
   end
@@ -5640,7 +5592,6 @@ object Form1: TForm1
     Top = 48
     object N1: TMenuItem
       Caption = #1088#1072#1079#1074#1077#1088#1085#1091#1090#1100
-      OnClick = TrayIconDblClick
     end
     object N2: TMenuItem
       Caption = #1079#1072#1087#1080#1089#1072#1090#1100

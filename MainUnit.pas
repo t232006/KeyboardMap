@@ -9,7 +9,6 @@ uses
 type
   TForm1 = class(TForm)
     Memo1: TMemo;
-    TrayIcon: TTrayIcon;
     ApplicationEvents1: TApplicationEvents;
     TrayMenu: TPopupMenu;
     exit1: TMenuItem;
@@ -120,9 +119,9 @@ type
     Key130: TKey;
     Key92: TKey;
     WinMonitor: TTimer;
-    procedure ApplicationEvents1Minimize(Sender: TObject);
+    //procedure ApplicationEvents1Minimize(Sender: TObject);
     //procedure CreateParams(var AParams: TCreateParams); override;
-    procedure TrayIconDblClick(Sender: TObject);
+    //procedure TrayIconDblClick(Sender: TObject);
     procedure exit1Click(Sender: TObject);
     procedure N2Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -131,6 +130,7 @@ type
     procedure WinMonitorTimer(Sender: TObject);
     procedure Key100MouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
+    procedure FormMouseEnter(Sender: TObject);
   private
     function FindKey(ScanCode: string):TKey;
   public
@@ -148,13 +148,13 @@ implementation
 
 {$R *.dfm}
 
-procedure TForm1.ApplicationEvents1Minimize(Sender: TObject);
+{procedure TForm1.ApplicationEvents1Minimize(Sender: TObject);
 begin
   WindowState:=wsMinimized;
   TrayIcon.Visible := True;
   TrayIcon.Animate := True;
   TrayIcon.ShowBalloonHint;
-end;
+end;}
 
 {procedure TForm1.CreateParams(var AParams: TCreateParams);
 begin
@@ -182,7 +182,7 @@ begin
           exit;
         end;
    end;
-   result:=FindComponent('Key14') as TKey;  //exception
+   result:=FindComponent('Key44') as TKey;  //exception
 
 end;
 
@@ -203,10 +203,15 @@ procedure TForm1.FormCreate(Sender: TObject);
 begin
   RunHook(self.Handle);
   Keyboard:=TKeyboard.create;
-
   Key20.Pressed:=Odd(GetKeyState(VK_CAPITAL));
   Key144.Pressed:=Odd(GetKeyState(VK_NUMLOCK));
   Key145.Pressed:=Odd(GetKeyState(VK_SCROLL));
+end;
+
+procedure TForm1.FormMouseEnter(Sender: TObject);
+var a:byte;
+begin
+           a:=5;
 end;
 
 procedure TForm1.GetPressing(var msg: TMessage);
@@ -255,13 +260,13 @@ begin
 
 end;
 
-procedure TForm1.TrayIconDblClick(Sender: TObject);
+{procedure TForm1.TrayIconDblClick(Sender: TObject);
 begin
   TrayIcon.Visible := False;
   Show();
   WindowState := wsNormal;
   Application.BringToFront();
-end;
+end;}
 
 procedure TForm1.WinMonitorTimer(Sender: TObject);
 var temp:hWnd;

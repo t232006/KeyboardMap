@@ -45,7 +45,7 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktOthers
+    KeyType = ktScroll
     UpPosX = 0
     DownPosX = 25
   end
@@ -511,7 +511,7 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktLetters
+    KeyType = ktScroll
     UpPosX = 0
     DownPosX = 25
   end
@@ -546,7 +546,7 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktLetters
+    KeyType = ktSticked
     UpPosX = 0
     DownPosX = 25
   end
@@ -581,7 +581,7 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktLetters
+    KeyType = ktScroll
     UpPosX = 0
     DownPosX = 25
   end
@@ -1227,7 +1227,7 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktOthers
+    KeyType = ktScroll
     UpPosX = 0
     DownPosX = 25
   end
@@ -1339,7 +1339,7 @@ object Form1: TForm1
     UpPosX = 0
     DownPosX = 25
   end
-  object Key35: TKey
+  object Key144: TKey
     Left = 888
     Top = 152
     Width = 42
@@ -1406,7 +1406,7 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktOthers
+    KeyType = ktScroll
     UpPosX = 4
     DownPosX = 5
   end
@@ -1442,7 +1442,7 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktOthers
+    KeyType = ktScroll
     UpPosX = 4
     DownPosX = 5
   end
@@ -1478,7 +1478,7 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktOthers
+    KeyType = ktScroll
     UpPosX = 0
     DownPosX = 5
   end
@@ -1677,7 +1677,7 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktOthers
+    KeyType = ktScroll
     UpPosX = 0
     DownPosX = 25
   end
@@ -1717,7 +1717,7 @@ object Form1: TForm1
     KeyType = ktLetters
     DownPosX = 25
   end
-  object Key410: TKey
+  object Key5: TKey
     Left = 127
     Top = 200
     Width = 42
@@ -1753,7 +1753,7 @@ object Form1: TForm1
     KeyType = ktLetters
     DownPosX = 25
   end
-  object Key420: TKey
+  object Key4: TKey
     Left = 175
     Top = 200
     Width = 42
@@ -1789,7 +1789,7 @@ object Form1: TForm1
     KeyType = ktLetters
     DownPosX = 25
   end
-  object Key430: TKey
+  object Key3: TKey
     Left = 223
     Top = 200
     Width = 42
@@ -1825,7 +1825,7 @@ object Form1: TForm1
     KeyType = ktLetters
     DownPosX = 25
   end
-  object Key440: TKey
+  object Key2: TKey
     Left = 271
     Top = 200
     Width = 42
@@ -1861,7 +1861,7 @@ object Form1: TForm1
     KeyType = ktLetters
     DownPosX = 25
   end
-  object Key450: TKey
+  object Key1: TKey
     Left = 319
     Top = 200
     Width = 42
@@ -1897,7 +1897,7 @@ object Form1: TForm1
     KeyType = ktLetters
     DownPosX = 25
   end
-  object Key460: TKey
+  object Key52: TKey
     Left = 367
     Top = 200
     Width = 42
@@ -1933,7 +1933,7 @@ object Form1: TForm1
     KeyType = ktLetters
     DownPosX = 25
   end
-  object Key470: TKey
+  object Key51: TKey
     Left = 415
     Top = 200
     Width = 42
@@ -1969,7 +1969,7 @@ object Form1: TForm1
     KeyType = ktLetters
     DownPosX = 23
   end
-  object Key480: TKey
+  object Key48: TKey
     Left = 463
     Top = 200
     Width = 42
@@ -2005,7 +2005,7 @@ object Form1: TForm1
     KeyType = ktLetters
     DownPosX = 21
   end
-  object Key490: TKey
+  object Key49: TKey
     Left = 511
     Top = 200
     Width = 42
@@ -2038,7 +2038,7 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktLetters
+    KeyType = ktScroll
     DownPosX = 25
   end
   object Key53: TKey
@@ -2188,7 +2188,7 @@ object Form1: TForm1
     UpPosX = 0
     DownPosX = 25
   end
-  object Key30: TKey
+  object Key35: TKey
     Left = 784
     Top = 200
     Width = 42
@@ -2531,7 +2531,7 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktOthers
+    KeyType = ktScroll
     UpPosX = 0
     DownPosX = 5
   end
@@ -3001,7 +3001,7 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktOthers
+    KeyType = ktScroll
     UpPosX = 0
     DownPosX = 25
   end
@@ -4500,7 +4500,7 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktOthers
+    KeyType = ktScroll
     UpPosX = 0
     DownPosX = 25
   end
@@ -4571,7 +4571,7 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
-    KeyType = ktLetters
+    KeyType = ktScroll
     UpPosX = 0
     DownPosX = 25
   end
@@ -5377,6 +5377,7 @@ object Form1: TForm1
     MiddleFont.Style = [fsItalic]
     Color = 3223601
     PressColor = 9222870
+    KeyType = ktScroll
     UpPosX = 0
     DownPosX = 5
   end
@@ -5481,7 +5482,7 @@ object Form1: TForm1
     Lines.Strings = (
       'Memo1')
     TabOrder = 0
-    ExplicitWidth = 1066
+    ExplicitWidth = 1064
   end
   object TrayIcon: TTrayIcon
     Hint = #1069#1090#1086' '#1090#1080#1087#1072' '#1082#1083#1072#1074#1080#1072#1090#1091#1088#1085#1099#1081' '#1096#1087#1080#1086#1085
