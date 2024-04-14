@@ -31,18 +31,18 @@ type
     Key145: TKey;
     Key16: TKey;
     Key41: TKey;
-    Key77: TKey;
-    Key42: TKey;
-    Key43: TKey;
-    Key73: TKey;
-    Key31: TKey;
-    Key74: TKey;
-    Key47: TKey;
-    Key95: TKey;
-    Key89: TKey;
-    Key78: TKey;
-    Key14: TKey;
-    Key90: TKey;
+    Key49: TKey;
+    Key50: TKey;
+    Key51: TKey;
+    Key52: TKey;
+    Key53: TKey;
+    Key54: TKey;
+    Key55: TKey;
+    Key56: TKey;
+    Key57: TKey;
+    Key48: TKey;
+    Key189: TKey;
+    Key187: TKey;
     Key8: TKey;
     Key45: TKey;
     Key36: TKey;
@@ -52,19 +52,19 @@ type
     Key106: TKey;
     Key109: TKey;
     Key9: TKey;
-    Key76: TKey;
-    Key5: TKey;
-    Key4: TKey;
-    Key3: TKey;
-    Key2: TKey;
-    Key1: TKey;
-    Key52: TKey;
-    Key51: TKey;
-    Key48: TKey;
-    Key49: TKey;
-    Key53: TKey;
+    Key81: TKey;
+    Key87: TKey;
+    Key69: TKey;
+    Key82: TKey;
+    Key84: TKey;
+    Key89: TKey;
+    Key85: TKey;
+    Key73: TKey;
+    Key79: TKey;
+    Key80: TKey;
+    Key219: TKey;
     Key94: TKey;
-    Key72: TKey;
+    Key220: TKey;
     Key46: TKey;
     Key35: TKey;
     Key34: TKey;
@@ -73,17 +73,17 @@ type
     Key105: TKey;
     Key107: TKey;
     Key20: TKey;
-    Key60: TKey;
-    Key61: TKey;
-    Key62: TKey;
-    Key63: TKey;
-    Key64: TKey;
     Key65: TKey;
-    Key66: TKey;
-    Key67: TKey;
+    Key83: TKey;
     Key68: TKey;
-    Key69: TKey;
     Key70: TKey;
+    Key71: TKey;
+    Key72: TKey;
+    Key74: TKey;
+    Key75: TKey;
+    Key76: TKey;
+    Key186: TKey;
+    Key222: TKey;
     Key13: TKey;
     Key100: TKey;
     Key101: TKey;
@@ -92,16 +92,16 @@ type
     Key98: TKey;
     Key99: TKey;
     Key160: TKey;
-    Key79: TKey;
-    Key80: TKey;
-    Key81: TKey;
-    Key82: TKey;
-    Key83: TKey;
-    Key84: TKey;
-    Key85: TKey;
-    Key86: TKey;
-    Key87: TKey;
+    Key90: TKey;
     Key88: TKey;
+    Key67: TKey;
+    Key86: TKey;
+    Key66: TKey;
+    Key78: TKey;
+    Key77: TKey;
+    Key188: TKey;
+    Key190: TKey;
+    Key191: TKey;
     Key161: TKey;
     Key162: TKey;
     Key91: TKey;
@@ -116,21 +116,19 @@ type
     Key38: TKey;
     Key96: TKey;
     Key110: TKey;
-    Key130: TKey;
+    Key1300: TKey;
     Key92: TKey;
     WinMonitor: TTimer;
     //procedure ApplicationEvents1Minimize(Sender: TObject);
     //procedure CreateParams(var AParams: TCreateParams); override;
     //procedure TrayIconDblClick(Sender: TObject);
     procedure exit1Click(Sender: TObject);
-    procedure N2Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure GetPressing(var msg: TMessage); message WM_MYKEYPRESS;
     procedure WinMonitorTimer(Sender: TObject);
     procedure Key100MouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
-    procedure FormMouseEnter(Sender: TObject);
   private
     function FindKey(ScanCode: string):TKey;
   public
@@ -188,15 +186,17 @@ end;
 
 procedure TForm1.FormClose(Sender: TObject; var Action: TCloseAction);
 var dWin:Hwnd;
+    kb:Tkeyboard;
 begin
-  N2Click(sender);  StopHook;
+  kb:=GetKeyboard;
+  Save(kb);
+  StopHook;
   dWin:=GetModuleHandle('KeyboardHook.dll');
   FreeLibrary(dWin);
   dWin:=FindWindow(nil, 'KeyboardMap');
   if dWin<>0 then
   SendMessage(dWin, WM_DESTROY, 0,0);
 
-  //halt;
 end;
 
 procedure TForm1.FormCreate(Sender: TObject);
@@ -206,12 +206,6 @@ begin
   Key20.Pressed:=Odd(GetKeyState(VK_CAPITAL));
   Key144.Pressed:=Odd(GetKeyState(VK_NUMLOCK));
   Key145.Pressed:=Odd(GetKeyState(VK_SCROLL));
-end;
-
-procedure TForm1.FormMouseEnter(Sender: TObject);
-var a:byte;
-begin
-           a:=5;
 end;
 
 procedure TForm1.GetPressing(var msg: TMessage);
@@ -244,21 +238,6 @@ var ShiftDown: boolean;
   KeyClick((sender as TKey), shiftdown);
 
   end;
-
-procedure TForm1.N2Click(Sender: TObject);
-var textname, logname, mapname, st: string;
-begin
-    keyboard:=GetKeyboard;
-    textname:=ExtractFileDir( Paramstr(0))+'\text.txt' ;
-    logname:=ExtractFileDir(Paramstr(0))+'\log.txt';
-    mapname:=ExtractFileDir( Paramstr(0))+'\map.b' ;
-    st:=string(keyboard.log);
-    savetext(logname,st);
-    st:=string(keyboard.text);
-    savetext(textname, st);
-    savemap(mapname, keyboard.map);
-
-end;
 
 {procedure TForm1.TrayIconDblClick(Sender: TObject);
 begin

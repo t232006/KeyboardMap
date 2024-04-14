@@ -4,7 +4,8 @@ uses
   Vcl.Forms,
   MainUnit in 'MainUnit.pas' {Form1},
   saver in 'saver.pas',
-  SendKeyPressProc in 'SendKeyPressProc.pas';
+  SendKeyPressProc in 'SendKeyPressProc.pas',
+  PressCounter in 'PressCounter.pas';
 
 {$R *.res}
 

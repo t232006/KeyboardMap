@@ -4,7 +4,7 @@ interface
 uses Sharemem, SysUtils, windows, messages;
 const WM_MYKEYPRESS = WM_USER+136;
 type
-TKeyboardMap=array[0..255] of word;
+TKeyboardMap=array[0..222] of word;
 TParam=record
   virtCode:WParam;
   scanCode:Lparam;
@@ -59,7 +59,8 @@ begin
    Fparam.virtCode:=ws;
    Fparam.scanCode:=ls;
    logChar:=addr(Flog[1]);
-   textChar:=addr(Ftext[1]);
+   if Ftext<>'' then
+    textChar:=addr(Ftext[1]);
    
 
    SendMessage(handle, WM_MYKEYPRESS, param.virtCode, param.scanCode);

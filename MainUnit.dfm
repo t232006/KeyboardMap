@@ -13,7 +13,6 @@ object Form1: TForm1
   KeyPreview = True
   OnClose = FormClose
   OnCreate = FormCreate
-  OnMouseEnter = FormMouseEnter
   TextHeight = 15
   object Key27: TKey
     Left = 8
@@ -641,7 +640,7 @@ object Form1: TForm1
     DownPosX = 25
     MidPosX = 5
   end
-  object Key77: TKey
+  object Key49: TKey
     Left = 56
     Top = 152
     Width = 42
@@ -678,7 +677,7 @@ object Form1: TForm1
     DownPosX = 25
     MidPosX = 5
   end
-  object Key42: TKey
+  object Key50: TKey
     Left = 104
     Top = 152
     Width = 42
@@ -716,7 +715,7 @@ object Form1: TForm1
     DownPosX = 25
     MidPosX = 5
   end
-  object Key43: TKey
+  object Key51: TKey
     Left = 152
     Top = 152
     Width = 42
@@ -754,7 +753,7 @@ object Form1: TForm1
     DownPosX = 25
     MidPosX = 5
   end
-  object Key73: TKey
+  object Key52: TKey
     Left = 200
     Top = 152
     Width = 42
@@ -792,7 +791,7 @@ object Form1: TForm1
     DownPosX = 25
     MidPosX = 5
   end
-  object Key31: TKey
+  object Key53: TKey
     Left = 248
     Top = 152
     Width = 42
@@ -829,7 +828,7 @@ object Form1: TForm1
     DownPosX = 25
     MidPosX = 5
   end
-  object Key74: TKey
+  object Key54: TKey
     Left = 296
     Top = 152
     Width = 42
@@ -867,7 +866,7 @@ object Form1: TForm1
     DownPosX = 25
     MidPosX = 5
   end
-  object Key47: TKey
+  object Key55: TKey
     Left = 344
     Top = 152
     Width = 42
@@ -904,7 +903,7 @@ object Form1: TForm1
     DownPosX = 25
     MidPosX = 5
   end
-  object Key95: TKey
+  object Key56: TKey
     Left = 392
     Top = 152
     Width = 42
@@ -941,7 +940,7 @@ object Form1: TForm1
     DownPosX = 25
     MidPosX = 5
   end
-  object Key89: TKey
+  object Key57: TKey
     Left = 440
     Top = 152
     Width = 42
@@ -978,7 +977,7 @@ object Form1: TForm1
     DownPosX = 25
     MidPosX = 5
   end
-  object Key78: TKey
+  object Key48: TKey
     Left = 488
     Top = 152
     Width = 42
@@ -1015,7 +1014,7 @@ object Form1: TForm1
     DownPosX = 25
     MidPosX = 5
   end
-  object Key14: TKey
+  object Key189: TKey
     Left = 536
     Top = 152
     Width = 42
@@ -1052,7 +1051,7 @@ object Form1: TForm1
     DownPosX = 25
     MidPosX = 5
   end
-  object Key90: TKey
+  object Key187: TKey
     Left = 584
     Top = 152
     Width = 42
@@ -1714,7 +1713,7 @@ object Form1: TForm1
     DownPosX = 25
     MidPosX = 5
   end
-  object Key76: TKey
+  object Key81: TKey
     Left = 79
     Top = 200
     Width = 42
@@ -1751,7 +1750,7 @@ object Form1: TForm1
     DownPosX = 25
     MidPosX = 5
   end
-  object Key5: TKey
+  object Key87: TKey
     Left = 127
     Top = 200
     Width = 42
@@ -1788,7 +1787,7 @@ object Form1: TForm1
     DownPosX = 25
     MidPosX = 5
   end
-  object Key4: TKey
+  object Key69: TKey
     Left = 175
     Top = 200
     Width = 42
@@ -1825,7 +1824,7 @@ object Form1: TForm1
     DownPosX = 25
     MidPosX = 5
   end
-  object Key3: TKey
+  object Key82: TKey
     Left = 223
     Top = 200
     Width = 42
@@ -1862,7 +1861,7 @@ object Form1: TForm1
     DownPosX = 25
     MidPosX = 5
   end
-  object Key2: TKey
+  object Key84: TKey
     Left = 271
     Top = 200
     Width = 42
@@ -1899,7 +1898,7 @@ object Form1: TForm1
     DownPosX = 25
     MidPosX = 5
   end
-  object Key1: TKey
+  object Key89: TKey
     Left = 319
     Top = 200
     Width = 42
@@ -1936,7 +1935,7 @@ object Form1: TForm1
     DownPosX = 25
     MidPosX = 5
   end
-  object Key52: TKey
+  object Key85: TKey
     Left = 367
     Top = 200
     Width = 42
@@ -1973,7 +1972,7 @@ object Form1: TForm1
     DownPosX = 25
     MidPosX = 5
   end
-  object Key51: TKey
+  object Key73: TKey
     Left = 415
     Top = 200
     Width = 42
@@ -2010,7 +2009,7 @@ object Form1: TForm1
     DownPosX = 23
     MidPosX = 5
   end
-  object Key48: TKey
+  object Key79: TKey
     Left = 463
     Top = 200
     Width = 42
@@ -2047,7 +2046,7 @@ object Form1: TForm1
     DownPosX = 21
     MidPosX = 5
   end
-  object Key49: TKey
+  object Key80: TKey
     Left = 511
     Top = 200
     Width = 42
@@ -2084,7 +2083,7 @@ object Form1: TForm1
     DownPosX = 25
     MidPosX = 5
   end
-  object Key53: TKey
+  object Key219: TKey
     Left = 559
     Top = 200
     Width = 42
@@ -2160,7 +2159,7 @@ object Form1: TForm1
     DownPosX = 25
     MidPosX = 5
   end
-  object Key72: TKey
+  object Key220: TKey
     Left = 655
     Top = 200
     Width = 67
@@ -2625,7 +2624,7 @@ object Form1: TForm1
     DownPosX = 25
     MidPosX = 5
   end
-  object Key60: TKey
+  object Key65: TKey
     Left = 95
     Top = 248
     Width = 42
@@ -2662,7 +2661,7 @@ object Form1: TForm1
     DownPosX = 25
     MidPosX = 5
   end
-  object Key61: TKey
+  object Key83: TKey
     Left = 143
     Top = 248
     Width = 42
@@ -2699,7 +2698,7 @@ object Form1: TForm1
     DownPosX = 25
     MidPosX = 5
   end
-  object Key62: TKey
+  object Key68: TKey
     Left = 191
     Top = 248
     Width = 42
@@ -2736,7 +2735,7 @@ object Form1: TForm1
     DownPosX = 25
     MidPosX = 5
   end
-  object Key63: TKey
+  object Key70: TKey
     Left = 239
     Top = 248
     Width = 42
@@ -2773,7 +2772,7 @@ object Form1: TForm1
     DownPosX = 25
     MidPosX = 5
   end
-  object Key64: TKey
+  object Key71: TKey
     Left = 287
     Top = 248
     Width = 42
@@ -2810,7 +2809,7 @@ object Form1: TForm1
     DownPosX = 25
     MidPosX = 5
   end
-  object Key65: TKey
+  object Key72: TKey
     Left = 335
     Top = 248
     Width = 42
@@ -2847,7 +2846,7 @@ object Form1: TForm1
     DownPosX = 25
     MidPosX = 5
   end
-  object Key66: TKey
+  object Key74: TKey
     Left = 383
     Top = 248
     Width = 42
@@ -2884,7 +2883,7 @@ object Form1: TForm1
     DownPosX = 25
     MidPosX = 5
   end
-  object Key67: TKey
+  object Key75: TKey
     Left = 431
     Top = 248
     Width = 42
@@ -2921,7 +2920,7 @@ object Form1: TForm1
     DownPosX = 25
     MidPosX = 5
   end
-  object Key68: TKey
+  object Key76: TKey
     Left = 479
     Top = 248
     Width = 42
@@ -2958,7 +2957,7 @@ object Form1: TForm1
     DownPosX = 25
     MidPosX = 5
   end
-  object Key69: TKey
+  object Key186: TKey
     Left = 527
     Top = 248
     Width = 42
@@ -2996,7 +2995,7 @@ object Form1: TForm1
     DownPosX = 21
     MidPosX = 5
   end
-  object Key70: TKey
+  object Key222: TKey
     Left = 575
     Top = 248
     Width = 42
@@ -3850,7 +3849,7 @@ object Form1: TForm1
     DownPosX = 25
     MidPosX = 28
   end
-  object Key79: TKey
+  object Key90: TKey
     Left = 111
     Top = 296
     Width = 42
@@ -3887,7 +3886,7 @@ object Form1: TForm1
     DownPosX = 25
     MidPosX = 5
   end
-  object Key80: TKey
+  object Key88: TKey
     Left = 159
     Top = 296
     Width = 42
@@ -3924,7 +3923,7 @@ object Form1: TForm1
     DownPosX = 25
     MidPosX = 5
   end
-  object Key81: TKey
+  object Key67: TKey
     Left = 207
     Top = 296
     Width = 42
@@ -3961,7 +3960,7 @@ object Form1: TForm1
     DownPosX = 25
     MidPosX = 5
   end
-  object Key82: TKey
+  object Key86: TKey
     Left = 255
     Top = 296
     Width = 42
@@ -3998,7 +3997,7 @@ object Form1: TForm1
     DownPosX = 25
     MidPosX = 5
   end
-  object Key83: TKey
+  object Key66: TKey
     Left = 303
     Top = 296
     Width = 42
@@ -4035,7 +4034,7 @@ object Form1: TForm1
     DownPosX = 25
     MidPosX = 5
   end
-  object Key84: TKey
+  object Key78: TKey
     Left = 351
     Top = 296
     Width = 42
@@ -4072,7 +4071,7 @@ object Form1: TForm1
     DownPosX = 25
     MidPosX = 5
   end
-  object Key85: TKey
+  object Key77: TKey
     Left = 399
     Top = 296
     Width = 42
@@ -4109,7 +4108,7 @@ object Form1: TForm1
     DownPosX = 25
     MidPosX = 5
   end
-  object Key86: TKey
+  object Key188: TKey
     Left = 447
     Top = 296
     Width = 42
@@ -4147,7 +4146,7 @@ object Form1: TForm1
     DownPosX = 25
     MidPosX = 5
   end
-  object Key87: TKey
+  object Key190: TKey
     Left = 495
     Top = 296
     Width = 42
@@ -4185,7 +4184,7 @@ object Form1: TForm1
     DownPosX = 20
     MidPosX = 5
   end
-  object Key88: TKey
+  object Key191: TKey
     Left = 543
     Top = 296
     Width = 42
@@ -5442,7 +5441,7 @@ object Form1: TForm1
     DownPosX = 5
     MidPosX = 5
   end
-  object Key130: TKey
+  object Key1300: TKey
     Left = 1032
     Top = 296
     Width = 42
@@ -5595,7 +5594,6 @@ object Form1: TForm1
     end
     object N2: TMenuItem
       Caption = #1079#1072#1087#1080#1089#1072#1090#1100
-      OnClick = N2Click
     end
     object exit1: TMenuItem
       Caption = #1074#1099#1093#1086#1076

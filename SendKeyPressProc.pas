@@ -148,6 +148,9 @@ begin
       begin
           temp:=But.Name;
           delete(temp, 1, 3);
+          if temp='1' then
+
+          temp:='13';   //right enter
           sendkeypress(strtoint(temp));
       end;
     end;
