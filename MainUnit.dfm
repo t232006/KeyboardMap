@@ -5372,7 +5372,7 @@ object Form1: TForm1
     Height = 42
     OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
-      '10520001'
+      '00520001'
       'C0520001'
       '40520001')
     PicturePos.Left = 4
@@ -5410,7 +5410,7 @@ object Form1: TForm1
     Height = 42
     OnMouseDown = Key100MouseDown
     ScanCodes.Strings = (
-      '10530001'
+      '00530001'
       'C0530001'
       '40530001')
     PicturePos.Left = 4

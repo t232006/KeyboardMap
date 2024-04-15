@@ -134,7 +134,7 @@ type
   public
     { Public declarations }
   end;
-  procedure RunHook(wnd:Hwnd) stdcall; external 'KeyboardHook.dll';
+  procedure RunHook stdcall; external 'KeyboardHook.dll';
   procedure StopHook; stdcall; external 'KeyboardHook.dll';
   function GetKeyboard: TKeyboard stdcall; external 'KeyboardHook.dll';
 
@@ -169,7 +169,7 @@ end;
 function TForm1.FindKey(ScanCode: string): TKey;
 var k, i:byte;  key:TKey;
 begin
-   for k := 1 to 165 do
+   for k := 1 to 222 do
    begin
       key:=FindComponent('Key'+inttostr(k)) as TKey;
       if key=nil then continue else
@@ -201,7 +201,7 @@ end;
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
-  RunHook(self.Handle);
+  RunHook;
   Keyboard:=TKeyboard.create;
   Key20.Pressed:=Odd(GetKeyState(VK_CAPITAL));
   Key144.Pressed:=Odd(GetKeyState(VK_NUMLOCK));
