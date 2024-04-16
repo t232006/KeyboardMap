@@ -9,7 +9,7 @@ uses
   Vcl.ToolWin, Vcl.ActnMan, Vcl.ActnCtrls, Vcl.ActnMenus, System.Actions,
   Vcl.ActnList, Vcl.PlatformDefaultStyleActnCtrls;
 type
-  TForm1 = class(TForm)
+  TKeyboardMap = class(TForm)
     Memo1: TMemo;
     ApplicationEvents1: TApplicationEvents;
     TrayMenu: TPopupMenu;
@@ -132,7 +132,7 @@ type
     procedure exit1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure GetPressing(var msg: TMessage); message WM_MYKEYPRESS;
+    procedure GetPressing(var msg: TMessage); message $0400+10;
     procedure WinMonitorTimer(Sender: TObject);
     procedure Key100MouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
@@ -145,14 +145,14 @@ type
   public
     MapFile: string;
   end;
-  procedure RunHook(wnd:Hwnd) stdcall; external 'KeyboardHook.dll';
+  procedure RunHook(_hWin: HWnd) stdcall; external 'KeyboardHook.dll';
   procedure StopHook; stdcall; external 'KeyboardHook.dll';
-  function GetKeyboard: TKeyboard stdcall; external 'KeyboardHook.dll';
+  //function GetKeyboard: TKeyboard stdcall; external 'KeyboardHook.dll';
 
 var
-  Form1: TForm1;
-  Statistic: TStatistic;
-  Keyboard: TKeyboard;
+  Keyboard: TKeyboardMap;
+  Statistics: TStatistics;
+  VirtKeyboard: TKeyboard;
   hwin: Hwnd;
 implementation
 
@@ -182,7 +182,7 @@ end;}
    end;
  }
 
-procedure TForm1.Action1Execute(Sender: TObject);   //show statistic
+procedure TKeyboardMap.Action1Execute(Sender: TObject);   //show Statistics
 var
     tempKey: TKey;
 begin
@@ -191,42 +191,42 @@ begin
      begin
 
        mapFile:=ExtractFileDir( Paramstr(0))+'\maps\'+mapFile;
-       Statistic.Init(mapFile);
-       Statistic.IsEmpty:=false;
-       for var i := Statistic.firstItem to Statistic.lastItem do
+       Statistics.Init(mapFile);
+       Statistics.IsEmpty:=false;
+       for var i := Statistics.firstItem to Statistics.lastItem do
        begin
          tempKey:=FindComponent('Key'+inttostr(i)) as TKey;
          if tempKey=nil then continue;
-         Statistic.saveKey(i, tempKey);
-         Statistic.ShowStatistic(i, tempKey);
+         Statistics.saveKey(i, tempKey);
+         Statistics.ShowStatistics(i, tempKey);
        end;
        n5.Enabled:=true;
      end;
 end;
 
-procedure TForm1.Action2Execute(Sender: TObject);  //hide statistic
+procedure TKeyboardMap.Action2Execute(Sender: TObject);  //hide Statistics
 var tempKey: TKey;
 begin
-   if statistic.IsEmpty=false then
+   if Statistics.IsEmpty=false then
    begin
 
-     for var i := Statistic.firstItem to Statistic.lastItem do
+     for var i := Statistics.firstItem to Statistics.lastItem do
        begin
           tempKey:=FindComponent('Key'+inttostr(i)) as TKey;
           if tempKey=nil then continue;
-          Statistic.HideStatistic(i, tempKey);
+          Statistics.HideStatistics(i, tempKey);
        end;
-     statistic.IsEmpty:=true;
+     Statistics.IsEmpty:=true;
      n5.Enabled:=false;
    end;
 end;
 
-procedure TForm1.exit1Click(Sender: TObject);
+procedure TKeyboardMap.exit1Click(Sender: TObject);
 begin
   close;
 end;
 
-function TForm1.FindKey(ScanCode: string): TKey;
+function TKeyboardMap.FindKey(ScanCode: string): TKey;
 var k, i:byte;  key:TKey;
 begin
    for k := 1 to 222 do
@@ -244,12 +244,12 @@ begin
 
 end;
 
-procedure TForm1.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TKeyboardMap.FormClose(Sender: TObject; var Action: TCloseAction);
 var dWin:Hwnd;
-    kb:Tkeyboard;
+    //kb:Tkeyboard;
 begin
-  kb:=GetKeyboard;
-  Save(kb);
+  //kb:=GetKeyboard;
+  Save(Virtkeyboard);
   StopHook;
   dWin:=GetModuleHandle('KeyboardHook.dll');
   FreeLibrary(dWin);
@@ -259,29 +259,29 @@ begin
 
 end;
 
-procedure TForm1.FormCreate(Sender: TObject);
+procedure TKeyboardMap.FormCreate(Sender: TObject);
 begin
   RunHook(self.Handle);
-  Keyboard:=TKeyboard.create;
-  Statistic:= TStatistic.Create;
+  VirtKeyboard:=TKeyboard.create;
+  Statistics:= TStatistics.Create;
   Key20.Pressed:=Odd(GetKeyState(VK_CAPITAL));
   Key144.Pressed:=Odd(GetKeyState(VK_NUMLOCK));
   Key145.Pressed:=Odd(GetKeyState(VK_SCROLL));
 end;
 
-procedure TForm1.GetPressing(var msg: TMessage);
+procedure TKeyboardMap.GetPressing(var msg: TMessage);
 var st:string; ScanHex:string; _key:Tkey;
 begin
-   Keyboard:=GetKeyboard;
-   ScanHex:=InttoHex(Keyboard.param.scanCode);
+   VirtKeyboard.addPress(msg.WParam, msg.LParam);
+   ScanHex:=InttoHex(VirtKeyboard.param.scanCode);
    st:=string.Format('Key = %s; Letter =%s; Virtual = %s; Scan = %s',
-   [Chr(Keyboard.Param.virtCode), Keyboard.param.letter,
-   InttoHex(Keyboard.param.virtCode), ScanHex]);
+   [Chr(VirtKeyboard.Param.virtCode), VirtKeyboard.param.letter,
+   InttoHex(VirtKeyboard.param.virtCode), ScanHex]);
    Memo1.Lines.Clear;
    Memo1.Lines.Add(st);
 
    _key:=FindKey(ScanHex);
-   _key.Pressed:=Keyboard.param.isPressed;
+   _key.Pressed:=VirtKeyboard.param.isPressed;
    if _key.Name='Key20' then  //CapsLock
       _key.Pressed:=Odd(GetKeyState(VK_CAPITAL)) else
    if _Key.Name='Key144' then
@@ -291,7 +291,7 @@ begin
 
 end;
 
-procedure TForm1.Key100MouseDown(Sender: TObject; Button: TMouseButton;
+procedure TKeyboardMap.Key100MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 var ShiftDown: boolean;
   begin
@@ -308,7 +308,7 @@ begin
   Application.BringToFront();
 end;}
 
-procedure TForm1.WinMonitorTimer(Sender: TObject);
+procedure TKeyboardMap.WinMonitorTimer(Sender: TObject);
 var temp:hWnd;
 begin
     temp:=GetForegroundWindow;

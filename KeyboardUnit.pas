@@ -18,10 +18,11 @@ TKeyboard=class
     logChar, textChar: Pchar;
     Fparam:TParam;
     evenBit: boolean;
-    //_WM_MYKEYPRESS:Integer;
+    letter:char;
+    isPressed:boolean;
    public
      handle: Hwnd;
-     procedure addPress(ws:word; ls: longint; letter:char; isPressed:boolean);
+     procedure addPress(ws:word; ls: longint);
      property map:TKeyboardMap read mas;
      property     log:Pchar read logChar;
      property text:Pchar read textChar;
@@ -37,16 +38,25 @@ begin
   if AValue then result:=ATrue else result:=AFalse;
 end;
 
-procedure TKeyboard.addPress(ws:word; ls: longint; letter:char; isPressed:boolean);
+procedure TKeyboard.addPress(ws:word; ls: longint);
 var ss:string;
+    myHKL: HKL;
+    KS: TKeyboardState;
+    SC: integer;
 begin
-   evenbit:=not(evenbit);
+   //evenbit:=not(evenbit);
+    myHKL:=GetKeyboardLayout(GetCurrentThreadID);
+    SC:=MapVirtualKeyEx(WS, MAPVK_VK_TO_VSC, MyHKL);
+    GetKeyboardState(KS);
+    ToUnicodeEx(WS, SC, KS, @Letter, sizeof(letter), 0, MyHKL);
+   if byte(LS shr 24)<$80 then isPressed:=true else isPressed:=false;
+
    ss:=string.Format('Key = %s; Letter = %s; Scan = %s; %s; Time: %s; %s',
    [Chr(ws), letter, IntToHex(ls), IfThen(isPressed,'Down',' Up '), TimeToStr(now), chr(13)]);
-   if evenbit then
+   //if evenbit then
    begin
      Flog:=Flog+ss;
-     if isPressed and (ws <= high(mas)) then
+     if {isPressed and} (ws <= high(mas)) then
      begin
         inc(mas[ws]);
         if ord(letter)<>0 then

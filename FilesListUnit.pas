@@ -28,7 +28,7 @@ implementation
 
 procedure TForm2.ButtonGroup1Items0Click(Sender: TObject);
 begin
-  form1.mapfile:=fileslist.items[fileslist.itemindex];
+  Keyboard.mapfile:=fileslist.items[fileslist.itemindex];
   close;
 end;
 

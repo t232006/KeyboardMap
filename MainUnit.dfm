@@ -1,7 +1,7 @@
-object Form1: TForm1
+object KeyboardMap: TKeyboardMap
   Left = 0
   Top = 0
-  Caption = 'KeyboardMap'
+  Caption = 'Screen keyboard'
   ClientHeight = 447
   ClientWidth = 1103
   Color = clWhite

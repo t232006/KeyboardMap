@@ -1,0 +1,34 @@
+library KeyboardHook;
+
+
+{$R *.res}
+uses
+  Sharemem,
+  Messages,
+  Windows,
+  KeyboardUnit in 'KeyboardUnit.pas';
+
+var SysHook: hHook = 0;
+
+function KeyboardProc(Code: Integer; wParam: WParam; LParam: LParam): integer; stdcall;
+begin
+  if code=0 then
+    PostMessage(FindWindow(nil,'KeyboardMap'),$0400+1, WParam, LParam);
+  result:=CallNexthookEx(SysHook, code, WParam, LParam);
+
+end;
+procedure RunHook export; stdcall;
+begin
+    SysHook:= SetWindowsHookEx(WH_KEYBOARD, @KeyboardProc, hInstance, 0)
+end;
+
+procedure StopHook export; stdcall;
+begin
+  UnhookWindowsHookEx(SysHook);
+  SysHook:=0;
+end;
+
+
+exports RunHook, StopHook, GetKeyboard;
+end.
+
