@@ -126,7 +126,6 @@
             <Form>KeyboardMap</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="saver.pas"/>
         <DCCReference Include="SendKeyPressProc.pas"/>
         <DCCReference Include="FilesListUnit.pas">
             <Form>Form2</Form>

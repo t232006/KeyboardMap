@@ -3,31 +3,28 @@ unit KeyboardUnit;
 interface
 uses Sharemem, SysUtils, windows, messages;
 const WM_MYKEYPRESS = WM_USER+136;
+      LO=8;
 type
-TKeyboardMap=array[8..222] of word;
-TParam=record
-  virtCode:WParam;
-  scanCode:Lparam;
-  letter: char;
-  isPressed:boolean;
-end;
+TKeyboardMap=array[LO..222] of word;
+
 TKeyboard=class
    private
-    mas: TKeyboardMap ;
+    Fmap: TKeyboardMap ;
     Flog, Ftext:string;
-    logChar, textChar: Pchar;
-    Fparam:TParam;
-    evenBit: boolean;
-    letter:char;
-    isPressed:boolean;
+    Fletter:char;
+    FisPressed:boolean;
+    fPath: string;
+    procedure SaveText(filename, sometext:string);
+    procedure SaveMap(filename:string);
+    procedure CleanMap(var temp:TKeyboardMap);
    public
-     handle: Hwnd;
      procedure addPress(ws:word; ls: longint);
-     property map:TKeyboardMap read mas;
-     property     log:Pchar read logChar;
-     property text:Pchar read textChar;
-     property param:TParam read Fparam;
-     //property WM_MYKEYPRESS1:integer read _WM_MYKEYPRESS;
+     procedure save(newFile:boolean);
+     property map:TKeyboardMap read Fmap;
+     property isPressed:boolean read FisPressed;
+     property letter:char read Fletter;
+     property     log:string read Flog;
+     property text:string read FText;
      constructor create;
 end;
 
@@ -48,39 +45,121 @@ begin
     myHKL:=GetKeyboardLayout(GetCurrentThreadID);
     SC:=MapVirtualKeyEx(WS, MAPVK_VK_TO_VSC, MyHKL);
     GetKeyboardState(KS);
-    ToUnicodeEx(WS, SC, KS, @Letter, sizeof(letter), 0, MyHKL);
-   if byte(LS shr 24)<$80 then isPressed:=true else isPressed:=false;
+    ToUnicodeEx(WS, SC, KS, @fletter, sizeof(fletter), 0, MyHKL);
+   if byte(LS shr 24)<$80 then fisPressed:=true else fisPressed:=false;
 
    ss:=string.Format('Key = %s; Letter = %s; Scan = %s; %s; Time: %s; %s',
-   [Chr(ws), letter, IntToHex(ls), IfThen(isPressed,'Down',' Up '), TimeToStr(now), chr(13)]);
+   [Chr(ws), fletter, IntToHex(ls), IfThen(isPressed,'Down',' Up '), TimeToStr(now), chr(13)]);
    //if evenbit then
    begin
      Flog:=Flog+ss;
-     if {isPressed and} (ws <= high(mas)) then
+     if isPressed and (ws <= high(fmap)) then
      begin
-        inc(mas[ws]);
-        if ord(letter)<>0 then
-          Ftext:=Ftext+letter;
+        inc(Fmap[ws]);
+        //if ord(letter)<>0 then
+        Ftext:=Ftext+fletter;
      end;
    end;
-
-   Fparam.letter:=letter;
-   Fparam.isPressed:=isPressed;
-   Fparam.virtCode:=ws;
-   Fparam.scanCode:=ls;
-   logChar:=addr(Flog[1]);
-   if Ftext<>'' then
-    textChar:=addr(Ftext[1]);
-
-
-   SendMessage(handle, WM_MYKEYPRESS, param.virtCode, param.scanCode);
 end;
 
 constructor TKeyboard.create;
 begin
-  for var i := Low(mas) to High(mas) do
-    mas[i]:=0;
+  cleanMap(FMap);
+  fPath:=ExtractFileDir( Paramstr(0));
   //_WM_MYKEYPRESS:=RegisterWindowMessage('{3998262C-C7A6-43AC-8392-B6293EE0488C}');
+end;
+
+procedure TKeyboard.savetext(filename, sometext:string);
+var f:textfile;
+begin
+  assignfile(f, filename);
+  try
+    append(f);
+  except
+    rewrite(f);
+  end;
+  writeln(f, sometext);
+  closefile(f);
+end;
+
+procedure TKeyboard.cleanMap(var temp:TKeyboardMap);
+begin
+  for var i := Low(temp) to High(temp) do
+    temp[i]:=0;
+end;
+
+procedure TKeyboard.savemap(filename: string);
+var f: file of word;
+    tempMap:TKeyboardMap;
+    i:word;
+begin
+    i:=LO;
+    cleanmap(tempMap);
+   assignfile(f, filename);
+   if fileexists(filename) then
+   begin
+     reset(f);
+     while not(eof(f)) do
+     begin
+      read(f, tempmap[i]);
+      inc(i);
+     end;
+   end;
+   rewrite(f);
+   for I := Low(fmap) to High(fmap) do
+     begin
+       inc(fmap[i],tempmap[i]);
+       Write(f, fmap[i]);
+     end;
+   closefile(f);
+
+end;
+
+procedure TKeyboard.save(newFile: boolean);
+//=============================
+    function GetLastFile:string;
+    var sr: TSearchRec;
+        fdPath: string;
+        CurFileTime, LatestTime: TDateTime;
+    begin
+        fdPath:=fPath+'\maps\*map.b';
+
+        if FindFirst(fdPath, faNormal,SR)=0 then
+        begin
+           result:=fPath+'\maps\'+SR.Name;
+           LatestTime:=FileDateToDateTime(FileAge(result));
+           repeat
+              CurFileTime:=FileDateToDateTime(FileAge(fPath+'\maps\'+SR.Name));
+              if CurFileTime < LatestTime then
+                begin
+                  result:=fPath+'\maps\'+sr.Name;
+                  LatestTime:=CurFileTime;
+                end;
+           until FindNext(SR)<>0;
+        end;
+
+    end;
+ //=============================
+    function GetMapFilename: string;
+    var curDateTime: TDateTime;
+    begin
+       curDateTime:=now;
+       result:=FormatDateTime('dd-mm-yyyy-hh-nn-ss',curDateTime);
+       result:=ExtractFileDir(Paramstr(0))+'\maps\'+result+'map.b';
+    end;
+ //=============================
+
+var textname, logname, mapname: string;
+begin
+    textname:=fPath+'\text.txt' ;
+    logname:=fPath+'\log.txt';
+    if newFile then
+      mapname:=GetMapFilename
+    else
+      mapname:=GetLastFile;
+    savetext(logname,flog);
+    savetext(textname, ftext);
+    savemap(mapname);
 end;
 
 

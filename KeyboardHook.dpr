@@ -9,7 +9,6 @@ uses
   KeyboardUnit in 'KeyboardUnit.pas';
 
 var SysHook: hHook = 0;
-    hWin: HWnd;
 
 function KeyboardProc(Code: Integer; wParam: WParam; LParam: LParam): LongWord; stdcall;
 begin
@@ -18,9 +17,8 @@ begin
   result:=CallNexthookEx(SysHook, code, WParam, LParam);
 
 end;
-procedure RunHook(_hWin: Hwnd) export; stdcall;
+procedure RunHook export; stdcall;
 begin
-    hWin:=_hWin;
     SysHook:= SetWindowsHookEx(WH_KEYBOARD, @KeyboardProc, hInstance, 0)
 end;
 

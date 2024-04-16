@@ -5,7 +5,7 @@ interface
 uses
   Sharemem, Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.AppEvnts,
-  Vcl.Menus, KeyboardUnit, saver, Key, SendKeyPressProc, FilesListUnit, PressCounter,
+  Vcl.Menus, KeyboardUnit, Key, SendKeyPressProc, FilesListUnit, PressCounter,
   Vcl.ToolWin, Vcl.ActnMan, Vcl.ActnCtrls, Vcl.ActnMenus, System.Actions,
   Vcl.ActnList, Vcl.PlatformDefaultStyleActnCtrls;
 type
@@ -145,7 +145,7 @@ type
   public
     MapFile: string;
   end;
-  procedure RunHook(_hWin: HWnd) stdcall; external 'KeyboardHook.dll';
+  procedure RunHook stdcall; external 'KeyboardHook.dll';
   procedure StopHook; stdcall; external 'KeyboardHook.dll';
   //function GetKeyboard: TKeyboard stdcall; external 'KeyboardHook.dll';
 
@@ -249,7 +249,7 @@ var dWin:Hwnd;
     //kb:Tkeyboard;
 begin
   //kb:=GetKeyboard;
-  Save(Virtkeyboard);
+  VirtKeyboard.save(false);
   StopHook;
   dWin:=GetModuleHandle('KeyboardHook.dll');
   FreeLibrary(dWin);
@@ -261,7 +261,7 @@ end;
 
 procedure TKeyboardMap.FormCreate(Sender: TObject);
 begin
-  RunHook(self.Handle);
+  RunHook;
   VirtKeyboard:=TKeyboard.create;
   Statistics:= TStatistics.Create;
   Key20.Pressed:=Odd(GetKeyState(VK_CAPITAL));
@@ -273,15 +273,15 @@ procedure TKeyboardMap.GetPressing(var msg: TMessage);
 var st:string; ScanHex:string; _key:Tkey;
 begin
    VirtKeyboard.addPress(msg.WParam, msg.LParam);
-   ScanHex:=InttoHex(VirtKeyboard.param.scanCode);
+   ScanHex:=InttoHex(msg.LParam);
    st:=string.Format('Key = %s; Letter =%s; Virtual = %s; Scan = %s',
-   [Chr(VirtKeyboard.Param.virtCode), VirtKeyboard.param.letter,
-   InttoHex(VirtKeyboard.param.virtCode), ScanHex]);
+   [Chr(msg.WParam), VirtKeyboard.letter,
+   InttoHex(msg.WParam), ScanHex]);
    Memo1.Lines.Clear;
    Memo1.Lines.Add(st);
 
    _key:=FindKey(ScanHex);
-   _key.Pressed:=VirtKeyboard.param.isPressed;
+   _key.Pressed:=VirtKeyboard.isPressed;
    if _key.Name='Key20' then  //CapsLock
       _key.Pressed:=Odd(GetKeyState(VK_CAPITAL)) else
    if _Key.Name='Key144' then

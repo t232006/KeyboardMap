@@ -1,55 +1,21 @@
 unit saver;
 
 interface
-uses KeyboardUnit, sysutils, strutils;
+uses KeyboardUnit, sysutils, strutils, dateutils;
 procedure savetext(filename, sometext:string);
 procedure savemap(filename: string; map:TKeyboardMap);
 procedure cleanMap(var map:TKeyboardMap);
-procedure save(keyboard: TKeyboard);
+procedure save(newFile:boolean; keyboard: TKeyboard);
 
 implementation
 
-procedure save(keyboard: TKeyboard);
-function GetMapFilename: string;
-var curDateTime: TDateTime;
-begin
-   curDateTime:=now;
-   result:=FormatDateTime('dd-mm-yyyy-hh-nn-ss',curDateTime);
-   result:=ExtractFileDir(Paramstr(0))+'\maps\'+result+'map.b';
-end;
 
 
-var textname, logname, mapname, st: string;
-begin
-    textname:=ExtractFileDir( Paramstr(0))+'\text.txt' ;
-    logname:=ExtractFileDir(Paramstr(0))+'\log.txt';
-    mapname:=GetMapFilename;
-    st:=string(keyboard.log);
-    savetext(logname,st);
-    st:=string(keyboard.text);
-    savetext(textname, st);
-    savemap(mapname, keyboard.map);
 
-end;
 
-procedure cleanMap(var map:TKeyboardMap);
-begin
-  for var i := Low(map) to High(map) do
-    map[i]:=0;
-end;
 
-procedure savetext(filename, sometext:string);
-var f:textfile;
-begin
-  assignfile(f, filename);
-  try
-    append(f);
-    writeln(f,sometext);
-  except
-    rewrite(f);
-  end;
-  closefile(f);
-end;
+
+
 
 procedure savemap(filename: string; map:TKeyboardMap);
 var f: file of word;
