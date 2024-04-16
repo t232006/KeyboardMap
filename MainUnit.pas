@@ -5,7 +5,9 @@ interface
 uses
   Sharemem, Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.AppEvnts,
-  Vcl.Menus, KeyboardUnit, saver, Key, SendKeyPressProc;
+  Vcl.Menus, KeyboardUnit, saver, Key, SendKeyPressProc, FilesListUnit, PressCounter,
+  Vcl.ToolWin, Vcl.ActnMan, Vcl.ActnCtrls, Vcl.ActnMenus, System.Actions,
+  Vcl.ActnList, Vcl.PlatformDefaultStyleActnCtrls;
 type
   TForm1 = class(TForm)
     Memo1: TMemo;
@@ -14,6 +16,8 @@ type
     exit1: TMenuItem;
     N1: TMenuItem;
     N2: TMenuItem;
+    WinMonitor: TTimer;
+    Panel1: TPanel;
     Key27: TKey;
     Key112: TKey;
     Key113: TKey;
@@ -116,12 +120,15 @@ type
     Key38: TKey;
     Key96: TKey;
     Key110: TKey;
-    Key1300: TKey;
+    Key12: TKey;
     Key92: TKey;
-    WinMonitor: TTimer;
-    //procedure ApplicationEvents1Minimize(Sender: TObject);
-    //procedure CreateParams(var AParams: TCreateParams); override;
-    //procedure TrayIconDblClick(Sender: TObject);
+    MainMenu1: TMainMenu;
+    N3: TMenuItem;
+    N4: TMenuItem;
+    ActionManager1: TActionManager;
+    Action1: TAction;
+    Action2: TAction;
+    N5: TMenuItem;
     procedure exit1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -129,17 +136,22 @@ type
     procedure WinMonitorTimer(Sender: TObject);
     procedure Key100MouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
+    //procedure CreateParams(var AParams: TCreateParams); override;
+    procedure Action1Execute(Sender: TObject);
+    procedure Action2Execute(Sender: TObject);
   private
+
     function FindKey(ScanCode: string):TKey;
   public
-    { Public declarations }
+    MapFile: string;
   end;
-  procedure RunHook stdcall; external 'KeyboardHook.dll';
+  procedure RunHook(wnd:Hwnd) stdcall; external 'KeyboardHook.dll';
   procedure StopHook; stdcall; external 'KeyboardHook.dll';
   function GetKeyboard: TKeyboard stdcall; external 'KeyboardHook.dll';
 
 var
   Form1: TForm1;
+  Statistic: TStatistic;
   Keyboard: TKeyboard;
   hwin: Hwnd;
 implementation
@@ -160,6 +172,54 @@ begin
   AParams.ExStyle:=AParams.ExStyle or WS_EX_NOACTIVATE;
 
 end;}
+
+ {
+   procedure TForm1.CreateParams(var AParams: TCreateParams);
+   begin
+     inherited CreateParams(AParams);
+     AParams.ExStyle:=AParams.ExStyle or WS_EX_NOACTIVATE;
+
+   end;
+ }
+
+procedure TForm1.Action1Execute(Sender: TObject);   //show statistic
+var
+    tempKey: TKey;
+begin
+     form2.showmodal;
+     if mapFile<>'' then
+     begin
+
+       mapFile:=ExtractFileDir( Paramstr(0))+'\maps\'+mapFile;
+       Statistic.Init(mapFile);
+       Statistic.IsEmpty:=false;
+       for var i := Statistic.firstItem to Statistic.lastItem do
+       begin
+         tempKey:=FindComponent('Key'+inttostr(i)) as TKey;
+         if tempKey=nil then continue;
+         Statistic.saveKey(i, tempKey);
+         Statistic.ShowStatistic(i, tempKey);
+       end;
+       n5.Enabled:=true;
+     end;
+end;
+
+procedure TForm1.Action2Execute(Sender: TObject);  //hide statistic
+var tempKey: TKey;
+begin
+   if statistic.IsEmpty=false then
+   begin
+
+     for var i := Statistic.firstItem to Statistic.lastItem do
+       begin
+          tempKey:=FindComponent('Key'+inttostr(i)) as TKey;
+          if tempKey=nil then continue;
+          Statistic.HideStatistic(i, tempKey);
+       end;
+     statistic.IsEmpty:=true;
+     n5.Enabled:=false;
+   end;
+end;
 
 procedure TForm1.exit1Click(Sender: TObject);
 begin
@@ -201,8 +261,9 @@ end;
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
-  RunHook;
+  RunHook(self.Handle);
   Keyboard:=TKeyboard.create;
+  Statistic:= TStatistic.Create;
   Key20.Pressed:=Odd(GetKeyState(VK_CAPITAL));
   Key144.Pressed:=Odd(GetKeyState(VK_NUMLOCK));
   Key145.Pressed:=Odd(GetKeyState(VK_SCROLL));
