@@ -2,7 +2,7 @@ unit PressCounter;
 
 interface
 
-uses Graphics, key, sysutils;
+uses Graphics, key, sysutils, KeyboardUnit;
 const LO=8; //FIRST ELEMENT
 type
 TMyLabel = record
@@ -25,7 +25,7 @@ TkeyMas = array[LO..222] of TKeyImage;
 TStatistics = class
   private
   fkeyMas: TKeyMas;
-  fpressMap: array [LO..222] of word;
+  fpressMap: TKeyboardMap;
   f:file of Word;
   procedure SetEmpty(Value: boolean);
   function GetEmpty:boolean;
@@ -37,10 +37,12 @@ TStatistics = class
   property firstItem: byte read getLow;
   property lastItem: byte read getHigh;
   procedure saveKey(item: byte; var MyKey: TKey);
-  procedure ShowStatistics(item: byte;var MyKey: Tkey);
+  procedure ShowStatistics(item: byte; var MyKey: Tkey);
   procedure HideStatistics(item: byte; var MyKey: Tkey);
-  procedure Init(mapPath: string);
+  procedure Init(mapPath: string); overload;
+  procedure Init(Amap:TKeyboardMap); overload;
   function total: word;
+  function instantSpeed(tick:word):word;
   constructor Create;
   destructor Destroy;
 end;
@@ -91,6 +93,11 @@ begin
     end;
 end;
 
+procedure TStatistics.Init(Amap: TKeyboardMap);
+begin
+  fpressMap:=Amap;
+end;
+
 procedure TStatistics.Init(mapPath: string);
 var i:byte;
 begin
@@ -104,6 +111,11 @@ begin
   end;
   closefile(f);
 
+end;
+
+function TStatistics.instantSpeed(tick: word): word;
+begin
+  result:=60000 div tick;
 end;
 
 {

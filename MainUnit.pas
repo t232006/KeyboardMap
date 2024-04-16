@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.AppEvnts,
   Vcl.Menus, KeyboardUnit, Key, SendKeyPressProc, FilesListUnit, PressCounter,
   Vcl.ToolWin, Vcl.ActnMan, Vcl.ActnCtrls, Vcl.ActnMenus, System.Actions,
-  Vcl.ActnList, Vcl.PlatformDefaultStyleActnCtrls;
+  Vcl.ActnList, Vcl.PlatformDefaultStyleActnCtrls, Vcl.Samples.Gauges;
 type
   TKeyboardMap = class(TForm)
     Memo1: TMemo;
@@ -125,10 +125,13 @@ type
     MainMenu1: TMainMenu;
     N3: TMenuItem;
     N4: TMenuItem;
-    ActionManager1: TActionManager;
-    Action1: TAction;
-    Action2: TAction;
     N5: TMenuItem;
+    N6: TMenuItem;
+    TrayIcon: TTrayIcon;
+    Gauge1: TGauge;
+    Gauge2: TGauge;
+    instantTimer: TTimer;
+    N7: TMenuItem;
     procedure exit1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -137,11 +140,17 @@ type
     procedure Key100MouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     //procedure CreateParams(var AParams: TCreateParams); override;
-    procedure Action1Execute(Sender: TObject);
-    procedure Action2Execute(Sender: TObject);
+    procedure N6Click(Sender: TObject);
+    procedure TrayIconDblClick(Sender: TObject);
+    procedure ApplicationEvents1Minimize(Sender: TObject);
+    procedure instantTimerTimer(Sender: TObject);
+    procedure N5Click(Sender: TObject);
+    procedure N4Click(Sender: TObject);
+    procedure N7Click(Sender: TObject);
   private
-
+    instantticker:word;
     function FindKey(ScanCode: string):TKey;
+    procedure showStatistics;
   public
     MapFile: string;
   end;
@@ -158,14 +167,6 @@ implementation
 
 {$R *.dfm}
 
-{procedure TForm1.ApplicationEvents1Minimize(Sender: TObject);
-begin
-  WindowState:=wsMinimized;
-  TrayIcon.Visible := True;
-  TrayIcon.Animate := True;
-  TrayIcon.ShowBalloonHint;
-end;}
-
 {procedure TForm1.CreateParams(var AParams: TCreateParams);
 begin
   inherited CreateParams(AParams);
@@ -173,52 +174,13 @@ begin
 
 end;}
 
- {
-   procedure TForm1.CreateParams(var AParams: TCreateParams);
-   begin
-     inherited CreateParams(AParams);
-     AParams.ExStyle:=AParams.ExStyle or WS_EX_NOACTIVATE;
 
-   end;
- }
-
-procedure TKeyboardMap.Action1Execute(Sender: TObject);   //show Statistics
-var
-    tempKey: TKey;
+procedure TKeyboardMap.ApplicationEvents1Minimize(Sender: TObject);
 begin
-     form2.showmodal;
-     if mapFile<>'' then
-     begin
-
-       mapFile:=ExtractFileDir( Paramstr(0))+'\maps\'+mapFile;
-       Statistics.Init(mapFile);
-       Statistics.IsEmpty:=false;
-       for var i := Statistics.firstItem to Statistics.lastItem do
-       begin
-         tempKey:=FindComponent('Key'+inttostr(i)) as TKey;
-         if tempKey=nil then continue;
-         Statistics.saveKey(i, tempKey);
-         Statistics.ShowStatistics(i, tempKey);
-       end;
-       n5.Enabled:=true;
-     end;
-end;
-
-procedure TKeyboardMap.Action2Execute(Sender: TObject);  //hide Statistics
-var tempKey: TKey;
-begin
-   if Statistics.IsEmpty=false then
-   begin
-
-     for var i := Statistics.firstItem to Statistics.lastItem do
-       begin
-          tempKey:=FindComponent('Key'+inttostr(i)) as TKey;
-          if tempKey=nil then continue;
-          Statistics.HideStatistics(i, tempKey);
-       end;
-     Statistics.IsEmpty:=true;
-     n5.Enabled:=false;
-   end;
+  WindowState:=wsMinimized;
+  TrayIcon.Visible := True;
+  TrayIcon.Animate := True;
+  TrayIcon.ShowBalloonHint;
 end;
 
 procedure TKeyboardMap.exit1Click(Sender: TObject);
@@ -262,6 +224,7 @@ end;
 procedure TKeyboardMap.FormCreate(Sender: TObject);
 begin
   RunHook;
+  instantticker:=0;
   VirtKeyboard:=TKeyboard.create;
   Statistics:= TStatistics.Create;
   Key20.Pressed:=Odd(GetKeyState(VK_CAPITAL));
@@ -272,11 +235,14 @@ end;
 procedure TKeyboardMap.GetPressing(var msg: TMessage);
 var st:string; ScanHex:string; _key:Tkey;
 begin
+
    VirtKeyboard.addPress(msg.WParam, msg.LParam);
    ScanHex:=InttoHex(msg.LParam);
    st:=string.Format('Key = %s; Letter =%s; Virtual = %s; Scan = %s',
    [Chr(msg.WParam), VirtKeyboard.letter,
    InttoHex(msg.WParam), ScanHex]);
+   Gauge1.progress:= statistics.instantSpeed(instantticker);
+   instantticker:=0;
    Memo1.Lines.Clear;
    Memo1.Lines.Add(st);
 
@@ -291,6 +257,11 @@ begin
 
 end;
 
+procedure TKeyboardMap.instantTimerTimer(Sender: TObject);
+begin
+  inc(instantticker);
+end;
+
 procedure TKeyboardMap.Key100MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 var ShiftDown: boolean;
@@ -300,13 +271,72 @@ var ShiftDown: boolean;
 
   end;
 
-{procedure TForm1.TrayIconDblClick(Sender: TObject);
+procedure TKeyboardMap.N4Click(Sender: TObject);
+var
+    tempKey: TKey;
 begin
-  TrayIcon.Visible := False;
+     form2.showmodal;
+     if mapFile<>'' then
+     begin
+       mapFile:=ExtractFileDir( Paramstr(0))+'\maps\'+mapFile;
+       Statistics.Init(mapFile);
+       Statistics.IsEmpty:=false;
+       showStatistics;
+     end;
+end;
+
+procedure TKeyboardMap.N5Click(Sender: TObject);
+var tempKey: TKey;
+begin
+   if Statistics.IsEmpty=false then
+   begin
+
+     for var i := Statistics.firstItem to Statistics.lastItem do
+       begin
+          tempKey:=FindComponent('Key'+inttostr(i)) as TKey;
+          if tempKey=nil then continue;
+          Statistics.HideStatistics(i, tempKey);
+       end;
+     Statistics.IsEmpty:=true;
+     n5.Enabled:=false;
+   end;
+end;
+
+procedure TKeyboardMap.N6Click(Sender: TObject);
+begin
+   VirtKeyboard.save(true);
+end;
+
+procedure TKeyboardMap.showStatistics;
+var tempKey: TKey;
+begin
+  for var i := Statistics.firstItem to Statistics.lastItem do
+       begin
+         tempKey:=FindComponent('Key'+inttostr(i)) as TKey;
+         if tempKey=nil then continue;
+         Statistics.saveKey(i, tempKey);
+         Statistics.ShowStatistics(i, tempKey);
+         n5.Enabled:=true;
+       end;
+end;
+
+
+procedure TKeyboardMap.N7Click(Sender: TObject);
+var
+    tempKey: TKey;
+begin
+   Statistics.Init(virtKeyboard.map);
+       Statistics.IsEmpty:=false;
+       showStatistics;
+end;
+
+procedure TKeyboardMap.TrayIconDblClick(Sender: TObject);
+begin
+   TrayIcon.Visible := False;
   Show();
   WindowState := wsNormal;
   Application.BringToFront();
-end;}
+end;
 
 procedure TKeyboardMap.WinMonitorTimer(Sender: TObject);
 var temp:hWnd;

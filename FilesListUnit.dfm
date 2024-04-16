@@ -1,7 +1,7 @@
 object Form2: TForm2
   Left = 0
   Top = 0
-  Caption = 'Form2'
+  Caption = #1060#1072#1081#1083#1099' '#1089#1090#1072#1090#1080#1089#1090#1080#1082#1080
   ClientHeight = 233
   ClientWidth = 464
   Color = clBtnFace
@@ -20,10 +20,11 @@ object Form2: TForm2
     Align = alLeft
     ItemHeight = 15
     TabOrder = 0
+    ExplicitHeight = 232
   end
   object ButtonGroup1: TButtonGroup
-    Left = 264
-    Top = 88
+    Left = 256
+    Top = 56
     Height = 57
     ButtonOptions = [gboFullSize, gboShowCaptions]
     Items = <
