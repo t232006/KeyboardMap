@@ -19,7 +19,7 @@ TKeyboard=class
     procedure CleanMap(var temp:TKeyboardMap);
    public
      procedure addPress(ws:word; ls: longint);
-     procedure save(newFile:boolean);
+     procedure save(newFile:boolean; avSpeed:word);
      property map:TKeyboardMap read Fmap;
      property isPressed:boolean read FisPressed;
      property letter:char read Fletter;
@@ -111,11 +111,14 @@ begin
        inc(fmap[i],tempmap[i]);
        Write(f, fmap[i]);
      end;
+   fmap[14]:=fmap[14] div 2;
+   seek(f,6);
+   write(f,fmap[14]);
    closefile(f);
 
 end;
 
-procedure TKeyboard.save(newFile: boolean);
+procedure TKeyboard.save(newFile: boolean; avSpeed:word);
 //=============================
     function GetLastFile:string;
     var sr: TSearchRec;
@@ -130,7 +133,7 @@ procedure TKeyboard.save(newFile: boolean);
            LatestTime:=FileDateToDateTime(FileAge(result));
            repeat
               CurFileTime:=FileDateToDateTime(FileAge(fPath+'\maps\'+SR.Name));
-              if CurFileTime < LatestTime then
+              if CurFileTime > LatestTime then
                 begin
                   result:=fPath+'\maps\'+sr.Name;
                   LatestTime:=CurFileTime;
@@ -159,6 +162,7 @@ begin
       mapname:=GetLastFile;
     savetext(logname,flog);
     savetext(textname, ftext);
+    Fmap[14]:=avSpeed;
     savemap(mapname);
 end;
 

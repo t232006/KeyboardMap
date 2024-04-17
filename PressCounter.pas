@@ -27,12 +27,16 @@ TStatistics = class
   fkeyMas: TKeyMas;
   fpressMap: TKeyboardMap;
   f:file of Word;
+  n: LongWord;
+  prevspeed: word;
+  FisShowing: boolean;
   procedure SetEmpty(Value: boolean);
   function GetEmpty:boolean;
   function GetHigh:byte;
   function GetLow:byte;
   //procedure resetStatistics;
   public
+  property IsShowing: boolean read fIsShowing;
   property IsEmpty: boolean read GetEmpty write SetEmpty;
   property firstItem: byte read getLow;
   property lastItem: byte read getHigh;
@@ -42,7 +46,8 @@ TStatistics = class
   procedure Init(mapPath: string); overload;
   procedure Init(Amap:TKeyboardMap); overload;
   function total: word;
-  function instantSpeed(tick:word):word;
+  function instantSpeed(tick:word): word;
+  function averageSpeed(vn:word): longword;
   constructor Create;
   destructor Destroy;
 end;
@@ -51,8 +56,20 @@ implementation
 
 { TKeysSaver }
 
+function TStatistics.averageSpeed(vn: word): longword;
+begin
+   inc(n);
+   if n>1 then
+      prevspeed := round(prevspeed * (n-1) / n+vn / n)
+   else
+      prevspeed := vn;
+   result:= prevspeed;
+end;
+
 constructor TStatistics.Create;
 begin
+  n := 0;
+  prevspeed := 0;
   fkeymas[10].MidLabel.posX:=-1; //sign of empty array
 end;
 
@@ -79,6 +96,7 @@ end;
 
 procedure TStatistics.HideStatistics(item: byte; var MyKey: Tkey);
 begin
+    fisShowing:=false;
     with MyKey do
     begin
       HidePicture:=false;
@@ -115,7 +133,7 @@ end;
 
 function TStatistics.instantSpeed(tick: word): word;
 begin
-  result:=60000 div tick;
+  if tick>0 then result:=6000 div tick;
 end;
 
 {
@@ -157,8 +175,8 @@ begin
 end;
 
 procedure TStatistics.ShowStatistics(item: byte; var MyKey: Tkey);
-var n:word;
 begin
+   fIsShowing:=true;
    MyKey.MiddleText:=inttostr(fPressMap[item]);
 end;
 

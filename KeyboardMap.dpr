@@ -5,7 +5,8 @@ uses
   MainUnit in 'MainUnit.pas' {KeyboardMap},
   SendKeyPressProc in 'SendKeyPressProc.pas',
   FilesListUnit in 'FilesListUnit.pas' {Form2},
-  PressCounter in 'PressCounter.pas';
+  PressCounter in 'PressCounter.pas',
+  AnalogMeter in 'components\AnalogMeter.pas';
 
 {$R *.res}
 

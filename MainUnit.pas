@@ -7,7 +7,8 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.AppEvnts,
   Vcl.Menus, KeyboardUnit, Key, SendKeyPressProc, FilesListUnit, PressCounter,
   Vcl.ToolWin, Vcl.ActnMan, Vcl.ActnCtrls, Vcl.ActnMenus, System.Actions,
-  Vcl.ActnList, Vcl.PlatformDefaultStyleActnCtrls, Vcl.Samples.Gauges;
+  Vcl.ActnList, Vcl.PlatformDefaultStyleActnCtrls, Vcl.Samples.Gauges,
+  AnalogMeter;
 type
   TKeyboardMap = class(TForm)
     Memo1: TMemo;
@@ -128,10 +129,12 @@ type
     N5: TMenuItem;
     N6: TMenuItem;
     TrayIcon: TTrayIcon;
-    Gauge1: TGauge;
-    Gauge2: TGauge;
     instantTimer: TTimer;
     N7: TMenuItem;
+    speedM: TAnalogMeter;
+    instSpeedM: TAnalogMeter;
+    N8: TMenuItem;
+    N9: TMenuItem;
     procedure exit1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -147,6 +150,8 @@ type
     procedure N5Click(Sender: TObject);
     procedure N4Click(Sender: TObject);
     procedure N7Click(Sender: TObject);
+    procedure instSpeedMChange(Sender: TObject);
+    procedure N9Click(Sender: TObject);
   private
     instantticker:word;
     function FindKey(ScanCode: string):TKey;
@@ -211,7 +216,7 @@ var dWin:Hwnd;
     //kb:Tkeyboard;
 begin
   //kb:=GetKeyboard;
-  VirtKeyboard.save(false);
+  VirtKeyboard.save(false, speedM.Tag);
   StopHook;
   dWin:=GetModuleHandle('KeyboardHook.dll');
   FreeLibrary(dWin);
@@ -234,20 +239,34 @@ end;
 
 procedure TKeyboardMap.GetPressing(var msg: TMessage);
 var st:string; ScanHex:string; _key:Tkey;
+    curspeed: word;
 begin
 
    VirtKeyboard.addPress(msg.WParam, msg.LParam);
    ScanHex:=InttoHex(msg.LParam);
    st:=string.Format('Key = %s; Letter =%s; Virtual = %s; Scan = %s',
-   [Chr(msg.WParam), VirtKeyboard.letter,
-   InttoHex(msg.WParam), ScanHex]);
-   Gauge1.progress:= statistics.instantSpeed(instantticker);
-   instantticker:=0;
+   [Chr(msg.WParam), VirtKeyboard.letter, InttoHex(msg.WParam), ScanHex]);
+   if virtkeyboard.isPressed then
+   begin
+     if instantTimer.Enabled=false then instanttimer.Enabled:=true;
+
+        //statistics.ShowStatistics(msg.WParam, FindComponent('Key'+inttostr(msg.WParam)) as TKey);
+
+     instSpeedM.Value := Statistics.instantSpeed(instantticker);
+     curspeed := round(instSpeedM.Value);
+     SpeedM.Value:=Statistics.averageSpeed(curspeed);
+     instantticker:=0;
+   end;
    Memo1.Lines.Clear;
    Memo1.Lines.Add(st);
 
    _key:=FindKey(ScanHex);
    _key.Pressed:=VirtKeyboard.isPressed;
+   if statistics.IsShowing then
+   begin
+      statistics.Init(virtKeyboard.map);
+      statistics.ShowStatistics(msg.WParam, _key);
+   end;
    if _key.Name='Key20' then  //CapsLock
       _key.Pressed:=Odd(GetKeyState(VK_CAPITAL)) else
    if _Key.Name='Key144' then
@@ -260,6 +279,18 @@ end;
 procedure TKeyboardMap.instantTimerTimer(Sender: TObject);
 begin
   inc(instantticker);
+  if instantticker>300 then instanttimer.Enabled:=false;
+
+end;
+
+procedure TKeyboardMap.instSpeedMChange(Sender: TObject);
+begin
+     with (sender as TAnalogMeter) do
+     begin
+      LowZoneValue:=Value;
+      if (value>tag) and (value<max) then tag:=round(value);
+      HighZoneValue:=tag;
+     end;
 end;
 
 procedure TKeyboardMap.Key100MouseDown(Sender: TObject; Button: TMouseButton;
@@ -304,7 +335,7 @@ end;
 
 procedure TKeyboardMap.N6Click(Sender: TObject);
 begin
-   VirtKeyboard.save(true);
+   VirtKeyboard.save(true, speedM.Tag);
 end;
 
 procedure TKeyboardMap.showStatistics;
@@ -328,6 +359,12 @@ begin
    Statistics.Init(virtKeyboard.map);
        Statistics.IsEmpty:=false;
        showStatistics;
+end;
+
+procedure TKeyboardMap.N9Click(Sender: TObject);
+begin
+     VirtKeyboard.save(false, speedM.Tag);
+     n7click(sender);
 end;
 
 procedure TKeyboardMap.TrayIconDblClick(Sender: TObject);

@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>1899.12.30 00:00:00.000.946,Z:\Программирование\repos\KeyboardSpy\ProjectGroup1.groupproj=Z:\Программирование\repos\ProjectGroup1.groupproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.946,Z:\Программирование\repos\ProjectGroup1.groupproj=Z:\Программирование\repos\KeyboardSpy\ProjectGroup1.groupproj</Transaction>
   </Transactions>
 	<Default.Personality>
-		<Projects ActiveProject="Z:\Программирование\repos\KeyboardMap\KeyboardMap.dproj"/>
+		<Projects ActiveProject="Z:\Программирование\repos\indicator.dproj"/>
 	</Default.Personality>
 </BorlandProject>
