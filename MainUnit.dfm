@@ -1,4 +1,4 @@
-object KeyboardMap: TKeyboardMap
+object KeyboardForm: TKeyboardForm
   Left = 0
   Top = 0
   Caption = 'Screen keyboard'
@@ -12,16 +12,25 @@ object KeyboardMap: TKeyboardMap
   Font.Style = []
   KeyPreview = True
   Menu = MainMenu1
+  ShowHint = True
   OnClose = FormClose
   OnCreate = FormCreate
   TextHeight = 15
+  object Shape1: TShape
+    Left = 1068
+    Top = 84
+    Width = 18
+    Height = 33
+    Hint = #1089#1073#1088#1086#1089#1080#1090#1100' '#1088#1077#1082#1086#1088#1076
+    Brush.Color = clBackground
+    Shape = stCircle
+    OnMouseDown = Shape1MouseDown
+  end
   object Memo1: TMemo
     Left = 0
     Top = 0
     Width = 506
     Height = 117
-    Lines.Strings = (
-      'Memo1')
     TabOrder = 0
   end
   object Panel1: TPanel

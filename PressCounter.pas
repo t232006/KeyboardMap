@@ -2,8 +2,9 @@ unit PressCounter;
 
 interface
 
-uses Graphics, key, sysutils, KeyboardUnit;
+uses Graphics, key, sysutils, KeyboardUnit, auxilary;
 const LO=8; //FIRST ELEMENT
+
 type
 TMyLabel = record
     Caption: string;
@@ -30,25 +31,32 @@ TStatistics = class
   n: LongWord;
   prevspeed: word;
   FisShowing: boolean;
+  FMax, FMin: word;
+  procedure GetMinMax;
   procedure SetEmpty(Value: boolean);
   function GetEmpty:boolean;
   function GetHigh:byte;
   function GetLow:byte;
   //procedure resetStatistics;
   public
+  property avSpeed: word read fpressMap[AV];
+  property recordSpeed: word read fpressMap[REC];
+  property PressCount: longword read n;
   property IsShowing: boolean read fIsShowing;
   property IsEmpty: boolean read GetEmpty write SetEmpty;
   property firstItem: byte read getLow;
   property lastItem: byte read getHigh;
+  procedure resetSpeed;
   procedure saveKey(item: byte; var MyKey: TKey);
-  procedure ShowStatistics(item: byte; var MyKey: Tkey);
+  procedure ShowStatisticsByNum(item: byte; var MyKey: Tkey);
+  procedure ShowStatisticsByGrad(item: byte; y1,y2:TColor; var MyKey: Tkey);
   procedure HideStatistics(item: byte; var MyKey: Tkey);
   procedure Init(mapPath: string); overload;
   procedure Init(Amap:TKeyboardMap); overload;
   function total: word;
   function instantSpeed(tick:word): word;
   function averageSpeed(vn:word): longword;
-  constructor Create;
+  constructor Create(An:longword; APrevSpeed: word);
   destructor Destroy;
 end;
 
@@ -60,16 +68,26 @@ function TStatistics.averageSpeed(vn: word): longword;
 begin
    inc(n);
    if n>1 then
-      prevspeed := round(prevspeed * (n-1) / n+vn / n)
+      prevspeed := round(prevspeed * (n - 1) / n + vn / n)
    else
       prevspeed := vn;
    result:= prevspeed;
 end;
 
-constructor TStatistics.Create;
+procedure TStatistics.GetMinMax;
 begin
-  n := 0;
-  prevspeed := 0;
+  FMax:=fpressmap[LO]; FMin:=fpressmap[LO];
+  for var i := Low(fpressmap) to High(fpressmap) do
+    begin
+      if (i=AV) or (i=REC) then continue;        //14 - speed!!!
+      if fpressmap[i]>FMax then FMax:=fpressmap[i];
+      if fpressmap[i]<FMin then FMin:=fpressmap[i];
+    end;
+end;
+constructor TStatistics.Create(An:longword; APrevSpeed: word);
+begin
+  n := An;
+  prevspeed := APrevSpeed;
   fkeymas[10].MidLabel.posX:=-1; //sign of empty array
 end;
 
@@ -136,6 +154,12 @@ begin
   if tick>0 then result:=6000 div tick;
 end;
 
+procedure TStatistics.resetSpeed;
+begin
+  n:=0;
+  prevspeed:=0;
+end;
+
 {
   procedure TStatistics.resetStatistics;
   begin
@@ -174,7 +198,14 @@ begin
         fkeymas[10].MidLabel.posx:=0;
 end;
 
-procedure TStatistics.ShowStatistics(item: byte; var MyKey: Tkey);
+procedure TStatistics.ShowStatisticsByGrad(item: byte; y1, y2:TColor; var MyKey: Tkey);
+begin
+   fIsShowing:=true;
+   GetMinMax;
+   MyKey.Color:=gradient(y1,y2, fmin, fmax, fpressMap[item]);
+end;
+
+procedure TStatistics.ShowStatisticsByNum(item: byte; var MyKey: Tkey);
 begin
    fIsShowing:=true;
    MyKey.MiddleText:=inttostr(fPressMap[item]);

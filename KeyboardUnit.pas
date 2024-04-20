@@ -1,9 +1,11 @@
 unit KeyboardUnit;
 
 interface
-uses Sharemem, SysUtils, windows, messages;
+uses Sharemem, SysUtils, windows, messages, inifiles;
 const WM_MYKEYPRESS = WM_USER+136;
       LO=8;
+      AV=14;
+      REC=17;
 type
 TKeyboardMap=array[LO..222] of word;
 
@@ -13,13 +15,15 @@ TKeyboard=class
     Flog, Ftext:string;
     Fletter:char;
     FisPressed:boolean;
+
     fPath: string;
+
     procedure SaveText(filename, sometext:string);
     procedure SaveMap(filename:string);
     procedure CleanMap(var temp:TKeyboardMap);
    public
      procedure addPress(ws:word; ls: longint);
-     procedure save(newFile:boolean; avSpeed:word);
+     procedure save(newFile:boolean; avSpeed, recSpeed:word);
      property map:TKeyboardMap read Fmap;
      property isPressed:boolean read FisPressed;
      property letter:char read Fletter;
@@ -111,14 +115,15 @@ begin
        inc(fmap[i],tempmap[i]);
        Write(f, fmap[i]);
      end;
-   fmap[14]:=fmap[14] div 2;
+   if tempmap[AV]>0 then      //don't average if write only
+      fmap[AV]:=fmap[AV] div 2;
    seek(f,6);
-   write(f,fmap[14]);
+   write(f,fmap[AV]);
    closefile(f);
 
 end;
 
-procedure TKeyboard.save(newFile: boolean; avSpeed:word);
+procedure TKeyboard.save(newFile: boolean; avSpeed, recSpeed:word);
 //=============================
     function GetLastFile:string;
     var sr: TSearchRec;
@@ -153,6 +158,7 @@ procedure TKeyboard.save(newFile: boolean; avSpeed:word);
  //=============================
 
 var textname, logname, mapname: string;
+   // savespeed: TInifile;
 begin
     textname:=fPath+'\text.txt' ;
     logname:=fPath+'\log.txt';
@@ -162,7 +168,11 @@ begin
       mapname:=GetLastFile;
     savetext(logname,flog);
     savetext(textname, ftext);
-    Fmap[14]:=avSpeed;
+
+    Fmap[AV]:=avSpeed;
+    Fmap[REC]:=recSpeed;
+
+
     savemap(mapname);
 end;
 

@@ -5,12 +5,12 @@ interface
 uses
   Sharemem, Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.AppEvnts,
-  Vcl.Menus, KeyboardUnit, Key, SendKeyPressProc, FilesListUnit, PressCounter,
+  Vcl.Menus, KeyboardUnit, Key, SendKeyPressProc, StatisticsOptions, PressCounter,
   Vcl.ToolWin, Vcl.ActnMan, Vcl.ActnCtrls, Vcl.ActnMenus, System.Actions,
-  Vcl.ActnList, Vcl.PlatformDefaultStyleActnCtrls, Vcl.Samples.Gauges,
+  Vcl.ActnList, Vcl.PlatformDefaultStyleActnCtrls, IniFiles,
   AnalogMeter;
 type
-  TKeyboardMap = class(TForm)
+  TKeyboardForm = class(TForm)
     Memo1: TMemo;
     ApplicationEvents1: TApplicationEvents;
     TrayMenu: TPopupMenu;
@@ -135,6 +135,7 @@ type
     instSpeedM: TAnalogMeter;
     N8: TMenuItem;
     N9: TMenuItem;
+    Shape1: TShape;
     procedure exit1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -152,19 +153,22 @@ type
     procedure N7Click(Sender: TObject);
     procedure instSpeedMChange(Sender: TObject);
     procedure N9Click(Sender: TObject);
+    procedure Shape1MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
   private
     instantticker:word;
     function FindKey(ScanCode: string):TKey;
     procedure showStatistics;
   public
     MapFile: string;
+    sh1, sh2: TColor;
   end;
   procedure RunHook stdcall; external 'KeyboardHook.dll';
   procedure StopHook; stdcall; external 'KeyboardHook.dll';
   //function GetKeyboard: TKeyboard stdcall; external 'KeyboardHook.dll';
 
 var
-  Keyboard: TKeyboardMap;
+  Keyboard: TKeyboardForm;
   Statistics: TStatistics;
   VirtKeyboard: TKeyboard;
   hwin: Hwnd;
@@ -180,7 +184,7 @@ begin
 end;}
 
 
-procedure TKeyboardMap.ApplicationEvents1Minimize(Sender: TObject);
+procedure TKeyboardForm.ApplicationEvents1Minimize(Sender: TObject);
 begin
   WindowState:=wsMinimized;
   TrayIcon.Visible := True;
@@ -188,12 +192,12 @@ begin
   TrayIcon.ShowBalloonHint;
 end;
 
-procedure TKeyboardMap.exit1Click(Sender: TObject);
+procedure TKeyboardForm.exit1Click(Sender: TObject);
 begin
   close;
 end;
 
-function TKeyboardMap.FindKey(ScanCode: string): TKey;
+function TKeyboardForm.FindKey(ScanCode: string): TKey;
 var k, i:byte;  key:TKey;
 begin
    for k := 1 to 222 do
@@ -211,12 +215,18 @@ begin
 
 end;
 
-procedure TKeyboardMap.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TKeyboardForm.FormClose(Sender: TObject; var Action: TCloseAction);
 var dWin:Hwnd;
     //kb:Tkeyboard;
+    savespeed:TIniFile;
 begin
   //kb:=GetKeyboard;
-  VirtKeyboard.save(false, speedM.Tag);
+  VirtKeyboard.save(false, round(speedM.Value), speedM.Tag);
+  savespeed:=Tinifile.Create(ExtractFileDir(Paramstr(0))+'\params.ini');
+  savespeed.WriteInteger('Speeds','averageSpeed',round(speedM.Value));
+  savespeed.WriteInteger('Speeds','recordSpeed',speedM.Tag);
+  savespeed.WriteInteger('Speeds','count', statistics.PressCount);
+  savespeed.Destroy;
   StopHook;
   dWin:=GetModuleHandle('KeyboardHook.dll');
   FreeLibrary(dWin);
@@ -226,18 +236,25 @@ begin
 
 end;
 
-procedure TKeyboardMap.FormCreate(Sender: TObject);
+procedure TKeyboardForm.FormCreate(Sender: TObject);
+var loadspeed:TIniFile;   n:longword;
 begin
   RunHook;
   instantticker:=0;
   VirtKeyboard:=TKeyboard.create;
-  Statistics:= TStatistics.Create;
+
   Key20.Pressed:=Odd(GetKeyState(VK_CAPITAL));
   Key144.Pressed:=Odd(GetKeyState(VK_NUMLOCK));
   Key145.Pressed:=Odd(GetKeyState(VK_SCROLL));
+  loadspeed:=TIniFile.Create(ExtractFileDir(Paramstr(0))+'\params.ini');
+  SpeedM.Value:= loadspeed.ReadInteger('Speeds', 'averageSpeed', 0);
+  SpeedM.HighZoneValue:=loadspeed.ReadInteger('Speeds', 'recordSpeed', 0);
+  n:=loadspeed.ReadInteger('Speeds', 'count', 0);
+  Statistics:= TStatistics.Create(n, round(speedM.Value));
+  loadspeed.Destroy;
 end;
 
-procedure TKeyboardMap.GetPressing(var msg: TMessage);
+procedure TKeyboardForm.GetPressing(var msg: TMessage);
 var st:string; ScanHex:string; _key:Tkey;
     curspeed: word;
 begin
@@ -246,26 +263,34 @@ begin
    ScanHex:=InttoHex(msg.LParam);
    st:=string.Format('Key = %s; Letter =%s; Virtual = %s; Scan = %s',
    [Chr(msg.WParam), VirtKeyboard.letter, InttoHex(msg.WParam), ScanHex]);
-   if virtkeyboard.isPressed then
-   begin
-     if instantTimer.Enabled=false then instanttimer.Enabled:=true;
-
-        //statistics.ShowStatistics(msg.WParam, FindComponent('Key'+inttostr(msg.WParam)) as TKey);
-
-     instSpeedM.Value := Statistics.instantSpeed(instantticker);
-     curspeed := round(instSpeedM.Value);
-     SpeedM.Value:=Statistics.averageSpeed(curspeed);
-     instantticker:=0;
-   end;
-   Memo1.Lines.Clear;
-   Memo1.Lines.Add(st);
+   //Memo1.Lines.Clear;
+   //Memo1.Lines.Add(st);
 
    _key:=FindKey(ScanHex);
    _key.Pressed:=VirtKeyboard.isPressed;
+
+   if virtkeyboard.isPressed then
+   begin
+     if instantTimer.Enabled=false then instanttimer.Enabled:=true;
+     instSpeedM.Value := Statistics.instantSpeed(instantticker);
+     if (_key.KeyType<>ktScroll) and
+        (_key.KeyType<>ktSticked) and
+        (_key.KeyType<>ktFunc)
+      then   //don't count arrows and scroll, functions, shift and other
+     begin
+       curspeed := round(instSpeedM.Value);
+       SpeedM.Value:=Statistics.averageSpeed(curspeed);
+       instantticker:=0;
+       memo1.Lines.Add(floattostr(SpeedM.Value));
+     end;
+   end;
    if statistics.IsShowing then
    begin
       statistics.Init(virtKeyboard.map);
-      statistics.ShowStatistics(msg.WParam, _key);
+      if sh1=sh2 then
+        statistics.ShowStatisticsbyNum(msg.WParam, _key)
+      else
+        statistics.ShowStatisticsbyGrad(msg.WParam, sh1, sh2, _key) ;
    end;
    if _key.Name='Key20' then  //CapsLock
       _key.Pressed:=Odd(GetKeyState(VK_CAPITAL)) else
@@ -275,25 +300,25 @@ begin
       _key.Pressed:= Odd(GetKeyState(VK_SCROLL));
 
 end;
-
-procedure TKeyboardMap.instantTimerTimer(Sender: TObject);
+{$REGION 'MyRegion'}
+procedure TKeyboardForm.instantTimerTimer(Sender: TObject);
 begin
   inc(instantticker);
   if instantticker>300 then instanttimer.Enabled:=false;
 
 end;
 
-procedure TKeyboardMap.instSpeedMChange(Sender: TObject);
+procedure TKeyboardForm.instSpeedMChange(Sender: TObject);
 begin
      with (sender as TAnalogMeter) do
      begin
-      LowZoneValue:=Value;
+      LowZoneValue:=Value-10;
       if (value>tag) and (value<max) then tag:=round(value);
       HighZoneValue:=tag;
      end;
 end;
 
-procedure TKeyboardMap.Key100MouseDown(Sender: TObject; Button: TMouseButton;
+procedure TKeyboardForm.Key100MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 var ShiftDown: boolean;
   begin
@@ -302,86 +327,106 @@ var ShiftDown: boolean;
 
   end;
 
-procedure TKeyboardMap.N4Click(Sender: TObject);
-var
-    tempKey: TKey;
-begin
-     form2.showmodal;
-     if mapFile<>'' then
+
+  procedure TKeyboardForm.N4Click(Sender: TObject);  //open statistics...
+  var
+      tempKey: TKey;
+  begin
+       form2.showmodal;
+       if mapFile<>'' then
+       begin
+         mapFile:=ExtractFileDir( Paramstr(0))+'\maps\'+mapFile;
+         Statistics.Init(mapFile);
+         Statistics.IsEmpty:=false;
+         showStatistics;
+       end;
+       speedM.Value:=statistics.avSpeed;
+       speedM.HighZoneValue:=statistics.recordSpeed;
+  end;
+
+  procedure TKeyboardForm.N5Click(Sender: TObject);  //close statistics
+  var tempKey: TKey;
+  begin
+     if Statistics.IsEmpty=false then
      begin
-       mapFile:=ExtractFileDir( Paramstr(0))+'\maps\'+mapFile;
-       Statistics.Init(mapFile);
-       Statistics.IsEmpty:=false;
-       showStatistics;
+
+       for var i := Statistics.firstItem to Statistics.lastItem do
+         begin
+            tempKey:=FindComponent('Key'+inttostr(i)) as TKey;
+            if tempKey=nil then continue;
+            Statistics.HideStatistics(i, tempKey);
+         end;
+       Statistics.IsEmpty:=true;
+       n5.Enabled:=false;
      end;
-end;
+  end;
 
-procedure TKeyboardMap.N5Click(Sender: TObject);
-var tempKey: TKey;
+  procedure TKeyboardForm.N6Click(Sender: TObject);
+  begin
+     VirtKeyboard.save(true, round(speedM.Value), speedM.Tag);  //save current session
+     MessageDlg('Статистика сохранена', TMsgDlgType.mtInformation, [mbOK], 0);
+  end;
+
+  procedure TKeyboardForm.showStatistics;
+  var tempKey: TKey;
+  begin
+    for var i := Statistics.firstItem to Statistics.lastItem do
+         begin
+           tempKey:=FindComponent('Key'+inttostr(i)) as TKey;
+           if tempKey=nil then continue;
+           Statistics.saveKey(i, tempKey);
+           if sh1=sh2 then //sh1=sh2 - numbers else gradient
+            Statistics.ShowStatisticsByNum(i, tempKey)
+           else
+            Statistics.ShowStatisticsByGrad(i,sh1,sh2, tempKey );
+           n5.Enabled:=true;
+         end;
+
+  end;
+
+  procedure TKeyboardForm.N7Click(Sender: TObject);   //curent session's stat
+  var
+      tempKey: TKey;
+  begin
+     Statistics.Init(virtKeyboard.map);
+         Statistics.IsEmpty:=false;
+         showStatistics;
+  end;
+
+  procedure TKeyboardForm.N9Click(Sender: TObject);  //statistics summary
+  begin
+       VirtKeyboard.save(false, round(speedM.Value), speedM.Tag);
+       n7click(sender);
+  end;
+
+procedure TKeyboardForm.Shape1MouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
 begin
-   if Statistics.IsEmpty=false then
-   begin
-
-     for var i := Statistics.firstItem to Statistics.lastItem do
-       begin
-          tempKey:=FindComponent('Key'+inttostr(i)) as TKey;
-          if tempKey=nil then continue;
-          Statistics.HideStatistics(i, tempKey);
-       end;
-     Statistics.IsEmpty:=true;
-     n5.Enabled:=false;
-   end;
+if MessageDlg('Стереть рекорд и среднюю скорость?', TMsgDlgType.mtConfirmation,mbYesNo,0)=mrYes
+  then
+  begin
+    Statistics.resetSpeed;
+    speedM.Tag:=0;
+    speedM.Value:=0;
+  end;
 end;
 
-procedure TKeyboardMap.N6Click(Sender: TObject);
-begin
-   VirtKeyboard.save(true, speedM.Tag);
-end;
+procedure TKeyboardForm.TrayIconDblClick(Sender: TObject);
+  begin
+     TrayIcon.Visible := False;
+    Show();
+    WindowState := wsNormal;
+    Application.BringToFront();
+  end;
 
-procedure TKeyboardMap.showStatistics;
-var tempKey: TKey;
-begin
-  for var i := Statistics.firstItem to Statistics.lastItem do
-       begin
-         tempKey:=FindComponent('Key'+inttostr(i)) as TKey;
-         if tempKey=nil then continue;
-         Statistics.saveKey(i, tempKey);
-         Statistics.ShowStatistics(i, tempKey);
-         n5.Enabled:=true;
-       end;
-end;
+  procedure TKeyboardForm.WinMonitorTimer(Sender: TObject);
+  var temp:hWnd;
+  begin
+      temp:=GetForegroundWindow;
+      if temp<>self.Handle then
+        hWin:=temp;
 
+  end;
 
-procedure TKeyboardMap.N7Click(Sender: TObject);
-var
-    tempKey: TKey;
-begin
-   Statistics.Init(virtKeyboard.map);
-       Statistics.IsEmpty:=false;
-       showStatistics;
-end;
-
-procedure TKeyboardMap.N9Click(Sender: TObject);
-begin
-     VirtKeyboard.save(false, speedM.Tag);
-     n7click(sender);
-end;
-
-procedure TKeyboardMap.TrayIconDblClick(Sender: TObject);
-begin
-   TrayIcon.Visible := False;
-  Show();
-  WindowState := wsNormal;
-  Application.BringToFront();
-end;
-
-procedure TKeyboardMap.WinMonitorTimer(Sender: TObject);
-var temp:hWnd;
-begin
-    temp:=GetForegroundWindow;
-    if temp<>self.Handle then
-      hWin:=temp;
-
-end;
-
+{$ENDREGION}
 end.
