@@ -186,6 +186,7 @@ begin
       //DownLabel.PosX:=MyKey.DownPosX;
       UpText:='';
       DownText:='';
+      MiddleText:='';
       HidePicture:=true;
       Mykey.active:=false;
     end;

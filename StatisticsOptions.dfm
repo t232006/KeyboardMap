@@ -31,6 +31,20 @@ object Form2: TForm2
     Shape = stRoundRect
     OnMouseDown = Shape1MouseDown
   end
+  object Label1: TLabel
+    Left = 232
+    Top = 16
+    Width = 56
+    Height = 15
+    Caption = #1052#1080#1085#1080#1084#1091#1084
+  end
+  object Label2: TLabel
+    Left = 344
+    Top = 16
+    Width = 60
+    Height = 15
+    Caption = #1052#1072#1082#1089#1080#1084#1091#1084
+  end
   object FilesList: TListBox
     Left = 0
     Top = 0
@@ -59,7 +73,7 @@ object Form2: TForm2
     Height = 20
     DisabledColor = clHighlight
     FrameColor = clHighlight
-    StateCaptions.CaptionOn = #1095#1080#1089#1083#1086
+    StateCaptions.CaptionOn = #1095#1080#1089#1083#1072
     StateCaptions.CaptionOff = #1075#1088#1072#1076#1080#1077#1085#1090
     TabOrder = 2
     ThumbColor = clHotLight

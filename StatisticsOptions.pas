@@ -15,6 +15,8 @@ type
     Shape2: TShape;
     ColorDialog1: TColorDialog;
     ToggleSwitch1: TToggleSwitch;
+    Label1: TLabel;
+    Label2: TLabel;
     procedure BitBtn1Click(Sender: TObject);
     procedure Shape1MouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
@@ -88,7 +90,7 @@ end;
 
 procedure TForm2.ToggleSwitch1Click(Sender: TObject);
 begin
-    if ToggleSwitch1.State=tssOff then
+    if ToggleSwitch1.State=tssOn then
     begin
       shape1.Enabled:=false;
       shape2.Enabled:=false;
