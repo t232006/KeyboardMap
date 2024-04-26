@@ -1,0 +1,43 @@
+unit Language;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,
+  Vcl.WinXCtrls;
+
+type
+  TForm1 = class(TForm)
+    Extender: TToggleSwitch;
+    hotKeyInd: TRadioGroup;
+    Button1: TButton;
+    procedure hotKeyIndClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    scanCode: string;
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm1.hotKeyIndClick(Sender: TObject);
+begin
+  case HotKeyInd.ItemIndex of
+  1: if extender.State=tssOff then scanCode:='21380001' else scanCode:='20380001';
+  2: if extender.State=tssOff then scanCode:='011D0001' else scanCode:='001D0001';
+  3: if extender.State=tssOff then scanCode:='00360001' else scanCode:='002A0001';
+  4: if extender.State=tssOff then scanCode:='011C0001' else scanCode:='001C0001';
+else scanCode:='';
+
+
+
+  end;
+end;
+
+end.

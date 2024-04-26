@@ -1,0 +1,72 @@
+unit Language;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,
+  Vcl.WinXCtrls, inifiles, filemapping;
+
+type
+  TLangForm = class(TForm)
+    Extender: TToggleSwitch;
+    hotKeyInd: TRadioGroup;
+    Button1: TButton;
+    procedure hotKeyIndClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+  private
+    { Private declarations }
+  public
+
+  end;
+
+var
+  LangForm: TLangForm;
+
+implementation
+
+{$R *.dfm}
+function Ifthen(pred:boolean; a,b:byte):byte;
+begin
+  if pred then result:=a else result:=b;
+end;
+
+procedure TLangForm.FormClose(Sender: TObject; var Action: TCloseAction);
+var params: TIniFile;
+begin
+    params:=TIniFile.Create(ExtractFileDir(Paramstr(0))+'\params.ini');
+    params.WriteInteger('HotKeys','Key',DataArea^.key);
+    params.WriteInteger('HotKeys','Ext',DataArea^.exKey);
+    params.Destroy;
+end;
+
+procedure TLangForm.hotKeyIndClick(Sender: TObject);
+begin
+  case HotKeyInd.ItemIndex of
+  1: begin
+        DataArea^.key:=$38;
+        DataArea^.exKey:=ifthen(Extender.State=tssOff, $21, $20);
+      end;
+  2:  begin
+        DataArea^.key:=$1D;
+        DataArea^.ExKey:=ifthen(Extender.State=tssOff, 1, 0);
+      end;
+  3:  begin
+        if Extender.State=tssOff then
+          DataArea^.key:=$5B else DataArea^.key:=$5C;
+        DataArea^.ExKey:=1;
+      end;
+  4:  begin
+        DataArea^.key:=$1C;
+        DataArea^.ExKey:=ifthen(Extender.State=tssOff, 1, 0);
+      end;
+  else DataArea^.key:=0;
+
+
+
+
+
+  end;
+end;
+
+end.

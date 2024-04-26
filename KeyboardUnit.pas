@@ -2,7 +2,8 @@ unit KeyboardUnit;
 
 interface
 uses Sharemem, SysUtils, windows, messages, inifiles;
-const WM_MYKEYPRESS = WM_USER+136;
+const WM_MYKEYPRESS = WM_USER+$0400+10;
+      WM_CHANGELANG = WM_USER+$115+15;
       LO=8;
       AV=14;
       REC=17;

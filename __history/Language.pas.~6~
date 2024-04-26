@@ -1,0 +1,55 @@
+unit Language;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,
+  Vcl.WinXCtrls, inifiles, filemapping;
+
+type
+  TLangForm = class(TForm)
+    Extender: TToggleSwitch;
+    hotKeyInd: TRadioGroup;
+    Button1: TButton;
+    procedure hotKeyIndClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+  private
+    { Private declarations }
+  public
+
+  end;
+
+var
+  LangForm: TLangForm;
+
+implementation
+
+{$R *.dfm}
+
+procedure TLangForm.FormClose(Sender: TObject; var Action: TCloseAction);
+var params: TIniFile;
+begin
+    params:=TIniFile.Create(ExtractFileDir(Paramstr(0))+'\params.ini');
+    params.WriteInteger('HotKeys','Key',DataArea^.key);
+    params.WriteInteger('HotKeys','Ext',DataArea^.exKey);
+    params.Destroy;
+end;
+
+procedure TLangForm.hotKeyIndClick(Sender: TObject);
+begin
+  case HotKeyInd.ItemIndex of
+  1: DataArea^.key:=$38;
+  2: DataArea^.key:=$1D;
+  3: DataArea^.key:=$36;
+  4: DataArea^.key:=$1C;
+  else DataArea^.key:=0;
+  if Extender.State=tssOff then DataArea^.exKey:=1 else DataArea^.exKey:=0;
+
+
+
+
+  end;
+end;
+
+end.

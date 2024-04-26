@@ -8,7 +8,7 @@ uses
   Vcl.Menus, KeyboardUnit, Key, SendKeyPressProc, StatisticsOptions, PressCounter,
   Vcl.ToolWin, Vcl.ActnMan, Vcl.ActnCtrls, Vcl.ActnMenus, System.Actions,
   Vcl.ActnList, Vcl.PlatformDefaultStyleActnCtrls, IniFiles,
-  AnalogMeter;
+  AnalogMeter, FileMapping, Language;
 type
   TKeyboardForm = class(TForm)
     Memo1: TMemo;
@@ -136,10 +136,15 @@ type
     N8: TMenuItem;
     N9: TMenuItem;
     Shape1: TShape;
+    N10: TMenuItem;
+    N11: TMenuItem;
+    N12: TMenuItem;
+    N13: TMenuItem;
     procedure exit1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure GetPressing(var msg: TMessage); message $0400+10;
+    procedure GetPressing(var msg: TMessage); message WM_MYKEYPRESS;
+    procedure LayoutChange(var msg: TMessage); message WM_CHANGELANG;
     procedure WinMonitorTimer(Sender: TObject);
     procedure Key100MouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
@@ -155,6 +160,7 @@ type
     procedure N9Click(Sender: TObject);
     procedure Shape1MouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
+    procedure N10Click(Sender: TObject);
   private
     instantticker:word;
     function FindKey(ScanCode: string):TKey;
@@ -168,7 +174,7 @@ type
   //function GetKeyboard: TKeyboard stdcall; external 'KeyboardHook.dll';
 
 var
-  Keyboard: TKeyboardForm;
+  KeyboardForm: TKeyboardForm;
   Statistics: TStatistics;
   VirtKeyboard: TKeyboard;
   hwin: Hwnd;
@@ -237,21 +243,27 @@ begin
 end;
 
 procedure TKeyboardForm.FormCreate(Sender: TObject);
-var loadspeed:TIniFile;   n:longword;
+var loadparams:TIniFile;   n:longword;
 begin
-  RunHook;
+
   instantticker:=0;
   VirtKeyboard:=TKeyboard.create;
 
   Key20.Pressed:=Odd(GetKeyState(VK_CAPITAL));
   Key144.Pressed:=Odd(GetKeyState(VK_NUMLOCK));
   Key145.Pressed:=Odd(GetKeyState(VK_SCROLL));
-  loadspeed:=TIniFile.Create(ExtractFileDir(Paramstr(0))+'\params.ini');
-  SpeedM.Value:= loadspeed.ReadInteger('Speeds', 'averageSpeed', 0);
-  SpeedM.HighZoneValue:=loadspeed.ReadInteger('Speeds', 'recordSpeed', 0);
-  n:=loadspeed.ReadInteger('Speeds', 'count', 0);
+  loadparams:=TIniFile.Create(ExtractFileDir(Paramstr(0))+'\params.ini');
+  SpeedM.Value:= loadparams.ReadInteger('Speeds', 'averageSpeed', 0);
+  SpeedM.HighZoneValue:=loadparams.ReadInteger('Speeds', 'recordSpeed', 0);
+  n:=loadparams.ReadInteger('Speeds', 'count', 0);
   Statistics:= TStatistics.Create(n, round(speedM.Value));
-  loadspeed.Destroy;
+
+  FillChar(DataArea^, SizeOf(DataArea^), 0);
+  DataArea^.FormHandle:=self.Handle;
+  DataArea^.key:=loadparams.ReadInteger('HotKeys', 'Key', 0);
+  DataArea^.ExKey:=loadparams.ReadInteger('HotKeys', 'Ext', 0);
+  RunHook;
+  loadparams.Destroy;
 end;
 
 procedure TKeyboardForm.GetPressing(var msg: TMessage);
@@ -263,8 +275,8 @@ begin
    ScanHex:=InttoHex(msg.LParam);
    st:=string.Format('Key = %s; Letter =%s; Virtual = %s; Scan = %s',
    [Chr(msg.WParam), VirtKeyboard.letter, InttoHex(msg.WParam), ScanHex]);
-   //Memo1.Lines.Clear;
-   //Memo1.Lines.Add(st);
+   Memo1.Lines.Clear;
+   Memo1.Lines.Add(st);
 
    _key:=FindKey(ScanHex);
    _key.Pressed:=VirtKeyboard.isPressed;
@@ -281,7 +293,7 @@ begin
        curspeed := round(instSpeedM.Value);
        SpeedM.Value:=Statistics.averageSpeed(curspeed);
        instantticker:=0;
-       memo1.Lines.Add(floattostr(SpeedM.Value));
+       //memo1.Lines.Add(floattostr(SpeedM.Value));
      end;
    end;
    if statistics.IsShowing then
@@ -298,8 +310,9 @@ begin
       _key.Pressed:=Odd(GetKeyState(VK_NUMLOCK)) else
    if _key.Name='Key145' then
       _key.Pressed:= Odd(GetKeyState(VK_SCROLL));
-
 end;
+
+
 {$REGION 'MyRegion'}
 procedure TKeyboardForm.instantTimerTimer(Sender: TObject);
 begin
@@ -328,7 +341,23 @@ var ShiftDown: boolean;
   end;
 
 
-  procedure TKeyboardForm.N4Click(Sender: TObject);  //open statistics...
+  procedure TKeyboardForm.LayoutChange(var msg: TMessage);
+begin
+  if (DataArea^.key=$38) and (DataArea^.ExKey=$20) then
+    LayoutChangeCtrl else
+  if (DataArea^.key=$1D) and (DataArea^.ExKey=0) then
+    LayoutChangeAlt else
+  begin
+      LayoutChangeCtrl ; LayoutChangeAlt
+  end;
+end;
+
+procedure TKeyboardForm.N10Click(Sender: TObject);
+begin
+    langForm.ShowModal;
+end;
+
+procedure TKeyboardForm.N4Click(Sender: TObject);  //open statistics...
   var
       tempKey: TKey;
   begin

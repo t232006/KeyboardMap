@@ -104,6 +104,8 @@
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
+        <VerInfo_MinorVer>2</VerInfo_MinorVer>
+        <VerInfo_Keys>CompanyName=Zharkov Lab;FileDescription=$(MSBuildProjectName);FileVersion=1.2.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
@@ -126,16 +128,17 @@
         </DelphiCompile>
         <DCCReference Include="MainUnit.pas">
             <Form>KeyboardForm</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="SendKeyPressProc.pas"/>
         <DCCReference Include="StatisticsOptions.pas">
             <Form>Form2</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="PressCounter.pas"/>
         <DCCReference Include="components\AnalogMeter.pas"/>
         <DCCReference Include="auxilary.pas"/>
+        <DCCReference Include="Language.pas">
+            <Form>LangForm</Form>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

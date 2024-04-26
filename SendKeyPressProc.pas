@@ -9,9 +9,28 @@ procedure SendKeyUp(Key: WideChar); overload;
 procedure SendKeyDown(Key: integer); overload;
 procedure SendKeyUp(Key: integer); overload;
 procedure KeyClick(But: TKey; ShiftDown: boolean);
+procedure LayoutChangeCtrl;
+procedure LayoutChangeAlt;
 
 implementation
 uses MainUnit;
+
+procedure LayoutChangeCtrl;
+ begin
+  keybd_event(VK_SHIFT,$2a,0,0); {<Ctrl>+<Shift>}
+  keybd_event(VK_CONTROL,$1d,0,0);
+  keybd_event(VK_CONTROL,$1d,KEYEVENTF_KEYUP,0);
+  keybd_event(VK_SHIFT,$2a,KEYEVENTF_KEYUP,0);
+end;
+
+procedure LayoutChangeAlt;
+begin
+  keybd_event(VK_MENU,$38,0,0); {<Alt>+<Shift>}
+  keybd_event(VK_SHIFT,$2a,0,0);
+  keybd_event(VK_SHIFT,$2a,KEYEVENTF_KEYUP,0);
+  keybd_event(VK_MENU,$38,KEYEVENTF_KEYUP,0);
+end;
+
 
 procedure SendKeyDown(Key: WideChar);
 var

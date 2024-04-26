@@ -40,9 +40,9 @@ implementation
 procedure TForm2.BitBtn1Click(Sender: TObject);
 begin
    if fileslist.ItemIndex>-1 then
-   Keyboard.mapfile:=fileslist.items[fileslist.itemindex];
-   Keyboard.sh1:=shape1.Brush.Color;
-   Keyboard.sh2:=shape2.Brush.Color;
+   KeyboardForm.mapfile:=fileslist.items[fileslist.itemindex];
+   KeyboardForm.sh1:=shape1.Brush.Color;
+   KeyboardForm.sh2:=shape2.Brush.Color;
    close;
 end;
 
