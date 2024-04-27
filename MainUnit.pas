@@ -161,6 +161,7 @@ type
     procedure Shape1MouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     procedure N10Click(Sender: TObject);
+    procedure CreateParams(var AParams: TCreateParams); override;
   private
     instantticker:word;
     function FindKey(ScanCode: string):TKey;
@@ -182,13 +183,12 @@ implementation
 
 {$R *.dfm}
 
-{procedure TForm1.CreateParams(var AParams: TCreateParams);
+procedure TKeyboardForm.CreateParams(var AParams: TCreateParams);
 begin
   inherited CreateParams(AParams);
   AParams.ExStyle:=AParams.ExStyle or WS_EX_NOACTIVATE;
 
-end;}
-
+end;
 
 procedure TKeyboardForm.ApplicationEvents1Minimize(Sender: TObject);
 begin

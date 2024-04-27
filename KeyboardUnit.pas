@@ -1,7 +1,8 @@
 unit KeyboardUnit;
 
 interface
-uses Sharemem, SysUtils, windows, messages, inifiles;
+uses Sharemem, SysUtils, windows, messages, inifiles,
+    System.Generics.Collections;
 const WM_MYKEYPRESS = WM_USER+$0400+10;
       WM_CHANGELANG = WM_USER+$115+15;
       LO=8;
@@ -18,10 +19,11 @@ TKeyboard=class
     FisPressed:boolean;
 
     fPath: string;
-
+    FScans: TDictionary<string, string>;
     procedure SaveText(filename, sometext:string);
     procedure SaveMap(filename:string);
     procedure CleanMap(var temp:TKeyboardMap);
+    procedure LoadScans;
    public
      procedure addPress(ws:word; ls: longint);
      procedure save(newFile:boolean; avSpeed, recSpeed:word);
@@ -41,7 +43,7 @@ begin
 end;
 
 procedure TKeyboard.addPress(ws:word; ls: longint);
-var ss:string;
+var button, Scancode, ss:string;
     myHKL: HKL;
     KS: TKeyboardState;
     SC: integer;
@@ -52,17 +54,19 @@ begin
     GetKeyboardState(KS);
     ToUnicodeEx(WS, SC, KS, @fletter, sizeof(fletter), 0, MyHKL);
    if byte(LS shr 24)<$80 then fisPressed:=true else fisPressed:=false;
-
+   scancode:=IntToHex(ls);
+   FScans.TryGetValue(scancode, button);
    ss:=string.Format('Key = %s; Letter = %s; Scan = %s; %s; Time: %s; %s',
-   [Chr(ws), fletter, IntToHex(ls), IfThen(isPressed,'Down',' Up '), TimeToStr(now), chr(13)]);
+   [button, fletter, scancode, IfThen(isPressed,'Down',' Up '), TimeToStr(now), chr(13)]);
    //if evenbit then
    begin
      Flog:=Flog+ss;
      if isPressed and (ws <= high(fmap)) then
      begin
         inc(Fmap[ws]);
-        //if ord(letter)<>0 then
-        Ftext:=Ftext+fletter;
+        if ord(letter)<>0 then
+        Ftext:=Ftext+fletter else
+        Ftext:=Ftext+button;
      end;
    end;
 end;
@@ -71,7 +75,25 @@ constructor TKeyboard.create;
 begin
   cleanMap(FMap);
   fPath:=ExtractFileDir( Paramstr(0));
-  //_WM_MYKEYPRESS:=RegisterWindowMessage('{3998262C-C7A6-43AC-8392-B6293EE0488C}');
+  FScans:=TDictionary<string,string>.create;
+  LoadScans;
+end;
+
+procedure TKeyboard.LoadScans;
+var t:textfile; scancode, button, s :string;
+begin
+   s:=ExtractFileDir( Paramstr(0))+'\Auxilary\Scans.dict';
+   assignfile(t,s);
+   reset(t);
+   while not(eof(t)) do
+   begin
+     readln(t,s);
+     scancode:=copy(s,1,8); delete(s,1,9);
+     button:=trimright(s);
+     FScans.Add(scancode,button);
+   end;
+   closefile(t);
+
 end;
 
 procedure TKeyboard.savetext(filename, sometext:string);

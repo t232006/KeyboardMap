@@ -16,22 +16,20 @@ begin
   if code<0 then result:=CallNexthookEx(DataArea^.HandleKey, code, WParam, LParam) else
   //if code=0 then
   PostMessage(DataArea^.FormHandle, WM_MYKEYPRESS, WParam, LParam);
-  begin
-    if byte(LParam shr 24)<$80 then
-    begin
-      if byte(LParam shr 16)= DataArea^.key then
-      if byte(LParam shr 24)= DataArea^.ExKey then
-      begin
-        sleep(400);
-        SendMessage(DataArea^.FormHandle, WM_CHANGELANG, WParam, LParam);
-        //PostMessage(DataArea^.FormHandle, WM_MYKEYPRESS, WParam, LParam);
-        result:=1;
-        exit;        //to not pass further
-      end;
-    end;
 
-    result:=CallNexthookEx(DataArea^.HandleKey, code, WParam, LParam);
+  if byte(LParam shr 16)= DataArea^.key then
+  if byte(LParam shr 24)= DataArea^.ExKey then
+  if byte(LParam shr 24)<$80 then
+  begin
+    sleep(400);
+    SendMessage(DataArea^.FormHandle, WM_CHANGELANG, WParam, LParam);
+    //PostMessage(DataArea^.FormHandle, WM_MYKEYPRESS, WParam, LParam);
+    result:=1;
+    exit;        //to not pass further
   end;
+
+  result:=CallNexthookEx(DataArea^.HandleKey, code, WParam, LParam);
+
 end;
 
 {function LangProc (Code: Integer; wParam: wParam; lParam: lParam):Longint; stdcall;

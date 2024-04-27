@@ -1,6 +1,8 @@
 object KeyboardForm: TKeyboardForm
   Left = 0
   Top = 0
+  BorderIcons = [biSystemMenu, biMinimize]
+  BorderStyle = bsSingle
   Caption = 'Screen keyboard'
   ClientHeight = 447
   ClientWidth = 1094
@@ -10,7 +12,6 @@ object KeyboardForm: TKeyboardForm
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
-  KeyPreview = True
   Menu = MainMenu1
   ShowHint = True
   OnClose = FormClose
@@ -31,7 +32,11 @@ object KeyboardForm: TKeyboardForm
     Top = 0
     Width = 506
     Height = 117
+    TabStop = False
+    Enabled = False
+    HideSelection = False
     TabOrder = 0
+    WantReturns = False
   end
   object Panel1: TPanel
     Left = 0
@@ -9201,7 +9206,7 @@ object KeyboardForm: TKeyboardForm
   end
   object ApplicationEvents1: TApplicationEvents
     OnMinimize = ApplicationEvents1Minimize
-    Left = 120
+    Left = 184
     Top = 40
   end
   object TrayMenu: TPopupMenu
@@ -9273,6 +9278,7 @@ object KeyboardForm: TKeyboardForm
     Animate = True
     BalloonHint = 'KeyboardMap'
     BalloonTitle = 'KeyboardMap minimized'
+    BalloonFlags = bfInfo
     Icon.Data = {
       0000010001002020000001002000A81000001600000028000000200000004000
       0000010020000000000000000000000000000000000000000000000000000000
@@ -9408,8 +9414,9 @@ object KeyboardForm: TKeyboardForm
       0000000000000000000000000000000000000000000000000000000000000000
       0000F0FFFFFFF0FFFFFFF0FFFFFFF9FFFFFFFC00007FFE00001FFFFFFF9FFFFF
       FFCFFFFFFFCFFFFFFFCFE0FFFF9FE000003FE07FFFFFF9FFFFFFFFFFFFFF}
+    PopupMenu = TrayMenu
     OnDblClick = TrayIconDblClick
-    Left = 560
+    Left = 544
     Top = 32
   end
   object instantTimer: TTimer
