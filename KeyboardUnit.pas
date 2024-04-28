@@ -25,7 +25,7 @@ TKeyboard=class
     procedure CleanMap(var temp:TKeyboardMap);
     procedure LoadScans;
    public
-     procedure addPress(ws:word; ls: longint);
+     procedure addPress(ws:word; ls: longint; langcode:string);
      procedure save(newFile:boolean; avSpeed, recSpeed:word);
      property map:TKeyboardMap read Fmap;
      property isPressed:boolean read FisPressed;
@@ -42,13 +42,15 @@ begin
   if AValue then result:=ATrue else result:=AFalse;
 end;
 
-procedure TKeyboard.addPress(ws:word; ls: longint);
+procedure TKeyboard.addPress(ws:word; ls: longint; langcode:string);
 var button, Scancode, ss:string;
     myHKL: HKL;
     KS: TKeyboardState;
     SC: integer;
 begin
    //evenbit:=not(evenbit);
+    //LoadKeyboardLayout(langcode, KLF_ACTIVATE);
+    ActivateKeyboardLayout(HKL_NEXT, 0);
     myHKL:=GetKeyboardLayout(GetCurrentThreadID);
     SC:=MapVirtualKeyEx(WS, MAPVK_VK_TO_VSC, MyHKL);
     GetKeyboardState(KS);

@@ -23,23 +23,12 @@ type
 
   end;
 
-function MakeLangCode(num:string):string;
-
 var
   LangForm: TLangForm;
   params: TIniFile;
 implementation
 
 {$R *.dfm}
-
-function MakeLangCode(num:string):string;
-begin
-  result:=num;
-  repeat
-    result:='0'+result;
-  until length(result)=8;
-end;
-
 function Ifthen(pred:boolean; a,b:byte):byte;
 begin
   if pred then result:=a else result:=b;

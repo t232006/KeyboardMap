@@ -164,6 +164,7 @@ type
     procedure CreateParams(var AParams: TCreateParams); override;
   private
     instantticker:word;
+    LangCode: string;
     function FindKey(ScanCode: string):TKey;
     procedure showStatistics;
   public
@@ -271,7 +272,7 @@ var st:string; ScanHex:string; _key:Tkey;
     curspeed: word;
 begin
 
-   VirtKeyboard.addPress(msg.WParam, msg.LParam);
+   VirtKeyboard.addPress(msg.WParam, msg.LParam, LangCode);
    ScanHex:=InttoHex(msg.LParam);
    st:=string.Format('Key = %s; Letter =%s; Virtual = %s; Scan = %s',
    [Chr(msg.WParam), VirtKeyboard.letter, InttoHex(msg.WParam), ScanHex]);
@@ -450,10 +451,14 @@ procedure TKeyboardForm.TrayIconDblClick(Sender: TObject);
 
   procedure TKeyboardForm.WinMonitorTimer(Sender: TObject);
   var temp:hWnd;
+      threadID:DWord;
+
   begin
       temp:=GetForegroundWindow;
       if temp<>self.Handle then
         hWin:=temp;
+      threadID:=GetWindowThreadProcessID(temp);
+      LangCode:=MakeLangCode(inttostr(LoWord(GetKeyboardLayout(ThreadID))));
 
   end;
 

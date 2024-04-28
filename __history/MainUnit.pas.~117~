@@ -217,7 +217,7 @@ begin
           exit;
         end;
    end;
-   result:=nil;  //exception
+   result:=FindComponent('Key44') as TKey;  //exception
 
 end;
 
@@ -279,39 +279,37 @@ begin
    Memo1.Lines.Add(st);
 
    _key:=FindKey(ScanHex);
-   if _key<>nil then
+   _key.Pressed:=VirtKeyboard.isPressed;
+
+   if virtkeyboard.isPressed then
    begin
-     _key.Pressed:=VirtKeyboard.isPressed;
-     if virtkeyboard.isPressed then
+     if instantTimer.Enabled=false then instanttimer.Enabled:=true;
+     instSpeedM.Value := Statistics.instantSpeed(instantticker);
+     if (_key.KeyType<>ktScroll) and
+        (_key.KeyType<>ktSticked) and
+        (_key.KeyType<>ktFunc)
+      then   //don't count arrows and scroll, functions, shift and other
      begin
-       if instantTimer.Enabled=false then instanttimer.Enabled:=true;
-       instSpeedM.Value := Statistics.instantSpeed(instantticker);
-       if (_key.KeyType<>ktScroll) and
-          (_key.KeyType<>ktSticked) and
-          (_key.KeyType<>ktFunc)
-        then   //don't count arrows and scroll, functions, shift and other
-       begin
-         curspeed := round(instSpeedM.Value);
-         SpeedM.Value:=Statistics.averageSpeed(curspeed);
-         instantticker:=0;
-         //memo1.Lines.Add(floattostr(SpeedM.Value));
-       end;
+       curspeed := round(instSpeedM.Value);
+       SpeedM.Value:=Statistics.averageSpeed(curspeed);
+       instantticker:=0;
+       //memo1.Lines.Add(floattostr(SpeedM.Value));
      end;
-     if statistics.IsShowing then
-     begin
-        statistics.Init(virtKeyboard.map);
-        if sh1=sh2 then
-          statistics.ShowStatisticsbyNum(msg.WParam, _key)
-        else
-          statistics.ShowStatisticsbyGrad(msg.WParam, sh1, sh2, _key) ;
-     end;
-     if _key.Name='Key20' then  //CapsLock
-        _key.Pressed:=Odd(GetKeyState(VK_CAPITAL)) else
-     if _Key.Name='Key144' then
-        _key.Pressed:=Odd(GetKeyState(VK_NUMLOCK)) else
-     if _key.Name='Key145' then
-        _key.Pressed:= Odd(GetKeyState(VK_SCROLL));
    end;
+   if statistics.IsShowing then
+   begin
+      statistics.Init(virtKeyboard.map);
+      if sh1=sh2 then
+        statistics.ShowStatisticsbyNum(msg.WParam, _key)
+      else
+        statistics.ShowStatisticsbyGrad(msg.WParam, sh1, sh2, _key) ;
+   end;
+   if _key.Name='Key20' then  //CapsLock
+      _key.Pressed:=Odd(GetKeyState(VK_CAPITAL)) else
+   if _Key.Name='Key144' then
+      _key.Pressed:=Odd(GetKeyState(VK_NUMLOCK)) else
+   if _key.Name='Key145' then
+      _key.Pressed:= Odd(GetKeyState(VK_SCROLL));
 end;
 
 
@@ -352,7 +350,6 @@ begin
   begin
       LayoutChangeCtrl ; LayoutChangeAlt
   end;
-  ActivateKeyboardLayout(HKL_NEXT, 0);
 end;
 
 procedure TKeyboardForm.N10Click(Sender: TObject);
@@ -396,7 +393,7 @@ procedure TKeyboardForm.N4Click(Sender: TObject);  //open statistics...
   procedure TKeyboardForm.N6Click(Sender: TObject);
   begin
      VirtKeyboard.save(true, round(speedM.Value), speedM.Tag);  //save current session
-     MessageDlg('РЎС‚Р°С‚РёСЃС‚РёРєР° СЃРѕС…СЂР°РЅРµРЅР°', TMsgDlgType.mtInformation, [mbOK], 0);
+     MessageDlg('Статистика сохранена', TMsgDlgType.mtInformation, [mbOK], 0);
   end;
 
   procedure TKeyboardForm.showStatistics;
@@ -434,7 +431,7 @@ procedure TKeyboardForm.N4Click(Sender: TObject);  //open statistics...
 procedure TKeyboardForm.Shape1MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
-if MessageDlg('РЎС‚РµСЂРµС‚СЊ СЂРµРєРѕСЂРґ Рё СЃСЂРµРґРЅСЋСЋ СЃРєРѕСЂРѕСЃС‚СЊ?', TMsgDlgType.mtConfirmation,mbYesNo,0)=mrYes
+if MessageDlg('Стереть рекорд и среднюю скорость?', TMsgDlgType.mtConfirmation,mbYesNo,0)=mrYes
   then
   begin
     Statistics.resetSpeed;
