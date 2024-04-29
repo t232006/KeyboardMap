@@ -16,6 +16,7 @@ TKeyboard=class
     Fmap: TKeyboardMap ;
     Flog, Ftext:string;
     Fletter:char;
+    FButton: string;
     FisPressed:boolean;
 
     fPath: string;
@@ -25,10 +26,11 @@ TKeyboard=class
     procedure CleanMap(var temp:TKeyboardMap);
     procedure LoadScans;
    public
-     procedure addPress(ws:word; ls: longint; langcode:string);
+     procedure addPress(ws:word; ls: longint; langcode:HKL);
      procedure save(newFile:boolean; avSpeed, recSpeed:word);
      property map:TKeyboardMap read Fmap;
      property isPressed:boolean read FisPressed;
+     property button:string read FButton;
      property letter:char read Fletter;
      property     log:string read Flog;
      property text:string read FText;
@@ -42,24 +44,22 @@ begin
   if AValue then result:=ATrue else result:=AFalse;
 end;
 
-procedure TKeyboard.addPress(ws:word; ls: longint; langcode:string);
-var button, Scancode, ss:string;
-    myHKL: HKL;
+procedure TKeyboard.addPress(ws:word; ls: longint; langcode:HKL);
+var Scancode, ss:string;
     KS: TKeyboardState;
     SC: integer;
 begin
    //evenbit:=not(evenbit);
     //LoadKeyboardLayout(langcode, KLF_ACTIVATE);
-    ActivateKeyboardLayout(HKL_NEXT, 0);
-    myHKL:=GetKeyboardLayout(GetCurrentThreadID);
-    SC:=MapVirtualKeyEx(WS, MAPVK_VK_TO_VSC, MyHKL);
+    //myHKL:=GetKeyboardLayout(GetCurrentThreadID);
+    SC:=MapVirtualKeyEx(WS, MAPVK_VK_TO_VSC, langcode);
     GetKeyboardState(KS);
-    ToUnicodeEx(WS, SC, KS, @fletter, sizeof(fletter), 0, MyHKL);
+    ToUnicodeEx(WS, SC, KS, @fletter, sizeof(fletter), 0, langcode);
    if byte(LS shr 24)<$80 then fisPressed:=true else fisPressed:=false;
    scancode:=IntToHex(ls);
-   FScans.TryGetValue(scancode, button);
+   FScans.TryGetValue(scancode, fbutton);
    ss:=string.Format('Key = %s; Letter = %s; Scan = %s; %s; Time: %s; %s',
-   [button, fletter, scancode, IfThen(isPressed,'Down',' Up '), TimeToStr(now), chr(13)]);
+   [fbutton, fletter, scancode, IfThen(isPressed,'Down',' Up '), TimeToStr(now), chr(13)]);
    //if evenbit then
    begin
      Flog:=Flog+ss;
@@ -68,7 +68,7 @@ begin
         inc(Fmap[ws]);
         if ord(letter)<>0 then
         Ftext:=Ftext+fletter else
-        Ftext:=Ftext+button;
+        Ftext:=Ftext+fbutton;
      end;
    end;
 end;

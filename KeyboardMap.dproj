@@ -129,7 +129,6 @@
         </DelphiCompile>
         <DCCReference Include="MainUnit.pas">
             <Form>KeyboardForm</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="SendKeyPressProc.pas"/>
         <DCCReference Include="StatisticsOptions.pas">

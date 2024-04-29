@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>1899.12.30 00:00:00.000.433,=Z:\Программирование\repos\KeyboardMap\Unit1.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.634,=Z:\Программирование\repos\KeyboardMap\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.689,=Z:\Программирование\repos\KeyboardMap\Unit1.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.218,Z:\Программирование\repos\KeyboardMap\Unit1.pas=Z:\Программирование\repos\KeyboardMap\auxilary.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.157,Z:\Программирование\repos\KeyboardMap\saver.pas=</Transaction>
     <Transaction>1899.12.30 00:00:00.000.173,Z:\Программирование\repos\KeyboardMap\KeyboardSpy.dproj=Z:\Программирование\repos\KeyboardMap\KeyboardMap.dproj</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.689,=Z:\Программирование\repos\KeyboardMap\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.433,=Z:\Программирование\repos\KeyboardMap\Unit1.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.442,=Z:\Программирование\repos\KeyboardMap\Unit2.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.535,Z:\Программирование\repos\KeyboardMap\Unit2.pas=Z:\Программирование\repos\KeyboardMap\FilesListUnit.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.472,Z:\Программирование\repos\KeyboardMap\Language.pas=Z:\Программирование\repos\KeyboardMap\Unit1.pas</Transaction>
@@ -32,9 +32,9 @@
     <File Path="MainUnit.pas"/>
     <File Path="MainUnit.dfm"/>
     <File Path="SendKeyPressProc.pas"/>
+    <File Path="PressCounter.pas"/>
     <File Path="StatisticsOptions.pas"/>
     <File Path="StatisticsOptions.dfm"/>
-    <File Path="PressCounter.pas"/>
     <File Path="auxilary.pas"/>
     <File Path="Language.pas"/>
     <File Path="Language.dfm"/>
