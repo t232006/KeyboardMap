@@ -194,7 +194,7 @@ end;
 procedure TKeyboardForm.ApplicationEvents1Minimize(Sender: TObject);
 begin
   WindowState:=wsMinimized;
-  TrayIcon.Visible := True;
+  //TrayIcon.Visible := True;
   TrayIcon.Animate := True;
   TrayIcon.ShowBalloonHint;
 end;
@@ -326,7 +326,7 @@ procedure TKeyboardForm.instSpeedMChange(Sender: TObject);
 begin
      with (sender as TAnalogMeter) do
      begin
-      LowZoneValue:=Value-10;
+      LowZoneValue:=Value-20;
       if (value>tag) and (value<max) then tag:=round(value);
       HighZoneValue:=tag;
      end;

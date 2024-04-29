@@ -13,7 +13,6 @@ uses
 
 function KeyboardProc(Code: Integer; wParam: WParam; LParam: LParam): LongWord; stdcall;
 begin
-  if code<0 then result:=CallNexthookEx(DataArea^.HandleKey, code, WParam, LParam) else
   //if code=0 then
   PostMessage(DataArea^.FormHandle, WM_MYKEYPRESS, WParam, LParam);
 

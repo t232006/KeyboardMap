@@ -12,6 +12,7 @@ object LangForm: TLangForm
   Font.Name = 'Segoe UI'
   Font.Style = []
   OnClose = FormClose
+  OnCloseQuery = FormCloseQuery
   OnShow = FormShow
   TextHeight = 15
   object Extender: TToggleSwitch
@@ -51,14 +52,6 @@ object LangForm: TLangForm
     TabOrder = 1
     OnClick = hotKeyIndClick
   end
-  object Button1: TButton
-    Left = 16
-    Top = 77
-    Width = 75
-    Height = 25
-    Caption = #1053#1072#1079#1085#1072#1095#1080#1090#1100'...'
-    TabOrder = 2
-  end
   object Status: TMemo
     Left = 8
     Top = 148
@@ -67,6 +60,16 @@ object LangForm: TLangForm
     TabStop = False
     BevelOuter = bvRaised
     BorderStyle = bsNone
+    TabOrder = 2
+  end
+  object BitBtn1: TBitBtn
+    Left = 16
+    Top = 93
+    Width = 49
+    Height = 25
+    Kind = bkOK
+    NumGlyphs = 2
     TabOrder = 3
+    OnClick = BitBtn1Click
   end
 end

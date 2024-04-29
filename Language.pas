@@ -5,20 +5,22 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,
-  Vcl.WinXCtrls, inifiles, filemapping, Vcl.ComCtrls, Vcl.AppEvnts;
+  Vcl.WinXCtrls, inifiles, filemapping, Vcl.ComCtrls, Vcl.AppEvnts, Vcl.Buttons;
 
 type
   TLangForm = class(TForm)
     Extender: TToggleSwitch;
     hotKeyInd: TRadioGroup;
-    Button1: TButton;
     Status: TMemo;
+    BitBtn1: TBitBtn;
     procedure hotKeyIndClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure ExtenderClick(Sender: TObject);
+    procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+    procedure BitBtn1Click(Sender: TObject);
   private
-    { Private declarations }
+    StrButton:string;
   public
 
   end;
@@ -30,9 +32,19 @@ implementation
 
 {$R *.dfm}
 
-function Ifthen(pred:boolean; a,b:byte):byte;
+function Ifthen(pred:boolean; a,b:byte):byte; overload;
 begin
   if pred then result:=a else result:=b;
+end;
+
+function Ifthen(pred:boolean; a,b:string):string; overload;
+begin
+  if pred then result:=a else result:=b;
+end;
+
+procedure TLangForm.BitBtn1Click(Sender: TObject);
+begin
+      close;
 end;
 
 procedure TLangForm.ExtenderClick(Sender: TObject);
@@ -50,6 +62,7 @@ begin
     Status.Text:='';
     HotKeyInd.Items[3]:='Pause Break';
   end;
+  hotKeyIndClick(sender);
 end;
 
 procedure TLangForm.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -58,6 +71,13 @@ begin
     params.WriteInteger('HotKeys','Key',DataArea^.key);
     params.WriteInteger('HotKeys','Ext',DataArea^.exKey);
     params.Destroy;
+end;
+
+procedure TLangForm.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+begin
+    if MessageDlg('√ор€ча€ клавиша смены €зыковой раскладки '+ StrButton,
+                  mtConfirmation,mbYesNo,0)=mrNo then
+    canClose:=false else canclose:=true;
 end;
 
 procedure TLangForm.FormShow(Sender: TObject);
@@ -86,13 +106,21 @@ begin
         DataArea^.key:=$38;
         DataArea^.exKey:=ifthen(Extender.State=tssOn, $21, $20);
         if DataArea^.ExKey=$20 then
-        Status.Text:='¬ настройках "языки и службы текстового ввода" установите сочетане клавиш <Ctrl>+<Shift>';
+        begin
+          Status.Text:='¬ настройках "языки и службы текстового ввода" установите сочетане клавиш <Ctrl>+<Shift>';
+          strbutton:='<Left Alt>';
+        end else
+          strbutton:='<Right Alt>';
       end;
   2:  begin
         DataArea^.key:=$1D;
         DataArea^.ExKey:=ifthen(Extender.State=tssOn, 1, 0);
         if DataArea^.ExKey=0 then
-        Status.Text:='¬ настройках "языки и службы текстового ввода" установите сочетане клавиш <Alt>+<Shift>';
+        begin
+          Status.Text:='¬ настройках "языки и службы текстового ввода" установите сочетане клавиш <Alt>+<Shift>';
+          strbutton:='<Left Ctrl>';
+        end else
+          strbutton:='<Right Ctrl>';
       end;
   3:  begin
         if Extender.State=tssOn then
@@ -100,16 +128,19 @@ begin
         DataArea^.key:=$46;
         DataArea^.ExKey:=0;
         Status.Text:='';
+        strbutton:=ifthen(Extender.State=tssOn, '<Scroll Lock>','<Pause Break>');
       end;
   4:  begin
         DataArea^.key:=$1C;
         DataArea^.ExKey:=ifthen(Extender.State=tssOn, 1, 0);
         Status.Text:='';
+        strbutton:=ifthen(Extender.State=tssOn, '<RightEnter>','<LeftEnter>');
       end;
   else
   begin
     DataArea^.key:=0;
     Status.Text:='';
+    strbutton:='не назначена';
   end;
 
 

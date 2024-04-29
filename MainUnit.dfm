@@ -9278,7 +9278,6 @@ object KeyboardForm: TKeyboardForm
     Animate = True
     BalloonHint = 'KeyboardMap'
     BalloonTitle = 'KeyboardMap minimized'
-    BalloonFlags = bfInfo
     Icon.Data = {
       0000010001002020000001002000A81000001600000028000000200000004000
       0000010020000000000000000000000000000000000000000000000000000000
@@ -9415,6 +9414,7 @@ object KeyboardForm: TKeyboardForm
       0000F0FFFFFFF0FFFFFFF0FFFFFFF9FFFFFFFC00007FFE00001FFFFFFF9FFFFF
       FFCFFFFFFFCFFFFFFFCFE0FFFF9FE000003FE07FFFFFF9FFFFFFFFFFFFFF}
     PopupMenu = TrayMenu
+    Visible = True
     OnDblClick = TrayIconDblClick
     Left = 544
     Top = 32
