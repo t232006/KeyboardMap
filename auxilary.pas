@@ -15,10 +15,12 @@ begin
   result:=round((_r2-_r1)*xk/(x2-x1));
   if result<0 then result:=_r1+result;
   if _r1=_r2 then
-    if _r1=255 then
+    //if _r1=255 then
       result:=_r1
-    else
-      result:=round(255/(x2-x1)*xk);
+        {
+      else
+            result:=round(255/(x2-x1)*xk);
+    }
   end;
 end;
 

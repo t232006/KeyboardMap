@@ -12,6 +12,7 @@ object KeyboardForm: TKeyboardForm
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  FormStyle = fsStayOnTop
   Menu = MainMenu1
   ShowHint = True
   OnClose = FormClose
@@ -9220,8 +9221,7 @@ object KeyboardForm: TKeyboardForm
       Caption = #1079#1072#1087#1080#1089#1072#1090#1100
     end
     object N10: TMenuItem
-      Caption = #1088#1072#1089#1082#1083#1072#1076#1082#1072'...'
-      OnClick = N10Click
+      Action = Layout_change
     end
     object N11: TMenuItem
       Caption = '-'
@@ -9242,25 +9242,19 @@ object KeyboardForm: TKeyboardForm
     object N3: TMenuItem
       Caption = #1089#1090#1072#1090#1080#1089#1090#1080#1082#1072
       object N4: TMenuItem
-        Caption = #1086#1090#1082#1088#1099#1090#1100' '#1089#1090#1072#1090#1080#1089#1090#1080#1082#1091'...'
-        OnClick = N4Click
+        Action = Open_statistics
       end
       object N5: TMenuItem
-        Caption = #1079#1072#1082#1088#1099#1090#1100' '#1089#1090#1072#1090#1080#1089#1090#1080#1082#1091
-        Enabled = False
-        OnClick = N5Click
+        Action = Close_statistics
       end
       object N6: TMenuItem
-        Caption = #1089#1086#1093#1088#1072#1085#1080#1090#1100' '#1090#1077#1082#1091#1097#1091#1102' '#1089#1077#1089#1089#1080#1102
-        OnClick = N6Click
+        Action = Save_cur_session
       end
       object N7: TMenuItem
-        Caption = #1089#1090#1072#1090#1080#1089#1090#1080#1082#1072' '#1090#1077#1082#1091#1097#1077#1081' '#1089#1077#1089#1089#1080#1080
-        OnClick = N7Click
+        Action = Cur_session_stat
       end
       object N9: TMenuItem
-        Caption = #1089#1090#1072#1090#1080#1089#1090#1080#1082#1072' '#1089#1091#1084#1084#1072#1088#1085#1086
-        OnClick = N9Click
+        Action = Stat_summary
       end
       object N8: TMenuItem
         Caption = '-'
@@ -9269,8 +9263,7 @@ object KeyboardForm: TKeyboardForm
     object N12: TMenuItem
       Caption = #1088#1072#1089#1082#1083#1072#1076#1082#1072
       object N13: TMenuItem
-        Caption = #1087#1086#1084#1077#1085#1103#1090#1100' '#1088#1072#1089#1082#1083#1072#1076#1082#1091'...'
-        OnClick = N10Click
+        Action = Layout_change
       end
     end
   end
@@ -9424,5 +9417,46 @@ object KeyboardForm: TKeyboardForm
     OnTimer = instantTimerTimer
     Left = 656
     Top = 8
+  end
+  object ActionManager1: TActionManager
+    ActionBars = <
+      item
+      end
+      item
+      end>
+    Left = 624
+    Top = 64
+    StyleName = 'Platform Default'
+    object Open_statistics: TAction
+      Category = 'statistics'
+      Caption = #1054#1090#1082#1088#1099#1090#1100' '#1089#1090#1072#1090#1080#1089#1090#1080#1082#1091'...'
+      OnExecute = Open_statisticsExecute
+    end
+    object Close_statistics: TAction
+      Category = 'statistics'
+      Caption = #1047#1072#1082#1088#1099#1090#1100' '#1089#1090#1072#1090#1080#1089#1090#1080#1082#1091
+      Enabled = False
+      OnExecute = Close_statisticsExecute
+    end
+    object Save_cur_session: TAction
+      Category = 'statistics'
+      Caption = #1057#1086#1093#1088#1072#1085#1080#1090#1100' '#1090#1077#1082#1091#1097#1091#1102' '#1089#1077#1089#1089#1080#1102
+      OnExecute = Save_cur_sessionExecute
+    end
+    object Cur_session_stat: TAction
+      Category = 'statistics'
+      Caption = #1057#1090#1072#1090#1080#1089#1090#1080#1082#1072' '#1090#1077#1082#1091#1097#1077#1081' '#1089#1077#1089#1089#1080#1080
+      OnExecute = Cur_session_statExecute
+    end
+    object Stat_summary: TAction
+      Category = 'statistics'
+      Caption = #1057#1090#1072#1090#1080#1089#1090#1080#1082#1072' '#1089#1091#1084#1084#1072#1088#1085#1086
+      OnExecute = Stat_summaryExecute
+    end
+    object Layout_change: TAction
+      Category = 'Layout'
+      Caption = #1048#1079#1084#1077#1085#1080#1090#1100' '#1088#1072#1089#1082#1083#1072#1076#1082#1091
+      OnExecute = Layout_changeExecute
+    end
   end
 end

@@ -140,6 +140,13 @@ type
     N11: TMenuItem;
     N12: TMenuItem;
     N13: TMenuItem;
+    ActionManager1: TActionManager;
+    Open_statistics: TAction;
+    Close_statistics: TAction;
+    Save_cur_session: TAction;
+    Cur_session_stat: TAction;
+    Stat_summary: TAction;
+    Layout_change: TAction;
     procedure exit1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -149,19 +156,20 @@ type
     procedure Key100MouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     //procedure CreateParams(var AParams: TCreateParams); override;
-    procedure N6Click(Sender: TObject);
+
     procedure TrayIconDblClick(Sender: TObject);
     procedure ApplicationEvents1Minimize(Sender: TObject);
     procedure instantTimerTimer(Sender: TObject);
-    procedure N5Click(Sender: TObject);
-    procedure N4Click(Sender: TObject);
-    procedure N7Click(Sender: TObject);
     procedure instSpeedMChange(Sender: TObject);
-    procedure N9Click(Sender: TObject);
     procedure Shape1MouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
-    procedure N10Click(Sender: TObject);
     procedure CreateParams(var AParams: TCreateParams); override;
+    procedure Open_statisticsExecute(Sender: TObject);
+    procedure Close_statisticsExecute(Sender: TObject);
+    procedure Save_cur_sessionExecute(Sender: TObject);
+    procedure Cur_session_statExecute(Sender: TObject);
+    procedure Stat_summaryExecute(Sender: TObject);
+    procedure Layout_changeExecute(Sender: TObject);
   private
     instantticker:word;
     LangCode: HKL;
@@ -184,11 +192,34 @@ implementation
 
 {$R *.dfm}
 
+procedure TKeyboardForm.Close_statisticsExecute(Sender: TObject);
+var tempKey: TKey;
+  begin
+     if Statistics.IsEmpty=false then
+     begin
+       for var i := Statistics.firstItem to Statistics.lastItem do
+         begin
+            tempKey:=FindComponent('Key'+inttostr(i)) as TKey;
+            if tempKey=nil then continue;
+            Statistics.HideStatistics(i, tempKey);
+         end;
+       Statistics.IsEmpty:=true;
+       Close_statistics.Enabled:=false;
+     end;
+end;
+
 procedure TKeyboardForm.CreateParams(var AParams: TCreateParams);
 begin
   inherited CreateParams(AParams);
   AParams.ExStyle:=AParams.ExStyle or WS_EX_NOACTIVATE;
 
+end;
+
+procedure TKeyboardForm.Cur_session_statExecute(Sender: TObject);
+begin
+   Statistics.Init(virtKeyboard.map);
+         Statistics.IsEmpty:=false;
+         showStatistics;
 end;
 
 procedure TKeyboardForm.ApplicationEvents1Minimize(Sender: TObject);
@@ -353,51 +384,12 @@ begin
   end;
 end;
 
-procedure TKeyboardForm.N10Click(Sender: TObject);
+procedure TKeyboardForm.Layout_changeExecute(Sender: TObject);
 begin
     langForm.ShowModal;
 end;
 
-procedure TKeyboardForm.N4Click(Sender: TObject);  //open statistics...
-  var
-      tempKey: TKey;
-  begin
-       form2.showmodal;
-       if mapFile<>'' then
-       begin
-         mapFile:=ExtractFileDir( Paramstr(0))+'\maps\'+mapFile;
-         Statistics.Init(mapFile);
-         Statistics.IsEmpty:=false;
-         showStatistics;
-       end;
-       speedM.Value:=statistics.avSpeed;
-       speedM.HighZoneValue:=statistics.recordSpeed;
-  end;
-
-  procedure TKeyboardForm.N5Click(Sender: TObject);  //close statistics
-  var tempKey: TKey;
-  begin
-     if Statistics.IsEmpty=false then
-     begin
-
-       for var i := Statistics.firstItem to Statistics.lastItem do
-         begin
-            tempKey:=FindComponent('Key'+inttostr(i)) as TKey;
-            if tempKey=nil then continue;
-            Statistics.HideStatistics(i, tempKey);
-         end;
-       Statistics.IsEmpty:=true;
-       n5.Enabled:=false;
-     end;
-  end;
-
-  procedure TKeyboardForm.N6Click(Sender: TObject);
-  begin
-     VirtKeyboard.save(true, round(speedM.Value), speedM.Tag);  //save current session
-     MessageDlg('Статистика сохранена', TMsgDlgType.mtInformation, [mbOK], 0);
-  end;
-
-  procedure TKeyboardForm.showStatistics;
+procedure TKeyboardForm.showStatistics;
   var tempKey: TKey;
   begin
     for var i := Statistics.firstItem to Statistics.lastItem do
@@ -414,20 +406,33 @@ procedure TKeyboardForm.N4Click(Sender: TObject);  //open statistics...
 
   end;
 
-  procedure TKeyboardForm.N7Click(Sender: TObject);   //curent session's stat
-  var
+  procedure TKeyboardForm.Stat_summaryExecute(Sender: TObject);
+begin
+   VirtKeyboard.save(false, round(speedM.Value), speedM.Tag);
+       Cur_session_statExecute(sender);
+end;
+procedure TKeyboardForm.Open_statisticsExecute(Sender: TObject);
+var
       tempKey: TKey;
   begin
-     Statistics.Init(virtKeyboard.map);
+       form2.showmodal;
+       if mapFile<>'' then
+       begin
+         mapFile:=ExtractFileDir( Paramstr(0))+'\maps\'+mapFile;
+         Statistics.Init(mapFile);
          Statistics.IsEmpty:=false;
          showStatistics;
-  end;
+       end;
+       speedM.Value:=statistics.avSpeed;
+       speedM.HighZoneValue:=statistics.recordSpeed;
+       close_statistics.Enabled:=true;
+end;
 
-  procedure TKeyboardForm.N9Click(Sender: TObject);  //statistics summary
-  begin
-       VirtKeyboard.save(false, round(speedM.Value), speedM.Tag);
-       n7click(sender);
-  end;
+procedure TKeyboardForm.Save_cur_sessionExecute(Sender: TObject);
+begin
+ VirtKeyboard.save(true, round(speedM.Value), speedM.Tag);  //save current session
+ MessageDlg('Статистика сохранена', TMsgDlgType.mtInformation, [mbOK], 0);
+end;
 
 procedure TKeyboardForm.Shape1MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);

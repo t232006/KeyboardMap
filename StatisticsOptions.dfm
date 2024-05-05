@@ -45,15 +45,6 @@ object Form2: TForm2
     Height = 15
     Caption = #1052#1072#1082#1089#1080#1084#1091#1084
   end
-  object FilesList: TListBox
-    Left = 0
-    Top = 0
-    Width = 209
-    Height = 232
-    Align = alLeft
-    ItemHeight = 15
-    TabOrder = 0
-  end
   object BitBtn1: TBitBtn
     Left = 400
     Top = 184
@@ -62,7 +53,7 @@ object Form2: TForm2
     Kind = bkOK
     NumGlyphs = 2
     Style = bsNew
-    TabOrder = 1
+    TabOrder = 0
     OnClick = BitBtn1Click
   end
   object ToggleSwitch1: TToggleSwitch
@@ -74,10 +65,20 @@ object Form2: TForm2
     FrameColor = clHighlight
     StateCaptions.CaptionOn = #1095#1080#1089#1083#1072
     StateCaptions.CaptionOff = #1075#1088#1072#1076#1080#1077#1085#1090
-    TabOrder = 2
+    TabOrder = 1
     ThumbColor = clHotLight
     ThumbWidth = 20
     OnClick = ToggleSwitch1Click
+  end
+  object fileslist: TFileListBox
+    Left = 0
+    Top = 0
+    Width = 185
+    Height = 232
+    Align = alLeft
+    ItemHeight = 15
+    Mask = '*map.b'
+    TabOrder = 2
   end
   object ColorDialog1: TColorDialog
     Left = 288

@@ -1,7 +1,4 @@
-﻿[FilesList]
-Coordinates=10,10,101,124
-
-[ColorDialog1]
+﻿[ColorDialog1]
 Coordinates=120,133,89,36
 
 [BitBtn1]
@@ -20,5 +17,5 @@ ExplicitSubNodes=StateCaptions.CaptionOff
 Coordinates=250,20,59,36
 
 []
-Coordinates=120,78,91,36
+Coordinates=10,10,101,124
 

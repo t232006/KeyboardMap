@@ -5,11 +5,10 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ButtonGroup,
-  Vcl.Buttons, Vcl.ExtCtrls, Vcl.WinXCtrls, inifiles;
+  Vcl.Buttons, Vcl.ExtCtrls, Vcl.WinXCtrls, inifiles, Vcl.FileCtrl;
 
 type
   TForm2 = class(TForm)
-    FilesList: TListBox;
     BitBtn1: TBitBtn;
     Shape1: TShape;
     Shape2: TShape;
@@ -17,6 +16,7 @@ type
     ToggleSwitch1: TToggleSwitch;
     Label1: TLabel;
     Label2: TLabel;
+    fileslist: TFileListBox;
     procedure BitBtn1Click(Sender: TObject);
     procedure Shape1MouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
@@ -33,6 +33,7 @@ type
 var
   Form2: TForm2;
   fdPath:string;
+  savefile: TIniFile;
 implementation
  uses MainUnit;
 {$R *.dfm}
@@ -47,7 +48,6 @@ begin
 end;
 
 procedure TForm2.FormClose(Sender: TObject; var Action: TCloseAction);
-var savefile: TIniFile;
 begin
     savefile:=Tinifile.Create(ExtractFileDir(Paramstr(0))+'\params.ini');
     savefile.WriteInteger('gradient','shape1', shape1.Brush.Color);
@@ -65,16 +65,9 @@ begin
 end;
 
 procedure TForm2.FormShow(Sender: TObject);
-var
-    SR: Tsearchrec;
 begin
-     fileslist.Clear;
-     fdPath:=ExtractFileDir( Paramstr(0))+'\maps\*map.b';
-     if FindFirst(fdPath, faNormal,SR)=0 then
-     repeat
-        FilesList.Items.Add(SR.Name)
-     until FindNext(SR)<>0;
-     findClose(sr);
+     fdPath:=ExtractFileDir( Paramstr(0))+'\maps';
+     fileslist.ApplyFilePath(fdpath);
 end;
 
 procedure TForm2.Shape1MouseDown(Sender: TObject; Button: TMouseButton;

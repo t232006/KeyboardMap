@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>1899.12.30 00:00:00.000.634,=Z:\Программирование\repos\KeyboardMap\Unit1.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.689,=Z:\Программирование\repos\KeyboardMap\Unit1.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.433,=Z:\Программирование\repos\KeyboardMap\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.634,=Z:\Программирование\repos\KeyboardMap\Unit1.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.157,Z:\Программирование\repos\KeyboardMap\saver.pas=</Transaction>
     <Transaction>1899.12.30 00:00:00.000.983,Z:\Программирование\repos\KeyboardMap\StatisticsOptions.pas=Z:\Программирование\repos\KeyboardMap\FilesListUnit.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.983,Z:\Программирование\repos\KeyboardMap\StatisticsOptions.dfm=Z:\Программирование\repos\KeyboardMap\FilesListUnit.dfm</Transaction>
