@@ -8,7 +8,8 @@ uses
   Vcl.Menus, KeyboardUnit, Key, SendKeyPressProc, StatisticsOptions, PressCounter,
   Vcl.ToolWin, Vcl.ActnMan, Vcl.ActnCtrls, Vcl.ActnMenus, System.Actions,
   Vcl.ActnList, Vcl.PlatformDefaultStyleActnCtrls, IniFiles,
-  AnalogMeter, FileMapping, Language, speedometer;
+  AnalogMeter, FileMapping, Language, speedometer, System.ImageList,
+  Vcl.ImgList, Vcl.Buttons;
 type
   TKeyboardForm = class(TForm)
     Memo1: TMemo;
@@ -16,7 +17,6 @@ type
     TrayMenu: TPopupMenu;
     exit1: TMenuItem;
     N1: TMenuItem;
-    N2: TMenuItem;
     WinMonitor: TTimer;
     MainMenu1: TMainMenu;
     N3: TMenuItem;
@@ -144,6 +144,14 @@ type
     Key110: TKey;
     Key12: TKey;
     Key92: TKey;
+    WinStyle: TSpeedButton;
+    ImageList: TImageList;
+    Key223: TKey;
+    N14: TMenuItem;
+    N15: TMenuItem;
+    N16: TMenuItem;
+    N17: TMenuItem;
+    N18: TMenuItem;
     procedure exit1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -164,6 +172,7 @@ type
     procedure Cur_session_statExecute(Sender: TObject);
     procedure Stat_summaryExecute(Sender: TObject);
     procedure Layout_changeExecute(Sender: TObject);
+    procedure WinStyleClick(Sender: TObject);
   private
     instantticker:word;
     LangCode: HKL;
@@ -215,6 +224,7 @@ begin
    Statistics.Init(virtKeyboard.map);
          Statistics.IsEmpty:=false;
          showStatistics;
+         close_statistics.Enabled:=true;
 end;
 
 procedure TKeyboardForm.ApplicationEvents1Minimize(Sender: TObject);
@@ -233,6 +243,7 @@ end;
 function TKeyboardForm.FindKey(ScanCode: string): TKey;
 var k, i:byte;  key:TKey;
 begin
+   //result:=nil;
    for k := 1 to 222 do
    begin
       key:=FindComponent('Key'+inttostr(k)) as TKey;
@@ -244,7 +255,7 @@ begin
           exit;
         end;
    end;
-   result:=FindComponent('Key44') as TKey;  //exception
+   result:=FindComponent('Key223') as TKey;  //exception
 
 end;
 
@@ -302,8 +313,8 @@ begin
    ScanHex:=InttoHex(msg.LParam);
    st:=string.Format('Key = %s; Letter =%s; Virtual = %s; Scan = %s',
    [VirtKeyboard.button, VirtKeyboard.letter, InttoHex(msg.WParam), ScanHex]);
-   Memo1.Lines.Clear;
-   Memo1.Lines.Add(st);
+   {Memo1.Lines.Clear;
+   Memo1.Lines.Add(st);}
 
    _key:=FindKey(ScanHex);
    _key.Pressed:=VirtKeyboard.isPressed;
@@ -322,15 +333,16 @@ begin
        instantticker:=0;
        //memo1.Lines.Add(floattostr(SpeedM.Value));
      end;
+     if statistics.IsShowing then
+     begin
+        statistics.Init(virtKeyboard.map);
+        if sh1=sh2 then
+          statistics.ShowStatisticsbyNum(virtKeyboard.VirtCode, _key)
+        else
+          statistics.ShowStatisticsbyGrad(virtKeyboard.VirtCode, sh1, sh2, _key) ;
+     end;
    end;
-   if statistics.IsShowing then
-   begin
-      statistics.Init(virtKeyboard.map);
-      if sh1=sh2 then
-        statistics.ShowStatisticsbyNum(msg.WParam, _key)
-      else
-        statistics.ShowStatisticsbyGrad(msg.WParam, sh1, sh2, _key) ;
-   end;
+   
    if _key.Name='Key20' then  //CapsLock
       _key.Pressed:=Odd(GetKeyState(VK_CAPITAL)) else
    if _Key.Name='Key144' then
@@ -357,8 +369,7 @@ var ShiftDown: boolean;
 
   end;
 
-
-  procedure TKeyboardForm.LayoutChange(var msg: TMessage);
+procedure TKeyboardForm.LayoutChange(var msg: TMessage);
 begin
   if (DataArea^.key=$38) and (DataArea^.ExKey=$20) then
     LayoutChangeCtrl else
@@ -391,7 +402,7 @@ procedure TKeyboardForm.showStatistics;
 
   end;
 
-  procedure TKeyboardForm.Stat_summaryExecute(Sender: TObject);
+procedure TKeyboardForm.Stat_summaryExecute(Sender: TObject);
 begin
    VirtKeyboard.save(false, round(speedform.speedM.Value), speedform.speedM.Tag);
        Cur_session_statExecute(sender);
@@ -439,6 +450,12 @@ procedure TKeyboardForm.TrayIconDblClick(Sender: TObject);
       LangCode:=(GetKeyboardLayout(ThreadID));
 
   end;
+
+procedure TKeyboardForm.WinStyleClick(Sender: TObject);
+begin
+     if winStyle.Down then
+    self.FormStyle:=fsStayOnTop else self.FormStyle:=fsNormal;
+end;
 
 {$ENDREGION}
 end.

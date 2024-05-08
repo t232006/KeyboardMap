@@ -18,7 +18,7 @@ TKeyboard=class
     Fletter:char;
     FButton: string;
     FisPressed:boolean;
-
+    FVirtCode: word;
     fPath: string;
     FScans: TDictionary<string, string>;
     procedure SaveText(filename, sometext:string);
@@ -28,6 +28,7 @@ TKeyboard=class
    public
      procedure addPress(ws:word; ls: longint; langcode:HKL);
      procedure save(newFile:boolean; avSpeed, recSpeed:word);
+     property VirtCode: word read FVirtCode;
      property map:TKeyboardMap read Fmap;
      property isPressed:boolean read FisPressed;
      property button:string read FButton;
@@ -48,24 +49,29 @@ procedure TKeyboard.addPress(ws:word; ls: longint; langcode:HKL);
 var Scancode, ss:string;
     KS: TKeyboardState;
     SC: integer;
+
 begin
-   //evenbit:=not(evenbit);
-    //LoadKeyboardLayout(langcode, KLF_ACTIVATE);
-    //myHKL:=GetKeyboardLayout(GetCurrentThreadID);
     SC:=MapVirtualKeyEx(WS, MAPVK_VK_TO_VSC, langcode);
     GetKeyboardState(KS);
     ToUnicodeEx(WS, SC, KS, @fletter, sizeof(fletter), 0, langcode);
    if byte(LS shr 24)<$80 then fisPressed:=true else fisPressed:=false;
    scancode:=IntToHex(ls);
    FScans.TryGetValue(scancode, fbutton);
-   ss:=string.Format('Key = %s; Letter = %s; Scan = %s; %s; Time: %s; %s',
-   [fbutton, fletter, scancode, IfThen(isPressed,'Down',' Up '), TimeToStr(now), chr(13)]);
+   FVirtCode:=WS;
+   ss:=string.Format('Key = %s; Letter = %s; Virt = %u; Scan = %s; %s; Time: %s; %s',
+   [fbutton, fletter, fVirtCode, scancode, IfThen(isPressed,'Down',' Up '), TimeToStr(now), chr(13)]);
    //if evenbit then
    begin
      Flog:=Flog+ss;
-     if isPressed and (ws <= high(fmap)) then
+     if isPressed and (FVirtCode <= high(fmap)) then
      begin
-        inc(Fmap[ws]);
+        if fbutton<>'' then
+        case FVirtCode of
+          16: if byte(ls shr 16)=$36 then FVirtCode:=161 else FVirtCode:=160; //shift
+          18: if byte(ls shr 24)=$21 then FVirtCode:=165 else FVirtCode:=164; //alt
+          17: if byte(ls shr 24)=$01 then FVirtCode:=163 else FVirtCode:=162; //ctrl
+        end;
+        inc(Fmap[FVirtCode]);
         if ord(letter)<>0 then
         Ftext:=Ftext+fletter else
         Ftext:=Ftext+fbutton;
