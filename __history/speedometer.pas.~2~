@@ -1,0 +1,27 @@
+unit speedometer;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, AnalogMeter, Vcl.ExtCtrls;
+
+type
+  TSpeedForm = class(TForm)
+    Shape1: TShape;
+    speedM: TAnalogMeter;
+    instSpeedM: TAnalogMeter;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  SpeedForm: TSpeedForm;
+
+implementation
+
+{$R *.dfm}
+
+end.
