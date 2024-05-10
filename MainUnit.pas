@@ -9,7 +9,7 @@ uses
   Vcl.ToolWin, Vcl.ActnMan, Vcl.ActnCtrls, Vcl.ActnMenus, System.Actions,
   Vcl.ActnList, Vcl.PlatformDefaultStyleActnCtrls, IniFiles,
   AnalogMeter, FileMapping, Language, speedometer, System.ImageList,
-  Vcl.ImgList, Vcl.Buttons;
+  Vcl.ImgList, Vcl.Buttons, Vcl.WinXCtrls, LabSwitch;
 type
   TKeyboardForm = class(TForm)
     Memo1: TMemo;
@@ -152,6 +152,7 @@ type
     N16: TMenuItem;
     N17: TMenuItem;
     N18: TMenuItem;
+    StatMode: TFrame1;
     procedure exit1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -173,14 +174,17 @@ type
     procedure Stat_summaryExecute(Sender: TObject);
     procedure Layout_changeExecute(Sender: TObject);
     procedure WinStyleClick(Sender: TObject);
+    procedure StatModeSwitchClick(Sender: TObject);
   private
     instantticker:word;
     LangCode: HKL;
     function FindKey(ScanCode: string):TKey;
     procedure showStatistics;
+    procedure closeStatistics;
   public
     MapFile: string;
     sh1, sh2: TColor;
+    showGradient: boolean;
     Statistics: TStatistics;
     saveparams:TIniFile;
   end;
@@ -196,7 +200,7 @@ implementation
 
 {$R *.dfm}
 
-procedure TKeyboardForm.Close_statisticsExecute(Sender: TObject);
+procedure TKeyboardForm.closeStatistics;
 var tempKey: TKey;
   begin
      if Statistics.IsEmpty=false then
@@ -208,8 +212,14 @@ var tempKey: TKey;
             Statistics.HideStatistics(i, tempKey);
          end;
        Statistics.IsEmpty:=true;
-       Close_statistics.Enabled:=false;
      end;
+end;
+
+procedure TKeyboardForm.Close_statisticsExecute(Sender: TObject);
+begin
+   closeStatistics;
+   StatMode.Visible:=false;
+   Close_statistics.Enabled:=false;
 end;
 
 procedure TKeyboardForm.CreateParams(var AParams: TCreateParams);
@@ -393,14 +403,31 @@ procedure TKeyboardForm.showStatistics;
            tempKey:=FindComponent('Key'+inttostr(i)) as TKey;
            if tempKey=nil then continue;
            Statistics.saveKey(i, tempKey);
-           if sh1=sh2 then //sh1=sh2 - numbers else gradient
-            Statistics.ShowStatisticsByNum(i, tempKey)
+           if showGradient then
+            Statistics.ShowStatisticsByGrad(i,sh1,sh2, tempKey )
            else
-            Statistics.ShowStatisticsByGrad(i,sh1,sh2, tempKey );
+            Statistics.ShowStatisticsByNum(i, tempKey);
            n5.Enabled:=true;
          end;
+    StatMode.Visible:=true;
+    if sh1=sh2 then statmode.Enabled:=false else
+                      statmode.Enabled:=true;
+    if showGradient then statmode.Switch.State:=tssOn else
+                        statmode.Switch.State:=tssOff;
+
+
 
   end;
+
+procedure TKeyboardForm.StatModeSwitchClick(Sender: TObject);
+begin
+  StatMode.SwitchClick(Sender);
+  CloseStatistics;
+  if statMode.Switch.State=tssOff then
+    showGradient:=false else showGradient:=true;
+  showStatistics;
+
+end;
 
 procedure TKeyboardForm.Stat_summaryExecute(Sender: TObject);
 begin
@@ -418,7 +445,8 @@ var
          Statistics.Init(mapFile);
          Statistics.IsEmpty:=false;
          showStatistics;
-       end;
+       end else
+         Cur_session_statExecute(Sender);
        speedform.speedM.Value:=statistics.avSpeed;
        speedform.speedM.HighZoneValue:=statistics.recordSpeed;
        close_statistics.Enabled:=true;

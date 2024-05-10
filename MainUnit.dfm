@@ -5635,8 +5635,30 @@ object KeyboardForm: TKeyboardForm
       Color = clWindow
       PressColor = clRed
       Round = 40
+      KeyType = ktLetters
       DownPosX = 25
       MidPosX = 5
+    end
+    inline StatMode: TFrame1
+      Left = 936
+      Top = 31
+      Width = 65
+      Height = 51
+      TabOrder = 0
+      Visible = False
+      ExplicitLeft = 936
+      ExplicitTop = 31
+      ExplicitWidth = 65
+      inherited Label1: TLabel
+        Width = 53
+        Caption = #1075#1088#1072#1076#1080#1077#1085#1090
+        ExplicitWidth = 53
+      end
+      inherited Switch: TToggleSwitch
+        Left = 7
+        OnClick = StatModeSwitchClick
+        ExplicitLeft = 7
+      end
     end
   end
   object ApplicationEvents1: TApplicationEvents

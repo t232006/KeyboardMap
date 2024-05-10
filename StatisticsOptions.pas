@@ -13,7 +13,7 @@ type
     Shape1: TShape;
     Shape2: TShape;
     ColorDialog1: TColorDialog;
-    ToggleSwitch1: TToggleSwitch;
+    ToggleSwitch: TToggleSwitch;
     Label1: TLabel;
     Label2: TLabel;
     fileslist: TFileListBox;
@@ -83,15 +83,17 @@ end;
 
 procedure TForm2.ToggleSwitch1Click(Sender: TObject);
 begin
-    if ToggleSwitch1.State=tssOn then
+    if ToggleSwitch.State=tssOn then
     begin
       shape1.Enabled:=false;
       shape2.Enabled:=false;
-      shape2.Brush.Color:=shape1.Brush.Color;
+      Keyboardform.showGradient:=false;
+      //shape2.Brush.Color:=shape1.Brush.Color;
     end else
     begin
       shape1.Enabled:=true;
       shape2.Enabled:=true;
+      Keyboardform.showGradient:=false;
 
     end;
 

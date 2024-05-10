@@ -1,7 +1,8 @@
 program KeyboardMap;
 
 uses
-  Vcl.Forms, Windows,
+  Vcl.Forms,
+  Windows,
   MainUnit in 'MainUnit.pas' {KeyboardForm},
   SendKeyPressProc in 'SendKeyPressProc.pas',
   StatisticsOptions in 'StatisticsOptions.pas' {Form2},
@@ -9,7 +10,8 @@ uses
   AnalogMeter in 'components\AnalogMeter.pas',
   auxilary in 'auxilary.pas',
   Language in 'Language.pas' {LangForm},
-  speedometer in 'speedometer.pas' {SpeedForm};
+  speedometer in 'speedometer.pas' {SpeedForm},
+  LabSwitch in 'LabSwitch.pas' {Frame1: TFrame};
 
 {$R *.res}
 var pbuff: array[0..127] of char;

@@ -56,7 +56,7 @@ object Form2: TForm2
     TabOrder = 0
     OnClick = BitBtn1Click
   end
-  object ToggleSwitch1: TToggleSwitch
+  object ToggleSwitch: TToggleSwitch
     Left = 264
     Top = 152
     Width = 105
@@ -79,6 +79,7 @@ object Form2: TForm2
     ItemHeight = 15
     Mask = '*map.b'
     TabOrder = 2
+    ExplicitHeight = 231
   end
   object ColorDialog1: TColorDialog
     Left = 288
