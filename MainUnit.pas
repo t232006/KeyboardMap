@@ -5,14 +5,14 @@ interface
 uses
   Sharemem, Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.AppEvnts,
-  Vcl.Menus, KeyboardUnit, Key, SendKeyPressProc, StatisticsOptions, PressCounter,
+  Vcl.Menus, Key, SendKeyPressProc, StatisticsOptions, PressCounter,
   Vcl.ToolWin, Vcl.ActnMan, Vcl.ActnCtrls, Vcl.ActnMenus, System.Actions,
   Vcl.ActnList, Vcl.PlatformDefaultStyleActnCtrls, IniFiles,
-  AnalogMeter, FileMapping, Language, speedometer, System.ImageList,
-  Vcl.ImgList, Vcl.Buttons, Vcl.WinXCtrls, LabSwitch;
+  AnalogMeter, Language, speedometer, System.ImageList,
+  Vcl.ImgList, Vcl.Buttons, Vcl.WinXCtrls, LabSwitch, keyboardUnit, filemapping,
+  winHeader;
 type
   TKeyboardForm = class(TForm)
-    Memo1: TMemo;
     ApplicationEvents1: TApplicationEvents;
     TrayMenu: TPopupMenu;
     exit1: TMenuItem;
@@ -144,15 +144,19 @@ type
     Key110: TKey;
     Key12: TKey;
     Key92: TKey;
-    WinStyle: TSpeedButton;
-    ImageList: TImageList;
     Key223: TKey;
     N14: TMenuItem;
     N15: TMenuItem;
     N16: TMenuItem;
     N17: TMenuItem;
     N18: TMenuItem;
-    StatMode: TFrame1;
+    speedWin: TAction;
+    reset: TAction;
+    N2: TMenuItem;
+    N19: TMenuItem;
+    N20: TMenuItem;
+    ImageList: TImageList;
+    FormHeader: TFormHeader;
     procedure exit1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -173,8 +177,10 @@ type
     procedure Cur_session_statExecute(Sender: TObject);
     procedure Stat_summaryExecute(Sender: TObject);
     procedure Layout_changeExecute(Sender: TObject);
-    procedure WinStyleClick(Sender: TObject);
     procedure StatModeSwitchClick(Sender: TObject);
+    procedure speedWinExecute(Sender: TObject);
+    procedure resetExecute(Sender: TObject);
+    procedure FormHeaderSpeedButton1Click(Sender: TObject);
   private
     instantticker:word;
     LangCode: HKL;
@@ -186,7 +192,7 @@ type
     sh1, sh2: TColor;
     showGradient: boolean;
     Statistics: TStatistics;
-    saveparams:TIniFile;
+    saveparams, loadparams:TIniFile;
   end;
   procedure RunHook stdcall; external 'KeyboardHook.dll';
   procedure StopHook; stdcall; external 'KeyboardHook.dll';
@@ -197,7 +203,7 @@ var
   VirtKeyboard: TKeyboard;
   hwin: Hwnd;
 implementation
-
+uses MainUnitSmall;
 {$R *.dfm}
 
 procedure TKeyboardForm.closeStatistics;
@@ -218,7 +224,7 @@ end;
 procedure TKeyboardForm.Close_statisticsExecute(Sender: TObject);
 begin
    closeStatistics;
-   StatMode.Visible:=false;
+   formHeader.frame11.Visible:=false;
    Close_statistics.Enabled:=false;
 end;
 
@@ -276,17 +282,16 @@ var dWin:Hwnd;
 begin
   //kb:=GetKeyboard;
   VirtKeyboard.save(false, round(speedform.speedM.Value), speedform.speedM.Tag);
-  //saveparams:=Tinifile.Create(ExtractFileDir(Paramstr(0))+'\params.ini');
-  saveparams.WriteInteger('Speeds','averageSpeed',round(speedform.speedM.Value));
-  saveparams.WriteInteger('Speeds','recordSpeed',speedform.speedM.Tag);
-  saveparams.WriteInteger('Speeds','count', statistics.PressCount);
-
+  saveparams:=Tinifile.Create(ExtractFileDir(Paramstr(0))+'\params.ini');
   StopHook;
   dWin:=GetModuleHandle('KeyboardHook.dll');
   FreeLibrary(dWin);
   dWin:=FindWindow(nil, 'KeyboardMap');
   if dWin<>0 then
   SendMessage(dWin, WM_DESTROY, 0,0);
+  if speedform<>nil then
+  speedform.Close;
+  saveparams.Destroy;
 
 end;
 
@@ -300,18 +305,25 @@ begin
   Key20.Pressed:=Odd(GetKeyState(VK_CAPITAL));
   Key144.Pressed:=Odd(GetKeyState(VK_NUMLOCK));
   Key145.Pressed:=Odd(GetKeyState(VK_SCROLL));
-  saveparams:=TIniFile.Create(ExtractFileDir(Paramstr(0))+'\params.ini');
-  speedform.SpeedM.Value:= saveparams.ReadInteger('Speeds', 'averageSpeed', 0);
-  speedform.SpeedM.HighZoneValue:=saveparams.ReadInteger('Speeds', 'recordSpeed', 0);
-  n:=saveparams.ReadInteger('Speeds', 'count', 0);
+  loadparams:=TIniFile.Create(ExtractFileDir(Paramstr(0))+'\params.ini');
+  speedform.SpeedM.Value:= loadparams.ReadInteger('Speeds', 'averageSpeed', 0);
+  speedform.SpeedM.HighZoneValue:=loadparams.ReadInteger('Speeds', 'recordSpeed', 0);
+  n:=loadparams.ReadInteger('Speeds', 'count', 0);
   Statistics:= TStatistics.Create(n, round(speedform.speedM.Value));
 
   FillChar(DataArea^, SizeOf(DataArea^), 0);
   DataArea^.FormHandle:=self.Handle;
-  DataArea^.key:=saveparams.ReadInteger('HotKeys', 'Key', 0);
-  DataArea^.ExKey:=saveparams.ReadInteger('HotKeys', 'Ext', 0);
+  DataArea^.key:=loadparams.ReadInteger('HotKeys', 'Key', 0);
+  DataArea^.ExKey:=loadparams.ReadInteger('HotKeys', 'Ext', 0);
   RunHook;
+  FormHeader.Align:=alTop;
   speedform.show;
+end;
+
+procedure TKeyboardForm.FormHeaderSpeedButton1Click(Sender: TObject);
+begin
+  KeyboardFormSmall.Show;
+  self.Hide;
 end;
 
 procedure TKeyboardForm.GetPressing(var msg: TMessage);
@@ -362,6 +374,11 @@ begin
 end;
 
 
+procedure TKeyboardForm.speedWinExecute(Sender: TObject);
+begin
+    if speedWin.Checked then speedform.show else speedform.Close;
+end;
+
 {$REGION 'MyRegion'}
 procedure TKeyboardForm.instantTimerTimer(Sender: TObject);
 begin
@@ -409,11 +426,11 @@ procedure TKeyboardForm.showStatistics;
             Statistics.ShowStatisticsByNum(i, tempKey);
            n5.Enabled:=true;
          end;
-    StatMode.Visible:=true;
-    if sh1=sh2 then statmode.Enabled:=false else
-                      statmode.Enabled:=true;
-    if showGradient then statmode.Switch.State:=tssOn else
-                        statmode.Switch.State:=tssOff;
+    FormHeader.Frame11.Visible:=true;
+    if sh1=sh2 then FormHeader.Frame11.Enabled:=false else
+                      FormHeader.Frame11.Enabled:=true;
+    if showGradient then FormHeader.Frame11.Switch.State:=tssOn else
+                        FormHeader.Frame11.Switch.State:=tssOff;
 
 
 
@@ -421,9 +438,9 @@ procedure TKeyboardForm.showStatistics;
 
 procedure TKeyboardForm.StatModeSwitchClick(Sender: TObject);
 begin
-  StatMode.SwitchClick(Sender);
+  FormHeader.Frame11.SwitchClick(Sender);
   CloseStatistics;
-  if statMode.Switch.State=tssOff then
+  if FormHeader.Frame11.Switch.State=tssOff then
     showGradient:=false else showGradient:=true;
   showStatistics;
 
@@ -452,6 +469,17 @@ var
        close_statistics.Enabled:=true;
 end;
 
+procedure TKeyboardForm.resetExecute(Sender: TObject);
+begin
+if MessageDlg('Стереть рекорд и среднюю скорость?', TMsgDlgType.mtConfirmation,mbYesNo,0)=mrYes
+  then
+  begin
+    keyboardform.Statistics.resetSpeed;
+    speedform.speedM.Tag:=0;
+    speedform.speedM.Value:=0;
+  end;
+end;
+
 procedure TKeyboardForm.Save_cur_sessionExecute(Sender: TObject);
 begin
  VirtKeyboard.save(true, round(speedform.speedM.Value), speedform.speedM.Tag);  //save current session
@@ -478,12 +506,6 @@ procedure TKeyboardForm.TrayIconDblClick(Sender: TObject);
       LangCode:=(GetKeyboardLayout(ThreadID));
 
   end;
-
-procedure TKeyboardForm.WinStyleClick(Sender: TObject);
-begin
-     if winStyle.Down then
-    self.FormStyle:=fsStayOnTop else self.FormStyle:=fsNormal;
-end;
 
 {$ENDREGION}
 end.

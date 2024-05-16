@@ -3,15 +3,20 @@ program KeyboardMap;
 uses
   Vcl.Forms,
   Windows,
+  MainUnitSmall in 'MainUnitSmall.pas' {KeyboardFormSmall},
   MainUnit in 'MainUnit.pas' {KeyboardForm},
-  SendKeyPressProc in 'SendKeyPressProc.pas',
   StatisticsOptions in 'StatisticsOptions.pas' {Form2},
-  PressCounter in 'PressCounter.pas',
   AnalogMeter in 'components\AnalogMeter.pas',
-  auxilary in 'auxilary.pas',
   Language in 'Language.pas' {LangForm},
   speedometer in 'speedometer.pas' {SpeedForm},
-  LabSwitch in 'LabSwitch.pas' {Frame1: TFrame};
+  LabSwitch in 'LabSwitch.pas' {Frame1: TFrame},
+  auxilary in 'units\auxilary.pas',
+  PressCounter in 'units\PressCounter.pas',
+  SendKeyPressProc in 'units\SendKeyPressProc.pas',
+  Utilites in 'units\Utilites.pas',
+  FileMapping in 'HookProject\FileMapping.pas',
+  KeyboardUnit in 'HookProject\KeyboardUnit.pas',
+  winHeader in 'components\winHeader.pas' {FormHeader: TFrame};
 
 {$R *.res}
 var pbuff: array[0..127] of char;
@@ -44,6 +49,7 @@ begin
 
   end;
   Application.CreateForm(TKeyboardForm, KeyboardForm);
+  Application.CreateForm(TKeyboardFormSmall, KeyboardFormSmall);
   Application.CreateForm(TForm2, Form2);
   Application.CreateForm(TLangForm, LangForm);
   //Application.CreateForm(TSpeedForm, SpeedForm);

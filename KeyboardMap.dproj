@@ -106,10 +106,11 @@
         <VerInfo_Locale>1033</VerInfo_Locale>
         <VerInfo_MinorVer>3</VerInfo_MinorVer>
         <VerInfo_Keys>CompanyName=Zharkov Lab;FileDescription=$(MSBuildProjectName);FileVersion=1.3.1.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
-        <Icon_MainIcon>keyboard By Vector Squad.ico</Icon_MainIcon>
+        <Icon_MainIcon>icons\keyboard By Iconic Panda.ico</Icon_MainIcon>
         <VerInfo_Release>1</VerInfo_Release>
         <UWP_DelphiLogo44>icons\keyboard By Vector Squad 44.png</UWP_DelphiLogo44>
         <UWP_DelphiLogo150>icons\keyboard By Vector Squad 150.png</UWP_DelphiLogo150>
+        <DCC_WriteableConstants>true</DCC_WriteableConstants>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
@@ -137,16 +138,16 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
+        <DCCReference Include="MainUnitSmall.pas">
+            <Form>KeyboardFormSmall</Form>
+        </DCCReference>
         <DCCReference Include="MainUnit.pas">
             <Form>KeyboardForm</Form>
         </DCCReference>
-        <DCCReference Include="SendKeyPressProc.pas"/>
         <DCCReference Include="StatisticsOptions.pas">
             <Form>Form2</Form>
         </DCCReference>
-        <DCCReference Include="PressCounter.pas"/>
         <DCCReference Include="components\AnalogMeter.pas"/>
-        <DCCReference Include="auxilary.pas"/>
         <DCCReference Include="Language.pas">
             <Form>LangForm</Form>
         </DCCReference>
@@ -155,6 +156,17 @@
         </DCCReference>
         <DCCReference Include="LabSwitch.pas">
             <Form>Frame1</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TFrame</DesignClass>
+        </DCCReference>
+        <DCCReference Include="units\auxilary.pas"/>
+        <DCCReference Include="units\PressCounter.pas"/>
+        <DCCReference Include="units\SendKeyPressProc.pas"/>
+        <DCCReference Include="units\Utilites.pas"/>
+        <DCCReference Include="HookProject\FileMapping.pas"/>
+        <DCCReference Include="HookProject\KeyboardUnit.pas"/>
+        <DCCReference Include="components\winHeader.pas">
+            <Form>FormHeader</Form>
             <FormType>dfm</FormType>
             <DesignClass>TFrame</DesignClass>
         </DCCReference>

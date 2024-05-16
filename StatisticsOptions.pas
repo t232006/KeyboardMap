@@ -44,6 +44,9 @@ begin
    KeyboardForm.mapfile:=fileslist.items[fileslist.itemindex];
    KeyboardForm.sh1:=shape1.Brush.Color;
    KeyboardForm.sh2:=shape2.Brush.Color;
+   if ToggleSwitch.State=tssOff then Keyboardform.showGradient:=true
+   else Keyboardform.showGradient:=false;
+
    close;
 end;
 
@@ -87,14 +90,11 @@ begin
     begin
       shape1.Enabled:=false;
       shape2.Enabled:=false;
-      Keyboardform.showGradient:=false;
       //shape2.Brush.Color:=shape1.Brush.Color;
     end else
     begin
       shape1.Enabled:=true;
       shape2.Enabled:=true;
-      Keyboardform.showGradient:=false;
-
     end;
 
 end;

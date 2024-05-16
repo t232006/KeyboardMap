@@ -2,10 +2,10 @@ object KeyboardForm: TKeyboardForm
   Left = 0
   Top = 0
   BorderIcons = [biSystemMenu, biMinimize]
-  BorderStyle = bsSingle
+  BorderStyle = bsNone
   Caption = 'Screen keyboard'
-  ClientHeight = 372
-  ClientWidth = 1094
+  ClientHeight = 376
+  ClientWidth = 1106
   Color = clWhite
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,23 +18,12 @@ object KeyboardForm: TKeyboardForm
   OnClose = FormClose
   OnCreate = FormCreate
   TextHeight = 15
-  object Memo1: TMemo
-    Left = 0
-    Top = 0
-    Width = 1095
-    Height = 33
-    TabStop = False
-    Enabled = False
-    HideSelection = False
-    TabOrder = 0
-    WantReturns = False
-  end
   object Panel1: TPanel
     Left = 0
     Top = 39
     Width = 1095
     Height = 332
-    TabOrder = 1
+    TabOrder = 0
     object Key27: TKey
       Left = 8
       Top = 32
@@ -5592,22 +5581,6 @@ object KeyboardForm: TKeyboardForm
       DownPosX = 25
       MidPosX = 5
     end
-    object WinStyle: TSpeedButton
-      Left = 890
-      Top = 32
-      Width = 40
-      Height = 42
-      Hint = #1055#1086#1074#1077#1088#1093' '#1074#1089#1077#1093' '#1086#1082#1086#1085
-      AllowAllUp = True
-      GroupIndex = 1
-      Down = True
-      ImageIndex = 1
-      Images = ImageList
-      Flat = True
-      PressedImageIndex = 0
-      SelectedImageIndex = 0
-      OnClick = WinStyleClick
-    end
     object Key223: TKey
       Left = 1032
       Top = 48
@@ -5639,25 +5612,35 @@ object KeyboardForm: TKeyboardForm
       DownPosX = 25
       MidPosX = 5
     end
-    inline StatMode: TFrame1
-      Left = 936
-      Top = 31
-      Width = 65
-      Height = 51
-      TabOrder = 0
-      Visible = False
-      ExplicitLeft = 936
-      ExplicitTop = 31
-      ExplicitWidth = 65
-      inherited Label1: TLabel
-        Width = 53
-        Caption = #1075#1088#1072#1076#1080#1077#1085#1090
-        ExplicitWidth = 53
+  end
+  inline FormHeader: TFormHeader
+    Left = 466
+    Top = 16
+    Width = 640
+    Height = 35
+    TabOrder = 1
+    ExplicitLeft = 466
+    ExplicitTop = 16
+    inherited Panel1: TPanel
+      inherited WinIcon: TImage
+        Transparent = True
       end
-      inherited Switch: TToggleSwitch
-        Left = 7
-        OnClick = StatModeSwitchClick
-        ExplicitLeft = 7
+      inherited WinStyle: TSpeedButton
+        SelectedImageIndex = 4
+      end
+      inherited SpeedButton1: TSpeedButton
+        OnClick = FormHeaderSpeedButton1Click
+      end
+      inherited Frame11: TFrame1
+        Width = 129
+        ExplicitWidth = 129
+        inherited Label1: TLabel
+          Top = 4
+          Width = 53
+          Caption = #1075#1088#1072#1076#1080#1077#1085#1090
+          ExplicitTop = 4
+          ExplicitWidth = 53
+        end
       end
     end
   end
@@ -5732,6 +5715,16 @@ object KeyboardForm: TKeyboardForm
       Caption = #1088#1072#1089#1082#1083#1072#1076#1082#1072
       object N13: TMenuItem
         Action = Layout_change
+      end
+    end
+    object N2: TMenuItem
+      Caption = #1089#1082#1086#1088#1086#1089#1090#1100
+      object N19: TMenuItem
+        Action = speedWin
+        AutoCheck = True
+      end
+      object N20: TMenuItem
+        Action = reset
       end
     end
   end
@@ -5925,6 +5918,18 @@ object KeyboardForm: TKeyboardForm
       Category = 'Layout'
       Caption = #1048#1079#1084#1077#1085#1080#1090#1100' '#1088#1072#1089#1082#1083#1072#1076#1082#1091
       OnExecute = Layout_changeExecute
+    end
+    object speedWin: TAction
+      Category = 'speed'
+      AutoCheck = True
+      Caption = #1089#1082#1086#1088#1086#1089#1090#1100' '#1087#1077#1095#1072#1090#1080
+      Checked = True
+      OnExecute = speedWinExecute
+    end
+    object reset: TAction
+      Category = 'speed'
+      Caption = #1089#1073#1088#1086#1089
+      OnExecute = resetExecute
     end
   end
   object ImageList: TImageList
