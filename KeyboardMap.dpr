@@ -16,7 +16,8 @@ uses
   Utilites in 'units\Utilites.pas',
   FileMapping in 'HookProject\FileMapping.pas',
   KeyboardUnit in 'HookProject\KeyboardUnit.pas',
-  winHeader in 'components\winHeader.pas' {FormHeader: TFrame};
+  winHeader in 'components\winHeader.pas' {FormHeader: TFrame},
+  sound in 'sound.pas' {Form1};
 
 {$R *.res}
 var pbuff: array[0..127] of char;

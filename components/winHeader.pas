@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
   Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons,
-  Vcl.ExtCtrls, System.ImageList, Vcl.ImgList, LabSwitch;
+  Vcl.ExtCtrls, System.ImageList, Vcl.ImgList, LabSwitch, Vcl.WinXCtrls;
 
 type
   TFormHeader = class(TFrame)
@@ -14,10 +14,10 @@ type
     CloseBut: TSpeedButton;
     MinimBut: TSpeedButton;
     WinCaption: TLabel;
-    WinStyle: TSpeedButton;
     ImageList: TImageList;
-    Frame11: TFrame1;
     SpeedButton1: TSpeedButton;
+    StatSwitch: TToggleSwitch;
+    WinOverride: TToggleSwitch;
     procedure Panel1MouseMove(Sender: TObject; Shift: TShiftState; X,
       Y: Integer);
     procedure Panel1MouseDown(Sender: TObject; Button: TMouseButton;
@@ -26,9 +26,9 @@ type
       Shift: TShiftState; X, Y: Integer);
     procedure CloseButClick(Sender: TObject);
     function GetParentForm(Component: TComponent): TForm;
-    procedure WinStyleClick(Sender: TObject);
     procedure FrameResize(Sender: TObject);
     procedure MinimButClick(Sender: TObject);
+    procedure WinOverrideClick(Sender: TObject);
   private
 
     diff:TPoint;
@@ -96,17 +96,17 @@ begin
   down:=false;
 end;
 
-procedure TFormHeader.CloseButClick(Sender: TObject);
+procedure TFormHeader.WinOverrideClick(Sender: TObject);
 begin
-  GetParentForm(sender as tComponent).close;
-end;
-
-procedure TFormHeader.WinStyleClick(Sender: TObject);
-begin
-if winStyle.Down then
+if winOverride.State=tssOn then
     GetParentForm(sender as tComponent).FormStyle:=fsStayOnTop
     else
     GetParentForm(sender as tComponent).FormStyle:=fsNormal;
+end;
+
+procedure TFormHeader.CloseButClick(Sender: TObject);
+begin
+  GetParentForm(sender as tComponent).close;
 end;
 
 end.

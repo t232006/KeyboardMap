@@ -500,14 +500,9 @@ LayerNames=
 Coordinates=490,669,62,33
 
 []
-Coordinates=143,10,53,51
-Visible=True
-ExplicitSubNodes=
-LayerNames=
-
-[WinStyle]
 Coordinates=352,218,57,33
 Visible=True
+ExplicitSubNodes=
 LayerNames=
 
 [N18]

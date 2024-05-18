@@ -224,7 +224,7 @@ end;
 procedure TKeyboardForm.Close_statisticsExecute(Sender: TObject);
 begin
    closeStatistics;
-   formHeader.frame11.Visible:=false;
+   formHeader.StatSwitch.Visible:=false;
    Close_statistics.Enabled:=false;
 end;
 
@@ -426,11 +426,13 @@ procedure TKeyboardForm.showStatistics;
             Statistics.ShowStatisticsByNum(i, tempKey);
            n5.Enabled:=true;
          end;
-    FormHeader.Frame11.Visible:=true;
-    if sh1=sh2 then FormHeader.Frame11.Enabled:=false else
-                      FormHeader.Frame11.Enabled:=true;
-    if showGradient then FormHeader.Frame11.Switch.State:=tssOn else
-                        FormHeader.Frame11.Switch.State:=tssOff;
+    FormHeader.StatSwitch.Visible:=true;
+    if sh1=sh2 then FormHeader.StatSwitch.Enabled:=false else
+                      FormHeader.StatSwitch.Enabled:=true;
+    Formheader.StatSwitch.Tag:=1;
+    if showGradient then FormHeader.StatSwitch.State:=tssOff else
+                        FormHeader.StatSwitch.State:=tssOn;
+    Formheader.StatSwitch.Tag:=0;
 
 
 
@@ -438,9 +440,11 @@ procedure TKeyboardForm.showStatistics;
 
 procedure TKeyboardForm.StatModeSwitchClick(Sender: TObject);
 begin
-  FormHeader.Frame11.SwitchClick(Sender);
+  //FormHeader.StatSwitch.SwitchClick(Sender);
+  if formheader.Tag<>0 then exit;
+
   CloseStatistics;
-  if FormHeader.Frame11.Switch.State=tssOff then
+  if FormHeader.StatSwitch.State=tssOff then
     showGradient:=false else showGradient:=true;
   showStatistics;
 

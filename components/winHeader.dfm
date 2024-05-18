@@ -1,14 +1,14 @@
 object FormHeader: TFormHeader
   Left = 0
   Top = 0
-  Width = 640
+  Width = 716
   Height = 35
   TabOrder = 0
   OnResize = FrameResize
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 640
+    Width = 716
     Height = 33
     Align = alTop
     Color = clActiveCaption
@@ -26,7 +26,7 @@ object FormHeader: TFormHeader
       Align = alLeft
     end
     object CloseBut: TSpeedButton
-      Left = 596
+      Left = 672
       Top = 1
       Width = 43
       Height = 31
@@ -44,7 +44,7 @@ object FormHeader: TFormHeader
       ExplicitHeight = 39
     end
     object MinimBut: TSpeedButton
-      Left = 556
+      Left = 632
       Top = 1
       Width = 40
       Height = 31
@@ -68,51 +68,40 @@ object FormHeader: TFormHeader
       Height = 15
       Caption = 'label'
     end
-    object WinStyle: TSpeedButton
-      Left = 516
-      Top = 1
-      Width = 40
-      Height = 31
-      Hint = #1055#1086#1074#1077#1088#1093' '#1074#1089#1077#1093' '#1086#1082#1086#1085
-      Align = alRight
-      AllowAllUp = True
-      GroupIndex = 1
-      Down = True
-      ImageIndex = 1
-      Images = ImageList
-      Flat = True
-      PressedImageIndex = 0
-      SelectedImageIndex = 0
-      OnClick = WinStyleClick
-      ExplicitLeft = 510
-      ExplicitTop = 0
-    end
     object SpeedButton1: TSpeedButton
-      Left = 480
+      Left = 596
       Top = 1
       Width = 36
       Height = 31
       Align = alRight
       ImageIndex = 3
       Images = ImageList
+      ExplicitLeft = 480
     end
-    inline Frame11: TFrame1
-      Left = 248
-      Top = 2
-      Width = 107
-      Height = 31
+    object StatSwitch: TToggleSwitch
+      Left = 192
+      Top = 8
+      Width = 105
+      Height = 20
+      StateCaptions.CaptionOn = #1095#1080#1089#1083#1072
+      StateCaptions.CaptionOff = #1075#1088#1072#1076#1080#1077#1085#1090
       TabOrder = 0
-      ExplicitLeft = 248
-      ExplicitTop = 2
-      ExplicitHeight = 31
-      inherited Label1: TLabel
-        Left = 66
-        Top = 3
-        Height = 43
-        ExplicitLeft = 66
-        ExplicitTop = 3
-        ExplicitHeight = 43
-      end
+      TabStop = False
+      ThumbWidth = 20
+      Visible = False
+    end
+    object WinOverride: TToggleSwitch
+      Left = 336
+      Top = 8
+      Width = 141
+      Height = 20
+      State = tssOn
+      StateCaptions.CaptionOn = #1087#1086#1074#1077#1088#1093' '#1086#1082#1086#1085
+      StateCaptions.CaptionOff = #1085#1077' '#1087#1086#1074#1077#1088#1093' '#1086#1082#1086#1085
+      TabOrder = 1
+      TabStop = False
+      ThumbWidth = 20
+      OnClick = WinOverrideClick
     end
   end
   object ImageList: TImageList

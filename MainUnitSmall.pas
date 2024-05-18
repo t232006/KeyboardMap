@@ -144,7 +144,6 @@ type
     Key110: TKey;
     Key12: TKey;
     Key92: TKey;
-    WinStyle: TSpeedButton;
     ImageList: TImageList;
     Key223: TKey;
     N14: TMenuItem;
@@ -152,7 +151,6 @@ type
     N16: TMenuItem;
     N17: TMenuItem;
     N18: TMenuItem;
-    StatMode: TFrame1;
     speedWin: TAction;
     reset: TAction;
     N2: TMenuItem;
@@ -179,7 +177,6 @@ type
     procedure Cur_session_statExecute(Sender: TObject);
     procedure Stat_summaryExecute(Sender: TObject);
     procedure Layout_changeExecute(Sender: TObject);
-    procedure WinStyleClick(Sender: TObject);
     procedure StatModeSwitchClick(Sender: TObject);
     procedure speedWinExecute(Sender: TObject);
     procedure resetExecute(Sender: TObject);
@@ -227,7 +224,7 @@ end;
 procedure TKeyboardFormSmall.Close_statisticsExecute(Sender: TObject);
 begin
    closeStatistics;
-   StatMode.Visible:=false;
+   FormHeader.StatSwitch.Visible:=false;
    Close_statistics.Enabled:=false;
 end;
 
@@ -429,11 +426,11 @@ procedure TKeyboardFormSmall.showStatistics;
             Statistics.ShowStatisticsByNum(i, tempKey);
            n5.Enabled:=true;
          end;
-    StatMode.Visible:=true;
-    if sh1=sh2 then statmode.Enabled:=false else
-                      statmode.Enabled:=true;
-    if showGradient then statmode.Switch.State:=tssOn else
-                        statmode.Switch.State:=tssOff;
+    FormHeader.StatSwitch.Visible:=true;
+    if sh1=sh2 then FormHeader.StatSwitch.Enabled:=false else
+                      FormHeader.StatSwitch.Enabled:=true;
+    if showGradient then FormHeader.StatSwitch.State:=tssOff else
+                        FormHeader.StatSwitch.State:=tssOn;
 
 
 
@@ -441,9 +438,9 @@ procedure TKeyboardFormSmall.showStatistics;
 
 procedure TKeyboardFormSmall.StatModeSwitchClick(Sender: TObject);
 begin
-  StatMode.SwitchClick(Sender);
+  //FormHeader.StatSwitch.SwitchClick(Sender);
   CloseStatistics;
-  if statMode.Switch.State=tssOff then
+  if formHeader.statswitch.State=tssOff then
     showGradient:=false else showGradient:=true;
   showStatistics;
 
@@ -509,12 +506,6 @@ procedure TKeyboardFormSmall.TrayIconDblClick(Sender: TObject);
       LangCode:=(GetKeyboardLayout(ThreadID));
 
   end;
-
-procedure TKeyboardFormSmall.WinStyleClick(Sender: TObject);
-begin
-     if winStyle.Down then
-    self.FormStyle:=fsStayOnTop else self.FormStyle:=fsNormal;
-end;
 
 {$ENDREGION}
 end.

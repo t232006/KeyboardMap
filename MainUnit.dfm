@@ -5614,33 +5614,35 @@ object KeyboardForm: TKeyboardForm
     end
   end
   inline FormHeader: TFormHeader
-    Left = 466
+    Left = 392
     Top = 16
-    Width = 640
+    Width = 714
     Height = 35
     TabOrder = 1
-    ExplicitLeft = 466
+    ExplicitLeft = 392
     ExplicitTop = 16
+    ExplicitWidth = 714
     inherited Panel1: TPanel
+      Width = 714
+      ExplicitWidth = 714
       inherited WinIcon: TImage
         Transparent = True
       end
-      inherited WinStyle: TSpeedButton
-        SelectedImageIndex = 4
+      inherited CloseBut: TSpeedButton
+        Left = 670
+        ExplicitLeft = 670
+      end
+      inherited MinimBut: TSpeedButton
+        Left = 630
+        ExplicitLeft = 630
       end
       inherited SpeedButton1: TSpeedButton
+        Left = 594
         OnClick = FormHeaderSpeedButton1Click
+        ExplicitLeft = 594
       end
-      inherited Frame11: TFrame1
-        Width = 129
-        ExplicitWidth = 129
-        inherited Label1: TLabel
-          Top = 4
-          Width = 53
-          Caption = #1075#1088#1072#1076#1080#1077#1085#1090
-          ExplicitTop = 4
-          ExplicitWidth = 53
-        end
+      inherited StatSwitch: TToggleSwitch
+        OnClick = StatModeSwitchClick
       end
     end
   end

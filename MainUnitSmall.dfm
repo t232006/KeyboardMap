@@ -5582,22 +5582,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
       DownPosX = 25
       MidPosX = 5
     end
-    object WinStyle: TSpeedButton
-      Left = 658
-      Top = 14
-      Width = 26
-      Height = 28
-      Hint = #1055#1086#1074#1077#1088#1093' '#1074#1089#1077#1093' '#1086#1082#1086#1085
-      AllowAllUp = True
-      GroupIndex = 1
-      Down = True
-      ImageIndex = 1
-      Images = ImageList
-      Flat = True
-      PressedImageIndex = 0
-      SelectedImageIndex = 0
-      OnClick = WinStyleClick
-    end
     object Key223: TKey
       Left = 758
       Top = 14
@@ -5629,32 +5613,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
       DownPosX = 25
       MidPosX = 5
     end
-    inline StatMode: TFrame1
-      Left = 687
-      Top = -9
-      Width = 65
-      Height = 51
-      TabOrder = 0
-      Visible = False
-      ExplicitLeft = 687
-      ExplicitTop = -9
-      ExplicitWidth = 65
-      inherited Label1: TLabel
-        Top = 40
-        Width = 49
-        Height = 13
-        Caption = #1075#1088#1072#1076#1080#1077#1085#1090
-        Font.Height = -11
-        ExplicitTop = 40
-        ExplicitWidth = 49
-        ExplicitHeight = 13
-      end
-      inherited Switch: TToggleSwitch
-        Top = 20
-        OnClick = StatModeSwitchClick
-        ExplicitTop = 20
-      end
-    end
   end
   inline FormHeader: TFormHeader
     Left = 167
@@ -5664,9 +5622,25 @@ object KeyboardFormSmall: TKeyboardFormSmall
     TabOrder = 1
     ExplicitLeft = 167
     ExplicitTop = 8
+    ExplicitWidth = 640
     inherited Panel1: TPanel
+      Width = 640
+      ExplicitWidth = 640
+      inherited CloseBut: TSpeedButton
+        Left = 596
+        ExplicitLeft = 596
+      end
+      inherited MinimBut: TSpeedButton
+        Left = 556
+        ExplicitLeft = 556
+      end
       inherited SpeedButton1: TSpeedButton
+        Left = 520
         OnClick = FormHeaderSpeedButton1Click
+        ExplicitLeft = 520
+      end
+      inherited StatSwitch: TToggleSwitch
+        OnClick = StatModeSwitchClick
       end
     end
   end
