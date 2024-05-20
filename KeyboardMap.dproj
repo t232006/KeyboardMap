@@ -141,9 +141,6 @@
         <DCCReference Include="MainUnitSmall.pas">
             <Form>KeyboardFormSmall</Form>
         </DCCReference>
-        <DCCReference Include="MainUnit.pas">
-            <Form>KeyboardForm</Form>
-        </DCCReference>
         <DCCReference Include="StatisticsOptions.pas">
             <Form>Form2</Form>
         </DCCReference>
@@ -172,6 +169,18 @@
         </DCCReference>
         <DCCReference Include="sound.pas">
             <Form>Form1</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="ParentUnit.pas">
+            <Form>ParentForm</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="MainUnitLarge.pas">
+            <Form>KeyboardForm</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="BackgroundUnit.pas">
+            <Form>BackgroundForm</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Base">

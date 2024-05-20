@@ -3,7 +3,8 @@ unit StatisticsOptions;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,  ParentUnit,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ButtonGroup,
   Vcl.Buttons, Vcl.ExtCtrls, Vcl.WinXCtrls, inifiles, Vcl.FileCtrl;
 
@@ -27,7 +28,6 @@ type
   private
     { Private declarations }
   public
-    { Public declarations }
   end;
 
 var
@@ -35,17 +35,17 @@ var
   fdPath:string;
   savefile: TIniFile;
 implementation
- uses MainUnit;
 {$R *.dfm}
 
 procedure TForm2.BitBtn1Click(Sender: TObject);
 begin
    if fileslist.ItemIndex>-1 then
-   KeyboardForm.mapfile:=fileslist.items[fileslist.itemindex];
-   KeyboardForm.sh1:=shape1.Brush.Color;
-   KeyboardForm.sh2:=shape2.Brush.Color;
-   if ToggleSwitch.State=tssOff then Keyboardform.showGradient:=true
-   else Keyboardform.showGradient:=false;
+
+   (Owner as TParentForm).mapfile:=fileslist.items[fileslist.itemindex];
+   (Owner as TParentForm).sh1:=shape1.Brush.Color;
+   (Owner as TParentForm).sh2:=shape2.Brush.Color;
+   if ToggleSwitch.State=tssOff then (Owner as TParentForm).showGradient:=true
+   else (Owner as TParentForm).showGradient:=false;
 
    close;
 end;

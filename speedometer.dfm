@@ -3635,11 +3635,9 @@ object SpeedForm: TSpeedForm
     Left = 136
     Top = 32
     object N1: TMenuItem
-      Action = KeyboardForm.speedWin
       AutoCheck = True
     end
     object N2: TMenuItem
-      Action = KeyboardForm.reset
     end
   end
 end

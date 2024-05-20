@@ -35,19 +35,23 @@ var
 implementation
 
 {$R *.dfm}
-uses mainUnit;
+uses mainUnitLarge, mainUnitSmall;
 
 procedure TSpeedForm.FormHide(Sender: TObject);
 var saveparams:TInifile;
 begin
   //with keyboardform do
   //begin
+
     saveparams:=TIniFile.Create(ExtractFileDir(Paramstr(0))+'\params.ini');
     saveparams.WriteInteger('speeds','posX',left);
     saveparams.WriteInteger('speeds','posY',top);
     saveparams.WriteInteger('Speeds','averageSpeed',round(speedM.Value));
     saveparams.WriteInteger('Speeds','recordSpeed',speedM.Tag);
-    saveparams.WriteInteger('Speeds','count', keyboardform.statistics.PressCount);
+    if  KeyboardformLarge.Active then
+    saveparams.WriteInteger('Speeds','count', keyboardformlarge.statistics.PressCount)
+    else
+    saveparams.WriteInteger('Speeds','count', keyboardformsmall.statistics.PressCount);
     saveparams.Destroy;
   //end;
 end;

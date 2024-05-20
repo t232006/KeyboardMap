@@ -1,0 +1,65 @@
+unit BackgroundUnit;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
+  Vcl.Imaging.pngimage, Vcl.ExtCtrls, ParentUnit, MainUnitLarge, MainUnitSmall;
+
+type
+  TBackgroundForm = class(TForm)
+    Image1: TImage;
+    procedure FormShow(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
+    procedure OpenAnotherKeyboard (var msg: TMessage); message WM_WANT_CLOSE;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+  procedure RunHook stdcall; external 'KeyboardHook.dll';
+  procedure StopHook; stdcall; external 'KeyboardHook.dll';
+
+var
+  BackgroundForm: TBackgroundForm;
+  activeForm: TParentForm;
+
+implementation
+
+{$R *.dfm}
+
+procedure TBackgroundForm.FormCreate(Sender: TObject);
+begin
+  Runhook;
+  activeForm:=TKeyboardFormLarge.Create(self);
+  activeForm.Show;
+  hide;
+
+end;
+
+procedure TBackgroundForm.FormDestroy(Sender: TObject);
+begin
+  stophook;
+end;
+
+procedure TBackgroundForm.FormShow(Sender: TObject);
+begin
+  left:=0;
+  top:=screen.Height-self.Height-30;
+end;
+
+procedure TBackgroundForm.OpenAnotherKeyboard(var msg: TMessage);
+var tempform: TParentForm;
+begin
+  if (activeform is TKeyboardFormlarge) then
+     tempform:= TKeyboardFormSmall.Create(self)
+  else
+     tempform:= TKeyboardFormLarge.Create(self);
+  tempform.Show(activeform.VirtKeyboard);
+  activeform.Close;
+  activeform:=tempform;
+end;
+
+end.

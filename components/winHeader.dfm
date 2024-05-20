@@ -43,24 +43,6 @@ object FormHeader: TFormHeader
       ExplicitLeft = 584
       ExplicitHeight = 39
     end
-    object MinimBut: TSpeedButton
-      Left = 632
-      Top = 1
-      Width = 40
-      Height = 31
-      Align = alRight
-      ImageIndex = 1
-      Images = ImageList
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -19
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentFont = False
-      OnClick = MinimButClick
-      ExplicitLeft = 552
-      ExplicitHeight = 39
-    end
     object WinCaption: TLabel
       Left = 51
       Top = 9
@@ -69,7 +51,7 @@ object FormHeader: TFormHeader
       Caption = 'label'
     end
     object SpeedButton1: TSpeedButton
-      Left = 596
+      Left = 600
       Top = 1
       Width = 36
       Height = 31
@@ -77,6 +59,17 @@ object FormHeader: TFormHeader
       ImageIndex = 3
       Images = ImageList
       ExplicitLeft = 480
+    end
+    object SpeedButton2: TSpeedButton
+      Left = 636
+      Top = 1
+      Width = 36
+      Height = 31
+      Align = alRight
+      ImageIndex = 1
+      Images = ImageList
+      OnClick = SpeedButton2Click
+      ExplicitLeft = 649
     end
     object StatSwitch: TToggleSwitch
       Left = 192

@@ -8,12 +8,12 @@ procedure SendKeyDown(Key: WideChar); overload;
 procedure SendKeyUp(Key: WideChar); overload;
 procedure SendKeyDown(Key: integer); overload;
 procedure SendKeyUp(Key: integer); overload;
-procedure KeyClick(But: TKey; ShiftDown: boolean);
+procedure KeyClick(But: TKey; ShiftDown: boolean; langcode: HKL);
 procedure LayoutChangeCtrl;
 procedure LayoutChangeAlt;
 
 implementation
-uses MainUnit;
+uses ParentUnit;
 
 procedure LayoutChangeCtrl;
  begin
@@ -86,7 +86,7 @@ begin
     keybd_event(key, 0, KEYEVENTF_KEYUP, 0);
 end;
 
-procedure KeyClick(But: TKey; ShiftDown: boolean);
+procedure KeyClick(But: TKey; ShiftDown: boolean; langcode:HKL);
 var
     state: WindowPlacement;
     ch:char;  en:boolean;
@@ -96,7 +96,7 @@ begin
     GetWindowPlacement(hwin, state);
     ShowWindow(hwin, state.showCmd);
     BringWindowToTop(hwin);
-    en:=word(GetKeyboardLayout(0))=$409;
+    en:=hiword(langcode)=$409;
     case But.KeyType of
     ktNum:
       begin
@@ -170,7 +170,7 @@ begin
           if temp='12' then
 
           temp:='13';   //right enter
-          sendkeypress(strtoint(temp));
+          sendkeypress(strtoint(temp)) ;
       end;
     end;
 end;

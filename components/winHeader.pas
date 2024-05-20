@@ -12,12 +12,12 @@ type
     Panel1: TPanel;
     WinIcon: TImage;
     CloseBut: TSpeedButton;
-    MinimBut: TSpeedButton;
     WinCaption: TLabel;
     ImageList: TImageList;
     SpeedButton1: TSpeedButton;
     StatSwitch: TToggleSwitch;
     WinOverride: TToggleSwitch;
+    SpeedButton2: TSpeedButton;
     procedure Panel1MouseMove(Sender: TObject; Shift: TShiftState; X,
       Y: Integer);
     procedure Panel1MouseDown(Sender: TObject; Button: TMouseButton;
@@ -27,8 +27,8 @@ type
     procedure CloseButClick(Sender: TObject);
     function GetParentForm(Component: TComponent): TForm;
     procedure FrameResize(Sender: TObject);
-    procedure MinimButClick(Sender: TObject);
     procedure WinOverrideClick(Sender: TObject);
+    procedure SpeedButton2Click(Sender: TObject);
   private
 
     diff:TPoint;
@@ -66,10 +66,7 @@ begin
     Result := C as TForm;
 end;
 
-procedure TFormHeader.MinimButClick(Sender: TObject);
-begin
-  Application.Minimize;
-end;
+
 
 procedure TFormHeader.Panel1MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
@@ -96,6 +93,12 @@ begin
   down:=false;
 end;
 
+procedure TFormHeader.SpeedButton2Click(Sender: TObject);
+begin
+    GetParentForm(sender as tComponent).Hide;
+    (GetParentForm(sender as tComponent).owner as tform).show;
+end;
+
 procedure TFormHeader.WinOverrideClick(Sender: TObject);
 begin
 if winOverride.State=tssOn then
@@ -105,8 +108,9 @@ if winOverride.State=tssOn then
 end;
 
 procedure TFormHeader.CloseButClick(Sender: TObject);
+//var f: TForm;
 begin
-  GetParentForm(sender as tComponent).close;
+  (GetParentForm(sender as tComponent).owner as tform).close;
 end;
 
 end.

@@ -4,7 +4,6 @@ uses
   Vcl.Forms,
   Windows,
   MainUnitSmall in 'MainUnitSmall.pas' {KeyboardFormSmall},
-  MainUnit in 'MainUnit.pas' {KeyboardForm},
   StatisticsOptions in 'StatisticsOptions.pas' {Form2},
   AnalogMeter in 'components\AnalogMeter.pas',
   Language in 'Language.pas' {LangForm},
@@ -17,7 +16,10 @@ uses
   FileMapping in 'HookProject\FileMapping.pas',
   KeyboardUnit in 'HookProject\KeyboardUnit.pas',
   winHeader in 'components\winHeader.pas' {FormHeader: TFrame},
-  sound in 'sound.pas' {Form1};
+  sound in 'sound.pas' {Form1},
+  ParentUnit in 'ParentUnit.pas' {ParentForm},
+  MainUnitLarge in 'MainUnitLarge.pas' {KeyboardForm},
+  BackgroundUnit in 'BackgroundUnit.pas' {BackgroundForm};
 
 {$R *.res}
 var pbuff: array[0..127] of char;
@@ -49,9 +51,10 @@ begin
     dWin:=GetWindow(dwin, GW_HWNDNEXT);
 
   end;
-  Application.CreateForm(TKeyboardForm, KeyboardForm);
-  Application.CreateForm(TKeyboardFormSmall, KeyboardFormSmall);
-  Application.CreateForm(TForm2, Form2);
+   Application.CreateForm(TBackgroundForm, BackgroundForm);
+  //Application.CreateForm(TKeyboardFormLarge, KeyboardFormLarge);
+  //Application.CreateForm(TKeyboardFormSmall, KeyboardFormSmall);
+  //Application.CreateForm(TForm2, Form2);
   Application.CreateForm(TLangForm, LangForm);
   //Application.CreateForm(TSpeedForm, SpeedForm);
   Application.Run;
