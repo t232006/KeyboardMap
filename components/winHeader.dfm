@@ -1,14 +1,14 @@
 object FormHeader: TFormHeader
   Left = 0
   Top = 0
-  Width = 716
+  Width = 818
   Height = 35
   TabOrder = 0
   OnResize = FrameResize
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 716
+    Width = 818
     Height = 33
     Align = alTop
     Color = clActiveCaption
@@ -23,10 +23,13 @@ object FormHeader: TFormHeader
       Top = 1
       Width = 36
       Height = 31
+      Cursor = crHandPoint
       Align = alLeft
+      PopupMenu = ParentForm.TrayMenu
+      OnClick = WinIconClick
     end
     object CloseBut: TSpeedButton
-      Left = 672
+      Left = 774
       Top = 1
       Width = 43
       Height = 31
@@ -50,18 +53,8 @@ object FormHeader: TFormHeader
       Height = 15
       Caption = 'label'
     end
-    object SpeedButton1: TSpeedButton
-      Left = 600
-      Top = 1
-      Width = 36
-      Height = 31
-      Align = alRight
-      ImageIndex = 3
-      Images = ImageList
-      ExplicitLeft = 480
-    end
     object SpeedButton2: TSpeedButton
-      Left = 636
+      Left = 738
       Top = 1
       Width = 36
       Height = 31
@@ -70,6 +63,16 @@ object FormHeader: TFormHeader
       Images = ImageList
       OnClick = SpeedButton2Click
       ExplicitLeft = 649
+    end
+    object SpeedButton3: TSpeedButton
+      Left = 702
+      Top = 1
+      Width = 36
+      Height = 31
+      Align = alRight
+      ImageIndex = 3
+      Images = ImageList
+      ExplicitLeft = 708
     end
     object StatSwitch: TToggleSwitch
       Left = 192
@@ -82,6 +85,9 @@ object FormHeader: TFormHeader
       TabStop = False
       ThumbWidth = 20
       Visible = False
+      OnMouseDown = Panel1MouseDown
+      OnMouseMove = Panel1MouseMove
+      OnMouseUp = Panel1MouseUp
     end
     object WinOverride: TToggleSwitch
       Left = 336
@@ -95,6 +101,26 @@ object FormHeader: TFormHeader
       TabStop = False
       ThumbWidth = 20
       OnClick = WinOverrideClick
+      OnMouseDown = Panel1MouseDown
+      OnMouseMove = Panel1MouseMove
+      OnMouseUp = Panel1MouseUp
+    end
+    object showSpeed: TToggleSwitch
+      Left = 497
+      Top = 8
+      Width = 148
+      Height = 20
+      PopupMenu = ParentForm.TrayMenu
+      State = tssOn
+      StateCaptions.CaptionOn = #1089#1082#1086#1088#1086#1089#1100
+      StateCaptions.CaptionOff = #1089#1082#1086#1088#1086#1089#1090#1100' '#1089#1082#1088#1099#1090#1072
+      TabOrder = 2
+      TabStop = False
+      ThumbWidth = 20
+      OnClick = showSpeedClick
+      OnMouseDown = Panel1MouseDown
+      OnMouseMove = Panel1MouseMove
+      OnMouseUp = Panel1MouseUp
     end
   end
   object ImageList: TImageList

@@ -14,6 +14,7 @@ type
     PopupMenu1: TPopupMenu;
     N1: TMenuItem;
     N2: TMenuItem;
+    N3: TMenuItem;
     procedure FormMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     procedure FormMouseUp(Sender: TObject; Button: TMouseButton;
@@ -35,7 +36,7 @@ var
 implementation
 
 {$R *.dfm}
-uses mainUnitLarge, mainUnitSmall;
+uses backgroundUnit, parentform;
 
 procedure TSpeedForm.FormHide(Sender: TObject);
 var saveparams:TInifile;
@@ -48,10 +49,7 @@ begin
     saveparams.WriteInteger('speeds','posY',top);
     saveparams.WriteInteger('Speeds','averageSpeed',round(speedM.Value));
     saveparams.WriteInteger('Speeds','recordSpeed',speedM.Tag);
-    if  KeyboardformLarge.Active then
-    saveparams.WriteInteger('Speeds','count', keyboardformlarge.statistics.PressCount)
-    else
-    saveparams.WriteInteger('Speeds','count', keyboardformsmall.statistics.PressCount);
+    saveparams.WriteInteger('Speeds','count', backForm.statistics.PressCount);
     saveparams.Destroy;
   //end;
 end;
@@ -89,6 +87,8 @@ begin
   move:=false;
   left:=saveparams.ReadInteger('speeds','PosX',0);
   top:=saveparams.ReadInteger('speeds','PosY',0);
+  speedM.HighZoneValue:=saveparams.ReadInteger('speeds','recordSpeed',0);
+  speedM.Value:=saveparams.ReadInteger('speeds','averageSpeed',0);
   saveparams.Destroy;
 end;
 

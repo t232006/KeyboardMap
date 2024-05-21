@@ -2,10 +2,10 @@ object KeyboardFormSmall: TKeyboardFormSmall
   Left = 0
   Top = 0
   BorderIcons = [biSystemMenu, biMinimize]
-  BorderStyle = bsSingle
+  BorderStyle = bsNone
   Caption = 'Screen keyboard'
-  ClientHeight = 305
-  ClientWidth = 799
+  ClientHeight = 286
+  ClientWidth = 811
   Color = clWhite
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText

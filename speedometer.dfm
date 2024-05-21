@@ -3635,9 +3635,13 @@ object SpeedForm: TSpeedForm
     Left = 136
     Top = 32
     object N1: TMenuItem
-      AutoCheck = True
+      Action = ParentForm.speedWin
     end
     object N2: TMenuItem
+      Caption = '-'
+    end
+    object N3: TMenuItem
+      Action = ParentForm.reset
     end
   end
 end

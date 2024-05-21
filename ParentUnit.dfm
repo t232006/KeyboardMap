@@ -3,7 +3,7 @@ object ParentForm: TParentForm
   Top = 0
   Caption = 'ParentForm'
   ClientHeight = 462
-  ClientWidth = 628
+  ClientWidth = 711
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -12,33 +12,37 @@ object ParentForm: TParentForm
   Font.Style = []
   OnClose = FormClose
   OnCreate = FormCreate
+  OnHide = FormHide
   OnShow = FormShow
   TextHeight = 15
   inline FormHeader: TFormHeader
     Left = -86
     Top = 16
-    Width = 714
+    Width = 789
     Height = 35
     TabOrder = 0
     ExplicitLeft = -86
     ExplicitTop = 16
-    ExplicitWidth = 714
+    ExplicitWidth = 789
     inherited Panel1: TPanel
-      Width = 714
-      ExplicitWidth = 714
+      Width = 789
+      PopupMenu = TrayMenu
+      ExplicitWidth = 789
       inherited WinIcon: TImage
         Transparent = True
       end
       inherited CloseBut: TSpeedButton
-        Left = 670
+        Left = 745
         ExplicitLeft = 670
       end
-      inherited SpeedButton1: TSpeedButton
-        Left = 598
-        ExplicitLeft = 594
-      end
       inherited SpeedButton2: TSpeedButton
-        Left = 634
+        Left = 709
+        ExplicitLeft = 634
+      end
+      inherited SpeedButton3: TSpeedButton
+        Left = 673
+        OnClick = FormHeaderSpeedButton3Click
+        ExplicitLeft = 673
       end
       inherited StatSwitch: TToggleSwitch
         OnClick = FormHeaderStatSwitchClick
@@ -46,22 +50,17 @@ object ParentForm: TParentForm
     end
   end
   object TrayMenu: TPopupMenu
+    OnPopup = TrayMenuPopup
     Left = 40
     Top = 88
     object N1: TMenuItem
       Caption = #1056#1072#1079#1074#1077#1088#1085#1091#1090#1100
+      OnClick = N1Click
     end
     object N10: TMenuItem
       Action = Layout_change
     end
     object N11: TMenuItem
-      Caption = '-'
-    end
-    object exit1: TMenuItem
-      Caption = #1042#1099#1093#1086#1076
-      OnClick = exit1Click
-    end
-    object N14: TMenuItem
       Caption = '-'
     end
     object N15: TMenuItem
@@ -78,6 +77,13 @@ object ParentForm: TParentForm
     end
     object N21: TMenuItem
       Action = Stat_summary
+    end
+    object N14: TMenuItem
+      Caption = '-'
+    end
+    object exit1: TMenuItem
+      Caption = #1042#1099#1093#1086#1076
+      OnClick = exit1Click
     end
   end
   object ApplicationEvents1: TApplicationEvents
@@ -277,9 +283,7 @@ object ParentForm: TParentForm
     end
     object speedWin: TAction
       Category = 'speed'
-      AutoCheck = True
-      Caption = #1089#1082#1086#1088#1086#1089#1090#1100' '#1087#1077#1095#1072#1090#1080
-      Checked = True
+      Caption = #1079#1072#1082#1088#1099#1090#1100
       OnExecute = speedWinExecute
     end
     object reset: TAction

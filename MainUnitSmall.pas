@@ -118,61 +118,25 @@ type
     Key92: TKey;
     Key223: TKey;
     procedure FormCreate(Sender: TObject);
-    procedure GetPressing(var msg: TMessage); message WM_MYKEYPRESS;
     procedure Key100MouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     //procedure CreateParams(var AParams: TCreateParams); override;
     procedure FormHeaderSpeedButton1Click(Sender: TObject);
   private
-    function FindKey(ScanCode: string):TKey;
-    procedure showStatistics;   override;
-    procedure closeStatistics;  override;
+
   end;
 
 var
   KeyboardFormSmall: TKeyboardFormSmall;
-  VirtKeyboard: TKeyboard;
-  hwin: Hwnd;
+
 implementation
+uses BackgroundUnit;
 
 {$R *.dfm}
 
-procedure TKeyboardFormSmall.closeStatistics;
-var tempKey: TKey;
-  begin
-     if Statistics.IsEmpty=false then
-     begin
-       for var i := Statistics.firstItem to Statistics.lastItem do
-         begin
-            tempKey:=FindComponent('Key'+inttostr(i)) as TKey;
-            if tempKey=nil then continue;
-            Statistics.HideStatistics(i, tempKey);
-         end;
-       Statistics.IsEmpty:=true;
-     end;
-end;
-
-function TKeyboardFormSmall.FindKey(ScanCode: string): TKey;
-var k, i:byte;  key:TKey;
-begin
-   //result:=nil;
-   for k := 1 to 222 do
-   begin
-      key:=FindComponent('Key'+inttostr(k)) as TKey;
-      if key=nil then continue else
-      for I := 0 to key.ScanCodes.Count-1 do
-        if ScanCode=key.ScanCodes[i] then
-        begin
-          result:=key;
-          exit;
-        end;
-   end;
-   result:=FindComponent('Key223') as TKey;  //exception
-
-end;
-
 procedure TKeyboardFormSmall.FormCreate(Sender: TObject);
 begin
+  inherited;
   Key20.Pressed:=Odd(GetKeyState(VK_CAPITAL));
   Key144.Pressed:=Odd(GetKeyState(VK_NUMLOCK));
   Key145.Pressed:=Odd(GetKeyState(VK_SCROLL));
@@ -185,72 +149,12 @@ begin
   self.Hide;
 end;
 
-procedure TKeyboardFormSmall.GetPressing(var msg: TMessage);
-var _key:Tkey;
-    curspeed: word;
-begin
-
-   inherited;
-   _key:=FindKey(ScanHex);
-   _key.Pressed:=VirtKeyboard.isPressed;
-
-   if virtkeyboard.isPressed then
-   begin
-     if (_key.KeyType<>ktScroll) and
-        (_key.KeyType<>ktSticked) and
-        (_key.KeyType<>ktFunc)
-      then   //don't count arrows and scroll, functions, shift and other
-     begin
-       curspeed := round(speedform.instSpeedM.Value);
-       speedform.SpeedM.Value:=Statistics.averageSpeed(curspeed);
-       instantticker:=0;
-       //memo1.Lines.Add(floattostr(SpeedM.Value));
-     end;
-     if statistics.IsShowing then
-     begin
-        statistics.Init(virtKeyboard.map);
-        if sh1=sh2 then
-          statistics.ShowStatisticsbyNum(virtKeyboard.VirtCode, _key)
-        else
-          statistics.ShowStatisticsbyGrad(virtKeyboard.VirtCode, sh1, sh2, _key) ;
-     end;
-   end;
-
-   if _key.Name='Key20' then  //CapsLock
-      _key.Pressed:=Odd(GetKeyState(VK_CAPITAL)) else
-   if _Key.Name='Key144' then
-      _key.Pressed:=Odd(GetKeyState(VK_NUMLOCK)) else
-   if _key.Name='Key145' then
-      _key.Pressed:= Odd(GetKeyState(VK_SCROLL));
-end;
-
 procedure TKeyboardFormSmall.Key100MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 var ShiftDown: boolean;
   begin
   ShiftDown:=key160.Pressed or key161.Pressed or Odd(GetKeyState(VK_CAPITAL));
   KeyClick((sender as TKey), shiftdown, langcode);
-  end;
-
-procedure TKeyboardFormSmall.showStatistics;
-  var tempKey: TKey;
-  begin
-    for var i := Statistics.firstItem to Statistics.lastItem do
-         begin
-           tempKey:=FindComponent('Key'+inttostr(i)) as TKey;
-           if tempKey=nil then continue;
-           Statistics.saveKey(i, tempKey);
-           if showGradient then
-            Statistics.ShowStatisticsByGrad(i,sh1,sh2, tempKey )
-           else
-            Statistics.ShowStatisticsByNum(i, tempKey);
-           //n5.Enabled:=true;
-         end;
-    FormHeader.StatSwitch.Visible:=true;
-    if sh1=sh2 then FormHeader.StatSwitch.Enabled:=false else
-                      FormHeader.StatSwitch.Enabled:=true;
-    if showGradient then FormHeader.StatSwitch.State:=tssOff else
-                        FormHeader.StatSwitch.State:=tssOn;
   end;
 
 end.

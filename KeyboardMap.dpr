@@ -18,19 +18,19 @@ uses
   winHeader in 'components\winHeader.pas' {FormHeader: TFrame},
   sound in 'sound.pas' {Form1},
   ParentUnit in 'ParentUnit.pas' {ParentForm},
-  MainUnitLarge in 'MainUnitLarge.pas' {KeyboardForm},
-  BackgroundUnit in 'BackgroundUnit.pas' {BackgroundForm};
+  BackgroundUnit in 'BackgroundUnit.pas' {BackForm},
+  MainUnitLarge in 'MainUnitLarge.pas' {KeyboardFormLarge};
 
 {$R *.res}
-var pbuff: array[0..127] of char;
-    dWin: HWnd;
-    s: string;
+//var //pbuff: array[0..127] of char;
+    //dWin: HWnd;
+    //s: string;
 begin
 
   Application.Initialize;
   Application.Title:='Screen keyboard';
 //  Application.MainFormOnTaskbar := True;
-  dWin:=GetWindow(Application.Handle, GW_HWNDFIRST);
+  {dWin:=GetWindow(Application.Handle, GW_HWNDFIRST);
   while dWin <>0 do
   begin
     if (dWin <> Application.Handle) and
@@ -50,12 +50,12 @@ begin
     end;
     dWin:=GetWindow(dwin, GW_HWNDNEXT);
 
-  end;
-   Application.CreateForm(TBackgroundForm, BackgroundForm);
+  end;   }
+   Application.CreateForm(TBackForm, BackForm);
   //Application.CreateForm(TKeyboardFormLarge, KeyboardFormLarge);
   //Application.CreateForm(TKeyboardFormSmall, KeyboardFormSmall);
   //Application.CreateForm(TForm2, Form2);
   Application.CreateForm(TLangForm, LangForm);
-  //Application.CreateForm(TSpeedForm, SpeedForm);
+  Application.CreateForm(TSpeedForm, SpeedForm);
   Application.Run;
 end.
