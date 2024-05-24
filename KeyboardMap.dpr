@@ -16,10 +16,11 @@ uses
   FileMapping in 'HookProject\FileMapping.pas',
   KeyboardUnit in 'HookProject\KeyboardUnit.pas',
   winHeader in 'components\winHeader.pas' {FormHeader: TFrame},
-  sound in 'sound.pas' {Form1},
+  sound in 'sound.pas' {soundSetting},
   ParentUnit in 'ParentUnit.pas' {ParentForm},
   BackgroundUnit in 'BackgroundUnit.pas' {BackForm},
-  MainUnitLarge in 'MainUnitLarge.pas' {KeyboardFormLarge};
+  MainUnitLarge in 'MainUnitLarge.pas' {KeyboardFormLarge},
+  BoolSwitch in '..\My components\BoolSwitch\BoolSwitch.pas';
 
 {$R *.res}
 //var //pbuff: array[0..127] of char;
@@ -57,5 +58,6 @@ begin
   //Application.CreateForm(TForm2, Form2);
   Application.CreateForm(TLangForm, LangForm);
   Application.CreateForm(TSpeedForm, SpeedForm);
+  Application.CreateForm(TsoundSetting, soundSetting);
   Application.Run;
 end.

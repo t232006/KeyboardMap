@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, AnalogMeter, Vcl.ExtCtrls, inifiles,
-  Vcl.Menus;
+  Vcl.Menus, Vcl.WinXCtrls;
 
 type
   TSpeedForm = class(TForm)
@@ -23,6 +23,8 @@ type
     procedure FormShow(Sender: TObject);
     procedure instSpeedMChange(Sender: TObject);
     procedure FormHide(Sender: TObject);
+    procedure N3Click(Sender: TObject);
+    procedure N1Click(Sender: TObject);
      private
     move: boolean;
     diff, pos: TPoint;
@@ -58,8 +60,8 @@ procedure TSpeedForm.FormMouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
   //pos:=mouse.CursorPos;
-  diff.X:=x;
-  diff.Y:=y;
+  diff.X:=x+(Sender as TControl).Left;
+  diff.Y:=y+(Sender as TControl).Top;
   move:=true;
 end;
 
@@ -100,6 +102,24 @@ with (sender as TAnalogMeter) do
       if (value>tag) and (value<max) then tag:=round(value);
       HighZoneValue:=tag;
      end;
+end;
+
+procedure TSpeedForm.N1Click(Sender: TObject);
+begin
+    hide;
+    BackForm.activeForm.FormHeader.showSpeed.State:=tssoff;
+
+end;
+
+procedure TSpeedForm.N3Click(Sender: TObject);
+begin
+if MessageDlg('Стереть рекорд и среднюю скорость?', TMsgDlgType.mtConfirmation,mbYesNo,0)=mrYes
+  then
+  begin
+    BackForm.Statistics.resetSpeed;
+    speedform.speedM.Tag:=0;
+    speedform.speedM.Value:=0;
+  end;
 end;
 
 end.

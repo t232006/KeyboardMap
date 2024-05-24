@@ -2,7 +2,7 @@ unit KeyboardUnit;
 
 interface
 uses Sharemem, SysUtils, windows, messages, inifiles,
-    System.Generics.Collections;
+    System.Generics.Collections, sound;
 const WM_MYKEYPRESS = WM_USER+$0400+10;
       WM_CHANGELANG = WM_USER+$115+15;
       LO=8;
@@ -26,7 +26,7 @@ TKeyboard=class
     procedure CleanMap(var temp:TKeyboardMap);
     procedure LoadScans;
    public
-     procedure addPress(ws:word; ls: longint; langcode:HKL);
+     procedure addPress(ws:word; ls: longint; langcode:HKL; playsound: boolean);
      procedure save(newFile:boolean; avSpeed, recSpeed:word);
      property VirtCode: word read FVirtCode;
      property map:TKeyboardMap read Fmap;
@@ -45,7 +45,7 @@ begin
   if AValue then result:=ATrue else result:=AFalse;
 end;
 
-procedure TKeyboard.addPress(ws:word; ls: longint; langcode:HKL);
+procedure TKeyboard.addPress(ws:word; ls: longint; langcode:HKL; playsound:boolean);
 var Scancode, ss:string;
     KS: TKeyboardState;
     SC: integer;
@@ -57,25 +57,27 @@ begin
    if byte(LS shr 24)<$80 then fisPressed:=true else fisPressed:=false;
    scancode:=IntToHex(ls);
    FScans.TryGetValue(scancode, fbutton);
+
+
+
    FVirtCode:=WS;
    ss:=string.Format('Key = %s; Letter = %s; Virt = %u; Scan = %s; %s; Time: %s; %s',
    [fbutton, fletter, fVirtCode, scancode, IfThen(isPressed,'Down',' Up '), TimeToStr(now), chr(13)]);
    //if evenbit then
+   Flog:=Flog+ss;
+   if isPressed and (FVirtCode <= high(fmap)) then
    begin
-     Flog:=Flog+ss;
-     if isPressed and (FVirtCode <= high(fmap)) then
-     begin
-        if fbutton<>'' then
-        case FVirtCode of
-          16: if byte(ls shr 16)=$36 then FVirtCode:=161 else FVirtCode:=160; //shift
-          18: if byte(ls shr 24)=$21 then FVirtCode:=165 else FVirtCode:=164; //alt
-          17: if byte(ls shr 24)=$01 then FVirtCode:=163 else FVirtCode:=162; //ctrl
-        end;
-        inc(Fmap[FVirtCode]);
-        if ord(letter)<>0 then
-        Ftext:=Ftext+fletter else
-        Ftext:=Ftext+fbutton;
-     end;
+      if playsound then soundSetting.playClick(fbutton);
+      if fbutton<>'' then
+      case FVirtCode of
+        16: if byte(ls shr 16)=$36 then FVirtCode:=161 else FVirtCode:=160; //shift
+        18: if byte(ls shr 24)=$21 then FVirtCode:=165 else FVirtCode:=164; //alt
+        17: if byte(ls shr 24)=$01 then FVirtCode:=163 else FVirtCode:=162; //ctrl
+      end;
+      inc(Fmap[FVirtCode]);
+      if ord(letter)<>0 then
+      Ftext:=Ftext+fletter else
+      Ftext:=Ftext+fbutton;
    end;
 end;
 

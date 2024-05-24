@@ -20,6 +20,7 @@ type
     SpeedButton2: TSpeedButton;
     showSpeed: TToggleSwitch;
     SpeedButton3: TSpeedButton;
+    playSound: TToggleSwitch;
     procedure Panel1MouseMove(Sender: TObject; Shift: TShiftState; X,
       Y: Integer);
     procedure Panel1MouseDown(Sender: TObject; Button: TMouseButton;
@@ -102,8 +103,12 @@ end;
 procedure TFormHeader.showSpeedClick(Sender: TObject);
 begin
   if tag<>0 then exit;
-  if showSpeed.State=tssOff then speedform.Close else
-  speedform.Show;
+  if speedform<>nil then
+  begin
+      if showSpeed.State=tssOff then
+          speedform.Close else
+      speedform.Show;
+  end;
 end;
 
 

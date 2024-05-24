@@ -3,6 +3,7 @@ Coordinates=87,77,43,36
 
 [FormHeader.StatSwitch]
 Coordinates=258,124,151,36
+Visible=True
 
 [Layout_change]
 Coordinates=350,56,102,36
@@ -104,6 +105,18 @@ Coordinates=650,321,70,36
 Coordinates=561,321,80,36
 
 []
-Coordinates=191,78,68,36
+Coordinates=159,87,91,36
 Visible=True
+
+[FormHeader.showSpeed]
+Coordinates=491,111,157,36
+
+[FormHeader.SpeedButton3]
+Coordinates=686,1,171,36
+
+[Show_sounds_panel]
+Coordinates=701,221,133,36
+
+[FormHeader.ToggleSwitch1]
+Coordinates=932,1,174,36
 

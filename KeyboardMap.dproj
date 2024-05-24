@@ -169,7 +169,7 @@
             <DesignClass>TFrame</DesignClass>
         </DCCReference>
         <DCCReference Include="sound.pas">
-            <Form>Form1</Form>
+            <Form>soundSetting</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="ParentUnit.pas">
@@ -184,6 +184,7 @@
             <Form>KeyboardFormLarge</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="..\My components\BoolSwitch\BoolSwitch.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

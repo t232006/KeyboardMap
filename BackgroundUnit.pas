@@ -5,7 +5,8 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, ParentUnit, MainUnitLarge, MainUnitSmall,
-  Vcl.Imaging.pngimage, Vcl.ExtCtrls, IniFiles, PressCounter, speedometer;
+  Vcl.Imaging.pngimage, Vcl.ExtCtrls, IniFiles, PressCounter, speedometer,
+  Vcl.WinXCtrls;
 
 type
   TBackForm = class(TForm)
@@ -20,13 +21,15 @@ type
   public
     avSpeed, MaxSpeed, n: Integer;
     Statistics: TStatistics;
+    activeForm: TParentForm;
+    showSpeed, playSound: boolean;
   end;
   procedure RunHook stdcall; external 'KeyboardHook.dll';
   procedure StopHook; stdcall; external 'KeyboardHook.dll';
 
 var
   BackForm: TBackForm;
-  activeForm: TParentForm;
+
   saveparams, loadparams: TIniFile;
 
 implementation
@@ -44,6 +47,7 @@ var className:string;
 begin
    Runhook;
    loadparams:=TIniFile.Create(ExtractFileDir(Paramstr(0))+'\params.ini');
+
    avSpeed:= loadparams.ReadInteger('Speeds', 'averageSpeed', 0);
    maxSpeed:=loadparams.ReadInteger('Speeds', 'recordSpeed', 0);
    n:=loadparams.ReadInteger('Speeds', 'count', 0);
@@ -53,15 +57,29 @@ begin
    activeForm:=TParentForm(TControlClass(GetClass(classname)).Create(self));
    //activeForm:=TKeyboardFormSmall.Create(self);
    activeForm.Left:=loadparams.ReadInteger('Windows', 'PosX', 0);
+
    activeForm.Top:=loadparams.ReadInteger('Windows', 'PosY', 0);
-  activeForm.Show;
+   showSpeed:=loadparams.ReadBool('Windows','showSpeed', false);
+   playSound:=loadparams.ReadBool('Sounds','playSound', false);
+
+   if showSpeed then activeForm.FormHeader.showSpeed.State:=tssOn
+                      else
+                      activeForm.FormHeader.showSpeed.State:=tssOff;
+
+   if playSound then activeForm.FormHeader.playSound.State:=tssOn
+                      else
+                      activeForm.FormHeader.playSound.State:=tssOff;
+
+
+   loadparams.Destroy;
+   activeForm.Show;
 
 
 end;
 
 procedure TBackForm.FormShow(Sender: TObject);
 begin
-  speedform.Show;
+  if showSpeed then speedform.Show;
    left:=0;
   top:=screen.Height-self.Height-30;
 end;
@@ -78,7 +96,10 @@ begin
      tempform:= TKeyboardFormSmall.Create(self)
   else
      tempform:= TKeyboardFormLarge.Create(self);
-  tempform.Show(activeform.VirtKeyboard);
+  tempform.VirtKeyboard:=activeform.VirtKeyboard;
+  tempform.FormHeader.showSpeed:=activeform.FormHeader.showSpeed;
+  tempform.FormHeader.playSound:=activeform.FormHeader.playSound;
+  tempform.Show;//(activeform.VirtKeyboard);
   activeform.Close;
   activeform:=tempform;
 end;

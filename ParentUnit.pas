@@ -6,7 +6,8 @@ uses
   Vcl.ImgList, System.Actions, Vcl.ActnList, Vcl.PlatformDefaultStyleActnCtrls,
   Vcl.ActnMan, Vcl.ExtCtrls, Vcl.Menus, Vcl.AppEvnts, Inifiles,
   keyboardUnit, filemapping, LabSwitch, Language, speedometer,
-  AnalogMeter, PressCounter, SendKeyPressProc, Vcl.WinXCtrls, Key;
+  AnalogMeter, PressCounter, SendKeyPressProc, Vcl.WinXCtrls, Key, sound,
+  Vcl.StdStyleActnCtrls;
 const WM_WANT_CLOSE = WM_USER+$345+10;
 type
   TParentForm = class(TForm)
@@ -36,6 +37,9 @@ type
     instantTimer: TTimer;
     ImageList: TImageList;
     N21: TMenuItem;
+    Show_sounds_panel: TAction;
+    N2: TMenuItem;
+    N3: TMenuItem;
     procedure exit1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -54,7 +58,6 @@ type
     procedure Layout_changeExecute(Sender: TObject);
     procedure FormHeaderStatSwitchClick(Sender: TObject);
     procedure speedWinExecute(Sender: TObject);
-    procedure resetExecute(Sender: TObject);
     procedure ChangeFormSize; virtual; abstract;
     procedure Show(keyb: TKeyboard); overload;
     procedure FormShow(Sender: TObject);
@@ -63,6 +66,8 @@ type
     procedure TrayMenuPopup(Sender: TObject);
     procedure FormHide(Sender: TObject);
     procedure FormHeaderSpeedButton3Click(Sender: TObject);
+    procedure Show_sounds_panelExecute(Sender: TObject);
+    procedure FormHeaderplaySoundClick(Sender: TObject);
   private
 
   protected
@@ -126,14 +131,15 @@ begin
 end;
 procedure TParentForm.exit1Click(Sender: TObject);
 begin
-  close;
+   (Owner as TForm).close;
 end;
 procedure TParentForm.GetPressing(var msg: TMessage);
  var _key:Tkey;
     curspeed: word;
+    plSound: boolean;
 begin
-
-   VirtKeyboard.addPress(msg.WParam, msg.LParam, LangCode);
+   if formHeader.playSound.State=tssOn then plSound:=true else plSound:=false;
+   VirtKeyboard.addPress(msg.WParam, msg.LParam, LangCode, plSound);
    ScanHex:=InttoHex(msg.LParam);
    if virtkeyboard.isPressed then
    begin
@@ -178,6 +184,7 @@ procedure TParentForm.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   VirtKeyboard.save(false, round(speedform.speedM.Value), speedform.speedM.Tag);
 end;
+
 procedure TParentForm.FormCreate(Sender: TObject);
 //var n:longword;  //dWin:Hwnd;
 begin
@@ -188,6 +195,16 @@ begin
   DataArea^.key:=loadparams.ReadInteger('HotKeys', 'Key', 0);
   DataArea^.ExKey:=loadparams.ReadInteger('HotKeys', 'Ext', 0);
   FormHeader.Align:=alTop;
+end;
+
+procedure TParentForm.FormHeaderplaySoundClick(Sender: TObject);
+begin
+  //soundSetting.playSound.Tag:=1;
+  try
+  soundsetting.playsound.state:=FormHeader.playSound.State;
+  finally
+    //soundSetting.playSound.Tag:=0;
+  end;
 end;
 
 procedure TParentForm.FormHeaderSpeedButton3Click(Sender: TObject);
@@ -216,6 +233,14 @@ begin
    saveparams.WriteInteger('Windows','PosX', left);
    saveparams.WriteInteger('Windows','PosY', top);
    saveparams.WriteString('Windows','Kind', self.ClassName);
+   if formHeader.showSpeed.State=tssOn then
+    saveparams.WriteBool('Windows','showSpeed', true)
+   else
+    saveparams.WriteBool('Windows','showSpeed', false);
+   if formHeader.playSound.State=tssOn then
+    saveparams.WriteBool('Sounds','playSound', true)
+   else
+    saveparams.WriteBool('Sounds','playSound', false);
    saveparams.Destroy;
 end;
 
@@ -223,6 +248,7 @@ procedure TParentForm.FormShow(Sender: TObject);
 begin
   (Owner as TForm).visible:=false;
 end;
+
 procedure TParentForm.instantTimerTimer(Sender: TObject);
 begin
      inc(instantticker);
@@ -269,16 +295,7 @@ procedure TParentForm.Open_statisticsExecute(Sender: TObject);
        close_statistics.Enabled:=true;
        statForm.Destroy;
 end;
-procedure TParentForm.resetExecute(Sender: TObject);
-begin
-if MessageDlg('Стереть рекорд и среднюю скорость?', TMsgDlgType.mtConfirmation,mbYesNo,0)=mrYes
-  then
-  begin
-    BackForm.Statistics.resetSpeed;
-    speedform.speedM.Tag:=0;
-    speedform.speedM.Value:=0;
-  end;
-end;
+
 procedure TParentForm.Save_cur_sessionExecute(Sender: TObject);
 begin
 VirtKeyboard.save(true, round(speedform.speedM.Value), speedform.speedM.Tag);  //save current session
@@ -332,6 +349,11 @@ var tempKey: TKey;
       Formheader.StatSwitch.Tag:=0;
     end;
   end;
+
+procedure TParentForm.Show_sounds_panelExecute(Sender: TObject);
+begin
+  soundsetting.show;
+end;
 
 procedure TParentForm.speedWinExecute(Sender: TObject);
 begin

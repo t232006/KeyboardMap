@@ -1,10 +1,10 @@
-object Form1: TForm1
+object soundSetting: TsoundSetting
   Left = 0
   Top = 0
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = #1079#1074#1091#1082
-  ClientHeight = 115
+  ClientHeight = 140
   ClientWidth = 262
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -147,22 +147,34 @@ object Form1: TForm1
     003FFC00003FFC00003FFC00003FFC00003FFC00003FFC00003FFC00003F8400
     0021FC00003FFC00003FFC00003FFC00003FFC00003FFC00007FFE00007FFF80
     01FFFB81818FF7FEFFDFEFFEFFEFDFFEFFF7BFFEFFFBFFFEFFFFFFFFFFFF}
+  OnClose = FormClose
+  OnCreate = FormCreate
   TextHeight = 15
-  object ToggleSwitch1: TToggleSwitch
+  object Label1: TLabel
     Left = 24
-    Top = 16
+    Top = 67
+    Width = 86
+    Height = 15
+    Caption = #1047#1074#1091#1082#1086#1074#1072#1103' '#1089#1093#1077#1084#1072
+  end
+  object playSound: TToggleSwitch
+    Left = 48
+    Top = 24
     Width = 140
     Height = 20
+    State = tssOn
     StateCaptions.CaptionOn = #1079#1074#1091#1082' '#1074#1082#1083#1102#1095#1077#1085
     StateCaptions.CaptionOff = #1079#1074#1091#1082' '#1074#1099#1082#1083#1102#1095#1077#1085
     TabOrder = 0
+    ThumbWidth = 20
+    OnClick = playSoundClick
   end
-  object ComboBox1: TComboBox
+  object SoundFolder: TComboBox
     Left = 24
-    Top = 64
+    Top = 88
     Width = 201
     Height = 23
     TabOrder = 1
-    Text = 'ComboBox1'
+    OnCloseUp = SoundFolderCloseUp
   end
 end

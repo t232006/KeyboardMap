@@ -15,7 +15,6 @@ object SpeedForm: TSpeedForm
   Font.Name = 'Segoe UI'
   Font.Style = []
   FormStyle = fsStayOnTop
-  PopupMenu = PopupMenu1
   PopupMode = pmExplicit
   OnHide = FormHide
   OnMouseDown = FormMouseDown
@@ -1823,6 +1822,7 @@ object SpeedForm: TSpeedForm
     Font.Height = -13
     Font.Name = 'Segoe UI'
     Font.Style = []
+    PopupMenu = PopupMenu1
     OnMouseDown = FormMouseDown
     OnMouseMove = FormMouseMove
     OnMouseUp = FormMouseUp
@@ -3627,6 +3627,7 @@ object SpeedForm: TSpeedForm
     Font.Height = -13
     Font.Name = 'Segoe UI'
     Font.Style = []
+    PopupMenu = PopupMenu1
     OnMouseDown = FormMouseDown
     OnMouseMove = FormMouseMove
     OnMouseUp = FormMouseUp
@@ -3635,13 +3636,15 @@ object SpeedForm: TSpeedForm
     Left = 136
     Top = 32
     object N1: TMenuItem
-      Action = ParentForm.speedWin
+      Caption = #1079#1072#1082#1088#1099#1090#1100
+      OnClick = N1Click
     end
     object N2: TMenuItem
       Caption = '-'
     end
     object N3: TMenuItem
-      Action = ParentForm.reset
+      Caption = #1089#1073#1088#1086#1089
+      OnClick = N3Click
     end
   end
 end

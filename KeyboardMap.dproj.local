@@ -49,24 +49,29 @@
     <Transaction>1899.12.30 00:00:00.000.472,Z:\Программирование\repos\KeyboardMap\Unit1.dfm=Z:\Программирование\repos\KeyboardMap\Language.dfm</Transaction>
     <Transaction>1899.12.30 00:00:00.000.847,Z:\Программирование\repos\KeyboardMap\Unit1.dfm=Z:\Программирование\repos\KeyboardMap\LabSwitch.dfm</Transaction>
     <Transaction>1899.12.30 00:00:00.000.447,Z:\Программирование\repos\KeyboardMap\sound.pas=Z:\Программирование\repos\KeyboardMap\Unit1.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.812,=Z:\Программирование\repos\KeyboardMap\Unit1.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.433,=Z:\Программирование\repos\KeyboardMap\Unit1.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.657,=Z:\Программирование\repos\KeyboardMap\Unit1.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.774,=Z:\Программирование\repos\KeyboardMap\Unit1.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.854,Z:\Программирование\repos\KeyboardMap\Unit3.dfm=Z:\Программирование\repos\KeyboardMap\BackgroundUnit.dfm</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.442,=Z:\Программирование\repos\KeyboardMap\Unit2.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.689,=Z:\Программирование\repos\KeyboardMap\Unit1.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.634,=Z:\Программирование\repos\KeyboardMap\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.812,=Z:\Программирование\repos\KeyboardMap\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.433,=Z:\Программирование\repos\KeyboardMap\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.854,Z:\Программирование\repos\KeyboardMap\Unit3.dfm=Z:\Программирование\repos\KeyboardMap\BackgroundUnit.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.442,=Z:\Программирование\repos\KeyboardMap\Unit2.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.657,=Z:\Программирование\repos\KeyboardMap\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.774,=Z:\Программирование\repos\KeyboardMap\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.180,Z:\Программирование\repos\KeyboardMap\Unit1.pas=Z:\Программирование\repos\KeyboardMap\PressCounter.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.167,Z:\Программирование\repos\KeyboardMap\speedForm.pas=</Transaction>
     <Transaction>1899.12.30 00:00:00.000.293,Z:\Программирование\repos\KeyboardMap\speedForm.pas=Z:\Программирование\repos\KeyboardMap\speedometer.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.715,Z:\Программирование\repos\KeyboardMap\speedForm.pas=Z:\Программирование\repos\KeyboardMap\speedometer.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.508,Z:\Программирование\repos\KeyboardMap\speedForm.pas=Z:\Программирование\repos\KeyboardMap\speedometer.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.180,Z:\Программирование\repos\KeyboardMap\Unit1.pas=Z:\Программирование\repos\KeyboardMap\PressCounter.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.847,Z:\Программирование\repos\KeyboardMap\Unit1.pas=Z:\Программирование\repos\KeyboardMap\LabSwitch.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.472,Z:\Программирование\repos\KeyboardMap\Unit1.pas=Z:\Программирование\repos\KeyboardMap\Language.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.983,Z:\Программирование\repos\KeyboardMap\StatisticsOptions.dfm=Z:\Программирование\repos\KeyboardMap\FilesListUnit.dfm</Transaction>
+    <Transaction>2024.05.24 17:13:42.343,=Z:\Программирование\repos\My components\BoolSwitch\BoolSwitch.pas</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="..\..\repos"/>
+    <File Path="..\My components"/>
+    <File Path="..\My components\BoolSwitch"/>
+    <File Path="..\My components\BoolSwitch\BoolSwitch.pas"/>
     <File Path="components"/>
     <File Path="components\AnalogMeter.pas"/>
     <File Path="components\winHeader.pas"/>

@@ -72,10 +72,11 @@ object FormHeader: TFormHeader
       Align = alRight
       ImageIndex = 3
       Images = ImageList
-      ExplicitLeft = 708
+      ExplicitLeft = 736
+      ExplicitTop = 0
     end
     object StatSwitch: TToggleSwitch
-      Left = 192
+      Left = 160
       Top = 8
       Width = 105
       Height = 20
@@ -90,7 +91,7 @@ object FormHeader: TFormHeader
       OnMouseUp = Panel1MouseUp
     end
     object WinOverride: TToggleSwitch
-      Left = 336
+      Left = 287
       Top = 8
       Width = 141
       Height = 20
@@ -106,7 +107,7 @@ object FormHeader: TFormHeader
       OnMouseUp = Panel1MouseUp
     end
     object showSpeed: TToggleSwitch
-      Left = 497
+      Left = 434
       Top = 8
       Width = 148
       Height = 20
@@ -122,11 +123,22 @@ object FormHeader: TFormHeader
       OnMouseMove = Panel1MouseMove
       OnMouseUp = Panel1MouseUp
     end
+    object playSound: TToggleSwitch
+      Left = 583
+      Top = 8
+      Width = 106
+      Height = 20
+      State = tssOn
+      StateCaptions.CaptionOn = #1079#1074#1091#1082
+      StateCaptions.CaptionOff = #1085#1077#1090' '#1079#1074#1091#1082#1072
+      TabOrder = 3
+      ThumbWidth = 20
+    end
   end
   object ImageList: TImageList
     Height = 32
     Width = 32
-    Left = 124
+    Left = 76
     Top = 65535
     Bitmap = {
       494C010105000800040020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
