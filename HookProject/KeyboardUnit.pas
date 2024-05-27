@@ -78,7 +78,7 @@ begin
       if ord(letter)<>0 then
       Ftext:=Ftext+fletter else
       Ftext:=Ftext+fbutton;
-   end;
+   end
 end;
 
 constructor TKeyboard.create;

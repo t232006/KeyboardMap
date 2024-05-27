@@ -2,7 +2,7 @@ unit PressCounter;
 
 interface
 
-uses Graphics, key, sysutils, KeyboardUnit, auxilary;
+uses Graphics, key, sysutils, KeyboardUnit, MyAuxProc;
 const LO=8; //FIRST ELEMENT
 
 type

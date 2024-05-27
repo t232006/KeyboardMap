@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, MyAuxProc,
   Vcl.WinXCtrls, inifiles, filemapping, Vcl.ComCtrls, Vcl.AppEvnts, Vcl.Buttons;
 
 type
@@ -32,15 +32,7 @@ implementation
 
 {$R *.dfm}
 
-function Ifthen(pred:boolean; a,b:byte):byte; overload;
-begin
-  if pred then result:=a else result:=b;
-end;
 
-function Ifthen(pred:boolean; a,b:string):string; overload;
-begin
-  if pred then result:=a else result:=b;
-end;
 
 procedure TLangForm.BitBtn1Click(Sender: TObject);
 begin

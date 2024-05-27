@@ -4,7 +4,7 @@
         <ProjectVersion>19.5</ProjectVersion>
         <FrameworkType>VCL</FrameworkType>
         <Base>True</Base>
-        <Config Condition="'$(Config)'==''">Debug</Config>
+        <Config Condition="'$(Config)'==''">Release</Config>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
         <TargetedPlatforms>3</TargetedPlatforms>
         <AppType>Application</AppType>
@@ -152,39 +152,26 @@
         <DCCReference Include="speedometer.pas">
             <Form>SpeedForm</Form>
         </DCCReference>
-        <DCCReference Include="LabSwitch.pas">
-            <Form>Frame1</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TFrame</DesignClass>
-        </DCCReference>
-        <DCCReference Include="units\auxilary.pas"/>
         <DCCReference Include="units\PressCounter.pas"/>
         <DCCReference Include="units\SendKeyPressProc.pas"/>
-        <DCCReference Include="units\Utilites.pas"/>
         <DCCReference Include="HookProject\FileMapping.pas"/>
         <DCCReference Include="HookProject\KeyboardUnit.pas"/>
         <DCCReference Include="components\winHeader.pas">
             <Form>FormHeader</Form>
-            <FormType>dfm</FormType>
             <DesignClass>TFrame</DesignClass>
         </DCCReference>
         <DCCReference Include="sound.pas">
             <Form>soundSetting</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="ParentUnit.pas">
             <Form>ParentForm</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="BackgroundUnit.pas">
             <Form>BackForm</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="MainUnitLarge.pas">
             <Form>KeyboardFormLarge</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="..\My components\BoolSwitch\BoolSwitch.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -208,6 +195,12 @@
             </Delphi.Personality>
             <Deployment Version="4">
                 <DeployFile LocalName="Win32\Debug\KeyboardMap.exe" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>KeyboardMap.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Win32\Release\KeyboardMap.exe" Configuration="Release" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>KeyboardMap.exe</RemoteName>
                         <Overwrite>true</Overwrite>

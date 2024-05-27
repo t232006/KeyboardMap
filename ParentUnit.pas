@@ -42,7 +42,6 @@ type
     N3: TMenuItem;
     procedure exit1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure GetPressing(var msg: TMessage); message WM_MYKEYPRESS;
     procedure LayoutChange(var msg: TMessage); message WM_CHANGELANG;
     procedure WinMonitorTimer(Sender: TObject);
@@ -179,12 +178,6 @@ begin
       _key.Pressed:= Odd(GetKeyState(VK_SCROLL));
 end;
 
-procedure TParentForm.FormClose(Sender: TObject; var Action: TCloseAction);
-//var dWin:Hwnd;
-begin
-  VirtKeyboard.save(false, round(speedform.speedM.Value), speedform.speedM.Tag);
-end;
-
 procedure TParentForm.FormCreate(Sender: TObject);
 //var n:longword;  //dWin:Hwnd;
 begin
@@ -227,8 +220,8 @@ end;
 end;
 
 procedure TParentForm.FormHide(Sender: TObject);
-//var saveParam: TIniFile;
 begin
+   VirtKeyboard.save(false, round(backform.Statistics.avSpeed), backform.Statistics.recordSpeed);
    saveparams:=TIniFile.Create(ExtractFileDir(Paramstr(0))+'\params.ini');
    saveparams.WriteInteger('Windows','PosX', left);
    saveparams.WriteInteger('Windows','PosY', top);
@@ -298,7 +291,7 @@ end;
 
 procedure TParentForm.Save_cur_sessionExecute(Sender: TObject);
 begin
-VirtKeyboard.save(true, round(speedform.speedM.Value), speedform.speedM.Tag);  //save current session
+VirtKeyboard.save(true, round(backform.Statistics.avSpeed), backform.Statistics.recordSpeed);  //save current session
  MessageDlg('Статистика сохранена', TMsgDlgType.mtInformation, [mbOK], 0);
 end;
 procedure TParentForm.Show(keyb: TKeyboard);
@@ -361,7 +354,7 @@ begin
 end;
 procedure TParentForm.Stat_summaryExecute(Sender: TObject);
 begin
-      VirtKeyboard.save(false, round(speedform.speedM.Value), speedform.speedM.Tag);
+      VirtKeyboard.save(false, round(backform.Statistics.avSpeed), backform.Statistics.recordSpeed);
        Cur_session_statExecute(sender);
 end;
 procedure TParentForm.TrayIconDblClick(Sender: TObject);

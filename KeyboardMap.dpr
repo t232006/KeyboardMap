@@ -8,19 +8,15 @@ uses
   AnalogMeter in 'components\AnalogMeter.pas',
   Language in 'Language.pas' {LangForm},
   speedometer in 'speedometer.pas' {SpeedForm},
-  LabSwitch in 'LabSwitch.pas' {Frame1: TFrame},
-  auxilary in 'units\auxilary.pas',
   PressCounter in 'units\PressCounter.pas',
   SendKeyPressProc in 'units\SendKeyPressProc.pas',
-  Utilites in 'units\Utilites.pas',
   FileMapping in 'HookProject\FileMapping.pas',
   KeyboardUnit in 'HookProject\KeyboardUnit.pas',
   winHeader in 'components\winHeader.pas' {FormHeader: TFrame},
   sound in 'sound.pas' {soundSetting},
   ParentUnit in 'ParentUnit.pas' {ParentForm},
   BackgroundUnit in 'BackgroundUnit.pas' {BackForm},
-  MainUnitLarge in 'MainUnitLarge.pas' {KeyboardFormLarge},
-  BoolSwitch in '..\My components\BoolSwitch\BoolSwitch.pas';
+  MainUnitLarge in 'MainUnitLarge.pas' {KeyboardFormLarge};
 
 {$R *.res}
 //var //pbuff: array[0..127] of char;

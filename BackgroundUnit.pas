@@ -3,10 +3,11 @@ unit BackgroundUnit;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
+  Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, ParentUnit, MainUnitLarge, MainUnitSmall,
   Vcl.Imaging.pngimage, Vcl.ExtCtrls, IniFiles, PressCounter, speedometer,
-  Vcl.WinXCtrls;
+  Vcl.WinXCtrls, MyAuxProc, shlObj;
 
 type
   TBackForm = class(TForm)
@@ -23,6 +24,7 @@ type
     Statistics: TStatistics;
     activeForm: TParentForm;
     showSpeed, playSound: boolean;
+    //settingFolder: string;
   end;
   procedure RunHook stdcall; external 'KeyboardHook.dll';
   procedure StopHook; stdcall; external 'KeyboardHook.dll';
@@ -45,6 +47,7 @@ end;
 procedure TBackForm.FormCreate(Sender: TObject);
 var className:string;
 begin
+   //settingFolder:= GetSpecialPath(CSIDL_APPDATA)+'\Individual dictionary';
    Runhook;
    loadparams:=TIniFile.Create(ExtractFileDir(Paramstr(0))+'\params.ini');
 

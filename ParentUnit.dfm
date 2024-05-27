@@ -10,7 +10,6 @@ object ParentForm: TParentForm
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
-  OnClose = FormClose
   OnCreate = FormCreate
   OnHide = FormHide
   OnShow = FormShow
