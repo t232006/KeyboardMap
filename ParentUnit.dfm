@@ -256,7 +256,7 @@ object ParentForm: TParentForm
   object ActionManager1: TActionManager
     Left = 368
     Top = 184
-    StyleName = 'Standard'
+    StyleName = 'XP Style'
     object Open_statistics: TAction
       Category = 'statistics'
       Caption = #1054#1090#1082#1088#1099#1090#1100' '#1089#1090#1072#1090#1080#1089#1090#1080#1082#1091'...'

@@ -11,6 +11,7 @@ uses
 
 //var HandleKey, HandleLang, HandleWin: hHook;
 var prewkey:LParam;
+    HandleOff: hHook;
 
 function KeyboardProc(Code: Integer; wParam: WParam; LParam: LParam): LongWord; stdcall;
 begin
@@ -36,6 +37,10 @@ begin
 
 end;
 
+{function EndSessionProc (Code: Integer; WParam: wParam; lParam: lParam): longint; stdcall;
+begin
+    PostMessage(handleOff,
+end;
 {function LangProc (Code: Integer; wParam: wParam; lParam: lParam):Longint; stdcall;
 begin
   if code<0 then
@@ -69,6 +74,7 @@ end;     }
 procedure RunHook export; stdcall;
 begin
     DataArea^.HandleKey := SetWindowsHookEx(WH_KEYBOARD, @KeyboardProc, hInstance, 0);
+    //HandleOff:= SetWindowsHookEx(WM_QUERYENDSESSION, @EndSessionProc, hInstance, 0);
     //HandleKey:= SetWindowsHookEx(WH_KEYBOARD, @KeyboardProc, hInstance, 0);
     //HandleLang:= SetWindowsHookEx(WH_GETMESSAGE, @LangProc, hInstance, 0);
     //HandleWin:= SetWindowsHookEx(WH_CBT, @WinProc, hInstance, 0);
@@ -77,6 +83,7 @@ end;
 procedure StopHook export; stdcall;
 begin
   UnhookWindowsHookEx(DataArea^.HandleKey);
+  //UnhookWindowsHookEx(HandleOff);
   //UnhookWindowsHookEx(HandleLang);
   //UnhookWindowsHookEx(HandleWin);
 end;

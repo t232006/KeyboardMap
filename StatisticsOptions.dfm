@@ -46,8 +46,8 @@ object Form2: TForm2
     Caption = #1052#1072#1082#1089#1080#1084#1091#1084
   end
   object BitBtn1: TBitBtn
-    Left = 400
-    Top = 184
+    Left = 389
+    Top = 182
     Width = 59
     Height = 49
     Kind = bkOK
@@ -78,8 +78,8 @@ object Form2: TForm2
     Align = alLeft
     ItemHeight = 15
     Mask = '*map.b'
+    MultiSelect = True
     TabOrder = 2
-    ExplicitHeight = 230
   end
   object ColorDialog1: TColorDialog
     Left = 288

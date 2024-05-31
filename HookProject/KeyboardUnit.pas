@@ -28,6 +28,7 @@ TKeyboard=class
    public
      procedure addPress(ws:word; ls: longint; langcode:HKL; playsound: boolean);
      procedure save(newFile:boolean; avSpeed, recSpeed:word);
+     function GetLastFile:string;
      property VirtCode: word read FVirtCode;
      property map:TKeyboardMap read Fmap;
      property isPressed:boolean read FisPressed;
@@ -39,6 +40,29 @@ TKeyboard=class
 end;
 
 implementation
+
+function TKeyboard.GetLastFile:string;
+    var sr: TSearchRec;
+        fdPath: string;
+        CurFileTime, LatestTime: TDateTime;
+    begin
+        fdPath:=fPath+'\maps\*map.b';
+
+        if FindFirst(fdPath, faNormal,SR)=0 then
+        begin
+           result:=fPath+'\maps\'+SR.Name;
+           LatestTime:=FileDateToDateTime(FileAge(result));
+           repeat
+              CurFileTime:=FileDateToDateTime(FileAge(fPath+'\maps\'+SR.Name));
+              if CurFileTime > LatestTime then
+                begin
+                  result:=fPath+'\maps\'+sr.Name;
+                  LatestTime:=CurFileTime;
+                end;
+           until FindNext(SR)<>0;
+        end;
+
+    end;
 
 function IfThen(AValue: boolean; const ATrue:string; const AFalse:string):string;
 begin
@@ -158,28 +182,7 @@ end;
 
 procedure TKeyboard.save(newFile: boolean; avSpeed, recSpeed:word);
 //=============================
-    function GetLastFile:string;
-    var sr: TSearchRec;
-        fdPath: string;
-        CurFileTime, LatestTime: TDateTime;
-    begin
-        fdPath:=fPath+'\maps\*map.b';
 
-        if FindFirst(fdPath, faNormal,SR)=0 then
-        begin
-           result:=fPath+'\maps\'+SR.Name;
-           LatestTime:=FileDateToDateTime(FileAge(result));
-           repeat
-              CurFileTime:=FileDateToDateTime(FileAge(fPath+'\maps\'+SR.Name));
-              if CurFileTime > LatestTime then
-                begin
-                  result:=fPath+'\maps\'+sr.Name;
-                  LatestTime:=CurFileTime;
-                end;
-           until FindNext(SR)<>0;
-        end;
-
-    end;
  //=============================
     function GetMapFilename: string;
     var curDateTime: TDateTime;
@@ -199,6 +202,12 @@ begin
       mapname:=GetMapFilename
     else
       mapname:=GetLastFile;
+    if mapname='' then
+    begin
+      save(true, avSpeed, recSpeed);
+      exit;
+    end;
+
     savetext(logname,flog);
     savetext(textname, ftext);
 

@@ -7,7 +7,7 @@ uses
   Vcl.ActnMan, Vcl.ExtCtrls, Vcl.Menus, Vcl.AppEvnts, Inifiles,
   keyboardUnit, filemapping, LabSwitch, Language, speedometer,
   AnalogMeter, PressCounter, SendKeyPressProc, Vcl.WinXCtrls, Key, sound,
-  Vcl.StdStyleActnCtrls;
+  Vcl.StdStyleActnCtrls, Vcl.XPStyleActnCtrls;
 const WM_WANT_CLOSE = WM_USER+$345+10;
 type
   TParentForm = class(TForm)
@@ -68,16 +68,16 @@ type
     procedure Show_sounds_panelExecute(Sender: TObject);
     procedure FormHeaderplaySoundClick(Sender: TObject);
   private
-
+    statType: TStatType;
   protected
       LangCode: HKL;
      instantticker:word;
      ScanHex:string;
-     procedure showStatistics;
+     procedure showStatistics(statType: TStattype);
       procedure closeStatistics;
   public
     VirtKeyboard: TKeyboard;
-    MapFile: string;
+    MapFile: array of string;
     sh1, sh2: TColor;
     showGradient: boolean;
   end;
@@ -115,6 +115,9 @@ begin
     closeStatistics;
    formHeader.StatSwitch.Visible:=false;
    Close_statistics.Enabled:=false;
+   SpeedForm.speedM.Value:=backform.Statistics.avSpeed;
+   SpeedForm.speedM.HighZoneValue:=speedform.speedM.Tag;
+
 end;
 procedure TParentForm.CreateParams(var AParams: TCreateParams);
 begin
@@ -123,9 +126,10 @@ begin
 end;
 procedure TParentForm.Cur_session_statExecute(Sender: TObject);
 begin
+        statType:=st_current;
         BackForm.Statistics.Init(virtKeyboard.map);
          BackForm.Statistics.IsEmpty:=false;
-         showStatistics;
+         showStatistics(st_current);
          close_statistics.Enabled:=true;
 end;
 procedure TParentForm.exit1Click(Sender: TObject);
@@ -164,9 +168,9 @@ begin
      begin
         BackForm.statistics.Init(virtKeyboard.map);
         if sh1=sh2 then
-          BackForm.statistics.ShowStatisticsbyNum(virtKeyboard.VirtCode, _key)
+          BackForm.statistics.ShowStatisticsbyNum(st_current, virtKeyboard.VirtCode, _key)
         else
-          BackForm.statistics.ShowStatisticsbyGrad(virtKeyboard.VirtCode, sh1, sh2, _key) ;
+          BackForm.statistics.ShowStatisticsbyGrad(st_current, virtKeyboard.VirtCode, sh1, sh2, _key) ;
      end;
    end;
 
@@ -209,14 +213,11 @@ end;
 procedure TParentForm.FormHeaderStatSwitchClick(Sender: TObject);
 begin
 if formheader.StatSwitch.Tag<>0 then  exit;
-begin
-  //formheader.StatSwitch.Tag:=0;
 
-end;
   CloseStatistics;
   if FormHeader.StatSwitch.State=tssOn then
     showGradient:=false else showGradient:=true;
-  showStatistics;
+  showStatistics(statType);
 end;
 
 procedure TParentForm.FormHide(Sender: TObject);
@@ -273,19 +274,23 @@ end;
 procedure TParentForm.Open_statisticsExecute(Sender: TObject);
   var statForm: TForm2;
   begin
+       statType:=st_summary;
        statForm:= Tform2.Create(Self);
        statForm.showmodal;
-       if mapFile<>'' then
+       if statForm.Tag=1 then  //if applay button is pressed
        begin
-         mapFile:=ExtractFileDir( Paramstr(0))+'\maps\'+mapFile;
-         BackForm.Statistics.Init(mapFile);
-         BackForm.Statistics.IsEmpty:=false;
-         showStatistics;
-       end else
-         Cur_session_statExecute(Sender);
-       speedform.speedM.Value:=BackForm.statistics.avSpeed;
-       speedform.speedM.HighZoneValue:=BackForm.statistics.recordSpeed;
-       close_statistics.Enabled:=true;
+         if mapFile<>nil then
+         begin
+           //mapFile:=ExtractFileDir( Paramstr(0))+'\maps\'+mapFile;
+           BackForm.Statistics.Init(mapFile);
+           BackForm.Statistics.IsEmpty:=false;
+           showStatistics(st_summary);
+         end else
+           Cur_session_statExecute(Sender);
+         speedform.speedM.Value:=BackForm.statistics.avSpeed;
+         speedform.speedM.HighZoneValue:=BackForm.statistics.recordSpeed;
+         close_statistics.Enabled:=true;
+       end;
        statForm.Destroy;
 end;
 
@@ -317,7 +322,7 @@ begin
    result:=FindComponent('Key223') as TKey;  //exception
 end;
 
-procedure TParentForm.showStatistics;
+procedure TParentForm.showStatistics(statType: TStatType);
 var tempKey: TKey;
   begin
     for var i := BackForm.Statistics.firstItem to BackForm.Statistics.lastItem do
@@ -326,9 +331,9 @@ var tempKey: TKey;
            if tempKey=nil then continue;
            BackForm.Statistics.saveKey(i, tempKey);
            if showGradient then
-            BackForm.Statistics.ShowStatisticsByGrad(i,sh1,sh2, tempKey )
+            BackForm.Statistics.ShowStatisticsByGrad(statType, i,sh1,sh2, tempKey )
            else
-            BackForm.Statistics.ShowStatisticsByNum(i, tempKey);
+            BackForm.Statistics.ShowStatisticsByNum(stattype, i, tempKey);
            //n5.Enabled:=true;
          end;
     FormHeader.StatSwitch.Visible:=true;
@@ -354,8 +359,13 @@ begin
 end;
 procedure TParentForm.Stat_summaryExecute(Sender: TObject);
 begin
-      VirtKeyboard.save(false, round(backform.Statistics.avSpeed), backform.Statistics.recordSpeed);
-       Cur_session_statExecute(sender);
+      statType:=st_summary;
+      //VirtKeyboard.save(false, round(backform.Statistics.avSpeed), backform.Statistics.recordSpeed);
+       BackForm.Statistics.Init(virtKeyboard.map, virtKeyboard.GetLastFile);
+         BackForm.Statistics.IsEmpty:=false;
+         showStatistics(st_summary);
+         close_statistics.Enabled:=true;
+       //Cur_session_statExecute(sender);
 end;
 procedure TParentForm.TrayIconDblClick(Sender: TObject);
 begin

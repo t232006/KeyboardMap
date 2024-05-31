@@ -101,6 +101,7 @@ with (sender as TAnalogMeter) do
       LowZoneValue:=Value-20;
       if (value>tag) and (value<max) then tag:=round(value);
       HighZoneValue:=tag;
+      backForm.Statistics.recordSpeed:=tag;
      end;
 end;
 

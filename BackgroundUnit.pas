@@ -17,6 +17,7 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure OpenAnotherKeyboard (var msg: TMessage); message WM_WANT_CLOSE;
     procedure FormShow(Sender: TObject);
+    procedure CloseMessage(var TMessage); message WM_QUERYENDSESSION;
   private
     { Private declarations }
   public
@@ -37,6 +38,11 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TBackForm.CloseMessage(var TMessage);
+begin
+  close;
+end;
 
 procedure TBackForm.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
