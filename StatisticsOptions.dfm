@@ -32,7 +32,7 @@ object Form2: TForm2
     OnMouseDown = Shape1MouseDown
   end
   object Label1: TLabel
-    Left = 232
+    Left = 224
     Top = 16
     Width = 56
     Height = 15
@@ -80,6 +80,7 @@ object Form2: TForm2
     Mask = '*map.b'
     MultiSelect = True
     TabOrder = 2
+    ExplicitHeight = 230
   end
   object ColorDialog1: TColorDialog
     Left = 288

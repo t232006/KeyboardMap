@@ -38,7 +38,9 @@ implementation
 {$R *.dfm}
 
 procedure TForm2.BitBtn1Click(Sender: TObject);
+var j:word;
 begin
+   j:=0;
    if fileslist.ItemIndex>-1 then
 
    //
@@ -46,7 +48,10 @@ begin
    //fileslist.Selected[i]
    for var i := 0 to fileslist.Count-1 do
     if fileslist.selected[i] then
-      (Owner as TParentForm).mapfile[i]:=fileslist.filename;
+    begin
+      (Owner as TParentForm).mapfile[j]:=fileslist.items[i];
+      inc(j);
+    end;
    (Owner as TParentForm).sh1:=shape1.Brush.Color;
    (Owner as TParentForm).sh2:=shape2.Brush.Color;
    if ToggleSwitch.State=tssOff then (Owner as TParentForm).showGradient:=true

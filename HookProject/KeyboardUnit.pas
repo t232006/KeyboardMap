@@ -2,7 +2,7 @@ unit KeyboardUnit;
 
 interface
 uses Sharemem, SysUtils, windows, messages, inifiles,
-    System.Generics.Collections, sound;
+    System.Generics.Collections;
 const WM_MYKEYPRESS = WM_USER+$0400+10;
       WM_CHANGELANG = WM_USER+$115+15;
       LO=8;
@@ -38,6 +38,7 @@ TKeyboard=class
      property text:string read FText;
      constructor create;
 end;
+procedure playClick(button: pchar); stdcall; external 'sounds\cherrymx-Black-abs.dll';
 
 implementation
 
@@ -70,7 +71,7 @@ begin
 end;
 
 procedure TKeyboard.addPress(ws:word; ls: longint; langcode:HKL; playsound:boolean);
-var Scancode, ss:string;
+var Scancode, ss:string; but: pchar;
     KS: TKeyboardState;
     SC: integer;
 
@@ -91,7 +92,11 @@ begin
    Flog:=Flog+ss;
    if isPressed and (FVirtCode <= high(fmap)) then
    begin
-      if playsound then soundSetting.playClick(fbutton);
+      if playsound then
+      begin
+        //but:=pchar('e'+copy(fbutton,2,length(fbutton)-2));
+        playClick(but);
+      end;
       if fbutton<>'' then
       case FVirtCode of
         16: if byte(ls shr 16)=$36 then FVirtCode:=161 else FVirtCode:=160; //shift

@@ -34,7 +34,7 @@ TStatistics = class
   prevspeed: word;
   FisShowing: boolean;
   FMax, FMin: word;
-  procedure GetMinMax;
+  procedure GetMinMax(fmap: TKeyboardMap);
   procedure resetMap;
   procedure SetEmpty(Value: boolean);
   function GetEmpty:boolean;
@@ -80,14 +80,14 @@ begin
    result:= prevspeed;
 end;
 
-procedure TStatistics.GetMinMax;
+procedure TStatistics.GetMinMax(fmap: TKeyboardMap);
 begin
-  FMax:=fpressmap[LO]; FMin:=fpressmap[LO];
-  for var i := Low(fpressmap) to High(fpressmap) do
+  FMax:=fmap[LO]; FMin:=fmap[LO];
+  for var i := Low(fmap) to High(fmap) do
     begin
       if (i=AV) or (i=REC) then continue;        //14 - speed!!!
-      if fpressmap[i]>FMax then FMax:=fpressmap[i];
-      if fpressmap[i]<FMin then FMin:=fpressmap[i];
+      if fmap[i]>FMax then FMax:=fmap[i];
+      if fmap[i]<FMin then FMin:=fmap[i];
     end;
 end;
 constructor TStatistics.Create(An:longword; APrevSpeed: word);
@@ -170,11 +170,11 @@ end;
 procedure TStatistics.Init(mapPath: array of string);
 var i, j:byte; k, prerecord:word;
 begin
-  i:=LO;
   for j := Low(fsummaryMap) to High(fsummaryMap) do
-    fsummaryMap[i]:=0;
+    fsummaryMap[j]:=0;
   for j := Low(mapPath) to High(mapPath) do
     begin
+      i:=LO;
       recordspeed:=0;
       assignfile(f,mapPath[j]);
        //--------recordSpeed------------
@@ -256,11 +256,17 @@ end;
 procedure TStatistics.ShowStatisticsByGrad(statType: TstatType; item: byte; y1, y2:TColor; var MyKey: Tkey);
 begin
    fIsShowing:=true;
-   GetMinMax;
+
    if statType=st_current then
-    MyKey.Color:=gradient(y1,y2, fmin, fmax, fpressMap[item])
+   begin
+      GetMinMax(fpressMap);
+      MyKey.Color:=gradient(y1,y2, fmin, fmax, fpressMap[item]);
+   end
    else
-    MyKey.Color:=gradient(y1,y2, fmin, fmax, fsummaryMap[item])
+   begin
+      GetMinMax(fsummaryMap);
+      MyKey.Color:=gradient(y1,y2, fmin, fmax, fsummaryMap[item]);
+   end;
 end;
 
 procedure TStatistics.ShowStatisticsByNum(statType: TstatType; item: byte; var MyKey: Tkey);

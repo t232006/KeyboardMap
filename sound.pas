@@ -3,9 +3,11 @@ unit sound;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Winapi.Windows, Winapi.Messages, System.SysUtils,
+  System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
-  Vcl.StdCtrls, Vcl.WinXCtrls, MMSystem, inifiles, IOUtils, Types, strutils;
+  Vcl.StdCtrls, Vcl.WinXCtrls, MMSystem,
+  inifiles, IOUtils, Types, strutils;
 
 type
   TsoundSetting = class(TForm)
@@ -21,17 +23,20 @@ type
     loadParams: TIniFile;
     path: string;
   public
-    procedure playClick(button: string);
+
   end;
+
 
 var
   soundSetting: TsoundSetting;
   playSoundB: boolean;
+  sPath: string;
 
 implementation
 uses backgroundUnit;
 
 {$R *.dfm}
+{$R cherrymx.res}
 
 procedure TsoundSetting.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
@@ -53,8 +58,9 @@ end;
 begin
   path:=ExtractFileDir(Paramstr(0));
   loadParams:=TIniFile.Create(path+'\params.ini');
-  folderslist:=TDirectory.GetDirectories(path+'\sounds');
-  for st in folderslist do soundfolder.Items.Add(getdir(st));
+  folderslist:=TDirectory.GetFiles(path+'\sounds');
+  for st in folderslist do
+    soundfolder.Items.Add(TPath.GetFileNameWithoutExtension(st));
 
   currentScheme:=loadParams.ReadInteger('sounds','curScheme',0);
   playSoundB:=loadParams.ReadBool('sounds','playSound', false);
@@ -62,18 +68,7 @@ begin
 
   loadParams.Destroy;
   soundfolder.ItemIndex:=currentScheme;
-
-end;
-
-procedure TsoundSetting.playClick(button: string);
-var sPath: string;
-begin
   sPath:=ExtractFileDir(Paramstr(0))+'\sounds\'+soundFolder.Items[currentScheme]+'\';
-  button:=copy(button,2,length(button)-2);
-  if FileExists(sPath+button+'.wav') then
-    sPath:=sPath+button+'.wav' else
-    sPath:=sPath+'rem.wav';
-  sndPlaySound(pchar(sPath), SND_ASYNC or SND_NODEFAULT);
 
 end;
 

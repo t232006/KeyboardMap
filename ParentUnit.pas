@@ -126,6 +126,7 @@ begin
 end;
 procedure TParentForm.Cur_session_statExecute(Sender: TObject);
 begin
+        Close_statisticsExecute(Sender);
         statType:=st_current;
         BackForm.Statistics.Init(virtKeyboard.map);
          BackForm.Statistics.IsEmpty:=false;
@@ -274,6 +275,7 @@ end;
 procedure TParentForm.Open_statisticsExecute(Sender: TObject);
   var statForm: TForm2;
   begin
+       Close_statisticsExecute(Sender);
        statType:=st_summary;
        statForm:= Tform2.Create(Self);
        statForm.showmodal;
@@ -359,6 +361,7 @@ begin
 end;
 procedure TParentForm.Stat_summaryExecute(Sender: TObject);
 begin
+      Close_statisticsExecute(Sender);
       statType:=st_summary;
       //VirtKeyboard.save(false, round(backform.Statistics.avSpeed), backform.Statistics.recordSpeed);
        BackForm.Statistics.Init(virtKeyboard.map, virtKeyboard.GetLastFile);

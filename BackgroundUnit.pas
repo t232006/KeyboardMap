@@ -1,14 +1,11 @@
 unit BackgroundUnit;
-
 interface
-
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
   Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, ParentUnit, MainUnitLarge, MainUnitSmall,
   Vcl.Imaging.pngimage, Vcl.ExtCtrls, IniFiles, PressCounter, speedometer,
   Vcl.WinXCtrls, MyAuxProc, shlObj;
-
 type
   TBackForm = class(TForm)
     Image1: TImage;
@@ -29,16 +26,11 @@ type
   end;
   procedure RunHook stdcall; external 'KeyboardHook.dll';
   procedure StopHook; stdcall; external 'KeyboardHook.dll';
-
 var
   BackForm: TBackForm;
-
   saveparams, loadparams: TIniFile;
-
 implementation
-
 {$R *.dfm}
-
 procedure TBackForm.CloseMessage(var TMessage);
 begin
   close;
@@ -47,16 +39,15 @@ end;
 procedure TBackForm.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
     //activeform.close; activeform.Free;
+  loadparams.Destroy;
   stophook;
 end;
-
 procedure TBackForm.FormCreate(Sender: TObject);
 var className:string;
 begin
    //settingFolder:= GetSpecialPath(CSIDL_APPDATA)+'\Individual dictionary';
    Runhook;
    loadparams:=TIniFile.Create(ExtractFileDir(Paramstr(0))+'\params.ini');
-
    avSpeed:= loadparams.ReadInteger('Speeds', 'averageSpeed', 0);
    maxSpeed:=loadparams.ReadInteger('Speeds', 'recordSpeed', 0);
    n:=loadparams.ReadInteger('Speeds', 'count', 0);
@@ -66,38 +57,30 @@ begin
    activeForm:=TParentForm(TControlClass(GetClass(classname)).Create(self));
    //activeForm:=TKeyboardFormSmall.Create(self);
    activeForm.Left:=loadparams.ReadInteger('Windows', 'PosX', 0);
-
    activeForm.Top:=loadparams.ReadInteger('Windows', 'PosY', 0);
    showSpeed:=loadparams.ReadBool('Windows','showSpeed', false);
    playSound:=loadparams.ReadBool('Sounds','playSound', false);
-
    if showSpeed then activeForm.FormHeader.showSpeed.State:=tssOn
                       else
                       activeForm.FormHeader.showSpeed.State:=tssOff;
-
    if playSound then activeForm.FormHeader.playSound.State:=tssOn
                       else
                       activeForm.FormHeader.playSound.State:=tssOff;
 
-
-   loadparams.Destroy;
+   //loadparams.Destroy;
    activeForm.Show;
 
-
 end;
-
 procedure TBackForm.FormShow(Sender: TObject);
 begin
   if showSpeed then speedform.Show;
    left:=0;
   top:=screen.Height-self.Height-30;
 end;
-
 procedure TBackForm.Image1Click(Sender: TObject);
 begin
    activeform.Show;
 end;
-
 procedure TBackForm.OpenAnotherKeyboard(var msg: TMessage);
 var tempform: TParentForm;
 begin
@@ -112,5 +95,4 @@ begin
   activeform.Close;
   activeform:=tempform;
 end;
-
 end.
