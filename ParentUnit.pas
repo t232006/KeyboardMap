@@ -63,10 +63,11 @@ type
     function FindKey(ScanCode: string):TKey;
     procedure N1Click(Sender: TObject);
     procedure TrayMenuPopup(Sender: TObject);
-    procedure FormHide(Sender: TObject);
     procedure FormHeaderSpeedButton3Click(Sender: TObject);
     procedure Show_sounds_panelExecute(Sender: TObject);
     procedure FormHeaderplaySoundClick(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
+    procedure FormHide(Sender: TObject);
   private
     statType: TStatType;
   protected
@@ -195,13 +196,31 @@ begin
   FormHeader.Align:=alTop;
 end;
 
+procedure TParentForm.FormDestroy(Sender: TObject);
+begin
+  VirtKeyboard.save(false, round(backform.Statistics.avSpeed), backform.Statistics.recordSpeed);
+   saveparams:=TIniFile.Create(ExtractFileDir(Paramstr(0))+'\params.ini');
+   saveparams.WriteInteger('Windows','PosX', left);
+   saveparams.WriteInteger('Windows','PosY', top);
+   saveparams.WriteString('Windows','Kind', self.ClassName);
+   if formHeader.showSpeed.State=tssOn then
+    saveparams.WriteBool('Windows','showSpeed', true)
+   else
+    saveparams.WriteBool('Windows','showSpeed', false);
+   if formHeader.playSound.State=tssOn then
+    saveparams.WriteBool('Sounds','playSound', true)
+   else
+    saveparams.WriteBool('Sounds','playSound', false);
+   saveparams.Destroy;
+end;
+
 procedure TParentForm.FormHeaderplaySoundClick(Sender: TObject);
 begin
-  //soundSetting.playSound.Tag:=1;
+  soundSetting.playSound.Tag:=1;
   try
   soundsetting.playsound.state:=FormHeader.playSound.State;
   finally
-    //soundSetting.playSound.Tag:=0;
+    soundSetting.playSound.Tag:=0;
   end;
 end;
 
@@ -223,25 +242,13 @@ end;
 
 procedure TParentForm.FormHide(Sender: TObject);
 begin
-   VirtKeyboard.save(false, round(backform.Statistics.avSpeed), backform.Statistics.recordSpeed);
-   saveparams:=TIniFile.Create(ExtractFileDir(Paramstr(0))+'\params.ini');
-   saveparams.WriteInteger('Windows','PosX', left);
-   saveparams.WriteInteger('Windows','PosY', top);
-   saveparams.WriteString('Windows','Kind', self.ClassName);
-   if formHeader.showSpeed.State=tssOn then
-    saveparams.WriteBool('Windows','showSpeed', true)
-   else
-    saveparams.WriteBool('Windows','showSpeed', false);
-   if formHeader.playSound.State=tssOn then
-    saveparams.WriteBool('Sounds','playSound', true)
-   else
-    saveparams.WriteBool('Sounds','playSound', false);
-   saveparams.Destroy;
+  trayIcon.Visible:=true;
 end;
 
 procedure TParentForm.FormShow(Sender: TObject);
 begin
   (Owner as TForm).visible:=false;
+  TrayIcon.Visible:=false;
 end;
 
 procedure TParentForm.instantTimerTimer(Sender: TObject);

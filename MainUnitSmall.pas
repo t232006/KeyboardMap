@@ -146,6 +146,7 @@ end;
 procedure TKeyboardFormSmall.FormHeaderSpeedButton1Click(Sender: TObject);
 begin
   KeyboardFormLarge.Show;
+
   self.Hide;
 end;
 

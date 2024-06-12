@@ -4,7 +4,7 @@
         <ProjectVersion>19.5</ProjectVersion>
         <FrameworkType>VCL</FrameworkType>
         <Base>True</Base>
-        <Config Condition="'$(Config)'==''">Release</Config>
+        <Config Condition="'$(Config)'==''">Debug</Config>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
         <TargetedPlatforms>3</TargetedPlatforms>
         <AppType>Application</AppType>
@@ -172,6 +172,8 @@
         <DCCReference Include="MainUnitLarge.pas">
             <Form>KeyboardFormLarge</Form>
         </DCCReference>
+        <DCCReference Include="components\key.pas"/>
+        <DCCReference Include="..\..\myComponents\MyAuxProc.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

@@ -5,7 +5,7 @@ uses
   Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, ParentUnit, MainUnitLarge, MainUnitSmall,
   Vcl.Imaging.pngimage, Vcl.ExtCtrls, IniFiles, PressCounter, speedometer,
-  Vcl.WinXCtrls, MyAuxProc, shlObj;
+  Vcl.WinXCtrls, MyAuxProc, shlObj, sound;
 type
   TBackForm = class(TForm)
     Image1: TImage;
@@ -29,8 +29,11 @@ type
 var
   BackForm: TBackForm;
   saveparams, loadparams: TIniFile;
+  soundSetting: TsoundSetting;
 implementation
 {$R *.dfm}
+
+
 procedure TBackForm.CloseMessage(var TMessage);
 begin
   close;
@@ -54,12 +57,14 @@ begin
    Statistics:= TStatistics.Create(n, round(avSpeed));
    className:=loadparams.ReadString('Windows','Kind','TKeyboardFormLarge');
    RegisterClasses([tKeyboardFormSmall, tKeyboardFormlarge, tparentform]);
+   soundSetting:=TSoundSetting.Create(Application);
    activeForm:=TParentForm(TControlClass(GetClass(classname)).Create(self));
    //activeForm:=TKeyboardFormSmall.Create(self);
    activeForm.Left:=loadparams.ReadInteger('Windows', 'PosX', 0);
    activeForm.Top:=loadparams.ReadInteger('Windows', 'PosY', 0);
    showSpeed:=loadparams.ReadBool('Windows','showSpeed', false);
    playSound:=loadparams.ReadBool('Sounds','playSound', false);
+
    if showSpeed then activeForm.FormHeader.showSpeed.State:=tssOn
                       else
                       activeForm.FormHeader.showSpeed.State:=tssOff;
@@ -92,7 +97,9 @@ begin
   tempform.FormHeader.showSpeed:=activeform.FormHeader.showSpeed;
   tempform.FormHeader.playSound:=activeform.FormHeader.playSound;
   tempform.Show;//(activeform.VirtKeyboard);
+
   activeform.Close;
+  activeform.TrayIcon.Visible:=false;
   activeform:=tempform;
 end;
 end.

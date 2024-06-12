@@ -28,7 +28,7 @@ type
 
 
 var
-  soundSetting: TsoundSetting;
+  //soundSetting: TsoundSetting;
   playSoundB: boolean;
   sPath: string;
 
@@ -64,8 +64,14 @@ begin
 
   currentScheme:=loadParams.ReadInteger('sounds','curScheme',0);
   playSoundB:=loadParams.ReadBool('sounds','playSound', false);
-  if playSoundB then playSound.State:=tssOn else playSound.State:=tssoff;
 
+  playSound.Tag:=1;
+  try
+    if playSoundB then
+    playSound.State:=tssOn else playSound.State:=tssoff;
+    finally
+    playSound.Tag:=0;
+  end;
   loadParams.Destroy;
   soundfolder.ItemIndex:=currentScheme;
   sPath:=ExtractFileDir(Paramstr(0))+'\sounds\'+soundFolder.Items[currentScheme]+'\';
@@ -74,7 +80,7 @@ end;
 
 procedure TsoundSetting.playSoundClick(Sender: TObject);
 begin
-  //if playsound.Tag<>0 then exit;
+  if playsound.Tag<>0 then exit;
   Backform.activeForm.FormHeader.playSound.State:=playsound.state;
 end;
 
