@@ -15,6 +15,7 @@ type
     procedure OpenAnotherKeyboard (var msg: TMessage); message WM_WANT_CLOSE;
     procedure FormShow(Sender: TObject);
     procedure CloseMessage(var TMessage); message WM_QUERYENDSESSION;
+    procedure FormDeactivate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -50,6 +51,7 @@ var className:string;
 begin
    //settingFolder:= GetSpecialPath(CSIDL_APPDATA)+'\Individual dictionary';
    Runhook;
+   Application.OnDeactivate:=FormDeactivate;
    loadparams:=TIniFile.Create(ExtractFileDir(Paramstr(0))+'\params.ini');
    avSpeed:= loadparams.ReadInteger('Speeds', 'averageSpeed', 0);
    maxSpeed:=loadparams.ReadInteger('Speeds', 'recordSpeed', 0);
@@ -76,6 +78,13 @@ begin
    activeForm.Show;
 
 end;
+procedure TBackForm.FormDeactivate(Sender: TObject);
+begin
+  if activeForm.FormHeader.WinOverride.State=tsson then
+
+  activeForm.SetFocus;
+end;
+
 procedure TBackForm.FormShow(Sender: TObject);
 begin
   if showSpeed then speedform.Show;
