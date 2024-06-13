@@ -5,7 +5,8 @@ uses
   System.Classes, mmSystem, WinAPI.Windows;
 
 {$R *.res}
-{$R Cherrymx-black-abs.res}
+{$R CherrymxBlack.res}
+
 
 procedure playClick (button: pchar);
 var hResInfo: hrsrc;

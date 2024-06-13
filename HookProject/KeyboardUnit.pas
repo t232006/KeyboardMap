@@ -38,7 +38,7 @@ TKeyboard=class
      property text:string read FText;
      constructor create;
 end;
-procedure playClick(button: pchar); stdcall; external 'sounds\cherrymx-Black-abs.dll';
+procedure playClick(button: pchar); stdcall; external 'Sounds\cherrymxBlack.dll';
 
 implementation
 
@@ -94,7 +94,7 @@ begin
    begin
       if playsound then
       begin
-        //but:=pchar('e'+copy(fbutton,2,length(fbutton)-2));
+        but:=pchar('e'+copy(fbutton,2,length(fbutton)-2));
         playClick(but);
       end;
       if fbutton<>'' then
