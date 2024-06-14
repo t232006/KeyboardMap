@@ -10,6 +10,7 @@ const WM_MYKEYPRESS = WM_USER+$0400+10;
       REC=17;
 type
 TKeyboardMap=array[LO..222] of word;
+TplayClick = procedure (button: pchar);
 
 TKeyboard=class
    private
@@ -19,6 +20,8 @@ TKeyboard=class
     FButton: string;
     FisPressed:boolean;
     FVirtCode: word;
+    LibHandle: LongWord;
+    playClick: TplayClick;
     fPath: string;
     FScans: TDictionary<string, string>;
     procedure SaveText(filename, sometext:string);
@@ -37,10 +40,16 @@ TKeyboard=class
      property     log:string read Flog;
      property text:string read FText;
      constructor create;
+     destructor destroy;
 end;
-procedure playClick(button: pchar); stdcall; external 'Sounds\cherrymxBlack.dll';
+//procedure playClick(button: pchar); stdcall; external 'Sounds\cherrymxBlack.dll';
 
 implementation
+
+destructor TKeyboard.destroy;
+begin
+    FreeLibrary(libhandle);
+end;
 
 function TKeyboard.GetLastFile:string;
     var sr: TSearchRec;
@@ -113,6 +122,8 @@ end;
 constructor TKeyboard.create;
 begin
   cleanMap(FMap);
+  LibHandle:= LoadLibrary('Sounds\cherrymxBlack.dll');
+  @playClick:= GetProcAddress(LibHandle,'playClick');
   fPath:=ExtractFileDir( Paramstr(0));
   FScans:=TDictionary<string,string>.create;
   LoadScans;
