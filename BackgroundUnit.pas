@@ -79,10 +79,10 @@ begin
 
 end;
 procedure TBackForm.FormDeactivate(Sender: TObject);
-begin
+begin  //nessesary to be on top
   if activeForm.FormHeader.WinOverride.State=tsson then
-
-  activeForm.SetFocus;
+  if activeForm.Visible then activeForm.SetFocus else
+  self.SetFocus;
 end;
 
 procedure TBackForm.FormShow(Sender: TObject);
