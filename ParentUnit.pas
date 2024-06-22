@@ -5,9 +5,9 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, winHeader, System.ImageList,
   Vcl.ImgList, System.Actions, Vcl.ActnList, Vcl.PlatformDefaultStyleActnCtrls,
   Vcl.ActnMan, Vcl.ExtCtrls, Vcl.Menus, Vcl.AppEvnts, Inifiles,
-  keyboardUnit, filemapping, LabSwitch, Language, speedometer,
+  keyboardUnit, filemapping, Language, speedometer,
   AnalogMeter, PressCounter, SendKeyPressProc, Vcl.WinXCtrls, Key, sound,
-  Vcl.StdStyleActnCtrls, Vcl.XPStyleActnCtrls;
+  Vcl.StdStyleActnCtrls, Vcl.XPStyleActnCtrls, Appearance;
 const WM_WANT_CLOSE = WM_USER+$345+10;
 type
   TParentForm = class(TForm)
@@ -57,7 +57,7 @@ type
     procedure Layout_changeExecute(Sender: TObject);
     procedure FormHeaderStatSwitchClick(Sender: TObject);
     procedure speedWinExecute(Sender: TObject);
-    procedure ChangeFormSize; virtual; abstract;
+    //procedure ChangeFormSize; virtual; abstract;
     procedure Show(keyb: TKeyboard); overload;
     procedure FormShow(Sender: TObject);
     function FindKey(ScanCode: string):TKey;
@@ -70,6 +70,7 @@ type
     procedure FormHide(Sender: TObject);
   private
     statType: TStatType;
+
   protected
       LangCode: HKL;
      instantticker:word;
@@ -81,6 +82,10 @@ type
     MapFile: array of string;
     sh1, sh2: TColor;
     showGradient: boolean;
+    procedure Appearance(ColScheme: TColScheme;
+                         KeyRad:byte;
+                         KeyFont:TFont;
+                         CommonTransp, KeybTransp:byte); virtual;
   end;
   
 var
@@ -89,6 +94,28 @@ var
 implementation
 uses MainUnitSmall, MainUnitLarge, BackgroundUnit, StatisticsOptions;
 {$R *.dfm}
+procedure TParentForm.Appearance(ColScheme: TColScheme; KeyRad: byte;
+  KeyFont: TFont; CommonTransp, KeybTransp: byte);
+var k:byte; key:TKey;
+begin
+    AlphaBlendValue:=CommonTransp;
+    case ColScheme of
+      Dark:
+      begin
+       // panel1.Color:=RGB(32,32,32);
+        for k := 1 to 222 do
+        begin
+          key:=FindComponent('Key'+inttostr(k))as Tkey;
+          if key=nil then continue;
+          key.Color:=RGB(49,49,49);
+        end;
+      end ;
+      Light: ;
+      Classic: ;
+    end;
+    
+end;
+
 procedure TParentForm.ApplicationEvents1Minimize(Sender: TObject);
 begin
       WindowState:=wsMinimized;
@@ -186,9 +213,10 @@ end;
 
 procedure TParentForm.FormCreate(Sender: TObject);
 //var n:longword;  //dWin:Hwnd;
+
 begin
   instantticker:=0;
-  VirtKeyboard:=TKeyboard.create;
+  VirtKeyboard:=TKeyboard.create(soundSetting.SoundFolder.Text);
   FillChar(DataArea^, SizeOf(DataArea^), 0);
   DataArea^.FormHandle:=self.Handle;
   DataArea^.key:=loadparams.ReadInteger('HotKeys', 'Key', 0);
@@ -216,7 +244,7 @@ end;
 
 procedure TParentForm.FormHeaderplaySoundClick(Sender: TObject);
 begin
-  soundSetting.playSound.Tag:=1;
+    soundSetting.playSound.Tag:=1;
   try
   soundsetting.playsound.state:=FormHeader.playSound.State;
   finally

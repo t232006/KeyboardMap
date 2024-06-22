@@ -38,7 +38,7 @@ var
 implementation
 
 {$R *.dfm}
-uses backgroundUnit, parentform;
+uses backgroundUnit, parentUnit;
 
 procedure TSpeedForm.FormHide(Sender: TObject);
 var saveparams:TInifile;

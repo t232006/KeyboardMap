@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{E49E7760-4C6E-40B8-B5EF-24E07143E1ED}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="cherrymxPbt.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="cherrymxBlack.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="cherrymxPbt">
+        <MSBuild Projects="cherrymxPbt.dproj"/>
+    </Target>
+    <Target Name="cherrymxPbt:Clean">
+        <MSBuild Projects="cherrymxPbt.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="cherrymxPbt:Make">
+        <MSBuild Projects="cherrymxPbt.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="cherrymxBlack">
+        <MSBuild Projects="cherrymxBlack.dproj"/>
+    </Target>
+    <Target Name="cherrymxBlack:Clean">
+        <MSBuild Projects="cherrymxBlack.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="cherrymxBlack:Make">
+        <MSBuild Projects="cherrymxBlack.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="cherrymxPbt;cherrymxBlack"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="cherrymxPbt:Clean;cherrymxBlack:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="cherrymxPbt:Make;cherrymxBlack:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

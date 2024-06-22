@@ -1,9 +1,10 @@
 object ParentForm: TParentForm
   Left = 0
   Top = 0
+  AlphaBlend = True
   Caption = 'ParentForm'
-  ClientHeight = 461
-  ClientWidth = 707
+  ClientHeight = 460
+  ClientWidth = 703
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText

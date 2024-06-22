@@ -23,6 +23,7 @@ type
     Statistics: TStatistics;
     activeForm: TParentForm;
     showSpeed, playSound: boolean;
+
     //settingFolder: string;
   end;
   procedure RunHook stdcall; external 'KeyboardHook.dll';

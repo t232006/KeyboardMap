@@ -8,7 +8,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.AppEvnts,
   Vcl.ToolWin, Vcl.ActnMan, Vcl.ActnCtrls, Vcl.ActnMenus, System.Actions,
   Vcl.ActnList, Vcl.PlatformDefaultStyleActnCtrls,
-   System.ImageList, speedometer, ParentUnit, SendKeyPressProc;
+   System.ImageList, speedometer, ParentUnit, SendKeyPressProc, Appearance;
 type
   TKeyboardFormLarge = class(TParentForm)
     Panel1: TPanel;
@@ -121,7 +121,12 @@ type
     procedure Key100MouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     procedure FormHeaderSpeedButton1Click(Sender: TObject);
-  private
+  public
+    procedure Appearance(ColScheme: TColScheme;
+                         KeyRad:byte;
+                         KeyFont:TFont;
+                         CommonTransp, KeybTransp:byte);
+
   end;
 
 var
@@ -131,6 +136,11 @@ var
 implementation
 uses MainUnitSmall;
 {$R *.dfm}
+
+procedure TKeyboardFormLarge.Appearance(ColScheme: TColScheme; KeyRad: byte;
+  KeyFont: TFont; CommonTransp, KeybTransp: byte);
+begin
+end;
 
 procedure TKeyboardFormLarge.FormCreate(Sender: TObject);
 begin

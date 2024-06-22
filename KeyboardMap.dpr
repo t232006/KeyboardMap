@@ -20,7 +20,8 @@ uses
   BackgroundUnit in 'BackgroundUnit.pas' {BackForm},
   MainUnitLarge in 'MainUnitLarge.pas' {KeyboardFormLarge},
   key in 'components\key.pas',
-  MyAuxProc in '..\..\myComponents\MyAuxProc.pas';
+  MyAuxProc in '..\..\myComponents\MyAuxProc.pas',
+  Appearance in 'Appearance.pas' {Form1};
 
 {$R *.res}
 //var //pbuff: array[0..127] of char;
@@ -53,6 +54,7 @@ begin
 
   end;   }
    Application.CreateForm(TBackForm, BackForm);
+  Application.CreateForm(TForm1, Form1);
   //Application.CreateForm(TKeyboardFormLarge, KeyboardFormLarge);
   //Application.CreateForm(TKeyboardFormSmall, KeyboardFormSmall);
   //Application.CreateForm(TForm2, Form2);

@@ -1,0 +1,71 @@
+unit Appearance;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ComCtrls;
+
+type
+  TColScheme = (Dark, Light, Classic);
+  TForm1 = class(TForm)
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    CBColScheme: TComboBoxEx;
+    CBKeyRad: TComboBox;
+    Button1: TButton;
+    FontDialog1: TFontDialog;
+    Button2: TButton;
+    Button3: TButton;
+    Button4: TButton;
+    Label4: TLabel;
+    Label5: TLabel;
+    TrackBar1: TTrackBar;
+    TrackBar2: TTrackBar;
+    procedure Button1Click(Sender: TObject);
+    procedure CBColSchemeDropDown(Sender: TObject);
+    procedure CBKeyRadDropDown(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
+  private
+    ColScheme: TColScheme;
+    KeyRadius: byte;
+    KeyFont: TFont;
+    CommonTransp, KeyboardTransp: byte;
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm1.Button1Click(Sender: TObject);
+begin
+  if FontDialog1.Execute then KeyFont:=FontDialog1.Font;
+
+end;
+
+procedure TForm1.Button3Click(Sender: TObject);
+begin
+  close;
+end;
+
+procedure TForm1.CBColSchemeDropDown(Sender: TObject);
+begin
+  case CBColScheme.ItemIndex of
+  0: ColScheme:=Dark;
+  1: ColScheme:=Light;
+  2: ColScheme:=Classic;
+  end;
+end;
+
+procedure TForm1.CBKeyRadDropDown(Sender: TObject);
+begin
+  KeyRadius:=CBKeyRad.ItemHeight;
+end;
+
+end.

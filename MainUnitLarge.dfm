@@ -1,12 +1,15 @@
 object KeyboardFormLarge: TKeyboardFormLarge
   Left = 0
   Top = 0
+  AlphaBlend = True
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsNone
   Caption = 'Screen keyboard'
-  ClientHeight = 396
+  ClientHeight = 377
   ClientWidth = 1106
-  Color = clWhite
+  Color = clMaroon
+  TransparentColor = True
+  TransparentColorValue = clMaroon
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -12
@@ -21,6 +24,8 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Top = 39
     Width = 1095
     Height = 332
+    Color = 2105376
+    ParentBackground = False
     TabOrder = 0
     object Key27: TKey
       Left = 8

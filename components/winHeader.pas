@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
   Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons,
   Vcl.ExtCtrls, System.ImageList, Vcl.ImgList,
-  LabSwitch, Vcl.WinXCtrls, speedometer;
+  Vcl.WinXCtrls, speedometer;
 const WM_WANT_CLOSE = WM_USER+$345+10;
 type
   TFormHeader = class(TFrame)

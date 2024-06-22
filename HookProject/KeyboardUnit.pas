@@ -32,6 +32,7 @@ TKeyboard=class
      procedure addPress(ws:word; ls: longint; langcode:HKL; playsound: boolean);
      procedure save(newFile:boolean; avSpeed, recSpeed:word);
      function GetLastFile:string;
+     procedure SetSoundLibrary(soundLib: string);
      property VirtCode: word read FVirtCode;
      property map:TKeyboardMap read Fmap;
      property isPressed:boolean read FisPressed;
@@ -39,7 +40,7 @@ TKeyboard=class
      property letter:char read Fletter;
      property     log:string read Flog;
      property text:string read FText;
-     constructor create;
+     constructor create(soundLib: string);
      destructor destroy;
 end;
 //procedure playClick(button: pchar); stdcall; external 'Sounds\cherrymxBlack.dll';
@@ -119,14 +120,13 @@ begin
    end
 end;
 
-constructor TKeyboard.create;
+constructor TKeyboard.create(soundLib: string);
 begin
   cleanMap(FMap);
-  LibHandle:= LoadLibrary('Sounds\cherrymxBlack.dll');
-  @playClick:= GetProcAddress(LibHandle,'playClick');
   fPath:=ExtractFileDir( Paramstr(0));
   FScans:=TDictionary<string,string>.create;
   LoadScans;
+  SetSoundLibrary(soundLib);
 end;
 
 procedure TKeyboard.LoadScans;
@@ -157,6 +157,15 @@ begin
   end;
   writeln(f, sometext);
   closefile(f);
+end;
+
+procedure TKeyboard.SetSoundLibrary(soundLib: string);
+var s: string;
+begin
+    if (@playClick<>nil) then FreeLibrary(libhandle);
+    s:='Sounds\'+soundLib+'.dll' ;
+    LibHandle:= LoadLibrary(Pchar(s));
+     @playClick:= GetProcAddress(LibHandle,'playClick');
 end;
 
 procedure TKeyboard.cleanMap(var temp:TKeyboardMap);
