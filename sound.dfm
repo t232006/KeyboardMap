@@ -149,6 +149,7 @@ object soundSetting: TsoundSetting
     01FFFB81818FF7FEFFDFEFFEFFEFDFFEFFF7BFFEFFFBFFFEFFFFFFFFFFFF}
   OnClose = FormClose
   OnCreate = FormCreate
+  OnDestroy = FormDestroy
   TextHeight = 15
   object Label1: TLabel
     Left = 24

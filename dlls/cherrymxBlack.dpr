@@ -4,21 +4,22 @@ uses
   System.SysUtils,
   System.Classes, mmSystem, WinAPI.Windows;
 
-{$R *.res}
-{$R CherrymxBlack.res}
-
+{$R Cherrymx.res}
 
 procedure playClick (button: pchar);
 var hResInfo: hrsrc;
+    selfhandle: HWnd;
 begin
-    hResInfo:=FindResource(hInstance, button, RT_RCDATA);
+    selfHandle:=GetModuleHandle('cherrymxBlack.dll');
+    hResInfo:=FindResource(selfhandle, button, RT_RCDATA);
     button[0]:='s';
     if hresInfo<>0 then
-   sndPlaySound(button, SND_RESOURCE + SND_ASYNC + SND_NODEFAULT)
+   PlaySound(button, selfhandle, SND_RESOURCE + SND_ASYNC + SND_NODEFAULT)
    else
-   sndPlaySound('remain', SND_RESOURCE + SND_ASYNC + SND_NODEFAULT)
-
+   PlaySound('remain',selfhandle, SND_RESOURCE + SND_ASYNC + SND_NODEFAULT)
 end;
+
+
 
 exports playClick;
 end.

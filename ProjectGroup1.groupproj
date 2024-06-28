@@ -15,6 +15,9 @@
         <Projects Include="dlls\cherrymxBlack.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="dlls\cherrymxBlackPbt.dproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -59,14 +62,23 @@
     <Target Name="cherrymxBlack:Make">
         <MSBuild Projects="dlls\cherrymxBlack.dproj" Targets="Make"/>
     </Target>
+    <Target Name="cherrymxBlackPbt">
+        <MSBuild Projects="dlls\cherrymxBlackPbt.dproj"/>
+    </Target>
+    <Target Name="cherrymxBlackPbt:Clean">
+        <MSBuild Projects="dlls\cherrymxBlackPbt.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="cherrymxBlackPbt:Make">
+        <MSBuild Projects="dlls\cherrymxBlackPbt.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="KeyboardMap;keyboardButton;KeyboardHook;cherrymxBlack"/>
+        <CallTarget Targets="KeyboardMap;keyboardButton;KeyboardHook;cherrymxBlack;cherrymxBlackPbt"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="KeyboardMap:Clean;keyboardButton:Clean;KeyboardHook:Clean;cherrymxBlack:Clean"/>
+        <CallTarget Targets="KeyboardMap:Clean;keyboardButton:Clean;KeyboardHook:Clean;cherrymxBlack:Clean;cherrymxBlackPbt:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="KeyboardMap:Make;keyboardButton:Make;KeyboardHook:Make;cherrymxBlack:Make"/>
+        <CallTarget Targets="KeyboardMap:Make;keyboardButton:Make;KeyboardHook:Make;cherrymxBlack:Make;cherrymxBlackPbt:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

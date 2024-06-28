@@ -18,6 +18,7 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure SoundFolderCloseUp(Sender: TObject);
     procedure playSoundClick(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
   private
     currentScheme: byte;
     loadParams: TIniFile;
@@ -36,14 +37,16 @@ implementation
 uses backgroundUnit;
 
 {$R *.dfm}
-{$R cherrymx.res}
+
+
+
 
 procedure TsoundSetting.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-   loadParams:=TIniFile.Create(path+'\params.ini');
-  currentScheme:=loadParams.ReadInteger('sounds','curScheme',0);
+   //loadParams:=TIniFile.Create(path+'\params.ini');
+  //currentScheme:=loadParams.ReadInteger('sounds','curScheme',0);
   loadparams.WriteInteger('sounds', 'curScheme', currentScheme);
-  loadParams.Destroy;
+  //
 end;
 
 procedure TsoundSetting.FormCreate(Sender: TObject);
@@ -72,10 +75,15 @@ begin
     finally
     playSound.Tag:=0;
   end;
-  loadParams.Destroy;
+  //loadParams.Destroy;
   soundfolder.ItemIndex:=currentScheme;
   sPath:=ExtractFileDir(Paramstr(0))+'\sounds\'+soundFolder.Items[currentScheme]+'\';
 
+end;
+
+procedure TsoundSetting.FormDestroy(Sender: TObject);
+begin
+    loadParams.Destroy;
 end;
 
 procedure TsoundSetting.playSoundClick(Sender: TObject);

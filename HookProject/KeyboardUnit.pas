@@ -163,6 +163,8 @@ procedure TKeyboard.SetSoundLibrary(soundLib: string);
 var s: string;
 begin
     if (@playClick<>nil) then FreeLibrary(libhandle);
+    //if length(soundLib)>13 then s:='Sounds\'+soundLib+'1.dll' else
+
     s:='Sounds\'+soundLib+'.dll' ;
     LibHandle:= LoadLibrary(Pchar(s));
      @playClick:= GetProcAddress(LibHandle,'playClick');

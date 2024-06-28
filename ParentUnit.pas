@@ -387,7 +387,8 @@ var tempKey: TKey;
 
 procedure TParentForm.Show_sounds_panelExecute(Sender: TObject);
 begin
-  soundsetting.show;
+  soundsetting.showModal;
+  VirtKeyboard.SetSoundLibrary(soundsetting.SoundFolder.Text);
 end;
 
 procedure TParentForm.speedWinExecute(Sender: TObject);

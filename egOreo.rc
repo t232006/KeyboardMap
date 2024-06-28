@@ -1,8 +1,0 @@
-sSpace WAVE "Sounds\eg-oreo\Space.WAV"
-eSpace RCDATA "Sounds\eg-oreo\key.WAV"
-sNumber WAVE "Sounds\eg-oreo\number.WAV"
-eNumber RCDATA "Sounds\eg-oreo\key.WAV"
-sKey WAVE "Sounds\eg-oreo\key.WAV"
-eKey RCDATA "Sounds\eg-oreo\key.WAV"
-sEnter WAVE "Sounds\eg-oreo\Enter.WAV"
-eEnter RCDATA "Sounds\eg-oreo\key.WAV"

@@ -1,0 +1,54 @@
+library cherrymxBlack;
+
+uses
+  System.SysUtils,
+  System.Classes, mmSystem, WinAPI.Windows;
+
+{$R Cherrymx.res}
+
+
+procedure playClick (button: pchar);
+var hResInfo: hrsrc;
+begin
+    hResInfo:=FindResource(hInstance, button, RT_RCDATA);
+    button[0]:='s';
+    if hresInfo<>0 then
+   sndPlaySound(button, SND_RESOURCE + SND_ASYNC + SND_NODEFAULT)
+   else
+   sndPlaySound('remain', SND_RESOURCE + SND_ASYNC + SND_NODEFAULT)
+
+end;
+
+procedure threadfunc(param: pChar);
+var res: HGLOBAL;
+    resData: Pointer;
+    function loadres(name: pchar; lptype: Pchar=RT_RCDATA):HGLOBAL;
+    var resSize: Cardinal;
+    ResInfo: hrsrc;
+    begin
+      Result:=0;
+      ResInfo:=FindResource(hInstance, name, lptype);
+      if ResInfo<>0 then
+      begin
+        resSize:=SizeOfResource(hInstance, ResInfo);
+        if resSize=0 then
+        begin
+          OutputDebugString(PChar('Size of resource '+name+':0 bytes'));
+          exit;
+        end;
+        result:=LoadResource(hInstance, ResInfo);
+      end else OutputDebugString(PChar('Cannot find resource'+name));
+    end;
+begin
+    res:=loadres(param);
+    if res<>0 then
+    begin
+
+    end else
+    begin
+
+    end;
+end;
+
+exports playClick;
+end.
