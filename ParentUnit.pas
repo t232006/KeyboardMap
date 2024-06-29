@@ -400,7 +400,8 @@ begin
       Close_statisticsExecute(Sender);
       statType:=st_summary;
       //VirtKeyboard.save(false, round(backform.Statistics.avSpeed), backform.Statistics.recordSpeed);
-       BackForm.Statistics.Init(virtKeyboard.map, virtKeyboard.GetLastFile);
+//       BackForm.Statistics.Init(virtKeyboard.map, virtKeyboard.GetLastFile);
+        BackForm.Statistics.Init(virtKeyboard.map, virtKeyboard.CURRENTMAP);
          BackForm.Statistics.IsEmpty:=false;
          showStatistics(st_summary);
          close_statistics.Enabled:=true;

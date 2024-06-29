@@ -29,9 +29,10 @@ TKeyboard=class
     procedure CleanMap(var temp:TKeyboardMap);
     procedure LoadScans;
    public
+     const CURRENTMAP='\maps\CurrentMap.h';
      procedure addPress(ws:word; ls: longint; langcode:HKL; playsound: boolean);
      procedure save(newFile:boolean; avSpeed, recSpeed:word);
-     function GetLastFile:string;
+     //function GetLastFile:string;
      procedure SetSoundLibrary(soundLib: string);
      property VirtCode: word read FVirtCode;
      property map:TKeyboardMap read Fmap;
@@ -52,28 +53,31 @@ begin
     FreeLibrary(libhandle);
 end;
 
-function TKeyboard.GetLastFile:string;
-    var sr: TSearchRec;
-        fdPath: string;
-        CurFileTime, LatestTime: TDateTime;
-    begin
-        fdPath:=fPath+'\maps\*map.b';
+{$REGION 'GetLastFile'}
+  {function TKeyboard.GetLastFile:string;
+      var sr: TSearchRec;
+          fdPath: string;
+          CurFileTime, LatestTime: TDateTime;
+      begin
+          fdPath:=fPath+'\maps\*map.b';
 
-        if FindFirst(fdPath, faNormal,SR)=0 then
-        begin
-           result:=fPath+'\maps\'+SR.Name;
-           LatestTime:=FileDateToDateTime(FileAge(result));
-           repeat
-              CurFileTime:=FileDateToDateTime(FileAge(fPath+'\maps\'+SR.Name));
-              if CurFileTime > LatestTime then
-                begin
-                  result:=fPath+'\maps\'+sr.Name;
-                  LatestTime:=CurFileTime;
-                end;
-           until FindNext(SR)<>0;
-        end;
+          if FindFirst(fdPath, faNormal,SR)=0 then
+          begin
+             result:=fPath+'\maps\'+SR.Name;
+             LatestTime:=FileDateToDateTime(FileAge(result));
+             repeat
+                CurFileTime:=FileDateToDateTime(FileAge(fPath+'\maps\'+SR.Name));
+                if CurFileTime > LatestTime then
+                  begin
+                    result:=fPath+'\maps\'+sr.Name;
+                    LatestTime:=CurFileTime;
+                  end;
+             until FindNext(SR)<>0;
+          end;
 
-    end;
+      end;    }
+{$ENDREGION}
+
 
 function IfThen(AValue: boolean; const ATrue:string; const AFalse:string):string;
 begin
@@ -228,7 +232,7 @@ begin
     if newFile then
       mapname:=GetMapFilename
     else
-      mapname:=GetLastFile;
+      mapname:=CURRENTMAP; //GetLastFile;
     if mapname='' then
     begin
       save(true, avSpeed, recSpeed);

@@ -18,6 +18,9 @@
         <Projects Include="dlls\cherrymxBlackPbt.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="dlls\egOreo.dproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -71,14 +74,23 @@
     <Target Name="cherrymxBlackPbt:Make">
         <MSBuild Projects="dlls\cherrymxBlackPbt.dproj" Targets="Make"/>
     </Target>
+    <Target Name="egOreo">
+        <MSBuild Projects="dlls\egOreo.dproj"/>
+    </Target>
+    <Target Name="egOreo:Clean">
+        <MSBuild Projects="dlls\egOreo.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="egOreo:Make">
+        <MSBuild Projects="dlls\egOreo.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="KeyboardMap;keyboardButton;KeyboardHook;cherrymxBlack;cherrymxBlackPbt"/>
+        <CallTarget Targets="KeyboardMap;keyboardButton;KeyboardHook;cherrymxBlack;cherrymxBlackPbt;egOreo"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="KeyboardMap:Clean;keyboardButton:Clean;KeyboardHook:Clean;cherrymxBlack:Clean;cherrymxBlackPbt:Clean"/>
+        <CallTarget Targets="KeyboardMap:Clean;keyboardButton:Clean;KeyboardHook:Clean;cherrymxBlack:Clean;cherrymxBlackPbt:Clean;egOreo:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="KeyboardMap:Make;keyboardButton:Make;KeyboardHook:Make;cherrymxBlack:Make;cherrymxBlackPbt:Make"/>
+        <CallTarget Targets="KeyboardMap:Make;keyboardButton:Make;KeyboardHook:Make;cherrymxBlack:Make;cherrymxBlackPbt:Make;egOreo:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>
