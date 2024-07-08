@@ -16,9 +16,9 @@ type
     CBKeyRad: TComboBox;
     Button1: TButton;
     FontDialog1: TFontDialog;
-    Button2: TButton;
-    Button3: TButton;
-    Button4: TButton;
+    OKButton: TButton;
+    CancelButton: TButton;
+    ApplayButton: TButton;
     Label4: TLabel;
     Label5: TLabel;
     TrackBar1: TTrackBar;
@@ -26,11 +26,14 @@ type
     procedure Button1Click(Sender: TObject);
     procedure CBColSchemeDropDown(Sender: TObject);
     procedure CBKeyRadDropDown(Sender: TObject);
-    procedure Button3Click(Sender: TObject);
+    procedure CancelButtonClick(Sender: TObject);
+    procedure Button5Click(Sender: TObject);
+    procedure ApplayButtonClick(Sender: TObject);
+    procedure OKButtonClick(Sender: TObject);
   private
     ColScheme: TColScheme;
     KeyRadius: byte;
-    KeyFont: TFont;
+    KeyFont1, KeyFont2: TFont;
     CommonTransp, KeyboardTransp: byte;
   public
     { Public declarations }
@@ -42,16 +45,27 @@ var
 implementation
 
 {$R *.dfm}
+uses BackgroundUnit;
+
+procedure TForm1.ApplayButtonClick(Sender: TObject);
+begin
+   BackForm.activeForm.Appearance(ColScheme,KeyRadius,KeyFont1, KeyFont2,CommonTransp, KeyboardTransp);
+end;
 
 procedure TForm1.Button1Click(Sender: TObject);
 begin
-  if FontDialog1.Execute then KeyFont:=FontDialog1.Font;
+  if FontDialog1.Execute then KeyFont1:=FontDialog1.Font;
 
 end;
 
-procedure TForm1.Button3Click(Sender: TObject);
+procedure TForm1.CancelButtonClick(Sender: TObject);
 begin
   close;
+end;
+
+procedure TForm1.Button5Click(Sender: TObject);
+begin
+  if FontDialog1.Execute then KeyFont2:=FontDialog1.Font;
 end;
 
 procedure TForm1.CBColSchemeDropDown(Sender: TObject);
@@ -68,4 +82,11 @@ begin
   KeyRadius:=CBKeyRad.ItemHeight;
 end;
 
+procedure TForm1.OKButtonClick(Sender: TObject);
+begin
+BackForm.activeForm.Appearance(ColScheme,KeyRadius,KeyFont1, KeyFont2,CommonTransp, KeyboardTransp);
+Close;
+end;
+
 end.
+

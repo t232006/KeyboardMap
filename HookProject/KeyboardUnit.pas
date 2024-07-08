@@ -29,7 +29,8 @@ TKeyboard=class
     procedure CleanMap(var temp:TKeyboardMap);
     procedure LoadScans;
    public
-     const CURRENTMAP='\maps\CurrentMap.h';
+     //const CURRENTMAP='\maps\CurrentMap.h';
+     function CURRENTMAP: string;
      procedure addPress(ws:word; ls: longint; langcode:HKL; playsound: boolean);
      procedure save(newFile:boolean; avSpeed, recSpeed:word);
      //function GetLastFile:string;
@@ -131,6 +132,11 @@ begin
   FScans:=TDictionary<string,string>.create;
   LoadScans;
   SetSoundLibrary(soundLib);
+end;
+
+function TKeyboard.CURRENTMAP: string;
+begin
+  result:=fPath+'\maps\CurrentMap.b';
 end;
 
 procedure TKeyboard.LoadScans;

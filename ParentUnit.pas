@@ -7,11 +7,11 @@ uses
   Vcl.ActnMan, Vcl.ExtCtrls, Vcl.Menus, Vcl.AppEvnts, Inifiles,
   keyboardUnit, filemapping, Language, speedometer,
   AnalogMeter, PressCounter, SendKeyPressProc, Vcl.WinXCtrls, Key, sound,
-  Vcl.StdStyleActnCtrls, Vcl.XPStyleActnCtrls, Appearance;
+  Vcl.StdStyleActnCtrls, Vcl.XPStyleActnCtrls, Appearance, Vcl.Buttons,
+  Vcl.StdCtrls;
 const WM_WANT_CLOSE = WM_USER+$345+10;
 type
   TParentForm = class(TForm)
-    FormHeader: TFormHeader;
     TrayMenu: TPopupMenu;
     N1: TMenuItem;
     N10: TMenuItem;
@@ -35,11 +35,11 @@ type
     speedWin: TAction;
     reset: TAction;
     instantTimer: TTimer;
-    ImageList: TImageList;
     N21: TMenuItem;
     Show_sounds_panel: TAction;
     N2: TMenuItem;
     N3: TMenuItem;
+    FormHeader: TFormHeader;
     procedure exit1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure GetPressing(var msg: TMessage); message WM_MYKEYPRESS;
@@ -68,6 +68,7 @@ type
     procedure FormHeaderplaySoundClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormHide(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     statType: TStatType;
 
@@ -84,10 +85,10 @@ type
     showGradient: boolean;
     procedure Appearance(ColScheme: TColScheme;
                          KeyRad:byte;
-                         KeyFont:TFont;
+                         KeyFont1, KeyFont2:TFont;
                          CommonTransp, KeybTransp:byte); virtual;
   end;
-  
+
 var
   ParentForm: TParentForm;
   hwin: Hwnd;
@@ -95,25 +96,76 @@ implementation
 uses MainUnitSmall, MainUnitLarge, BackgroundUnit, StatisticsOptions;
 {$R *.dfm}
 procedure TParentForm.Appearance(ColScheme: TColScheme; KeyRad: byte;
-  KeyFont: TFont; CommonTransp, KeybTransp: byte);
-var k:byte; key:TKey;
+  KeyFont1, KeyFont2: TFont; CommonTransp, KeybTransp: byte);
+var k:byte; key:TKey; pan: TPanel;  curCol:Tcolor;
 begin
     AlphaBlendValue:=CommonTransp;
-    case ColScheme of
-      Dark:
+    //==============boardColor===============
+
+     pan:=FindComponent('Panel1')as TPanel;
+     case ColScheme of
+        Dark:    pan.Color:=RGB(32,32,32);
+        Light:   pan.Color:=clWhite;
+        Classic: pan.Color:=RGB(239,232,203);
+     end;
+     //============boardTransparent==========
+     if KeybTransp>0 then
+    begin
+       TransparentColor:=true;
+       TransparentColorValue:=pan.Color;
+    end else TransparentColor:=false;
+    //============keysColor==================
+      key:=FindComponent('Key27') as TKey;
+      curCol:=key.MiddleFont.Color; //find color to change (another don't change)
+      for k := 1 to 222 do
       begin
-       // panel1.Color:=RGB(32,32,32);
-        for k := 1 to 222 do
-        begin
-          key:=FindComponent('Key'+inttostr(k))as Tkey;
-          if key=nil then continue;
-          key.Color:=RGB(49,49,49);
+        key:=FindComponent('Key'+inttostr(k))as Tkey;
+        if key=nil then continue;
+        case ColScheme of
+          Dark: with key do
+          begin
+             Color:=RGB(49,49,49);
+             if UpFont.Color=curCol then UpFont.Color:=clWhite;
+             if DownFont.Color=curCol then DownFont.Color:=clWhite;
+             if MiddleFont.Color=curCol then MiddleFont.Color:=clWhite;
+             PictureColor:=clWhite;
+          end;
+          Light: with key do
+          begin
+            Color:=Clwhite;
+            if UpFont.Color=curCol then UpFont.Color:=clBlack;
+            if DownFont.Color=curCol then DownFont.Color:=clBlack;
+            if MiddleFont.Color=curCol then MiddleFont.Color:=clBlack;
+            PictureColor:=clBlack;
+          end;
+          Classic: with key do
+          begin
+            case k of
+            27, 116..119, 44..46, 33..40, 160..165, 145, 16, 8,220,13,20,9,32,12,107,109,106,111,144,91..93:
+            Color:=RGB(185,177,166)
+            else
+            color:=RGB(234,226,217);
+            end;
+            if UpFont.Color=curCol then UpFont.Color:=clBlack;
+            if DownFont.Color=curCol then DownFont.Color:=clBlack;
+            if MiddleFont.Color=curCol then MiddleFont.Color:=clBlack;
+            PictureColor:=clBlack;
+          end;
         end;
-      end ;
-      Light: ;
-      Classic: ;
-    end;
-    
+
+          with key do
+          begin
+          Round:=KeyRad;
+          key.UpFont:=keyFont1;
+          key.MiddleFont:=keyfont1;
+          key.DownFont:=keyfont1;
+          if KeyType=ktLetters then DownFont:=Keyfont2 else
+          if KeyType=ktNum then UpFont:=KeyFont2;
+          end;
+
+
+        end;
+
 end;
 
 procedure TParentForm.ApplicationEvents1Minimize(Sender: TObject);
@@ -209,6 +261,11 @@ begin
       _key.Pressed:=Odd(GetKeyState(VK_NUMLOCK)) else
    if _key.Name='Key145' then
       _key.Pressed:= Odd(GetKeyState(VK_SCROLL));
+end;
+
+procedure TParentForm.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  backForm.Close;
 end;
 
 procedure TParentForm.FormCreate(Sender: TObject);

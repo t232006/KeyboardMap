@@ -97,7 +97,7 @@ object Form1: TForm1
     TabOrder = 2
     OnClick = Button1Click
   end
-  object Button2: TButton
+  object OKButton: TButton
     Left = 114
     Top = 259
     Width = 75
@@ -105,16 +105,16 @@ object Form1: TForm1
     Caption = #1054#1050
     TabOrder = 3
   end
-  object Button3: TButton
+  object CancelButton: TButton
     Left = 195
     Top = 259
     Width = 75
     Height = 25
     Caption = #1054#1090#1084#1077#1085#1072
     TabOrder = 4
-    OnClick = Button3Click
+    OnClick = CancelButtonClick
   end
-  object Button4: TButton
+  object ApplayButton: TButton
     Left = 276
     Top = 259
     Width = 75
@@ -142,13 +142,21 @@ object Form1: TForm1
     Frequency = 20
     TabOrder = 7
   end
+  object Button2: TButton
+    Left = 263
+    Top = 108
+    Width = 41
+    Height = 25
+    Caption = '...'
+    TabOrder = 8
+  end
   object FontDialog1: TFontDialog
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -12
     Font.Name = 'Segoe UI'
     Font.Style = []
-    Left = 304
-    Top = 88
+    Left = 288
+    Top = 64
   end
 end

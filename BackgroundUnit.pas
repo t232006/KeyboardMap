@@ -76,7 +76,7 @@ begin
                       activeForm.FormHeader.playSound.State:=tssOff;
 
    //loadparams.Destroy;
-   activeForm.Show;
+   //activeForm.Show;
 
 end;
 procedure TBackForm.FormDeactivate(Sender: TObject);

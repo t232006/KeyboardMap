@@ -56,7 +56,10 @@ type
     FCurrentColor: TColor;
     FInvertPicture: TBitmap;
     FScanCodes: TStringList;
+    FPictureColor: TColor;
+    FOnColorChange: TNotifyEvent;
     //FPictureRect: TRect;
+    FPictureColorEnable: boolean;
     procedure MakeBlack;
     procedure ReturnColors;
     procedure DrawPicture;
@@ -64,20 +67,23 @@ type
     procedure SaveFontColors;
     procedure SetPicture(Value: TBitmap);
     procedure Paint; override;
+    function ContrastColor(AColor: TColor): TColor;
     function GetText(const Index: Integer): string;
     procedure SetText(const Index: Integer; const Value: string);
     function GetFont(const Index: Integer): TFont;
     procedure SetFont(const Index: Integer; const Value: TFont);
     function GetPosX(const Index: Integer): Integer;
     procedure SetPosX(const Index: Integer; const Value: Integer);
-    procedure SetColor(const Value: TColor);
+    procedure SetColor(const Index: Integer; const Value: TColor);
     procedure FontChange(Sender: TObject);
     procedure SetRound(const Value: byte);
     function SetPictureRect: TRect;
     procedure SetPicturePos(const Value: TPicturePos);
     procedure SetScanCodes(const Value: TStringList);
     procedure SetPressed(const Value: Boolean);
+    procedure SetPictureColor(Value: TColor);
     property PictureRect: TRect read SetPictureRect;
+    property OnColorChange: TNotifyEvent read FOnColorChange write FOnColorChange;
   protected
     procedure MouseEnter(var Msg: TMessage); message CM_MOUSEENTER ;
     procedure MouseLeave(var Msg: TMessage); message CM_MOUSELEAVE;
@@ -92,6 +98,7 @@ type
     constructor Create(AOwner: TComponent);  override;
     destructor Destroy; override;
     property Pressed: Boolean read FPressed write SetPressed;
+    procedure DoConstrast;
 
 
   published
@@ -111,14 +118,16 @@ type
     property UpFont: TFont index 0 read GetFont write SetFont;
     property DownFont: TFont index 1 read GetFont write SetFont;
     property MiddleFont: TFont index 2 read GetFont write SetFont;
-    property Color: TColor read FColor write FColor;
+    property Color: TColor index 2 read FColor write SetColor;
     property PressColor: TColor read FPressColor write FPressColor;
-    property CurrentColor: TColor write SetColor;
+    property CurrentColor: TColor index 1 write SetColor;
     property Round: byte read FRound write SetRound default 4;
     property KeyType: TKeyType read FKeyType write FKeyType default ktOthers;
     property UpPosX: Integer index 0 read GetPosX write SetPosX default 5;
     property DownPosX: Integer index 1 read GetPosX write SetPosX;
     property MidPosX: Integer index 2 read GetPosX write SetPosX;
+    property PictureColor: TColor read FPictureColor write SetPictureColor;
+    property PictureColorOn: boolean read FPictureColorEnable write FPictureColorEnable default false;
   end;
 
 procedure Register;
@@ -131,6 +140,16 @@ begin
 end;
 
 { TKey }
+
+function TKey.ContrastColor(AColor: TColor): TColor;
+const TolerSq = 16 * 16;
+begin
+ if Sqr(GetRValue(AColor) - $80) + Sqr(GetGValue(AColor) - $80)
+  + Sqr(GetBValue(AColor) - $80) < TolerSq then
+  Result := (AColor + $7F7F7F) and $FFFFFF
+ else
+  Result := AColor xor $FFFFFF;
+end;
 
 constructor TKey.Create(AOwner: TComponent);
 begin
@@ -153,6 +172,7 @@ begin
   FColor:= RGB(49,48,49);
   FPressColor:=RGB(214,186,140);
   CurrentColor:=FColor;
+  PictureColor:=ClWhite;
   //FMidLabel.Caption:='Esc';
   with FUpLabel do
   begin
@@ -187,6 +207,13 @@ begin
   inherited;
 end;
 
+procedure TKey.DoConstrast;
+begin
+  UpFont.Color:=ContrastColor(Color);
+  MiddleFont.Color:=ContrastColor(Color);
+  DownFont.Color:=ContrastColor(Color);
+end;
+
 procedure TKey.DrawPicture;
 //var FInvertPicture: TBitmap;
 begin
@@ -195,27 +222,26 @@ if (FPicture<>nil) and (FPicture.Height>0) then
     //canvas.copyrect(canvas.ClipRect, FPicture.Canvas, FPicture.Canvas.ClipRect);
     if hover then
     begin
-       FInvertPicture:=TBitmap.Create;
-       with FInvertPicture.Canvas do
-       begin
-         FInvertPicture.width:=FPicture.Width;
-         FInvertPicture.height:=FPicture.Height;
-         CopyMode:=cmNotSrcCopy;
-         CopyRect(ClipRect, FPicture.Canvas, FPicture.Canvas.ClipRect);
-       end;
-
-
-          canvas.CopyRect(PictureRect,
-                          FInvertPicture.Canvas,
-                          FPicture.Canvas.ClipRect);
+         FInvertPicture:=TBitmap.Create;
+         with FInvertPicture.Canvas do
+         begin
+           FInvertPicture.width:=FPicture.Width;
+           FInvertPicture.height:=FPicture.Height;
+           CopyMode:=cmNotSrcCopy;
+           CopyRect(ClipRect, FPicture.Canvas, FPicture.Canvas.ClipRect);
+         end;
+            canvas.CopyRect(PictureRect,
+                            FInvertPicture.Canvas,
+                            FPicture.Canvas.ClipRect);
       if (FCurrentColor=FPressColor) then
-          canvas.FloodFill(Fround,Fround,clBlack,fsBorder);
+        canvas.FloodFill(Fround, Fround, clWhite, fsSurface);
     end
       else
     canvas.BrushCopy(PictureRect,
                      FPicture,
                      FPicture.Canvas.ClipRect,
                      FPicture.Canvas.Pixels[1,1]);
+    //SetPictureColor(FPictureColor);
   end;
 end;
 
@@ -393,10 +419,16 @@ begin
      FSaveUpCol:=FUpLabel.Font.Color;
 end;
 
-procedure TKey.SetColor(const Value: TColor);
+procedure TKey.SetColor(const Index: Integer; const Value: TColor);
 begin
-   FCurrentColor := Value;
+    case Index of
+    1: FCurrentColor := Value;
+    2: FColor:=value;
+    end;
+    if Assigned(FOnColorChange) then OnColorChange(self);
+
     canvas.Brush.Color:=value;
+    repaint;
 end;
 
 procedure TKey.SetFont(const Index: Integer; const Value: TFont);
@@ -425,6 +457,29 @@ procedure TKey.SetPicture(Value: TBitmap);
 begin
    FPicture.Assign(Value);
    invalidate;
+end;
+
+procedure TKey.SetPictureColor(Value: TColor);
+var i,j:word;
+begin
+    if FPictureColorEnable then
+    begin
+      if Value=clBlack then value:=RGB(1,1,1);
+
+      with FPicture.Canvas do
+      begin
+      for i := 0 to FPicture.Width do
+      for j := 0 to FPicture.Height do
+        if Pixels[i,j]=clBlack then Continue else
+        Pixels[i,j]:=Value;
+
+      //Brush.Color:=ResColor;
+      //FloodFill(i,j, clWhite, fsSurface);
+      end;
+      DrawPicture;
+      FPictureColor := Value;
+    end;
+
 end;
 
 procedure TKey.SetPicturePos(const Value: TPicturePos);
@@ -512,3 +567,4 @@ begin
 end;
 
 end.
+
