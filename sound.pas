@@ -89,7 +89,7 @@ end;
 procedure TsoundSetting.playSoundClick(Sender: TObject);
 begin
   if playsound.Tag<>0 then exit;
-  Backform.activeForm.FormHeader.playSound.State:=playsound.state;
+  Backform.activeForm.settingForm.playSound.State:=playsound.state;
 end;
 
 procedure TsoundSetting.SoundFolderCloseUp(Sender: TObject);

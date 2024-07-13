@@ -68,12 +68,12 @@ begin
    showSpeed:=loadparams.ReadBool('Windows','showSpeed', false);
    playSound:=loadparams.ReadBool('Sounds','playSound', false);
 
-   if showSpeed then activeForm.FormHeader.showSpeed.State:=tssOn
+   if showSpeed then activeForm.SettingForm.showSpeed.State:=tssOn
                       else
-                      activeForm.FormHeader.showSpeed.State:=tssOff;
-   if playSound then activeForm.FormHeader.playSound.State:=tssOn
+                      activeForm.SettingForm.showSpeed.State:=tssOff;
+   if playSound then activeForm.SettingForm.playSound.State:=tssOn
                       else
-                      activeForm.FormHeader.playSound.State:=tssOff;
+                      activeForm.SettingForm.playSound.State:=tssOff;
 
    //loadparams.Destroy;
    //activeForm.Show;
@@ -81,7 +81,7 @@ begin
 end;
 procedure TBackForm.FormDeactivate(Sender: TObject);
 begin  //nessesary to be on top
-  if activeForm.FormHeader.WinOverride.State=tsson then
+  if activeForm.SettingForm.WinOverride.State=tsson then
   if activeForm.Visible then activeForm.SetFocus else
   self.SetFocus;
 end;
@@ -104,8 +104,8 @@ begin
   else
      tempform:= TKeyboardFormLarge.Create(self);
   tempform.VirtKeyboard:=activeform.VirtKeyboard;
-  tempform.FormHeader.showSpeed:=activeform.FormHeader.showSpeed;
-  tempform.FormHeader.playSound:=activeform.FormHeader.playSound;
+  tempform.SettingForm.showSpeed:=activeform.SettingForm.showSpeed;
+  tempform.SettingForm.playSound:=activeform.SettingForm.playSound;
   tempform.Show;//(activeform.VirtKeyboard);
 
   activeform.Close;

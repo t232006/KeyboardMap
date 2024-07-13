@@ -13,21 +13,12 @@ Coordinates=86,114,59,33
 [Panel1]
 Coordinates=10,10,47,51
 
-[StatSwitch]
-Coordinates=10,114,66,33
-
-[showSpeed]
-Coordinates=189,71,71,33
-
-[WinOverride]
-Coordinates=104,71,75,33
-
 [ImageList]
 Coordinates=34,159,62,33
 
 [SpeedButton2]
 Coordinates=10,71,84,33
 
-[playSound]
+[]
 Coordinates=212,10,87,33
 

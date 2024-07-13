@@ -8,7 +8,6 @@ uses
   MainUnitSmall in 'MainUnitSmall.pas' {KeyboardFormSmall},
   StatisticsOptions in 'StatisticsOptions.pas' {Form2},
   AnalogMeter in 'components\AnalogMeter.pas',
-  Language in 'Language.pas' {LangForm},
   speedometer in 'speedometer.pas' {SpeedForm},
   PressCounter in 'units\PressCounter.pas',
   SendKeyPressProc in 'units\SendKeyPressProc.pas',
@@ -21,7 +20,14 @@ uses
   MainUnitLarge in 'MainUnitLarge.pas' {KeyboardFormLarge},
   key in 'components\key.pas',
   MyAuxProc in '..\..\myComponents\MyAuxProc.pas',
-  Appearance in 'Appearance.pas' {Form1};
+  Appearance in 'Appearance.pas' {Form1},
+  SettingPanel in 'units\SettingPanel.pas' {SettingForm: TFrame},
+  languageFrameUnit in 'frames\languageFrameUnit.pas' {LangFrame: TFrame},
+  soundFrameUnit in 'frames\soundFrameUnit.pas' {Frame2: TFrame},
+  statisticsFrameUnit in 'frames\statisticsFrameUnit.pas' {StatisticsFrame: TFrame},
+  appearanceFrameUnit in 'frames\appearanceFrameUnit.pas' {Frame4: TFrame},
+  settings in 'settings.pas' {Form3},
+  Language in 'Language.pas' {LangForm};
 
 {$R *.res}
 //var //pbuff: array[0..127] of char;
@@ -55,6 +61,7 @@ begin
   end;   }
    Application.CreateForm(TBackForm, BackForm);
   Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TForm3, Form3);
   //Application.CreateForm(TKeyboardFormLarge, KeyboardFormLarge);
   //Application.CreateForm(TKeyboardFormSmall, KeyboardFormSmall);
   //Application.CreateForm(TForm2, Form2);

@@ -98,14 +98,11 @@ Coordinates=748,276,65,36
 [Stat_summary]
 Coordinates=729,321,97,36
 
-[ImageList]
-Coordinates=650,321,70,36
-
 [WinMonitor]
 Coordinates=561,321,80,36
 
 []
-Coordinates=159,87,91,36
+Coordinates=650,321,70,36
 Visible=True
 
 [FormHeader.showSpeed]

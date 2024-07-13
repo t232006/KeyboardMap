@@ -62,6 +62,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 0
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key112: TKey
       Left = 104
@@ -99,6 +100,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 0
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key113: TKey
       Left = 152
@@ -136,6 +138,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 0
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key114: TKey
       Left = 200
@@ -173,6 +176,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 0
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key115: TKey
       Left = 248
@@ -210,6 +214,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 0
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key116: TKey
       Left = 320
@@ -247,6 +252,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 0
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key117: TKey
       Left = 368
@@ -284,6 +290,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 0
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key118: TKey
       Left = 416
@@ -321,6 +328,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 0
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key119: TKey
       Left = 464
@@ -358,6 +366,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 0
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key120: TKey
       Left = 536
@@ -395,6 +404,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 0
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key121: TKey
       Left = 584
@@ -432,6 +442,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 0
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key122: TKey
       Left = 632
@@ -469,6 +480,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 0
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key123: TKey
       Left = 680
@@ -506,6 +518,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 0
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key44: TKey
       Left = 736
@@ -542,6 +555,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 0
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key145: TKey
       Left = 784
@@ -578,6 +592,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 0
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key16: TKey
       Left = 832
@@ -614,6 +629,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 0
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key41: TKey
       Left = 8
@@ -652,6 +668,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 25
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key49: TKey
       Left = 56
@@ -689,6 +706,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 25
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key50: TKey
       Left = 104
@@ -727,6 +745,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 28
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key51: TKey
       Left = 152
@@ -765,6 +784,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 18
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key52: TKey
       Left = 200
@@ -803,6 +823,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 30
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key53: TKey
       Left = 248
@@ -840,6 +861,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 25
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key54: TKey
       Left = 296
@@ -878,6 +900,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 30
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key55: TKey
       Left = 344
@@ -915,6 +938,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 25
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key56: TKey
       Left = 392
@@ -952,6 +976,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 25
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key57: TKey
       Left = 440
@@ -989,6 +1014,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 25
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key48: TKey
       Left = 488
@@ -1026,6 +1052,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 25
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key189: TKey
       Left = 536
@@ -1063,6 +1090,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 25
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key187: TKey
       Left = 584
@@ -1100,6 +1128,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 25
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key8: TKey
       Left = 632
@@ -1267,6 +1296,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 0
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key45: TKey
       Left = 736
@@ -1304,6 +1334,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 0
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key36: TKey
       Left = 784
@@ -1341,6 +1372,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 0
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key33: TKey
       Left = 832
@@ -1378,6 +1410,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 0
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key144: TKey
       Left = 888
@@ -1414,6 +1447,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 4
       DownPosX = 5
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key111: TKey
       Left = 936
@@ -1451,6 +1485,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 4
       DownPosX = 5
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key106: TKey
       Left = 984
@@ -1488,6 +1523,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 4
       DownPosX = 5
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key109: TKey
       Left = 1032
@@ -1525,6 +1561,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 0
       DownPosX = 5
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key9: TKey
       Left = 8
@@ -1725,6 +1762,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 0
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key81: TKey
       Left = 79
@@ -1762,6 +1800,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       KeyType = ktLetters
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key87: TKey
       Left = 127
@@ -1799,6 +1838,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       KeyType = ktLetters
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key69: TKey
       Left = 175
@@ -1836,6 +1876,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       KeyType = ktLetters
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key82: TKey
       Left = 223
@@ -1873,6 +1914,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       KeyType = ktLetters
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key84: TKey
       Left = 271
@@ -1910,6 +1952,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       KeyType = ktLetters
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key89: TKey
       Left = 319
@@ -1947,6 +1990,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       KeyType = ktLetters
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key85: TKey
       Left = 367
@@ -1984,6 +2028,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       KeyType = ktLetters
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key73: TKey
       Left = 415
@@ -2021,6 +2066,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       KeyType = ktLetters
       DownPosX = 23
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key79: TKey
       Left = 463
@@ -2058,6 +2104,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       KeyType = ktLetters
       DownPosX = 21
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key80: TKey
       Left = 511
@@ -2095,6 +2142,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       KeyType = ktScroll
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key219: TKey
       Left = 559
@@ -2133,6 +2181,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 0
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key94: TKey
       Left = 607
@@ -2171,6 +2220,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 0
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key220: TKey
       Left = 655
@@ -2209,6 +2259,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 45
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key46: TKey
       Left = 736
@@ -2246,6 +2297,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 0
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key35: TKey
       Left = 784
@@ -2283,6 +2335,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 0
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key34: TKey
       Left = 832
@@ -2320,6 +2373,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 0
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key103: TKey
       Left = 888
@@ -2358,6 +2412,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 4
       DownPosX = 5
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key104: TKey
       Left = 936
@@ -2524,6 +2579,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 4
       DownPosX = 5
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key105: TKey
       Left = 984
@@ -2562,6 +2618,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 4
       DownPosX = 5
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key107: TKey
       Left = 1032
@@ -2599,6 +2656,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 0
       DownPosX = 5
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key20: TKey
       Left = 8
@@ -2636,6 +2694,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 0
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key65: TKey
       Left = 95
@@ -2673,6 +2732,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       KeyType = ktLetters
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key83: TKey
       Left = 143
@@ -2710,6 +2770,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       KeyType = ktLetters
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key68: TKey
       Left = 191
@@ -2747,6 +2808,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       KeyType = ktLetters
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key70: TKey
       Left = 239
@@ -2784,6 +2846,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       KeyType = ktLetters
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key71: TKey
       Left = 287
@@ -2821,6 +2884,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       KeyType = ktLetters
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key72: TKey
       Left = 335
@@ -2858,6 +2922,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       KeyType = ktLetters
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key74: TKey
       Left = 383
@@ -2895,6 +2960,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       KeyType = ktLetters
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key75: TKey
       Left = 431
@@ -2932,6 +2998,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       KeyType = ktLetters
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key76: TKey
       Left = 479
@@ -2969,6 +3036,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       KeyType = ktLetters
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key186: TKey
       Left = 527
@@ -3007,6 +3075,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 0
       DownPosX = 21
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key222: TKey
       Left = 575
@@ -3045,6 +3114,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 0
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key13: TKey
       Left = 623
@@ -3082,6 +3152,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 0
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key100: TKey
       Left = 888
@@ -3250,6 +3321,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 4
       DownPosX = 5
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key101: TKey
       Left = 936
@@ -3286,6 +3358,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 4
       DownPosX = 5
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key102: TKey
       Left = 984
@@ -3453,6 +3526,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 4
       DownPosX = 5
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key97: TKey
       Left = 888
@@ -3491,6 +3565,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 4
       DownPosX = 5
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key98: TKey
       Left = 936
@@ -3657,6 +3732,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 4
       DownPosX = 5
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key99: TKey
       Left = 984
@@ -3695,6 +3771,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 4
       DownPosX = 5
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key160: TKey
       Left = 8
@@ -3861,6 +3938,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 0
       DownPosX = 25
       MidPosX = 28
+      PictureColor = clBlack
     end
     object Key90: TKey
       Left = 111
@@ -3898,6 +3976,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       KeyType = ktLetters
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key88: TKey
       Left = 159
@@ -3935,6 +4014,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       KeyType = ktLetters
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key67: TKey
       Left = 207
@@ -3972,6 +4052,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       KeyType = ktLetters
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key86: TKey
       Left = 255
@@ -4009,6 +4090,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       KeyType = ktLetters
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key66: TKey
       Left = 303
@@ -4046,6 +4128,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       KeyType = ktLetters
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key78: TKey
       Left = 351
@@ -4083,6 +4166,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       KeyType = ktLetters
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key77: TKey
       Left = 399
@@ -4120,6 +4204,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       KeyType = ktLetters
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key188: TKey
       Left = 447
@@ -4158,6 +4243,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 0
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key190: TKey
       Left = 495
@@ -4196,6 +4282,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 0
       DownPosX = 20
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key191: TKey
       Left = 543
@@ -4234,6 +4321,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 0
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key161: TKey
       Left = 591
@@ -4400,6 +4488,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 0
       DownPosX = 25
       MidPosX = 28
+      PictureColor = clBlack
     end
     object Key162: TKey
       Left = 8
@@ -4437,6 +4526,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 0
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key91: TKey
       Left = 66
@@ -4530,6 +4620,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 0
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key164: TKey
       Left = 124
@@ -4567,6 +4658,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 0
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key32: TKey
       Left = 182
@@ -4603,6 +4695,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 0
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key165: TKey
       Left = 495
@@ -4640,6 +4733,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 0
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key93: TKey
       Left = 612
@@ -4676,6 +4770,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 0
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key163: TKey
       Left = 670
@@ -4713,6 +4808,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 0
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key37: TKey
       Left = 736
@@ -4880,6 +4976,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 0
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key40: TKey
       Left = 784
@@ -5045,6 +5142,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 0
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key39: TKey
       Left = 832
@@ -5212,6 +5310,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 0
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key38: TKey
       Left = 784
@@ -5377,6 +5476,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 0
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key96: TKey
       Left = 888
@@ -5415,6 +5515,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 4
       DownPosX = 5
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key110: TKey
       Left = 984
@@ -5453,6 +5554,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 6
       DownPosX = 5
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key12: TKey
       Left = 1032
@@ -5490,6 +5592,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 0
       DownPosX = 5
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key92: TKey
       Left = 553
@@ -5583,6 +5686,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       UpPosX = 0
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
     object Key223: TKey
       Left = 1032
@@ -5614,6 +5718,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
       KeyType = ktLetters
       DownPosX = 25
       MidPosX = 5
+      PictureColor = clBlack
     end
   end
 end

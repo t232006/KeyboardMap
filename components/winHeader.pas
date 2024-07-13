@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
   Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons,
   Vcl.ExtCtrls, System.ImageList, Vcl.ImgList,
-  Vcl.WinXCtrls, speedometer;
+  Vcl.WinXCtrls, MyAuxProc;
 const WM_WANT_CLOSE = WM_USER+$345+10;
 type
   TFormHeader = class(TFrame)
@@ -15,12 +15,11 @@ type
     CloseBut: TSpeedButton;
     WinCaption: TLabel;
     ImageList: TImageList;
-    StatSwitch: TToggleSwitch;
-    WinOverride: TToggleSwitch;
     SpeedButton2: TSpeedButton;
-    showSpeed: TToggleSwitch;
     SpeedButton3: TSpeedButton;
-    playSound: TToggleSwitch;
+    sbSetting: TSpeedButton;
+    SpeedButton4: TSpeedButton;
+    SpeedButton5: TSpeedButton;
     procedure Panel1MouseMove(Sender: TObject; Shift: TShiftState; X,
       Y: Integer);
     procedure Panel1MouseDown(Sender: TObject; Button: TMouseButton;
@@ -28,11 +27,8 @@ type
     procedure Panel1MouseUp(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     procedure CloseButClick(Sender: TObject);
-    function GetParentForm(Component: TComponent): TForm;
     procedure FrameResize(Sender: TObject);
-    procedure WinOverrideClick(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
-    procedure showSpeedClick(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure WinIconClick(Sender: TObject);
 
@@ -54,25 +50,6 @@ winIcon.Canvas.FloodFill(1,1,clActiveCaption,fsBorder);
 WinIcon.Canvas.Draw(0,0,Application.Icon);
      WinCaption.Caption:=GetParentForm(sender as TComponent).Caption;
 end;
-
-function TFormHeader.GetParentForm(Component: TComponent): TForm;
-var
-  C: TComponent;
-begin
-  Result := nil;
-  if Component = nil then
-    exit;
-  C := Component;
-  repeat
-    Component := C;
-    try
-    C := Component.Owner except C := Component;
-    end;
-  until (C is TForm) or (C = Component);
-  if C is TForm then
-    Result := C as TForm;
-end;
-
 
 
 procedure TFormHeader.Panel1MouseDown(Sender: TObject; Button: TMouseButton;
@@ -100,19 +77,6 @@ begin
   down:=false;
 end;
 
-procedure TFormHeader.showSpeedClick(Sender: TObject);
-begin
-  if tag<>0 then exit;
-  if speedform<>nil then
-  begin
-      if showSpeed.State=tssOff then
-          speedform.Close else
-      speedform.Show;
-  end;
-end;
-
-
-
 procedure TFormHeader.SpeedButton1Click(Sender: TObject);
 begin
 sendmessage((GetParentForm(sender as tComponent).Owner as TForm).Handle,WM_WANT_CLOSE,0,0);
@@ -129,14 +93,6 @@ var foo: TPoint;
 begin
     GetCursorPos(foo);
     WinIcon.PopupMenu.Popup(foo.X, foo.Y);
-end;
-
-procedure TFormHeader.WinOverrideClick(Sender: TObject);
-begin
-if winOverride.State=tssOn then
-    GetParentForm(sender as tComponent).FormStyle:=fsStayOnTop
-    else
-    GetParentForm(sender as tComponent).FormStyle:=fsNormal;
 end;
 
 procedure TFormHeader.CloseButClick(Sender: TObject);

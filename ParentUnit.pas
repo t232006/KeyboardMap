@@ -8,7 +8,7 @@ uses
   keyboardUnit, filemapping, Language, speedometer,
   AnalogMeter, PressCounter, SendKeyPressProc, Vcl.WinXCtrls, Key, sound,
   Vcl.StdStyleActnCtrls, Vcl.XPStyleActnCtrls, Appearance, Vcl.Buttons,
-  Vcl.StdCtrls;
+  Vcl.StdCtrls, SettingPanel;
 const WM_WANT_CLOSE = WM_USER+$345+10;
 type
   TParentForm = class(TForm)
@@ -40,6 +40,7 @@ type
     N2: TMenuItem;
     N3: TMenuItem;
     FormHeader: TFormHeader;
+    SettingForm: TSettingForm;
     procedure exit1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure GetPressing(var msg: TMessage); message WM_MYKEYPRESS;
@@ -69,9 +70,12 @@ type
     procedure FormDestroy(Sender: TObject);
     procedure FormHide(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormHeaderSpeedButton1Click(Sender: TObject);
+    procedure FormHeaderCloseButClick(Sender: TObject);
+    procedure SettingFormResize(Sender: TObject);
   private
     statType: TStatType;
-
+    baseHeight, basePanelTop: Integer;
   protected
       LangCode: HKL;
      instantticker:word;
@@ -193,7 +197,7 @@ end;
 procedure TParentForm.Close_statisticsExecute(Sender: TObject);
 begin
     closeStatistics;
-   formHeader.StatSwitch.Visible:=false;
+   SettingForm.StatSwitch.Visible:=false;
    Close_statistics.Enabled:=false;
    SpeedForm.speedM.Value:=backform.Statistics.avSpeed;
    SpeedForm.speedM.HighZoneValue:=speedform.speedM.Tag;
@@ -204,6 +208,8 @@ begin
   inherited CreateParams(AParams);
   AParams.ExStyle:=AParams.ExStyle or WS_EX_NOACTIVATE;
 end;
+
+
 procedure TParentForm.Cur_session_statExecute(Sender: TObject);
 begin
         Close_statisticsExecute(Sender);
@@ -222,7 +228,7 @@ procedure TParentForm.GetPressing(var msg: TMessage);
     curspeed: word;
     plSound: boolean;
 begin
-   if formHeader.playSound.State=tssOn then plSound:=true else plSound:=false;
+   if SettingForm.playSound.State=tssOn then plSound:=true else plSound:=false;
    VirtKeyboard.addPress(msg.WParam, msg.LParam, LangCode, plSound);
    ScanHex:=InttoHex(msg.LParam);
    if virtkeyboard.isPressed then
@@ -279,6 +285,10 @@ begin
   DataArea^.key:=loadparams.ReadInteger('HotKeys', 'Key', 0);
   DataArea^.ExKey:=loadparams.ReadInteger('HotKeys', 'Ext', 0);
   FormHeader.Align:=alTop;
+  SettingForm.Align:=alTop;
+  baseHeight:=Height;
+  basePanelTop:=(FindComponent('panel1') as TPanel).Top;
+  //SettingForm.Height:=0;
 end;
 
 procedure TParentForm.FormDestroy(Sender: TObject);
@@ -288,25 +298,39 @@ begin
    saveparams.WriteInteger('Windows','PosX', left);
    saveparams.WriteInteger('Windows','PosY', top);
    saveparams.WriteString('Windows','Kind', self.ClassName);
-   if formHeader.showSpeed.State=tssOn then
+   if SettingForm.showSpeed.State=tssOn then
     saveparams.WriteBool('Windows','showSpeed', true)
    else
     saveparams.WriteBool('Windows','showSpeed', false);
-   if formHeader.playSound.State=tssOn then
+   if SettingForm.playSound.State=tssOn then
     saveparams.WriteBool('Sounds','playSound', true)
    else
     saveparams.WriteBool('Sounds','playSound', false);
    saveparams.Destroy;
 end;
 
+procedure TParentForm.FormHeaderCloseButClick(Sender: TObject);
+begin
+  FormHeader.CloseButClick(Sender);
+
+end;
+
 procedure TParentForm.FormHeaderplaySoundClick(Sender: TObject);
 begin
     soundSetting.playSound.Tag:=1;
   try
-  soundsetting.playsound.state:=FormHeader.playSound.State;
+  soundsetting.playsound.state:=SettingForm.playSound.State;
   finally
     soundSetting.playSound.Tag:=0;
   end;
+end;
+
+procedure TParentForm.FormHeaderSpeedButton1Click(Sender: TObject);
+begin
+    if formheader.sbSetting.Down then
+    SettingForm.Extend else
+    settingForm.Retract;
+
 end;
 
 procedure TParentForm.FormHeaderSpeedButton3Click(Sender: TObject);
@@ -317,10 +341,10 @@ end;
 
 procedure TParentForm.FormHeaderStatSwitchClick(Sender: TObject);
 begin
-if formheader.StatSwitch.Tag<>0 then  exit;
+if SettingForm.StatSwitch.Tag<>0 then  exit;
 
   CloseStatistics;
-  if FormHeader.StatSwitch.State=tssOn then
+  if SettingForm.StatSwitch.State=tssOn then
     showGradient:=false else showGradient:=true;
   showStatistics(statType);
 end;
@@ -355,6 +379,7 @@ procedure TParentForm.Layout_changeExecute(Sender: TObject);
 begin
   langForm.ShowModal;
 end;
+
 procedure TParentForm.N1Click(Sender: TObject);
 begin
   if WindowState=TWindowState.wsMinimized then
@@ -393,6 +418,13 @@ begin
 VirtKeyboard.save(true, round(backform.Statistics.avSpeed), backform.Statistics.recordSpeed);  //save current session
  MessageDlg('Статистика сохранена', TMsgDlgType.mtInformation, [mbOK], 0);
 end;
+procedure TParentForm.SettingFormResize(Sender: TObject);
+begin
+  (BackForm.activeForm.FindComponent('panel1') as TPanel).Top:=basePanelTop+
+  SettingForm.Height;
+  Height:=baseHeight+settingForm.Height;
+end;
+
 procedure TParentForm.Show(keyb: TKeyboard);
 begin
   VirtKeyboard:=keyb;
@@ -430,15 +462,15 @@ var tempKey: TKey;
             BackForm.Statistics.ShowStatisticsByNum(stattype, i, tempKey);
            //n5.Enabled:=true;
          end;
-    FormHeader.StatSwitch.Visible:=true;
-    if sh1=sh2 then FormHeader.StatSwitch.Enabled:=false else
-                      FormHeader.StatSwitch.Enabled:=true;
-    Formheader.StatSwitch.Tag:=1;
+    SettingForm.StatSwitch.Visible:=true;
+    if sh1=sh2 then SettingForm.StatSwitch.Enabled:=false else
+                      SettingForm.StatSwitch.Enabled:=true;
+    SettingForm.StatSwitch.Tag:=1;
     try
-    if showGradient then FormHeader.StatSwitch.State:=tssOff else
-                        FormHeader.StatSwitch.State:=tssOn;
+    if showGradient then SettingForm.StatSwitch.State:=tssOff else
+                        SettingForm.StatSwitch.State:=tssOn;
     finally
-      Formheader.StatSwitch.Tag:=0;
+      SettingForm.StatSwitch.Tag:=0;
     end;
   end;
 

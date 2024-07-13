@@ -146,9 +146,6 @@
             <Form>Form2</Form>
         </DCCReference>
         <DCCReference Include="components\AnalogMeter.pas"/>
-        <DCCReference Include="Language.pas">
-            <Form>LangForm</Form>
-        </DCCReference>
         <DCCReference Include="speedometer.pas">
             <Form>SpeedForm</Form>
         </DCCReference>
@@ -176,6 +173,39 @@
         <DCCReference Include="..\..\myComponents\MyAuxProc.pas"/>
         <DCCReference Include="Appearance.pas">
             <Form>Form1</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="units\SettingPanel.pas">
+            <Form>SettingForm</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TFrame</DesignClass>
+        </DCCReference>
+        <DCCReference Include="frames\languageFrameUnit.pas">
+            <Form>LangFrame</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TFrame</DesignClass>
+        </DCCReference>
+        <DCCReference Include="frames\soundFrameUnit.pas">
+            <Form>Frame2</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TFrame</DesignClass>
+        </DCCReference>
+        <DCCReference Include="frames\statisticsFrameUnit.pas">
+            <Form>StatisticsFrame</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TFrame</DesignClass>
+        </DCCReference>
+        <DCCReference Include="frames\appearanceFrameUnit.pas">
+            <Form>Frame4</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TFrame</DesignClass>
+        </DCCReference>
+        <DCCReference Include="settings.pas">
+            <Form>Form3</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Language.pas">
+            <Form>LangForm</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Base">

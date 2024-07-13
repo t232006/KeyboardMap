@@ -121,7 +121,6 @@ type
     procedure Key100MouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     //procedure CreateParams(var AParams: TCreateParams); override;
-    procedure FormHeaderSpeedButton1Click(Sender: TObject);
   private
 
   end;
@@ -141,13 +140,6 @@ begin
   Key144.Pressed:=Odd(GetKeyState(VK_NUMLOCK));
   Key145.Pressed:=Odd(GetKeyState(VK_SCROLL));
 
-end;
-
-procedure TKeyboardFormSmall.FormHeaderSpeedButton1Click(Sender: TObject);
-begin
-  KeyboardFormLarge.Show;
-
-  self.Hide;
 end;
 
 procedure TKeyboardFormSmall.Key100MouseDown(Sender: TObject; Button: TMouseButton;

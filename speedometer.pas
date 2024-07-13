@@ -108,7 +108,7 @@ end;
 procedure TSpeedForm.N1Click(Sender: TObject);
 begin
     hide;
-    BackForm.activeForm.FormHeader.showSpeed.State:=tssoff;
+    BackForm.activeForm.SettingForm.showSpeed.State:=tssoff;
 
 end;
 
