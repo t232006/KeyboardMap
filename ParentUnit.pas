@@ -4,12 +4,12 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, winHeader, System.ImageList,
   Vcl.ImgList, System.Actions, Vcl.ActnList, Vcl.PlatformDefaultStyleActnCtrls,
-  Vcl.ActnMan, Vcl.ExtCtrls, Vcl.Menus, Vcl.AppEvnts, Inifiles,
+  Vcl.ActnMan, Vcl.ExtCtrls, Vcl.Menus, Vcl.AppEvnts, Registry,
   keyboardUnit, filemapping, Language, speedometer,
   AnalogMeter, PressCounter, SendKeyPressProc, Vcl.WinXCtrls, Key, sound,
-  Vcl.StdStyleActnCtrls, Vcl.XPStyleActnCtrls, Appearance, Vcl.Buttons,
-  Vcl.StdCtrls, SettingPanel;
-const WM_WANT_CLOSE = WM_USER+$345+10;
+  Appearance, Vcl.Buttons,
+  Vcl.StdCtrls, Vcl.XPStyleActnCtrls;
+//const WM_WANT_CLOSE = WM_USER+$345+10;
 type
   TParentForm = class(TForm)
     TrayMenu: TPopupMenu;
@@ -40,7 +40,14 @@ type
     N2: TMenuItem;
     N3: TMenuItem;
     FormHeader: TFormHeader;
-    SettingForm: TSettingForm;
+    SettingForm: TPanel;
+    boardSize: TToggleSwitch;
+    LogToggle: TToggleSwitch;
+    playSound: TToggleSwitch;
+    showSpeed: TToggleSwitch;
+    StatSwitch: TToggleSwitch;
+    extendTimer: TTimer;
+    WinOverride: TToggleSwitch;
     procedure exit1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure GetPressing(var msg: TMessage); message WM_MYKEYPRESS;
@@ -67,15 +74,20 @@ type
     procedure FormHeaderSpeedButton3Click(Sender: TObject);
     procedure Show_sounds_panelExecute(Sender: TObject);
     procedure FormHeaderplaySoundClick(Sender: TObject);
-    procedure FormDestroy(Sender: TObject);
     procedure FormHide(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormHeaderSpeedButton1Click(Sender: TObject);
     procedure FormHeaderCloseButClick(Sender: TObject);
     procedure SettingFormResize(Sender: TObject);
+    procedure extendTimerTimer(Sender: TObject);
+    procedure WinOverrideClick(Sender: TObject);
+    procedure showSpeedClick(Sender: TObject);
   private
     statType: TStatType;
     baseHeight, basePanelTop: Integer;
+    const toExtend:boolean=true;
+    procedure Extend;
+    procedure Retract;
   protected
       LangCode: HKL;
      instantticker:word;
@@ -197,7 +209,7 @@ end;
 procedure TParentForm.Close_statisticsExecute(Sender: TObject);
 begin
     closeStatistics;
-   SettingForm.StatSwitch.Visible:=false;
+   StatSwitch.Visible:=false;
    Close_statistics.Enabled:=false;
    SpeedForm.speedM.Value:=backform.Statistics.avSpeed;
    SpeedForm.speedM.HighZoneValue:=speedform.speedM.Tag;
@@ -223,12 +235,20 @@ procedure TParentForm.exit1Click(Sender: TObject);
 begin
    (Owner as TForm).close;
 end;
+
+procedure TParentForm.Extend;
+begin
+   toExtend:=true;
+   Extendtimer.Enabled:=true;
+   settingForm.visible:=true;
+end;
+
 procedure TParentForm.GetPressing(var msg: TMessage);
  var _key:Tkey;
     curspeed: word;
     plSound: boolean;
 begin
-   if SettingForm.playSound.State=tssOn then plSound:=true else plSound:=false;
+   if playSound.State=tssOn then plSound:=true else plSound:=false;
    VirtKeyboard.addPress(msg.WParam, msg.LParam, LangCode, plSound);
    ScanHex:=InttoHex(msg.LParam);
    if virtkeyboard.isPressed then
@@ -291,24 +311,6 @@ begin
   //SettingForm.Height:=0;
 end;
 
-procedure TParentForm.FormDestroy(Sender: TObject);
-begin
-  VirtKeyboard.save(false, round(backform.Statistics.avSpeed), backform.Statistics.recordSpeed);
-   saveparams:=TIniFile.Create(ExtractFileDir(Paramstr(0))+'\params.ini');
-   saveparams.WriteInteger('Windows','PosX', left);
-   saveparams.WriteInteger('Windows','PosY', top);
-   saveparams.WriteString('Windows','Kind', self.ClassName);
-   if SettingForm.showSpeed.State=tssOn then
-    saveparams.WriteBool('Windows','showSpeed', true)
-   else
-    saveparams.WriteBool('Windows','showSpeed', false);
-   if SettingForm.playSound.State=tssOn then
-    saveparams.WriteBool('Sounds','playSound', true)
-   else
-    saveparams.WriteBool('Sounds','playSound', false);
-   saveparams.Destroy;
-end;
-
 procedure TParentForm.FormHeaderCloseButClick(Sender: TObject);
 begin
   FormHeader.CloseButClick(Sender);
@@ -319,7 +321,7 @@ procedure TParentForm.FormHeaderplaySoundClick(Sender: TObject);
 begin
     soundSetting.playSound.Tag:=1;
   try
-  soundsetting.playsound.state:=SettingForm.playSound.State;
+  soundsetting.playsound.state:=playSound.State;
   finally
     soundSetting.playSound.Tag:=0;
   end;
@@ -328,23 +330,25 @@ end;
 procedure TParentForm.FormHeaderSpeedButton1Click(Sender: TObject);
 begin
     if formheader.sbSetting.Down then
-    SettingForm.Extend else
-    settingForm.Retract;
+    Extend else
+    Retract;
 
 end;
 
 procedure TParentForm.FormHeaderSpeedButton3Click(Sender: TObject);
 begin
   //FormHeader.SpeedButton3Click(Sender);
-   sendmessage((Owner as TForm).Handle,WM_WANT_CLOSE,0,0);
+  if SettingForm.Tag<>0 then
+    sendmessage((Owner as TForm).Handle,WM_WANT_CLOSE,0,0);
+  settingForm.Tag:=1;
 end;
 
 procedure TParentForm.FormHeaderStatSwitchClick(Sender: TObject);
 begin
-if SettingForm.StatSwitch.Tag<>0 then  exit;
+if StatSwitch.Tag<>0 then  exit;
 
   CloseStatistics;
-  if SettingForm.StatSwitch.State=tssOn then
+  if StatSwitch.State=tssOn then
     showGradient:=false else showGradient:=true;
   showStatistics(statType);
 end;
@@ -413,6 +417,12 @@ procedure TParentForm.Open_statisticsExecute(Sender: TObject);
        statForm.Destroy;
 end;
 
+procedure TParentForm.Retract;
+begin
+   toExtend:=false;
+   Extendtimer.Enabled:=true;
+end;
+
 procedure TParentForm.Save_cur_sessionExecute(Sender: TObject);
 begin
 VirtKeyboard.save(true, round(backform.Statistics.avSpeed), backform.Statistics.recordSpeed);  //save current session
@@ -448,6 +458,17 @@ begin
    result:=FindComponent('Key223') as TKey;  //exception
 end;
 
+procedure TParentForm.showSpeedClick(Sender: TObject);
+begin
+if tag<>0 then exit;
+  if speedform<>nil then
+  begin
+      if showSpeed.State=tssOff then
+          speedform.Close else
+      speedform.Show;
+  end;
+end;
+
 procedure TParentForm.showStatistics(statType: TStatType);
 var tempKey: TKey;
   begin
@@ -462,15 +483,15 @@ var tempKey: TKey;
             BackForm.Statistics.ShowStatisticsByNum(stattype, i, tempKey);
            //n5.Enabled:=true;
          end;
-    SettingForm.StatSwitch.Visible:=true;
-    if sh1=sh2 then SettingForm.StatSwitch.Enabled:=false else
-                      SettingForm.StatSwitch.Enabled:=true;
-    SettingForm.StatSwitch.Tag:=1;
+    StatSwitch.Visible:=true;
+    if sh1=sh2 then StatSwitch.Enabled:=false else
+                      StatSwitch.Enabled:=true;
+    StatSwitch.Tag:=1;
     try
-    if showGradient then SettingForm.StatSwitch.State:=tssOff else
-                        SettingForm.StatSwitch.State:=tssOn;
+    if showGradient then StatSwitch.State:=tssOff else
+                        StatSwitch.State:=tssOn;
     finally
-      SettingForm.StatSwitch.Tag:=0;
+      StatSwitch.Tag:=0;
     end;
   end;
 
@@ -496,6 +517,23 @@ begin
          close_statistics.Enabled:=true;
        //Cur_session_statExecute(sender);
 end;
+procedure TParentForm.extendTimerTimer(Sender: TObject);
+begin
+if toExtend then
+      //with settingForm do
+      begin
+        if settingForm.height<105 then settingForm.height:=settingForm.height+40
+        else Extendtimer.Enabled:=false;
+      end else
+      begin
+        if settingForm.height>0 then settingForm.height:=settingForm.height-40 else
+        begin
+          extendtimer.Enabled:=false;
+          settingForm.visible:=false;
+        end;
+      end;
+end;
+
 procedure TParentForm.TrayIconDblClick(Sender: TObject);
 begin
     TrayIcon.Visible := False;
@@ -520,6 +558,14 @@ var temp:hWnd;
         hWin:=temp;
       threadID:=GetWindowThreadProcessID(temp);
       LangCode:=(GetKeyboardLayout(ThreadID));
+end;
+
+procedure TParentForm.WinOverrideClick(Sender: TObject);
+begin
+if winOverride.State=tssOn then
+    FormStyle:=fsStayOnTop
+    else
+    FormStyle:=fsNormal;
 end;
 
 end.

@@ -1,34 +1,37 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>1899.12.30 00:00:00.000.895,=G:\some folder\keyboardMap\KeyboardMap\Unit1.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.875,G:\some folder\keyboardMap\KeyboardMap\units\SettingPanel.dfm=G:\some folder\keyboardMap\KeyboardMap\Unit1.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.939,G:\some folder\keyboardMap\KeyboardMap\Unit1.pas=G:\some folder\keyboardMap\KeyboardMap\frames\languageFrame.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.875,G:\some folder\keyboardMap\KeyboardMap\Unit1.pas=G:\some folder\keyboardMap\KeyboardMap\units\SettingPanel.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.284,G:\some folder\keyboardMap\KeyboardMap\frames\languageFrame.pas=G:\some folder\keyboardMap\KeyboardMap\frames\languageFrameUnit.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.645,=G:\some folder\keyboardMap\KeyboardMap\Unit3.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.875,G:\some folder\keyboardMap\KeyboardMap\units\SettingPanel.pas=G:\some folder\keyboardMap\KeyboardMap\Unit1.pas</Transaction>
-    <Transaction>2024.07.13 15:42:01.990,=G:\some folder\keyboardMap\KeyboardMap\Unit1.pas</Transaction>
-    <Transaction>2024.07.13 15:43:03.939,G:\some folder\keyboardMap\KeyboardMap\frames\languageFrame.dfm=G:\some folder\keyboardMap\KeyboardMap\Unit1.dfm</Transaction>
-    <Transaction>2024.07.13 15:43:03.939,G:\some folder\keyboardMap\KeyboardMap\frames\languageFrame.pas=G:\some folder\keyboardMap\KeyboardMap\Unit1.pas</Transaction>
-    <Transaction>2024.07.13 15:53:41.285,=G:\some folder\keyboardMap\KeyboardMap\Unit2.pas</Transaction>
-    <Transaction>2024.07.13 15:54:05.659,G:\some folder\keyboardMap\KeyboardMap\frames\soundFrame.dfm=G:\some folder\keyboardMap\KeyboardMap\Unit2.dfm</Transaction>
-    <Transaction>2024.07.13 15:54:05.659,G:\some folder\keyboardMap\KeyboardMap\frames\soundFrame.pas=G:\some folder\keyboardMap\KeyboardMap\Unit2.pas</Transaction>
-    <Transaction>2024.07.13 15:54:41.720,=G:\some folder\keyboardMap\KeyboardMap\Unit3.pas</Transaction>
-    <Transaction>2024.07.13 15:55:05.381,G:\some folder\keyboardMap\KeyboardMap\frames\statisticsFrame.dfm=G:\some folder\keyboardMap\KeyboardMap\Unit3.dfm</Transaction>
-    <Transaction>2024.07.13 15:55:05.381,G:\some folder\keyboardMap\KeyboardMap\frames\statisticsFrame.pas=G:\some folder\keyboardMap\KeyboardMap\Unit3.pas</Transaction>
-    <Transaction>2024.07.13 15:59:30.595,=G:\some folder\keyboardMap\KeyboardMap\Unit4.pas</Transaction>
-    <Transaction>2024.07.13 16:00:08.157,G:\some folder\keyboardMap\KeyboardMap\frames\appearanceFrame.dfm=G:\some folder\keyboardMap\KeyboardMap\Unit4.dfm</Transaction>
-    <Transaction>2024.07.13 16:00:08.157,G:\some folder\keyboardMap\KeyboardMap\frames\appearanceFrame.pas=G:\some folder\keyboardMap\KeyboardMap\Unit4.pas</Transaction>
-    <Transaction>2024.07.13 16:02:31.097,=G:\some folder\keyboardMap\KeyboardMap\Unit3.pas</Transaction>
-    <Transaction>2024.07.13 16:18:52.608,G:\some folder\keyboardMap\KeyboardMap\frames\statisticsFrameUnit.pas=G:\some folder\keyboardMap\KeyboardMap\frames\statisticsFrame.pas</Transaction>
-    <Transaction>2024.07.13 16:18:52.608,G:\some folder\keyboardMap\KeyboardMap\frames\statisticsFrameUnit.dfm=G:\some folder\keyboardMap\KeyboardMap\frames\statisticsFrame.dfm</Transaction>
-    <Transaction>2024.07.13 16:19:04.447,G:\some folder\keyboardMap\KeyboardMap\frames\appearanceFrameUnit.pas=G:\some folder\keyboardMap\KeyboardMap\frames\appearanceFrame.pas</Transaction>
-    <Transaction>2024.07.13 16:19:04.447,G:\some folder\keyboardMap\KeyboardMap\frames\appearanceFrameUnit.dfm=G:\some folder\keyboardMap\KeyboardMap\frames\appearanceFrame.dfm</Transaction>
-    <Transaction>2024.07.13 16:19:12.160,G:\some folder\keyboardMap\KeyboardMap\frames\soundFrameUnit.dfm=G:\some folder\keyboardMap\KeyboardMap\frames\soundFrame.dfm</Transaction>
-    <Transaction>2024.07.13 16:19:12.160,G:\some folder\keyboardMap\KeyboardMap\frames\soundFrameUnit.pas=G:\some folder\keyboardMap\KeyboardMap\frames\soundFrame.pas</Transaction>
-    <Transaction>2024.07.13 16:19:22.284,G:\some folder\keyboardMap\KeyboardMap\frames\languageFrameUnit.dfm=G:\some folder\keyboardMap\KeyboardMap\frames\languageFrame.dfm</Transaction>
-    <Transaction>2024.07.13 16:19:22.284,G:\some folder\keyboardMap\KeyboardMap\frames\languageFrameUnit.pas=G:\some folder\keyboardMap\KeyboardMap\frames\languageFrame.pas</Transaction>
-    <Transaction>2024.07.13 17:13:18.322,G:\some folder\keyboardMap\KeyboardMap\settings.pas=G:\some folder\keyboardMap\KeyboardMap\Unit3.pas</Transaction>
-    <Transaction>2024.07.13 17:13:18.322,G:\some folder\keyboardMap\KeyboardMap\settings.dfm=G:\some folder\keyboardMap\KeyboardMap\Unit3.dfm</Transaction>
-    <Transaction>2024.07.13 17:22:22.108,G:\some folder\keyboardMap\KeyboardMap\Language.pas=</Transaction>
-    <Transaction>2024.07.13 17:22:42.179,=G:\some folder\keyboardMap\KeyboardMap\Language.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.381,G:\some folder\keyboardMap\KeyboardMap\Unit3.dfm=G:\some folder\keyboardMap\KeyboardMap\frames\statisticsFrame.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.322,G:\some folder\keyboardMap\KeyboardMap\Unit3.dfm=G:\some folder\keyboardMap\KeyboardMap\settings.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.895,=G:\some folder\keyboardMap\KeyboardMap\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.990,=G:\some folder\keyboardMap\KeyboardMap\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.608,G:\some folder\keyboardMap\KeyboardMap\frames\statisticsFrame.dfm=G:\some folder\keyboardMap\KeyboardMap\frames\statisticsFrameUnit.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.160,G:\some folder\keyboardMap\KeyboardMap\frames\soundFrame.dfm=G:\some folder\keyboardMap\KeyboardMap\frames\soundFrameUnit.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.160,G:\some folder\keyboardMap\KeyboardMap\frames\soundFrame.pas=G:\some folder\keyboardMap\KeyboardMap\frames\soundFrameUnit.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.284,G:\some folder\keyboardMap\KeyboardMap\frames\languageFrame.dfm=G:\some folder\keyboardMap\KeyboardMap\frames\languageFrameUnit.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.720,=G:\some folder\keyboardMap\KeyboardMap\Unit3.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.097,=G:\some folder\keyboardMap\KeyboardMap\Unit3.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.322,G:\some folder\keyboardMap\KeyboardMap\Unit3.pas=G:\some folder\keyboardMap\KeyboardMap\settings.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.381,G:\some folder\keyboardMap\KeyboardMap\Unit3.pas=G:\some folder\keyboardMap\KeyboardMap\frames\statisticsFrame.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.659,G:\some folder\keyboardMap\KeyboardMap\Unit2.dfm=G:\some folder\keyboardMap\KeyboardMap\frames\soundFrame.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.659,G:\some folder\keyboardMap\KeyboardMap\Unit2.pas=G:\some folder\keyboardMap\KeyboardMap\frames\soundFrame.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.285,=G:\some folder\keyboardMap\KeyboardMap\Unit2.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.179,=G:\some folder\keyboardMap\KeyboardMap\Language.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.608,G:\some folder\keyboardMap\KeyboardMap\frames\statisticsFrame.pas=G:\some folder\keyboardMap\KeyboardMap\frames\statisticsFrameUnit.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.875,G:\some folder\keyboardMap\KeyboardMap\Unit1.dfm=G:\some folder\keyboardMap\KeyboardMap\units\SettingPanel.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.939,G:\some folder\keyboardMap\KeyboardMap\Unit1.dfm=G:\some folder\keyboardMap\KeyboardMap\frames\languageFrame.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.157,G:\some folder\keyboardMap\KeyboardMap\Unit4.dfm=G:\some folder\keyboardMap\KeyboardMap\frames\appearanceFrame.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.447,G:\some folder\keyboardMap\KeyboardMap\frames\appearanceFrame.pas=G:\some folder\keyboardMap\KeyboardMap\frames\appearanceFrameUnit.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.157,G:\some folder\keyboardMap\KeyboardMap\Unit4.pas=G:\some folder\keyboardMap\KeyboardMap\frames\appearanceFrame.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.595,=G:\some folder\keyboardMap\KeyboardMap\Unit4.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.447,G:\some folder\keyboardMap\KeyboardMap\frames\appearanceFrame.dfm=G:\some folder\keyboardMap\KeyboardMap\frames\appearanceFrameUnit.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.108,G:\some folder\keyboardMap\KeyboardMap\Language.pas=</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.038,G:\some folder\keyboardMap\KeyboardMap\units\SettingPanel.pas=</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.361,=G:\some folder\keyboardMap\KeyboardMap\units\SettingPanel.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.443,G:\some folder\keyboardMap\KeyboardMap\units\SettingPanel.pas=</Transaction>
   </Transactions>
 </BorlandProject>

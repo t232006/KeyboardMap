@@ -7,7 +7,7 @@ uses
   System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
   Vcl.StdCtrls, Vcl.WinXCtrls, MMSystem,
-  inifiles, IOUtils, Types, strutils;
+  registry, IOUtils, Types, strutils;
 
 type
   TsoundSetting = class(TForm)
@@ -21,7 +21,7 @@ type
     procedure FormDestroy(Sender: TObject);
   private
     currentScheme: byte;
-    loadParams: TIniFile;
+    loadParams: TRegIniFile;
     path: string;
   public
 
@@ -60,7 +60,7 @@ end;
 
 begin
   path:=ExtractFileDir(Paramstr(0));
-  loadParams:=TIniFile.Create(path+'\params.ini');
+  loadParams:=TReginifile.Create('Software\'+ChangeFileExt(ExtractFileName(Paramstr(0)),''));
   folderslist:=TDirectory.GetFiles(path+'\sounds');
   for st in folderslist do
     soundfolder.Items.Add(TPath.GetFileNameWithoutExtension(st));
@@ -89,7 +89,7 @@ end;
 procedure TsoundSetting.playSoundClick(Sender: TObject);
 begin
   if playsound.Tag<>0 then exit;
-  Backform.activeForm.settingForm.playSound.State:=playsound.state;
+  Backform.activeForm.playSound.State:=playsound.state;
 end;
 
 procedure TsoundSetting.SoundFolderCloseUp(Sender: TObject);

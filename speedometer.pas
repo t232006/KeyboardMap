@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, AnalogMeter, Vcl.ExtCtrls, inifiles,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, AnalogMeter, Vcl.ExtCtrls, registry,
   Vcl.Menus, Vcl.WinXCtrls;
 
 type
@@ -41,12 +41,12 @@ implementation
 uses backgroundUnit, parentUnit;
 
 procedure TSpeedForm.FormHide(Sender: TObject);
-var saveparams:TInifile;
+var saveparams:TRegInifile;
 begin
   //with keyboardform do
   //begin
 
-    saveparams:=TIniFile.Create(ExtractFileDir(Paramstr(0))+'\params.ini');
+    saveparams:=TReginifile.Create('Software\'+ChangeFileExt(ExtractFileName(Paramstr(0)),''));
     saveparams.WriteInteger('speeds','posX',left);
     saveparams.WriteInteger('speeds','posY',top);
     saveparams.WriteInteger('Speeds','averageSpeed',round(speedM.Value));
@@ -83,9 +83,9 @@ begin
 end;
 
 procedure TSpeedForm.FormShow(Sender: TObject);
-var saveparams: TIniFile;
+var saveparams: TRegIniFile;
 begin
-  saveparams:=TIniFile.Create(ExtractFileDir(Paramstr(0))+'\params.ini');
+  saveparams:=TReginifile.Create('Software\'+ChangeFileExt(ExtractFileName(Paramstr(0)),''));
   move:=false;
   left:=saveparams.ReadInteger('speeds','PosX',0);
   top:=saveparams.ReadInteger('speeds','PosY',0);
@@ -108,7 +108,7 @@ end;
 procedure TSpeedForm.N1Click(Sender: TObject);
 begin
     hide;
-    BackForm.activeForm.SettingForm.showSpeed.State:=tssoff;
+    BackForm.activeForm.showSpeed.State:=tssoff;
 
 end;
 

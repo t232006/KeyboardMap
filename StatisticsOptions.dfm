@@ -3,8 +3,8 @@ object Form2: TForm2
   Top = 0
   BorderStyle = bsDialog
   Caption = #1060#1072#1081#1083#1099' '#1089#1090#1072#1090#1080#1089#1090#1080#1082#1080
-  ClientHeight = 231
-  ClientWidth = 456
+  ClientHeight = 228
+  ClientWidth = 444
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -74,7 +74,7 @@ object Form2: TForm2
     Left = 0
     Top = 0
     Width = 185
-    Height = 231
+    Height = 228
     Align = alLeft
     ItemHeight = 15
     Mask = '*map.b'

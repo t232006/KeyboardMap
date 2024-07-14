@@ -27,6 +27,7 @@ object FormHeader: TFormHeader
       Align = alLeft
       PopupMenu = ParentForm.TrayMenu
       OnClick = WinIconClick
+      ExplicitHeight = 32
     end
     object CloseBut: TSpeedButton
       Left = 774
@@ -43,14 +44,13 @@ object FormHeader: TFormHeader
       Font.Style = []
       ParentFont = False
       OnClick = CloseButClick
-      ExplicitLeft = 584
-      ExplicitHeight = 39
+      ExplicitHeight = 32
     end
     object WinCaption: TLabel
       Left = 51
       Top = 9
       Width = 25
-      Height = 15
+      Height = 17
       Caption = 'label'
     end
     object SpeedButton2: TSpeedButton
@@ -62,7 +62,7 @@ object FormHeader: TFormHeader
       ImageIndex = 1
       Images = ImageList
       OnClick = SpeedButton2Click
-      ExplicitLeft = 649
+      ExplicitHeight = 32
     end
     object SpeedButton3: TSpeedButton
       Left = 702
@@ -73,8 +73,7 @@ object FormHeader: TFormHeader
       ImageIndex = 3
       Images = ImageList
       OnClick = SpeedButton1Click
-      ExplicitLeft = 736
-      ExplicitTop = 0
+      ExplicitHeight = 32
     end
     object sbSetting: TSpeedButton
       Left = 630
@@ -88,8 +87,7 @@ object FormHeader: TFormHeader
       Images = ImageList
       NumGlyphs = 2
       SelectedImageIndex = 8
-      ExplicitLeft = 624
-      ExplicitTop = 2
+      ExplicitHeight = 32
     end
     object SpeedButton4: TSpeedButton
       Left = 666
@@ -99,8 +97,7 @@ object FormHeader: TFormHeader
       Align = alRight
       ImageIndex = 6
       Images = ImageList
-      ExplicitLeft = 736
-      ExplicitTop = 0
+      ExplicitHeight = 32
     end
     object SpeedButton5: TSpeedButton
       Left = 594
@@ -111,8 +108,7 @@ object FormHeader: TFormHeader
       ImageIndex = 5
       Images = ImageList
       NumGlyphs = 2
-      ExplicitLeft = 624
-      ExplicitTop = 2
+      ExplicitHeight = 32
     end
   end
   object ImageList: TImageList

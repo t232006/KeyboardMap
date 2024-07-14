@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
   Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.WinXCtrls,
   Vcl.ExtCtrls, speedometer,  MyAuxProc;
-
+const WM_WANT_CLOSE = WM_USER+$345+10;
 type
   TSettingForm = class(TFrame)
     playSound: TToggleSwitch;
@@ -14,11 +14,12 @@ type
     WinOverride: TToggleSwitch;
     StatSwitch: TToggleSwitch;
     LogToggle: TToggleSwitch;
-    ToggleSwitch5: TToggleSwitch;
+    boardSize: TToggleSwitch;
     Timer: TTimer;
     procedure TimerTimer(Sender: TObject);
     procedure showSpeedClick(Sender: TObject);
     procedure WinOverrideClick(Sender: TObject);
+    procedure boardSizeClick(Sender: TObject);
   private
     const
     toExtend:boolean=true;
@@ -33,6 +34,11 @@ implementation
 
 { TFrame1 }
 
+procedure TSettingForm.boardSizeClick(Sender: TObject);
+begin
+ // sendmessage((Owner as TForm).Handle,WM_WANT_CLOSE,0,0);
+end;
+
 procedure TSettingForm.Extend;
 begin
    toExtend:=true;
@@ -44,7 +50,7 @@ procedure TSettingForm.Retract;
 begin
    toExtend:=false;
    timer.Enabled:=true;
-   visible:=false;
+   //visible:=false;
 end;
 
 procedure TSettingForm.showSpeedClick(Sender: TObject);
@@ -62,10 +68,14 @@ procedure TSettingForm.TimerTimer(Sender: TObject);
 begin
     if toExtend then
       begin
-        if height<143 then height:=height+40 else timer.Enabled:=false;
+        if height<105 then height:=height+40 else timer.Enabled:=false;
       end else
       begin
-        if height>0 then height:=height-40 else timer.Enabled:=false;
+        if height>0 then height:=height-40 else
+        begin
+          timer.Enabled:=false;
+          visible:=false;
+        end;
       end;
 
 end;

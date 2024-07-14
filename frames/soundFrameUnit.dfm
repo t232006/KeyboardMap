@@ -1,4 +1,4 @@
-object Frame2: TFrame2
+object SoundFrame: TSoundFrame
   Left = 0
   Top = 0
   Width = 246

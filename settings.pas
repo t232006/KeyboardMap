@@ -10,6 +10,7 @@ type
   TForm3 = class(TForm)
     LBmenu: TListBox;
     Panel1: TPanel;
+    procedure LBmenuClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -22,5 +23,15 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TForm3.LBmenuClick(Sender: TObject);
+begin
+case lbmenu.ItemIndex of
+0: panel1
+1:
+2:
+3:
+end;
+end;
 
 end.

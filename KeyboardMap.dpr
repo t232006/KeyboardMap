@@ -21,11 +21,10 @@ uses
   key in 'components\key.pas',
   MyAuxProc in '..\..\myComponents\MyAuxProc.pas',
   Appearance in 'Appearance.pas' {Form1},
-  SettingPanel in 'units\SettingPanel.pas' {SettingForm: TFrame},
   languageFrameUnit in 'frames\languageFrameUnit.pas' {LangFrame: TFrame},
-  soundFrameUnit in 'frames\soundFrameUnit.pas' {Frame2: TFrame},
+  soundFrameUnit in 'frames\soundFrameUnit.pas' {SoundFrame: TFrame},
   statisticsFrameUnit in 'frames\statisticsFrameUnit.pas' {StatisticsFrame: TFrame},
-  appearanceFrameUnit in 'frames\appearanceFrameUnit.pas' {Frame4: TFrame},
+  appearanceFrameUnit in 'frames\appearanceFrameUnit.pas' {settingFrame: TFrame},
   settings in 'settings.pas' {Form3},
   Language in 'Language.pas' {LangForm};
 

@@ -27,6 +27,7 @@ object Form3: TForm3
       #1089#1084#1077#1085#1072' '#1088#1072#1089#1082#1083#1072#1076#1082#1080
       #1101#1082#1088#1072#1085' '#1089#1090#1072#1090#1080#1089#1090#1080#1082#1080)
     TabOrder = 0
+    OnClick = LBmenuClick
   end
   object Panel1: TPanel
     Left = 183
@@ -35,5 +36,7 @@ object Form3: TForm3
     Height = 379
     Align = alRight
     TabOrder = 1
+    ExplicitLeft = 179
+    ExplicitHeight = 378
   end
 end

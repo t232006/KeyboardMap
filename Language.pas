@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, MyAuxProc,
-  Vcl.WinXCtrls, inifiles, filemapping, Vcl.ComCtrls, Vcl.AppEvnts, Vcl.Buttons;
+  Vcl.WinXCtrls, registry, filemapping, Vcl.ComCtrls, Vcl.AppEvnts, Vcl.Buttons;
 
 type
   TLangForm = class(TForm)
@@ -27,7 +27,7 @@ type
 
 var
   LangForm: TLangForm;
-  params: TIniFile;
+  params: TRegIniFile;
 implementation
 
 {$R *.dfm}
@@ -75,7 +75,7 @@ end;
 procedure TLangForm.FormShow(Sender: TObject);
 var key, exkey:byte;
 begin
-    params:=TIniFile.Create(ExtractFileDir(Paramstr(0))+'\params.ini');
+    params:=TReginifile.Create('Software\'+ChangeFileExt(ExtractFileName(Paramstr(0)),''));
     key:=params.ReadInteger('HotKeys', 'Key', 0);
     exKey:=params.ReadInteger('HotKeys', 'Ext', 0);
     case key of

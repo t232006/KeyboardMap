@@ -7,7 +7,7 @@ uses
   Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Vcl.StdCtrls;
 
 type
-  TFrame4 = class(TFrame)
+  TsettingFrame = class(TFrame)
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;

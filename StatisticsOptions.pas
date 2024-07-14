@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics,  ParentUnit,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ButtonGroup,
-  Vcl.Buttons, Vcl.ExtCtrls, Vcl.WinXCtrls, inifiles, Vcl.FileCtrl;
+  Vcl.Buttons, Vcl.ExtCtrls, Vcl.WinXCtrls, registry, Vcl.FileCtrl;
 
 type
   TForm2 = class(TForm)
@@ -33,7 +33,7 @@ type
 var
   Form2: TForm2;
   fdPath:string;
-  savefile: TIniFile;
+  savefile: TRegIniFile;
 implementation
 {$R *.dfm}
 
@@ -62,16 +62,16 @@ end;
 
 procedure TForm2.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-    savefile:=Tinifile.Create(ExtractFileDir(Paramstr(0))+'\params.ini');
+    savefile:=TReginifile.Create('Software\'+ChangeFileExt(ExtractFileName(Paramstr(0)),''));
     savefile.WriteInteger('gradient','shape1', shape1.Brush.Color);
     savefile.WriteInteger('gradient','shape2', shape2.Brush.Color);
     savefile.Destroy;
 end;
 
 procedure TForm2.FormCreate(Sender: TObject);
- var savefile: TInifile;
+ var savefile: TRegInifile;
 begin
-     savefile:=Tinifile.Create(ExtractFileDir(Paramstr(0))+'\params.ini');
+         savefile:=TReginifile.Create('Software\'+ChangeFileExt(ExtractFileName(Paramstr(0)),''));
       shape1.Brush.Color:=savefile.ReadInteger('gradient','shape1',16777215);
       shape2.Brush.Color:=savefile.ReadInteger('gradient','shape2',16777215);
       savefile.Destroy;

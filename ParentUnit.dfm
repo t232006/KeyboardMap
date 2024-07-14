@@ -12,12 +12,8 @@ object ParentForm: TParentForm
   Font.Name = 'Segoe UI'
   Font.Style = []
   OnCreate = FormCreate
-  OnDestroy = FormDestroy
   OnHide = FormHide
   OnShow = FormShow
-  DesignSize = (
-    703
-    460)
   TextHeight = 15
   inline FormHeader: TFormHeader
     Left = -86
@@ -35,49 +31,148 @@ object ParentForm: TParentForm
       inherited WinIcon: TImage
         PopupMenu = nil
         Transparent = True
+        ExplicitHeight = 31
       end
       inherited CloseBut: TSpeedButton
         Left = 745
         OnClick = FormHeaderCloseButClick
         ExplicitLeft = 670
+        ExplicitHeight = 39
+      end
+      inherited WinCaption: TLabel
+        Height = 15
+        ExplicitHeight = 15
       end
       inherited SpeedButton2: TSpeedButton
         Left = 709
         ExplicitLeft = 634
+        ExplicitHeight = 31
       end
       inherited SpeedButton3: TSpeedButton
         Left = 673
         OnClick = FormHeaderSpeedButton3Click
         ExplicitLeft = 673
+        ExplicitTop = 0
+        ExplicitHeight = 31
       end
       inherited sbSetting: TSpeedButton
         Left = 601
         PressedImageIndex = 8
         OnClick = FormHeaderSpeedButton1Click
         ExplicitLeft = 601
+        ExplicitTop = 2
+        ExplicitHeight = 31
       end
       inherited SpeedButton4: TSpeedButton
         Left = 637
         ExplicitLeft = 637
+        ExplicitTop = 0
+        ExplicitHeight = 31
       end
       inherited SpeedButton5: TSpeedButton
         Left = 565
         ExplicitLeft = 565
+        ExplicitTop = 2
+        ExplicitHeight = 31
       end
     end
   end
-  inline SettingForm: TSettingForm
-    Left = 28
-    Top = 72
-    Width = 651
-    Height = 105
-    Anchors = [akBottom]
+  object SettingForm: TPanel
+    Left = 32
+    Top = 88
+    Width = 641
+    Height = 120
     Color = clOlive
     ParentBackground = False
-    ParentColor = False
     TabOrder = 1
-    ExplicitLeft = 28
-    ExplicitTop = 72
+    Visible = False
+    OnResize = SettingFormResize
+    DesignSize = (
+      641
+      120)
+    object boardSize: TToggleSwitch
+      Tag = 1
+      Left = 412
+      Top = 67
+      Width = 115
+      Height = 20
+      Anchors = []
+      StateCaptions.CaptionOn = #1084#1072#1083#1077#1085#1100#1082#1072#1103
+      StateCaptions.CaptionOff = #1073#1086#1083#1100#1096#1072#1103
+      TabOrder = 0
+      TabStop = False
+      ThumbWidth = 20
+      OnClick = FormHeaderSpeedButton3Click
+      ExplicitTop = 68
+    end
+    object LogToggle: TToggleSwitch
+      Left = 241
+      Top = 67
+      Width = 138
+      Height = 20
+      Anchors = []
+      State = tssOn
+      StateCaptions.CaptionOn = #1074#1077#1089#1090#1080' '#1083#1086#1075
+      StateCaptions.CaptionOff = #1086#1090#1082#1083#1102#1095#1080#1090#1100' '#1083#1086#1075
+      TabOrder = 1
+      TabStop = False
+      ThumbWidth = 20
+      ExplicitTop = 68
+    end
+    object playSound: TToggleSwitch
+      Left = 411
+      Top = 19
+      Width = 106
+      Height = 20
+      Anchors = []
+      State = tssOn
+      StateCaptions.CaptionOn = #1079#1074#1091#1082
+      StateCaptions.CaptionOff = #1085#1077#1090' '#1079#1074#1091#1082#1072
+      TabOrder = 2
+      TabStop = False
+      ThumbWidth = 20
+    end
+    object showSpeed: TToggleSwitch
+      Left = 241
+      Top = 19
+      Width = 148
+      Height = 20
+      Anchors = []
+      State = tssOn
+      StateCaptions.CaptionOn = #1089#1082#1086#1088#1086#1089#1090#1100
+      StateCaptions.CaptionOff = #1089#1082#1086#1088#1086#1089#1090#1100' '#1089#1082#1088#1099#1090#1072
+      TabOrder = 3
+      TabStop = False
+      ThumbWidth = 20
+      OnClick = showSpeedClick
+    end
+    object StatSwitch: TToggleSwitch
+      Left = 73
+      Top = 68
+      Width = 105
+      Height = 20
+      Anchors = []
+      StateCaptions.CaptionOn = #1095#1080#1089#1083#1072
+      StateCaptions.CaptionOff = #1075#1088#1072#1076#1080#1077#1085#1090
+      TabOrder = 4
+      TabStop = False
+      ThumbWidth = 20
+      Visible = False
+    end
+    object WinOverride: TToggleSwitch
+      Left = 72
+      Top = 19
+      Width = 141
+      Height = 20
+      Anchors = []
+      State = tssOn
+      StateCaptions.CaptionOn = #1087#1086#1074#1077#1088#1093' '#1086#1082#1086#1085
+      StateCaptions.CaptionOff = #1085#1077' '#1087#1086#1074#1077#1088#1093' '#1086#1082#1086#1085
+      TabOrder = 5
+      TabStop = False
+      ThumbWidth = 20
+      OnClick = WinOverrideClick
+    end
   end
   object TrayMenu: TPopupMenu
     OnPopup = TrayMenuPopup
@@ -332,5 +427,12 @@ object ParentForm: TParentForm
     OnTimer = instantTimerTimer
     Left = 96
     Top = 312
+  end
+  object extendTimer: TTimer
+    Enabled = False
+    Interval = 50
+    OnTimer = extendTimerTimer
+    Left = 584
+    Top = 120
   end
 end

@@ -8,7 +8,7 @@ uses
   Vcl.WinXCtrls;
 
 type
-  TFrame2 = class(TFrame)
+  TSoundFrame = class(TFrame)
     Label1: TLabel;
     playSound: TToggleSwitch;
     SoundFolder: TComboBox;

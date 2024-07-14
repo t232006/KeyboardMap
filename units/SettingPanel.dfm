@@ -75,7 +75,8 @@ object SettingForm: TSettingForm
     TabStop = False
     ThumbWidth = 20
   end
-  object ToggleSwitch5: TToggleSwitch
+  object boardSize: TToggleSwitch
+    Tag = 1
     Left = 412
     Top = 68
     Width = 115

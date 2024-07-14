@@ -175,18 +175,13 @@
             <Form>Form1</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="units\SettingPanel.pas">
-            <Form>SettingForm</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TFrame</DesignClass>
-        </DCCReference>
         <DCCReference Include="frames\languageFrameUnit.pas">
             <Form>LangFrame</Form>
             <FormType>dfm</FormType>
             <DesignClass>TFrame</DesignClass>
         </DCCReference>
         <DCCReference Include="frames\soundFrameUnit.pas">
-            <Form>Frame2</Form>
+            <Form>SoundFrame</Form>
             <FormType>dfm</FormType>
             <DesignClass>TFrame</DesignClass>
         </DCCReference>
@@ -196,7 +191,7 @@
             <DesignClass>TFrame</DesignClass>
         </DCCReference>
         <DCCReference Include="frames\appearanceFrameUnit.pas">
-            <Form>Frame4</Form>
+            <Form>settingFrame</Form>
             <FormType>dfm</FormType>
             <DesignClass>TFrame</DesignClass>
         </DCCReference>
