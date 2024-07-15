@@ -1,8 +1,9 @@
-object Form3: TForm3
+object SettingForm: TSettingForm
   Left = 0
   Top = 0
-  Caption = 'Form3'
-  ClientHeight = 379
+  BorderStyle = bsDialog
+  Caption = #1053#1072#1089#1090#1088#1086#1081#1082#1080
+  ClientHeight = 375
   ClientWidth = 628
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -33,10 +34,33 @@ object Form3: TForm3
     Left = 183
     Top = 0
     Width = 445
-    Height = 379
-    Align = alRight
+    Height = 313
     TabOrder = 1
-    ExplicitLeft = 179
-    ExplicitHeight = 378
+  end
+  object OKButton: TButton
+    Left = 378
+    Top = 331
+    Width = 75
+    Height = 25
+    Caption = #1054#1050
+    TabOrder = 2
+    OnClick = OKButtonClick
+  end
+  object CancelButton: TButton
+    Left = 459
+    Top = 331
+    Width = 75
+    Height = 25
+    Caption = #1054#1090#1084#1077#1085#1072
+    TabOrder = 3
+    OnClick = CancelButtonClick
+  end
+  object ApplayButton: TButton
+    Left = 540
+    Top = 331
+    Width = 75
+    Height = 25
+    Caption = #1055#1088#1080#1084#1077#1085#1080#1090#1100
+    TabOrder = 4
   end
 end

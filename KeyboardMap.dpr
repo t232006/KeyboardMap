@@ -20,13 +20,13 @@ uses
   MainUnitLarge in 'MainUnitLarge.pas' {KeyboardFormLarge},
   key in 'components\key.pas',
   MyAuxProc in '..\..\myComponents\MyAuxProc.pas',
-  Appearance in 'Appearance.pas' {Form1},
   languageFrameUnit in 'frames\languageFrameUnit.pas' {LangFrame: TFrame},
   soundFrameUnit in 'frames\soundFrameUnit.pas' {SoundFrame: TFrame},
   statisticsFrameUnit in 'frames\statisticsFrameUnit.pas' {StatisticsFrame: TFrame},
   appearanceFrameUnit in 'frames\appearanceFrameUnit.pas' {settingFrame: TFrame},
-  settings in 'settings.pas' {Form3},
-  Language in 'Language.pas' {LangForm};
+  settings in 'settings.pas' {SettingForm},
+  Language in 'Language.pas' {LangForm},
+  interfaceMyFrame in 'units\interfaceMyFrame.pas';
 
 {$R *.res}
 //var //pbuff: array[0..127] of char;
@@ -59,8 +59,7 @@ begin
 
   end;   }
    Application.CreateForm(TBackForm, BackForm);
-  Application.CreateForm(TForm1, Form1);
-  Application.CreateForm(TForm3, Form3);
+  Application.CreateForm(TSettingForm, SettingForm);
   //Application.CreateForm(TKeyboardFormLarge, KeyboardFormLarge);
   //Application.CreateForm(TKeyboardFormSmall, KeyboardFormSmall);
   //Application.CreateForm(TForm2, Form2);

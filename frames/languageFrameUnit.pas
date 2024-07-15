@@ -5,26 +5,38 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, MyAuxProc,
-  Vcl.WinXCtrls, filemapping, Vcl.ComCtrls, Vcl.AppEvnts, Vcl.Buttons, registry;
+  Vcl.WinXCtrls, filemapping, Vcl.ComCtrls, Vcl.AppEvnts, Vcl.Buttons,
+  registry, InterfaceMyFrame;
 
 type
-  TLangFrame = class(TFrame)
+  TLangFrame = class(TFrame, IMyFrame)
     Extender: TToggleSwitch;
     hotKeyInd: TRadioGroup;
     Status: TMemo;
     procedure hotKeyIndClick(Sender: TObject);
     procedure ExtenderClick(Sender: TObject);
     procedure FrameEnter(Sender: TObject);
-    procedure FrameExit(Sender: TObject);
   private
      StrButton:string;
   public
     reg: TRegistry;
+    procedure Applay;
   end;
 
 implementation
 
 {$R *.dfm}
+
+procedure TLangFrame.Applay;
+begin
+  if MessageDlg('Горячая клавиша смены языковой раскладки '+ StrButton,
+                    mtConfirmation,mbYesNo,0)=mrYes then
+      begin
+       reg.OpenKey('HotKeys', false);
+       reg.writeInteger('Key',DataArea^.key);
+       reg.WriteInteger('Ext',DataArea^.exKey);
+      end;
+end;
 
 procedure TLangFrame.ExtenderClick(Sender: TObject);
 begin
@@ -106,17 +118,6 @@ begin
     end;
     if (exKey=$21) or (exkey=$1) then Extender.State:=tssOn else
     Extender.State:=tssOff;
-end;
-
-procedure TLangFrame.FrameExit(Sender: TObject);
-begin
-   if MessageDlg('Горячая клавиша смены языковой раскладки '+ StrButton,
-                  mtConfirmation,mbYesNo,0)=mrYes then
-    begin
-     reg.OpenKey('HotKeys', false);
-     reg.writeInteger('Key',DataArea^.key);
-     reg.WriteInteger('Ext',DataArea^.exKey);
-    end;
 end;
 
 end.

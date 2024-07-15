@@ -29,7 +29,7 @@ type
 
 
 var
-  //soundSetting: TsoundSetting;
+  soundSetting: TsoundSetting;
   playSoundB: boolean;
   sPath: string;
 

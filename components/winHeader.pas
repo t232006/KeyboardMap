@@ -31,6 +31,7 @@ type
     procedure SpeedButton2Click(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure WinIconClick(Sender: TObject);
+    procedure SpeedButton5Click(Sender: TObject);
 
   private
 
@@ -41,7 +42,7 @@ type
 const
     down:boolean=false;
 implementation
-uses ParentUnit;
+uses ParentUnit, settings;
 {$R *.dfm}
 
 procedure TFormHeader.FrameResize(Sender: TObject);
@@ -86,6 +87,11 @@ procedure TFormHeader.SpeedButton2Click(Sender: TObject);
 begin
     GetParentForm(sender as tComponent).Hide;
     (GetParentForm(sender as tComponent).owner as tform).show;
+end;
+
+procedure TFormHeader.SpeedButton5Click(Sender: TObject);
+begin
+  settingform.showmodal;
 end;
 
 procedure TFormHeader.WinIconClick(Sender: TObject);

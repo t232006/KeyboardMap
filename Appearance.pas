@@ -49,7 +49,7 @@ uses BackgroundUnit;
 
 procedure TForm1.ApplayButtonClick(Sender: TObject);
 begin
-   BackForm.activeForm.Appearance(ColScheme,KeyRadius,KeyFont1, KeyFont2,CommonTransp, KeyboardTransp);
+   //BackForm.activeForm.Appearance(ColScheme,KeyRadius,KeyFont1, KeyFont2,CommonTransp, KeyboardTransp);
 end;
 
 procedure TForm1.Button1Click(Sender: TObject);
@@ -84,7 +84,7 @@ end;
 
 procedure TForm1.OKButtonClick(Sender: TObject);
 begin
-BackForm.activeForm.Appearance(ColScheme,KeyRadius,KeyFont1, KeyFont2,CommonTransp, KeyboardTransp);
+//BackForm.activeForm.Appearance(ColScheme,KeyRadius,KeyFont1, KeyFont2,CommonTransp, KeyboardTransp);
 Close;
 end;
 

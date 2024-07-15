@@ -7,10 +7,11 @@ uses
   Vcl.ActnMan, Vcl.ExtCtrls, Vcl.Menus, Vcl.AppEvnts, Registry,
   keyboardUnit, filemapping, Language, speedometer,
   AnalogMeter, PressCounter, SendKeyPressProc, Vcl.WinXCtrls, Key, sound,
-  Appearance, Vcl.Buttons,
+  Vcl.Buttons,
   Vcl.StdCtrls, Vcl.XPStyleActnCtrls;
 //const WM_WANT_CLOSE = WM_USER+$345+10;
 type
+  TColScheme = (Dark, Light, Classic, Custom);
   TParentForm = class(TForm)
     TrayMenu: TPopupMenu;
     N1: TMenuItem;
@@ -102,20 +103,32 @@ type
     procedure Appearance(ColScheme: TColScheme;
                          KeyRad:byte;
                          KeyFont1, KeyFont2:TFont;
-                         CommonTransp, KeybTransp:byte); virtual;
+                         ButtonColor, PressColor: TColor;
+                         CommonTransp, KeybTransp:byte);
   end;
 
 var
   ParentForm: TParentForm;
   hwin: Hwnd;
 implementation
-uses MainUnitSmall, MainUnitLarge, BackgroundUnit, StatisticsOptions;
+uses MainUnitSmall, MainUnitLarge, StatisticsOptions, BackgroundUnit;
 {$R *.dfm}
-procedure TParentForm.Appearance(ColScheme: TColScheme; KeyRad: byte;
-  KeyFont1, KeyFont2: TFont; CommonTransp, KeybTransp: byte);
-var k:byte; key:TKey; pan: TPanel;  curCol:Tcolor;
+
+procedure TParentForm.Appearance(ColScheme: TColScheme;
+  KeyRad: byte; KeyFont1,
+  KeyFont2: TFont; ButtonColor, PressColor: TColor;
+  CommonTransp, KeybTransp: byte);
+var k:byte; key:TKey; pan: TPanel;  curCol:Tcolor;  curFontSize, diff: byte;
+procedure SetFontSize(newFont, oldFont:TFont);
 begin
-    AlphaBlendValue:=CommonTransp;
+  diff:=curFontSize-oldfont.Size;
+  oldfont:=newFont;
+  oldfont.Size:=oldfont.Size-diff;
+end;
+
+
+begin
+    self.AlphaBlendValue:=CommonTransp;
     //==============boardColor===============
 
      pan:=FindComponent('Panel1')as TPanel;
@@ -127,12 +140,13 @@ begin
      //============boardTransparent==========
      if KeybTransp>0 then
     begin
-       TransparentColor:=true;
-       TransparentColorValue:=pan.Color;
-    end else TransparentColor:=false;
+       self.TransparentColor:=true;
+       self.TransparentColorValue:=pan.Color;
+    end else self.TransparentColor:=false;
     //============keysColor==================
       key:=FindComponent('Key27') as TKey;
       curCol:=key.MiddleFont.Color; //find color to change (another don't change)
+      CurFontSize:=key.MiddleFont.Size;
       for k := 1 to 222 do
       begin
         key:=FindComponent('Key'+inttostr(k))as Tkey;
@@ -167,18 +181,24 @@ begin
             if MiddleFont.Color=curCol then MiddleFont.Color:=clBlack;
             PictureColor:=clBlack;
           end;
+          Custom: key.Color:=ButtonColor;
         end;
 
           with key do
           begin
           Round:=KeyRad;
-          key.UpFont:=keyFont1;
-          key.MiddleFont:=keyfont1;
-          key.DownFont:=keyfont1;
-          if KeyType=ktLetters then DownFont:=Keyfont2 else
-          if KeyType=ktNum then UpFont:=KeyFont2;
+          //diff:=curFontSize-UpFont.Size; UpFont:=keyFont1; UpFont.Size:=UpFont.Size-diff;
+          if keyFont1<>nil then
+          begin
+            SetFontSize(keyFont1, UpFont);
+            SetFontSize(keyFont1, MiddleFont);
+            SetFontSize(keyfont1, DownFont);
+            PressColor:=PressColor;
           end;
-
+          if keyFont2<>nil then
+            if KeyType=ktLetters then DownFont:=Keyfont2 else
+            if KeyType=ktNum then UpFont:=KeyFont2;
+          end;
 
         end;
 

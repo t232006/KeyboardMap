@@ -25,13 +25,16 @@
     <Transaction>1899.12.30 00:00:00.000.875,G:\some folder\keyboardMap\KeyboardMap\Unit1.dfm=G:\some folder\keyboardMap\KeyboardMap\units\SettingPanel.dfm</Transaction>
     <Transaction>1899.12.30 00:00:00.000.939,G:\some folder\keyboardMap\KeyboardMap\Unit1.dfm=G:\some folder\keyboardMap\KeyboardMap\frames\languageFrame.dfm</Transaction>
     <Transaction>1899.12.30 00:00:00.000.157,G:\some folder\keyboardMap\KeyboardMap\Unit4.dfm=G:\some folder\keyboardMap\KeyboardMap\frames\appearanceFrame.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.108,G:\some folder\keyboardMap\KeyboardMap\Language.pas=</Transaction>
     <Transaction>1899.12.30 00:00:00.000.447,G:\some folder\keyboardMap\KeyboardMap\frames\appearanceFrame.pas=G:\some folder\keyboardMap\KeyboardMap\frames\appearanceFrameUnit.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.157,G:\some folder\keyboardMap\KeyboardMap\Unit4.pas=G:\some folder\keyboardMap\KeyboardMap\frames\appearanceFrame.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.595,=G:\some folder\keyboardMap\KeyboardMap\Unit4.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.447,G:\some folder\keyboardMap\KeyboardMap\frames\appearanceFrame.dfm=G:\some folder\keyboardMap\KeyboardMap\frames\appearanceFrameUnit.dfm</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.108,G:\some folder\keyboardMap\KeyboardMap\Language.pas=</Transaction>
     <Transaction>1899.12.30 00:00:00.000.038,G:\some folder\keyboardMap\KeyboardMap\units\SettingPanel.pas=</Transaction>
     <Transaction>1899.12.30 00:00:00.000.361,=G:\some folder\keyboardMap\KeyboardMap\units\SettingPanel.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.443,G:\some folder\keyboardMap\KeyboardMap\units\SettingPanel.pas=</Transaction>
+    <Transaction>2024.07.14 23:19:01.312,=G:\some folder\keyboardMap\KeyboardMap\Unit1.pas</Transaction>
+    <Transaction>2024.07.14 23:20:39.946,G:\some folder\keyboardMap\KeyboardMap\units\interfaceMyFrame.pas=G:\some folder\keyboardMap\KeyboardMap\Unit1.pas</Transaction>
+    <Transaction>2024.07.15 00:45:54.089,G:\some folder\keyboardMap\KeyboardMap\Appearance.pas=</Transaction>
   </Transactions>
 </BorlandProject>

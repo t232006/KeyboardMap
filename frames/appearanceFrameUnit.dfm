@@ -26,18 +26,41 @@ object settingFrame: TsettingFrame
     Caption = #1064#1088#1080#1092#1090' '#1082#1083#1072#1074#1080#1096
   end
   object Label4: TLabel
-    Left = 34
-    Top = 152
+    Left = 32
+    Top = 192
     Width = 119
     Height = 15
     Caption = #1054#1073#1097#1072#1103' '#1087#1088#1086#1079#1088#1072#1095#1085#1086#1089#1090#1100
   end
   object Label5: TLabel
-    Left = 34
-    Top = 192
+    Left = 32
+    Top = 232
     Width = 147
     Height = 15
     Caption = #1055#1088#1086#1079#1088#1072#1095#1085#1086#1089#1090#1100' '#1082#1083#1072#1074#1080#1072#1090#1091#1088#1099
+  end
+  object Label6: TLabel
+    Left = 32
+    Top = 152
+    Width = 72
+    Height = 15
+    Caption = #1062#1074#1077#1090' '#1082#1083#1072#1074#1080#1096
+  end
+  object Shape1: TShape
+    Left = 216
+    Top = 145
+    Width = 41
+    Height = 25
+    Shape = stRoundRect
+    OnMouseUp = Shape1MouseUp
+  end
+  object Shape2: TShape
+    Left = 263
+    Top = 145
+    Width = 41
+    Height = 25
+    Shape = stRoundRect
+    OnMouseUp = Shape2MouseUp
   end
   object CBColScheme: TComboBoxEx
     Left = 216
@@ -53,9 +76,13 @@ object settingFrame: TsettingFrame
       end
       item
         Caption = #1050#1083#1072#1089#1089#1080#1095#1077#1089#1082#1072#1103
+      end
+      item
+        Caption = #1057#1074#1086#1105
       end>
     TabOrder = 0
     Text = #1058#1077#1084#1085#1072#1103
+    OnChange = CBColSchemeChange
   end
   object CBKeyRad: TComboBox
     Left = 216
@@ -65,6 +92,7 @@ object settingFrame: TsettingFrame
     ItemIndex = 3
     TabOrder = 1
     Text = '3'
+    OnChange = CBKeyRadChange
     Items.Strings = (
       '0'
       '1'
@@ -85,50 +113,27 @@ object settingFrame: TsettingFrame
     Height = 25
     Caption = '...'
     TabOrder = 2
-  end
-  object OKButton: TButton
-    Left = 114
-    Top = 259
-    Width = 75
-    Height = 25
-    Caption = #1054#1050
-    TabOrder = 3
-  end
-  object CancelButton: TButton
-    Left = 195
-    Top = 259
-    Width = 75
-    Height = 25
-    Caption = #1054#1090#1084#1077#1085#1072
-    TabOrder = 4
-  end
-  object ApplayButton: TButton
-    Left = 276
-    Top = 259
-    Width = 75
-    Height = 25
-    Caption = #1055#1088#1080#1084#1077#1085#1080#1090#1100
-    TabOrder = 5
+    OnClick = Button1Click
   end
   object TrackBar1: TTrackBar
-    Left = 203
-    Top = 152
+    Left = 201
+    Top = 192
     Width = 158
     Height = 25
     Max = 245
     Frequency = 20
-    TabOrder = 6
+    TabOrder = 3
   end
   object TrackBar2: TTrackBar
-    Left = 203
-    Top = 192
+    Left = 201
+    Top = 232
     Width = 158
     Height = 25
     LineSize = 2
     Max = 245
     PageSize = 1
     Frequency = 20
-    TabOrder = 7
+    TabOrder = 4
   end
   object Button2: TButton
     Left = 263
@@ -136,7 +141,8 @@ object settingFrame: TsettingFrame
     Width = 41
     Height = 25
     Caption = '...'
-    TabOrder = 8
+    TabOrder = 5
+    OnClick = Button2Click
   end
   object FontDialog1: TFontDialog
     Font.Charset = DEFAULT_CHARSET
@@ -146,5 +152,9 @@ object settingFrame: TsettingFrame
     Font.Style = []
     Left = 288
     Top = 64
+  end
+  object ColorDialog1: TColorDialog
+    Left = 152
+    Top = 136
   end
 end

@@ -39,10 +39,6 @@ object ParentForm: TParentForm
         ExplicitLeft = 670
         ExplicitHeight = 39
       end
-      inherited WinCaption: TLabel
-        Height = 15
-        ExplicitHeight = 15
-      end
       inherited SpeedButton2: TSpeedButton
         Left = 709
         ExplicitLeft = 634
@@ -103,7 +99,6 @@ object ParentForm: TParentForm
       TabStop = False
       ThumbWidth = 20
       OnClick = FormHeaderSpeedButton3Click
-      ExplicitTop = 68
     end
     object LogToggle: TToggleSwitch
       Left = 241
@@ -117,7 +112,6 @@ object ParentForm: TParentForm
       TabOrder = 1
       TabStop = False
       ThumbWidth = 20
-      ExplicitTop = 68
     end
     object playSound: TToggleSwitch
       Left = 411

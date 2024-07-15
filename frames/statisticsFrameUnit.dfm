@@ -36,18 +36,6 @@ object StatisticsFrame: TStatisticsFrame
     Height = 15
     Caption = #1052#1072#1082#1089#1080#1084#1091#1084
   end
-  object BitBtn1: TBitBtn
-    Left = 344
-    Top = 182
-    Width = 104
-    Height = 49
-    Caption = #1055#1088#1080#1084#1077#1085#1080#1090#1100
-    Kind = bkOK
-    NumGlyphs = 2
-    Style = bsNew
-    TabOrder = 0
-    OnClick = BitBtn1Click
-  end
   object ToggleSwitch: TToggleSwitch
     Left = 264
     Top = 152
@@ -57,7 +45,7 @@ object StatisticsFrame: TStatisticsFrame
     FrameColor = clHighlight
     StateCaptions.CaptionOn = #1095#1080#1089#1083#1072
     StateCaptions.CaptionOff = #1075#1088#1072#1076#1080#1077#1085#1090
-    TabOrder = 1
+    TabOrder = 0
     ThumbColor = clHotLight
     ThumbWidth = 20
     OnClick = ToggleSwitchClick
@@ -71,8 +59,7 @@ object StatisticsFrame: TStatisticsFrame
     ItemHeight = 15
     Mask = '*map.b'
     MultiSelect = True
-    TabOrder = 2
-    ExplicitHeight = 230
+    TabOrder = 1
   end
   object ColorDialog1: TColorDialog
     Left = 288

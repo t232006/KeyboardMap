@@ -50,7 +50,7 @@ object FormHeader: TFormHeader
       Left = 51
       Top = 9
       Width = 25
-      Height = 17
+      Height = 15
       Caption = 'label'
     end
     object SpeedButton2: TSpeedButton
@@ -108,6 +108,7 @@ object FormHeader: TFormHeader
       ImageIndex = 5
       Images = ImageList
       NumGlyphs = 2
+      OnClick = SpeedButton5Click
       ExplicitHeight = 32
     end
   end

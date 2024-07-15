@@ -4,6 +4,7 @@ object SoundFrame: TSoundFrame
   Width = 246
   Height = 137
   TabOrder = 0
+  OnEnter = FrameEnter
   object Label1: TLabel
     Left = 24
     Top = 67
@@ -28,5 +29,6 @@ object SoundFrame: TSoundFrame
     Width = 201
     Height = 23
     TabOrder = 1
+    OnCloseUp = SoundFolderCloseUp
   end
 end

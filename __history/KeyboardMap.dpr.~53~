@@ -1,12 +1,13 @@
 program KeyboardMap;
 
+
+
 uses
   Vcl.Forms,
   Windows,
   MainUnitSmall in 'MainUnitSmall.pas' {KeyboardFormSmall},
   StatisticsOptions in 'StatisticsOptions.pas' {Form2},
   AnalogMeter in 'components\AnalogMeter.pas',
-  Language in 'Language.pas' {LangForm},
   speedometer in 'speedometer.pas' {SpeedForm},
   PressCounter in 'units\PressCounter.pas',
   SendKeyPressProc in 'units\SendKeyPressProc.pas',
@@ -17,7 +18,15 @@ uses
   ParentUnit in 'ParentUnit.pas' {ParentForm},
   BackgroundUnit in 'BackgroundUnit.pas' {BackForm},
   MainUnitLarge in 'MainUnitLarge.pas' {KeyboardFormLarge},
-  BoolSwitch in '..\My components\BoolSwitch\BoolSwitch.pas';
+  key in 'components\key.pas',
+  MyAuxProc in '..\..\myComponents\MyAuxProc.pas',
+  Appearance in 'Appearance.pas' {Form1},
+  languageFrameUnit in 'frames\languageFrameUnit.pas' {LangFrame: TFrame},
+  soundFrameUnit in 'frames\soundFrameUnit.pas' {SoundFrame: TFrame},
+  statisticsFrameUnit in 'frames\statisticsFrameUnit.pas' {StatisticsFrame: TFrame},
+  appearanceFrameUnit in 'frames\appearanceFrameUnit.pas' {settingFrame: TFrame},
+  settings in 'settings.pas' {Form3},
+  Language in 'Language.pas' {LangForm};
 
 {$R *.res}
 //var //pbuff: array[0..127] of char;
@@ -50,11 +59,13 @@ begin
 
   end;   }
    Application.CreateForm(TBackForm, BackForm);
+  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TForm3, Form3);
   //Application.CreateForm(TKeyboardFormLarge, KeyboardFormLarge);
   //Application.CreateForm(TKeyboardFormSmall, KeyboardFormSmall);
   //Application.CreateForm(TForm2, Form2);
   Application.CreateForm(TLangForm, LangForm);
   Application.CreateForm(TSpeedForm, SpeedForm);
-  Application.CreateForm(TsoundSetting, soundSetting);
+  //Application.CreateForm(TsoundSetting, soundSetting);
   Application.Run;
 end.

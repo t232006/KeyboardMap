@@ -5,7 +5,6 @@ object LangFrame: TLangFrame
   Height = 204
   TabOrder = 0
   OnEnter = FrameEnter
-  OnExit = FrameExit
   object Extender: TToggleSwitch
     Left = 16
     Top = 40

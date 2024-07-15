@@ -6,19 +6,17 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics,  ParentUnit,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ButtonGroup,
-  Vcl.Buttons, Vcl.ExtCtrls, Vcl.WinXCtrls, Vcl.FileCtrl, registry;
+  Vcl.Buttons, Vcl.ExtCtrls, Vcl.WinXCtrls, Vcl.FileCtrl, registry, interfaceMyFrame;
 
 type
-  TStatisticsFrame = class(TFrame)
+  TStatisticsFrame = class(TFrame, IMyFrame)
     Shape1: TShape;
     Shape2: TShape;
     Label1: TLabel;
     Label2: TLabel;
-    BitBtn1: TBitBtn;
     ToggleSwitch: TToggleSwitch;
     fileslist: TFileListBox;
     ColorDialog1: TColorDialog;
-    procedure BitBtn1Click(Sender: TObject);
     procedure FrameExit(Sender: TObject);
     procedure FrameEnter(Sender: TObject);
     procedure Shape1MouseDown(Sender: TObject; Button: TMouseButton;
@@ -28,6 +26,7 @@ type
     { Private declarations }
   public
     reg: TRegistry;
+    procedure Applay;
   end;
 
 var
@@ -36,7 +35,7 @@ var
 implementation
 {$R *.dfm}
 
-procedure TStatisticsFrame.BitBtn1Click(Sender: TObject);
+procedure TStatisticsFrame.Applay;
 var j:word;
 begin
    j:=0;
@@ -56,7 +55,6 @@ begin
    if ToggleSwitch.State=tssOff then (Owner as TParentForm).showGradient:=true
    else (Owner as TParentForm).showGradient:=false;
    tag:=1;
-   //close;
 end;
 
 procedure TStatisticsFrame.FrameEnter(Sender: TObject);

@@ -171,10 +171,6 @@
         </DCCReference>
         <DCCReference Include="components\key.pas"/>
         <DCCReference Include="..\..\myComponents\MyAuxProc.pas"/>
-        <DCCReference Include="Appearance.pas">
-            <Form>Form1</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="frames\languageFrameUnit.pas">
             <Form>LangFrame</Form>
             <FormType>dfm</FormType>
@@ -196,13 +192,14 @@
             <DesignClass>TFrame</DesignClass>
         </DCCReference>
         <DCCReference Include="settings.pas">
-            <Form>Form3</Form>
+            <Form>SettingForm</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="Language.pas">
             <Form>LangForm</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="units\interfaceMyFrame.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

@@ -8,6 +8,7 @@ uses
   Vcl.WinXCtrls, MyAuxProc, shlObj, sound;
   const WM_WANT_CLOSE = WM_USER+$345+10;
 type
+  TColScheme = (Dark, Light, Classic, Custom);
   TBackForm = class(TForm)
     Image1: TImage;
     procedure Image1Click(Sender: TObject);
@@ -66,13 +67,7 @@ begin
    activeForm.Top:=loadparams.ReadInteger('Windows', 'PosY', 0);
    showSpeed:=loadparams.ReadBool('Windows','showSpeed', false);
    playSound:=loadparams.ReadBool('Sounds','playSound', false);
-   try
-   if className='TKeyboardFormLarge' then
-    activeForm.boardSize.State:=tssOff else
-    activeForm.boardSize.State:=tssOn;
-   finally
-     activeForm.boardSize.tag:=0;
-   end;
+
    if showSpeed then activeForm.showSpeed.State:=tssOn
                       else
                       activeForm.showSpeed.State:=tssOff;
@@ -122,10 +117,20 @@ end;
 procedure TBackForm.OpenAnotherKeyboard(var msg: TMessage);
 var tempform: TParentForm;
 begin
+  try
   if (activeform is TKeyboardFormlarge) then
-     tempform:= TKeyboardFormSmall.Create(self)
+  begin
+     tempform:= TKeyboardFormSmall.Create(self);
+      tempform.boardSize.State:=tssOn
+  end
   else
+  begin
      tempform:= TKeyboardFormLarge.Create(self);
+     tempform.boardSize.State:=tssOff;
+  end;
+  finally
+     tempForm.boardSize.tag:=1;
+  end;
   tempform.VirtKeyboard:=activeform.VirtKeyboard;
   tempform.showSpeed:=activeform.showSpeed;
   tempform.playSound:=activeform.playSound;
