@@ -16,9 +16,10 @@ type
     procedure SoundFolderCloseUp(Sender: TObject);
   private
     currentScheme: byte;
-    loadParams: TRegIniFile;
+
     path: string;
   public
+    reg: TRegIniFile;
     procedure Applay;
   end;
   var
@@ -46,13 +47,13 @@ end;
 
 begin
   path:=ExtractFileDir(Paramstr(0));
-  loadParams:=TReginifile.Create('Software\'+ChangeFileExt(ExtractFileName(Paramstr(0)),''));
+
   folderslist:=TDirectory.GetFiles(path+'\sounds');
   for st in folderslist do
     soundfolder.Items.Add(TPath.GetFileNameWithoutExtension(st));
 
-  currentScheme:=loadParams.ReadInteger('sounds','curScheme',0);
-  playSoundB:=loadParams.ReadBool('sounds','playSound', false);
+  currentScheme:=reg.ReadInteger('sounds','curScheme',0);
+  playSoundB:=reg.ReadBool('sounds','playSound', false);
 
   playSound.Tag:=1;
   try
@@ -61,7 +62,7 @@ begin
     finally
     playSound.Tag:=0;
   end;
-  //loadParams.Destroy;
+  //reg.Destroy;
   soundfolder.ItemIndex:=currentScheme;
   sPath:=ExtractFileDir(Paramstr(0))+'\sounds\'+soundFolder.Items[currentScheme]+'\';
 

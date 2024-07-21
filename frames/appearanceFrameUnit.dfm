@@ -26,41 +26,89 @@ object settingFrame: TsettingFrame
     Caption = #1064#1088#1080#1092#1090' '#1082#1083#1072#1074#1080#1096
   end
   object Label4: TLabel
-    Left = 32
-    Top = 192
+    Left = 34
+    Top = 216
     Width = 119
     Height = 15
     Caption = #1054#1073#1097#1072#1103' '#1087#1088#1086#1079#1088#1072#1095#1085#1086#1089#1090#1100
   end
   object Label5: TLabel
-    Left = 32
-    Top = 232
+    Left = 34
+    Top = 256
     Width = 147
     Height = 15
     Caption = #1055#1088#1086#1079#1088#1072#1095#1085#1086#1089#1090#1100' '#1082#1083#1072#1074#1080#1072#1090#1091#1088#1099
+    Visible = False
   end
   object Label6: TLabel
     Left = 32
-    Top = 152
+    Top = 176
     Width = 72
     Height = 15
     Caption = #1062#1074#1077#1090' '#1082#1083#1072#1074#1080#1096
   end
   object Shape1: TShape
     Left = 216
-    Top = 145
+    Top = 169
     Width = 41
     Height = 25
     Shape = stRoundRect
     OnMouseUp = Shape1MouseUp
   end
   object Shape2: TShape
-    Left = 263
-    Top = 145
+    Left = 268
+    Top = 169
     Width = 41
     Height = 25
     Shape = stRoundRect
     OnMouseUp = Shape2MouseUp
+  end
+  object Shape3: TShape
+    Left = 320
+    Top = 169
+    Width = 41
+    Height = 25
+    Shape = stRoundRect
+    OnMouseUp = Shape2MouseUp
+  end
+  object Label8: TLabel
+    Left = 269
+    Top = 144
+    Width = 36
+    Height = 12
+    Caption = #1085#1072#1078#1072#1090#1080#1077
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -9
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label9: TLabel
+    Left = 319
+    Top = 144
+    Width = 46
+    Height = 12
+    Caption = #1074#1099#1076#1077#1083#1077#1085#1080#1077
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -9
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label7: TLabel
+    Left = 226
+    Top = 144
+    Width = 19
+    Height = 12
+    Caption = #1094#1074#1077#1090
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -9
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
   end
   object CBColScheme: TComboBoxEx
     Left = 216
@@ -115,28 +163,31 @@ object settingFrame: TsettingFrame
     TabOrder = 2
     OnClick = Button1Click
   end
-  object TrackBar1: TTrackBar
-    Left = 201
-    Top = 192
+  object commonTrack: TTrackBar
+    Left = 203
+    Top = 216
     Width = 158
     Height = 25
     Max = 245
     Frequency = 20
     TabOrder = 3
+    OnChange = commonTrackChange
   end
-  object TrackBar2: TTrackBar
-    Left = 201
-    Top = 232
+  object keyboardTrack: TTrackBar
+    Left = 203
+    Top = 256
     Width = 158
     Height = 25
     LineSize = 2
-    Max = 245
+    Max = 1
     PageSize = 1
     Frequency = 20
     TabOrder = 4
+    Visible = False
+    OnChange = keyboardTrackChange
   end
   object Button2: TButton
-    Left = 263
+    Left = 320
     Top = 108
     Width = 41
     Height = 25
@@ -155,6 +206,6 @@ object settingFrame: TsettingFrame
   end
   object ColorDialog1: TColorDialog
     Left = 152
-    Top = 136
+    Top = 160
   end
 end

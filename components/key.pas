@@ -52,6 +52,7 @@ type
     FSaveDoCol: Tcolor;
     FSaveMiCol: Tcolor;
     FPressColor: Tcolor;
+    FHoverColor: Tcolor;
     FColor: TColor;
     FCurrentColor: TColor;
     FInvertPicture: TBitmap;
@@ -99,6 +100,7 @@ type
     destructor Destroy; override;
     property Pressed: Boolean read FPressed write SetPressed;
     procedure DoConstrast;
+    procedure SetNewFont(curFontSize: byte; const newFont: TFont);
 
 
   published
@@ -120,6 +122,7 @@ type
     property MiddleFont: TFont index 2 read GetFont write SetFont;
     property Color: TColor index 2 read FColor write SetColor;
     property PressColor: TColor read FPressColor write FPressColor;
+    property HoverColor: TColor read FHoverColor write FHoverColor;
     property CurrentColor: TColor index 1 write SetColor;
     property Round: byte read FRound write SetRound default 4;
     property KeyType: TKeyType read FKeyType write FKeyType default ktOthers;
@@ -171,6 +174,7 @@ begin
   FPicturePos.Right:=Width-Fround; FPicturePos.Bottom:=Height-FRound;
   FColor:= RGB(49,48,49);
   FPressColor:=RGB(214,186,140);
+  FHoverColor:=clWhite;
   CurrentColor:=FColor;
   PictureColor:=ClWhite;
   //FMidLabel.Caption:='Esc';
@@ -436,21 +440,30 @@ begin
   case Index of
      0:
      begin
-        FUpLabel.Font:=Value;
+        FUpLabel.Font.Assign(Value);
         FSaveUpCol:=Value.Color;
      end;
      1:
      begin
-        FDownLabel.Font:=Value;
+        FDownLabel.Font.Assign(Value);
         FSaveDoCol:=Value.Color;
      end;
      2:
      begin
-       FMidLabel.Font:=Value;
+       FMidLabel.Font.Assign(Value);
        FSaveMiCol:=Value.Color;
      end;
    end;
    Paint;//(Color);
+end;
+
+procedure TKey.SetNewFont(curFontSize: byte; const newFont: TFont);
+var diff:shortInt; buffer:byte;
+begin
+  buffer:=newFont.Size;
+  diff:=curFontSize-UpFont.Size; Upfont:=newFont; Upfont.Size:=upfont.Size-diff; newFont.Size:=buffer;
+  diff:=curFontSize-MiddleFont.Size; Middlefont:=newFont; Middlefont.Size:=Middlefont.Size-diff; newFont.Size:=buffer;
+  diff:=curFontSize-downFont.Size; downfont:=newFont; downfont.Size:=downfont.Size-diff; newFont.Size:=buffer;
 end;
 
 procedure TKey.SetPicture(Value: TBitmap);
@@ -532,7 +545,7 @@ end;
 
 procedure TKey.MakeBlack;
 begin
-   CurrentColor:=ClWhite;
+   CurrentColor:=FHoverColor;
    FUpLabel.Font.Color:=clBlack;
    FDownLabel.Font.Color:=clBlack;
    FMidLabel.Font.Color:=clBlack;

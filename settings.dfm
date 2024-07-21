@@ -11,15 +11,18 @@ object SettingForm: TSettingForm
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  OnCreate = FormCreate
   TextHeight = 15
   object LBmenu: TListBox
     Left = 0
     Top = 0
     Width = 177
-    Height = 364
+    Height = 362
     TabStop = False
     Style = lbOwnerDrawFixed
+    AutoComplete = False
     Align = alLeft
+    Ctl3D = False
     IntegralHeight = True
     ItemHeight = 90
     Items.Strings = (
@@ -27,6 +30,7 @@ object SettingForm: TSettingForm
       #1079#1074#1091#1082
       #1089#1084#1077#1085#1072' '#1088#1072#1089#1082#1083#1072#1076#1082#1080
       #1101#1082#1088#1072#1085' '#1089#1090#1072#1090#1080#1089#1090#1080#1082#1080)
+    ParentCtl3D = False
     TabOrder = 0
     OnClick = LBmenuClick
   end

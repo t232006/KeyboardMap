@@ -25,7 +25,7 @@ type
   private
     { Private declarations }
   public
-    reg: TRegistry;
+    reg: TReginiFile;
     procedure Applay;
   end;
 
@@ -59,9 +59,10 @@ end;
 
 procedure TStatisticsFrame.FrameEnter(Sender: TObject);
 begin
-       reg.OpenKey('gradient', true);
-       shape1.Brush.Color:=reg.ReadInteger('shape1');
-       shape2.Brush.Color:=reg.ReadInteger('shape2');
+       //reg.OpenKey('gradient', true);
+       //reg:=TRegIniFile.Create() ;
+      shape1.Brush.Color:=reg.ReadInteger('gradient','shape1', clwhite);
+      shape2.Brush.Color:=reg.ReadInteger('gradient','shape2', clwhite);
       fdPath:=ExtractFileDir( Paramstr(0))+'\maps';
      fileslist.ApplyFilePath(fdpath);
      tag:=0;
@@ -69,9 +70,9 @@ end;
 
 procedure TStatisticsFrame.FrameExit(Sender: TObject);
 begin
-   reg.OpenKey('gradient', true);
-   reg.WriteInteger('shape1', shape1.Brush.Color) ;
-   reg.WriteInteger('shape2', shape2.Brush.Color);
+   //reg.OpenKey('gradient', true);
+   reg.WriteInteger('gradient', 'shape1', shape1.Brush.Color);
+   reg.WriteInteger('gradient', 'shape2', shape2.Brush.Color);
 end;
 
 procedure TStatisticsFrame.Shape1MouseDown(Sender: TObject;

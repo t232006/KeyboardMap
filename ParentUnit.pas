@@ -74,7 +74,6 @@ type
     procedure TrayMenuPopup(Sender: TObject);
     procedure FormHeaderSpeedButton3Click(Sender: TObject);
     procedure Show_sounds_panelExecute(Sender: TObject);
-    procedure FormHeaderplaySoundClick(Sender: TObject);
     procedure FormHide(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormHeaderSpeedButton1Click(Sender: TObject);
@@ -83,6 +82,7 @@ type
     procedure extendTimerTimer(Sender: TObject);
     procedure WinOverrideClick(Sender: TObject);
     procedure showSpeedClick(Sender: TObject);
+    procedure playSoundClick(Sender: TObject);
   private
     statType: TStatType;
     baseHeight, basePanelTop: Integer;
@@ -102,8 +102,8 @@ type
     showGradient: boolean;
     procedure Appearance(ColScheme: TColScheme;
                          KeyRad:byte;
-                         KeyFont1, KeyFont2:TFont;
-                         ButtonColor, PressColor: TColor;
+                         const KeyFont1, KeyFont2:TFont;
+                         ButtonColor, PressColor, HoverColor: TColor;
                          CommonTransp, KeybTransp:byte);
   end;
 
@@ -115,20 +115,16 @@ uses MainUnitSmall, MainUnitLarge, StatisticsOptions, BackgroundUnit;
 {$R *.dfm}
 
 procedure TParentForm.Appearance(ColScheme: TColScheme;
-  KeyRad: byte; KeyFont1,
-  KeyFont2: TFont; ButtonColor, PressColor: TColor;
+  KeyRad: byte; const KeyFont1,
+  KeyFont2: TFont; ButtonColor, PressColor, HoverColor: TColor;
   CommonTransp, KeybTransp: byte);
-var k:byte; key:TKey; pan: TPanel;  curCol:Tcolor;  curFontSize, diff: byte;
-procedure SetFontSize(newFont, oldFont:TFont);
-begin
-  diff:=curFontSize-oldfont.Size;
-  oldfont:=newFont;
-  oldfont.Size:=oldfont.Size-diff;
-end;
+var k:byte; key:TKey;
+  pan: TPanel;  curCol:Tcolor;
+  curFontSize, diff: shortInt;
 
 
 begin
-    self.AlphaBlendValue:=CommonTransp;
+    self.AlphaBlendValue:=255-CommonTransp;
     //==============boardColor===============
 
      pan:=FindComponent('Panel1')as TPanel;
@@ -137,12 +133,19 @@ begin
         Light:   pan.Color:=clWhite;
         Classic: pan.Color:=RGB(239,232,203);
      end;
-     //============boardTransparent==========
-     if KeybTransp>0 then
-    begin
-       self.TransparentColor:=true;
-       self.TransparentColorValue:=pan.Color;
-    end else self.TransparentColor:=false;
+          {$REGION 'boardTransparent'}
+       //============boardTransparent==========
+            {if KeybTransp>0 then
+           begin
+              self.TransparentColor:=true;
+              self.TransparentColorValue:=pan.Color;
+              pan.Visible:=false;
+           end else
+           begin
+             self.TransparentColor:=false;
+             pan.Visible:=true;
+           end;     }
+     {$ENDREGION}
     //============keysColor==================
       key:=FindComponent('Key27') as TKey;
       curCol:=key.MiddleFont.Color; //find color to change (another don't change)
@@ -190,15 +193,43 @@ begin
           //diff:=curFontSize-UpFont.Size; UpFont:=keyFont1; UpFont.Size:=UpFont.Size-diff;
           if keyFont1<>nil then
           begin
-            SetFontSize(keyFont1, UpFont);
-            SetFontSize(keyFont1, MiddleFont);
-            SetFontSize(keyfont1, DownFont);
-            PressColor:=PressColor;
+            diff:=curFontSize-UpFont.Size;
+            if (keyType=ktNum) then
+            begin
+              if (KeyFont2<>nil) then
+              begin
+                Upfont:=keyfont2;
+                Upfont.Size:=upfont.Size-diff;
+              end
+            end else
+            begin
+              Upfont:=keyfont1;
+              Upfont.Size:=upfont.Size-diff;
+            end;
+
+            diff:=curFontSize-MiddleFont.Size;
+            Middlefont:=keyfont1;
+            Middlefont.Size:=Middlefont.Size-diff;
+
+            diff:=curFontSize-downFont.Size;
+            if (keyType=ktLetters)or (keyType=ktTrippleLetters) then
+            begin
+              if keyFont2<>nil then
+              begin
+                downfont:=keyfont2;
+                downfont.Size:=downfont.Size-diff;
+              end;
+            end else
+            begin
+              downfont:=keyfont1;
+              downfont.Size:=downfont.Size-diff;
+            end;
+
+            key.PressColor:=PressColor;
+            key.HoverColor:=HoverColor;
           end;
-          if keyFont2<>nil then
-            if KeyType=ktLetters then DownFont:=Keyfont2 else
-            if KeyType=ktNum then UpFont:=KeyFont2;
-          end;
+
+        end;
 
         end;
 
@@ -329,22 +360,20 @@ begin
   baseHeight:=Height;
   basePanelTop:=(FindComponent('panel1') as TPanel).Top;
   //SettingForm.Height:=0;
+  try
+    boardSize.Tag:=0;
+   if classname='TKeyboardFormLarge' then
+    boardSize.State:=tssOff else
+    boardSize.State:=tssOn;
+   finally
+      boardSize.Tag:=1;
+   end;
 end;
 
 procedure TParentForm.FormHeaderCloseButClick(Sender: TObject);
 begin
   FormHeader.CloseButClick(Sender);
 
-end;
-
-procedure TParentForm.FormHeaderplaySoundClick(Sender: TObject);
-begin
-    soundSetting.playSound.Tag:=1;
-  try
-  soundsetting.playsound.state:=playSound.State;
-  finally
-    soundSetting.playSound.Tag:=0;
-  end;
 end;
 
 procedure TParentForm.FormHeaderSpeedButton1Click(Sender: TObject);
@@ -358,9 +387,9 @@ end;
 procedure TParentForm.FormHeaderSpeedButton3Click(Sender: TObject);
 begin
   //FormHeader.SpeedButton3Click(Sender);
-  if SettingForm.Tag<>0 then
+  if boardSize.Tag=0 then exit;
     sendmessage((Owner as TForm).Handle,WM_WANT_CLOSE,0,0);
-  settingForm.Tag:=1;
+  //settingForm.Tag:=1;
 end;
 
 procedure TParentForm.FormHeaderStatSwitchClick(Sender: TObject);
@@ -437,6 +466,16 @@ procedure TParentForm.Open_statisticsExecute(Sender: TObject);
        statForm.Destroy;
 end;
 
+procedure TParentForm.playSoundClick(Sender: TObject);
+begin
+      soundSetting.playSound.Tag:=1;
+  try
+  soundsetting.playsound.state:=playSound.State;
+  finally
+    soundSetting.playSound.Tag:=0;
+  end;
+end;
+
 procedure TParentForm.Retract;
 begin
    toExtend:=false;
@@ -480,7 +519,7 @@ end;
 
 procedure TParentForm.showSpeedClick(Sender: TObject);
 begin
-if tag<>0 then exit;
+//if showSpeed.tag<>0 then exit;
   if speedform<>nil then
   begin
       if showSpeed.State=tssOff then

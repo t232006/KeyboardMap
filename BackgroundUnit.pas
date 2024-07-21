@@ -74,6 +74,9 @@ begin
    if playSound then activeForm.playSound.State:=tssOn
                       else
                       activeForm.playSound.State:=tssOff;
+
+   
+
    //loadparams.Destroy;
    //activeForm.Show;
 end;
@@ -117,23 +120,16 @@ end;
 procedure TBackForm.OpenAnotherKeyboard(var msg: TMessage);
 var tempform: TParentForm;
 begin
-  try
   if (activeform is TKeyboardFormlarge) then
-  begin
-     tempform:= TKeyboardFormSmall.Create(self);
-      tempform.boardSize.State:=tssOn
-  end
+     tempform:= TKeyboardFormSmall.Create(self)
+      //tempform.boardSize.State:=tssOn
   else
-  begin
      tempform:= TKeyboardFormLarge.Create(self);
-     tempform.boardSize.State:=tssOff;
-  end;
-  finally
-     tempForm.boardSize.tag:=1;
-  end;
+     //tempform.boardSize.State:=tssOff;
   tempform.VirtKeyboard:=activeform.VirtKeyboard;
-  tempform.showSpeed:=activeform.showSpeed;
-  tempform.playSound:=activeform.playSound;
+  tempform.showSpeed.State:=activeform.showSpeed.State;
+  tempform.playSound.State:=activeform.playSound.State;
+  tempform.boardSize.State:=activeform.boardSize.State;
   tempform.Show;//(activeform.VirtKeyboard);
   activeform.Close;
   activeform.TrayIcon.Visible:=false;
