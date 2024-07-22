@@ -1,8 +1,8 @@
 object settingFrame: TsettingFrame
   Left = 0
   Top = 0
-  Width = 380
-  Height = 311
+  Width = 393
+  Height = 351
   TabOrder = 0
   object Label1: TLabel
     Left = 32
@@ -13,43 +13,42 @@ object settingFrame: TsettingFrame
   end
   object Label2: TLabel
     Left = 32
-    Top = 72
+    Top = 112
     Width = 111
     Height = 15
     Caption = #1057#1082#1088#1091#1075#1083#1077#1085#1080#1077' '#1082#1083#1072#1074#1080#1096
   end
   object Label3: TLabel
     Left = 32
-    Top = 112
+    Top = 152
     Width = 85
     Height = 15
     Caption = #1064#1088#1080#1092#1090' '#1082#1083#1072#1074#1080#1096
   end
   object Label4: TLabel
     Left = 34
-    Top = 216
+    Top = 256
     Width = 119
     Height = 15
     Caption = #1054#1073#1097#1072#1103' '#1087#1088#1086#1079#1088#1072#1095#1085#1086#1089#1090#1100
   end
   object Label5: TLabel
     Left = 34
-    Top = 256
+    Top = 296
     Width = 147
     Height = 15
     Caption = #1055#1088#1086#1079#1088#1072#1095#1085#1086#1089#1090#1100' '#1082#1083#1072#1074#1080#1072#1090#1091#1088#1099
-    Visible = False
   end
   object Label6: TLabel
     Left = 32
-    Top = 176
+    Top = 216
     Width = 72
     Height = 15
     Caption = #1062#1074#1077#1090' '#1082#1083#1072#1074#1080#1096
   end
   object Shape1: TShape
     Left = 216
-    Top = 169
+    Top = 209
     Width = 41
     Height = 25
     Shape = stRoundRect
@@ -57,7 +56,7 @@ object settingFrame: TsettingFrame
   end
   object Shape2: TShape
     Left = 268
-    Top = 169
+    Top = 209
     Width = 41
     Height = 25
     Shape = stRoundRect
@@ -65,7 +64,7 @@ object settingFrame: TsettingFrame
   end
   object Shape3: TShape
     Left = 320
-    Top = 169
+    Top = 209
     Width = 41
     Height = 25
     Shape = stRoundRect
@@ -73,7 +72,7 @@ object settingFrame: TsettingFrame
   end
   object Label8: TLabel
     Left = 269
-    Top = 144
+    Top = 184
     Width = 36
     Height = 12
     Caption = #1085#1072#1078#1072#1090#1080#1077
@@ -86,7 +85,7 @@ object settingFrame: TsettingFrame
   end
   object Label9: TLabel
     Left = 319
-    Top = 144
+    Top = 184
     Width = 46
     Height = 12
     Caption = #1074#1099#1076#1077#1083#1077#1085#1080#1077
@@ -99,7 +98,7 @@ object settingFrame: TsettingFrame
   end
   object Label7: TLabel
     Left = 226
-    Top = 144
+    Top = 184
     Width = 19
     Height = 12
     Caption = #1094#1074#1077#1090
@@ -109,6 +108,21 @@ object settingFrame: TsettingFrame
     Font.Name = 'Segoe UI'
     Font.Style = []
     ParentFont = False
+  end
+  object Shape4: TShape
+    Left = 216
+    Top = 70
+    Width = 41
+    Height = 25
+    Shape = stRoundRect
+    OnMouseUp = Shape1MouseUp
+  end
+  object Label10: TLabel
+    Left = 32
+    Top = 70
+    Width = 58
+    Height = 15
+    Caption = #1062#1074#1077#1090' '#1092#1086#1085#1072
   end
   object CBColScheme: TComboBoxEx
     Left = 216
@@ -126,7 +140,7 @@ object settingFrame: TsettingFrame
         Caption = #1050#1083#1072#1089#1089#1080#1095#1077#1089#1082#1072#1103
       end
       item
-        Caption = #1057#1074#1086#1105
+        Caption = #1057#1074#1086#1103
       end>
     TabOrder = 0
     Text = #1058#1077#1084#1085#1072#1103
@@ -134,13 +148,12 @@ object settingFrame: TsettingFrame
   end
   object CBKeyRad: TComboBox
     Left = 216
-    Top = 69
+    Top = 109
     Width = 41
     Height = 23
     ItemIndex = 3
     TabOrder = 1
     Text = '3'
-    OnChange = CBKeyRadChange
     Items.Strings = (
       '0'
       '1'
@@ -156,7 +169,7 @@ object settingFrame: TsettingFrame
   end
   object Button1: TButton
     Left = 216
-    Top = 108
+    Top = 148
     Width = 41
     Height = 25
     Caption = '...'
@@ -165,17 +178,16 @@ object settingFrame: TsettingFrame
   end
   object commonTrack: TTrackBar
     Left = 203
-    Top = 216
+    Top = 256
     Width = 158
     Height = 25
     Max = 245
     Frequency = 20
     TabOrder = 3
-    OnChange = commonTrackChange
   end
   object keyboardTrack: TTrackBar
     Left = 203
-    Top = 256
+    Top = 296
     Width = 158
     Height = 25
     LineSize = 2
@@ -183,12 +195,10 @@ object settingFrame: TsettingFrame
     PageSize = 1
     Frequency = 20
     TabOrder = 4
-    Visible = False
-    OnChange = keyboardTrackChange
   end
   object Button2: TButton
     Left = 320
-    Top = 108
+    Top = 148
     Width = 41
     Height = 25
     Caption = '...'
@@ -201,11 +211,11 @@ object settingFrame: TsettingFrame
     Font.Height = -12
     Font.Name = 'Segoe UI'
     Font.Style = []
-    Left = 288
-    Top = 64
+    Left = 72
+    Top = 176
   end
   object ColorDialog1: TColorDialog
     Left = 152
-    Top = 160
+    Top = 200
   end
 end

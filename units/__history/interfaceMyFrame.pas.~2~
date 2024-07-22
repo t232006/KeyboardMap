@@ -1,0 +1,15 @@
+unit interfaceMyFrame;
+
+interface
+uses VCL.Forms, registry;
+
+type TMyFrame = class(TFrame)
+   reg: TRegIniFile;
+   procedure Applay; virtual; abstract;
+   procedure LoadParams; virtual; abstract;
+   procedure Saveparams; virtual; abstract;
+end;
+
+implementation
+
+end.

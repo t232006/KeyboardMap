@@ -21,6 +21,8 @@ type
   public
     reg: TRegIniFile;
     procedure Applay;
+    procedure SaveParams;
+    procedure LoadParams;
   end;
   var
    playSoundB: boolean;
@@ -66,6 +68,17 @@ begin
   soundfolder.ItemIndex:=currentScheme;
   sPath:=ExtractFileDir(Paramstr(0))+'\sounds\'+soundFolder.Items[currentScheme]+'\';
 
+end;
+
+procedure TSoundFrame.LoadParams;
+begin
+  currentScheme:=reg.ReadInteger('sounds','curScheme',0);
+  playSoundB:=reg.ReadBool('sounds','playSound', false);
+end;
+
+procedure TSoundFrame.SaveParams;
+begin
+   reg.WriteInteger('sounds', 'curScheme', currentScheme);
 end;
 
 procedure TSoundFrame.SoundFolderCloseUp(Sender: TObject);

@@ -49,7 +49,7 @@ procedure TFormHeader.FrameResize(Sender: TObject);
 begin
 winIcon.Canvas.FloodFill(1,1,clActiveCaption,fsBorder);
 WinIcon.Canvas.Draw(0,0,Application.Icon);
-     WinCaption.Caption:=GetParentForm(sender as TComponent).Caption;
+     WinCaption.Caption:=GetParentForm(sender as tControl).Caption;
 end;
 
 
@@ -67,8 +67,8 @@ begin
   if down then
    begin
     pos:=mouse.CursorPos;
-    GetParentForm(sender as tComponent).Left:=pos.X-diff.X;
-    GetParentForm(sender as tComponent).top:=pos.Y-diff.Y;
+    GetParentForm(sender as tControl).Left:=pos.X-diff.X;
+    GetParentForm(sender as tControl).top:=pos.Y-diff.Y;
    end;
 end;
 
@@ -80,13 +80,13 @@ end;
 
 procedure TFormHeader.SpeedButton1Click(Sender: TObject);
 begin
-sendmessage((GetParentForm(sender as tComponent).Owner as TForm).Handle,WM_WANT_CLOSE,0,0);
+sendmessage((GetParentForm(sender as tControl).Owner as TForm).Handle,WM_WANT_CLOSE,0,0);
 end;
 
 procedure TFormHeader.SpeedButton2Click(Sender: TObject);
 begin
-    GetParentForm(sender as tComponent).Hide;
-    (GetParentForm(sender as tComponent).owner as tform).show;
+    GetParentForm(sender as tControl).Hide;
+    (GetParentForm(sender as tControl).owner as tform).show;
 end;
 
 procedure TFormHeader.SpeedButton5Click(Sender: TObject);
@@ -104,7 +104,7 @@ end;
 procedure TFormHeader.CloseButClick(Sender: TObject);
 //var f: TForm;
 begin
- (GetParentForm(sender as tComponent).owner as tform).close;
+ (GetParentForm(sender as tControl).owner as tform).close;
   //f.close;
 end;
 

@@ -78,7 +78,7 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormHeaderSpeedButton1Click(Sender: TObject);
     procedure FormHeaderCloseButClick(Sender: TObject);
-    procedure SettingFormResize(Sender: TObject);
+    //procedure SettingFormResize(Sender: TObject);
     procedure extendTimerTimer(Sender: TObject);
     procedure WinOverrideClick(Sender: TObject);
     procedure showSpeedClick(Sender: TObject);
@@ -101,7 +101,7 @@ type
     sh1, sh2: TColor;
     showGradient: boolean;
     procedure Appearance(ColScheme: TColScheme;
-                         KeyRad:byte;
+                         KeyRad:byte; backgroundColor: Tcolor;
                          const KeyFont1, KeyFont2:TFont;
                          ButtonColor, PressColor, HoverColor: TColor;
                          CommonTransp, KeybTransp:byte);
@@ -115,11 +115,11 @@ uses MainUnitSmall, MainUnitLarge, StatisticsOptions, BackgroundUnit;
 {$R *.dfm}
 
 procedure TParentForm.Appearance(ColScheme: TColScheme;
-  KeyRad: byte; const KeyFont1,
+  KeyRad: byte; backgroundColor: Tcolor;  const KeyFont1,
   KeyFont2: TFont; ButtonColor, PressColor, HoverColor: TColor;
   CommonTransp, KeybTransp: byte);
 var k:byte; key:TKey;
-  pan: TPanel;  curCol:Tcolor;
+  {pan: TBevel;}  curCol:Tcolor;
   curFontSize, diff: shortInt;
 
 
@@ -127,24 +127,21 @@ begin
     self.AlphaBlendValue:=255-CommonTransp;
     //==============boardColor===============
 
-     pan:=FindComponent('Panel1')as TPanel;
+     //pan:=FindComponent('Panel1') as TBevel;
      case ColScheme of
-        Dark:    pan.Color:=RGB(32,32,32);
-        Light:   pan.Color:=clWhite;
-        Classic: pan.Color:=RGB(239,232,203);
+        Dark:    Color:=RGB(32,32,32);
+        Light:   Color:=clWhite;
+        Classic: Color:=RGB(239,232,203);
+        Custom: Color:=backgroundColor;
      end;
           {$REGION 'boardTransparent'}
        //============boardTransparent==========
-            {if KeybTransp>0 then
+            if KeybTransp>0 then
            begin
               self.TransparentColor:=true;
-              self.TransparentColorValue:=pan.Color;
-              pan.Visible:=false;
+              self.TransparentColorValue:=Color;
            end else
-           begin
              self.TransparentColor:=false;
-             pan.Visible:=true;
-           end;     }
      {$ENDREGION}
     //============keysColor==================
       key:=FindComponent('Key27') as TKey;
@@ -358,7 +355,7 @@ begin
   FormHeader.Align:=alTop;
   SettingForm.Align:=alTop;
   baseHeight:=Height;
-  basePanelTop:=(FindComponent('panel1') as TPanel).Top;
+  //basePanelTop:=(FindComponent('panel1') as TBevel).Top;
   //SettingForm.Height:=0;
   try
     boardSize.Tag:=0;
@@ -487,12 +484,12 @@ begin
 VirtKeyboard.save(true, round(backform.Statistics.avSpeed), backform.Statistics.recordSpeed);  //save current session
  MessageDlg('Статистика сохранена', TMsgDlgType.mtInformation, [mbOK], 0);
 end;
-procedure TParentForm.SettingFormResize(Sender: TObject);
+{procedure TParentForm.SettingFormResize(Sender: TObject);
 begin
-  (BackForm.activeForm.FindComponent('panel1') as TPanel).Top:=basePanelTop+
+  (BackForm.activeForm.FindComponent('panel1') as TBevel).Top:=basePanelTop+
   SettingForm.Height;
   Height:=baseHeight+settingForm.Height;
-end;
+end;  }
 
 procedure TParentForm.Show(keyb: TKeyboard);
 begin

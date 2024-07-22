@@ -27,6 +27,8 @@ type
   public
     reg: TReginiFile;
     procedure Applay;
+    procedure SaveParams;
+    procedure LoadParams;
   end;
 
 var
@@ -73,6 +75,18 @@ begin
    //reg.OpenKey('gradient', true);
    reg.WriteInteger('gradient', 'shape1', shape1.Brush.Color);
    reg.WriteInteger('gradient', 'shape2', shape2.Brush.Color);
+end;
+
+procedure TStatisticsFrame.LoadParams;
+begin
+   shape1.Brush.Color:=reg.ReadInteger('gradient','shape1',16777215);
+      shape2.Brush.Color:=reg.ReadInteger('gradient','shape2',16777215);
+end;
+
+procedure TStatisticsFrame.SaveParams;
+begin
+   reg.WriteInteger('gradient','shape1', shape1.Brush.Color);
+    reg.WriteInteger('gradient','shape2', shape2.Brush.Color);
 end;
 
 procedure TStatisticsFrame.Shape1MouseDown(Sender: TObject;

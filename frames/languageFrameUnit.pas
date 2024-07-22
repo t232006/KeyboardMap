@@ -15,12 +15,13 @@ type
     Status: TMemo;
     procedure hotKeyIndClick(Sender: TObject);
     procedure ExtenderClick(Sender: TObject);
-    procedure FrameEnter(Sender: TObject);
   private
      StrButton:string;
   public
-    reg: TRegistry;
+    reg: TRegIniFile;
     procedure Applay;
+    procedure LoadParams;
+    procedure SaveParams;
   end;
 
 implementation
@@ -32,9 +33,8 @@ begin
   if MessageDlg('Горячая клавиша смены языковой раскладки '+ StrButton,
                     mtConfirmation,mbYesNo,0)=mrYes then
       begin
-       reg.OpenKey('HotKeys', false);
-       reg.writeInteger('Key',DataArea^.key);
-       reg.WriteInteger('Ext',DataArea^.exKey);
+       reg.writeInteger('HotKeys', 'Key',DataArea^.key);
+       reg.WriteInteger('HotKeys', 'Ext',DataArea^.exKey);
       end;
 end;
 
@@ -102,12 +102,12 @@ begin
   end;
 end;
 
-procedure TLangFrame.FrameEnter(Sender: TObject);
+procedure TLangFrame.LoadParams;
 var key, exkey:byte;
 begin
-    reg.OpenKey('HotKeys', true);
-    key:=reg.ReadInteger('Key');
-    exKey:=reg.ReadInteger('Ext');
+    //reg.OpenKey('HotKeys', true);
+    key:=reg.ReadInteger('HotKeys', 'Key', 0);
+    exKey:=reg.ReadInteger('HotKeys','Ext', 0);
     case key of
       $38: hotkeyind.ItemIndex:=1;
       $1D: hotkeyind.ItemIndex:=2;
@@ -119,5 +119,12 @@ begin
     if (exKey=$21) or (exkey=$1) then Extender.State:=tssOn else
     Extender.State:=tssOff;
 end;
+
+procedure TLangFrame.SaveParams;
+begin
+   reg.WriteInteger('HotKeys','Key',DataArea^.key);
+   reg.WriteInteger('HotKeys','Ext',DataArea^.exKey);
+end;
+
 
 end.

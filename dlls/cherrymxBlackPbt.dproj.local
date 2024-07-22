@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>1899/12/30 00:00:00.000.847,Z:\Программирование\repos\Project1.dproj=Z:\Программирование\repos\KeyboardMap\dlls\cherrymxBlack.dproj</Transaction>
-    <Transaction>1899/12/30 00:00:00.000.359,=Z:\Программирование\repos\Unit1.pas</Transaction>
-    <Transaction>2024/06/23 01:12:15.000.420,G:\some folder\keyboardMap\KeyboardMap\dlls\cherrymxPbt.dproj=G:\some folder\keyboardMap\KeyboardMap\dlls\cherrymxBlack.dproj</Transaction>
-    <Transaction>2024/06/23 02:42:50.000.097,Z:\Программирование\repos\KeyboardMap\dlls\cherrymxBlackPbt.dproj=Z:\Программирование\repos\KeyboardMap\dlls\cherrymxPbt.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.359,=Z:\Программирование\repos\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.097,Z:\Программирование\repos\KeyboardMap\dlls\cherrymxBlackPbt.dproj=Z:\Программирование\repos\KeyboardMap\dlls\cherrymxPbt.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.420,G:\some folder\keyboardMap\KeyboardMap\dlls\cherrymxPbt.dproj=G:\some folder\keyboardMap\KeyboardMap\dlls\cherrymxBlack.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.847,Z:\Программирование\repos\Project1.dproj=Z:\Программирование\repos\KeyboardMap\dlls\cherrymxBlack.dproj</Transaction>
   </Transactions>
 </BorlandProject>

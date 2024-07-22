@@ -1,2 +1,45 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<BorlandProject/>
+<BorlandProject>
+	<ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="components"/>
+    <File Path="components\AnalogMeter.pas"/>
+    <File Path="components\key.pas"/>
+    <File Path="components\winHeader.pas"/>
+    <File Path="components\winHeader.dfm"/>
+    <File Path="frames"/>
+    <File Path="frames\appearanceFrameUnit.pas"/>
+    <File Path="frames\appearanceFrameUnit.dfm"/>
+    <File Path="frames\languageFrameUnit.pas"/>
+    <File Path="frames\languageFrameUnit.dfm"/>
+    <File Path="frames\soundFrameUnit.pas"/>
+    <File Path="frames\soundFrameUnit.dfm"/>
+    <File Path="frames\statisticsFrameUnit.pas"/>
+    <File Path="frames\statisticsFrameUnit.dfm"/>
+    <File Path="HookProject"/>
+    <File Path="HookProject\FileMapping.pas"/>
+    <File Path="HookProject\KeyboardUnit.pas"/>
+    <File Path="units"/>
+    <File Path="units\interfaceMyFrame.pas"/>
+    <File Path="units\PressCounter.pas"/>
+    <File Path="units\SendKeyPressProc.pas"/>
+    <File Path="BackgroundUnit.pas"/>
+    <File Path="BackgroundUnit.dfm"/>
+    <File Path="Language.pas"/>
+    <File Path="Language.dfm"/>
+    <File Path="MainUnitLarge.pas"/>
+    <File Path="MainUnitLarge.dfm"/>
+    <File Path="MainUnitSmall.pas"/>
+    <File Path="MainUnitSmall.dfm"/>
+    <File Path="..\..\myComponents\MyAuxProc.pas"/>
+    <File Path="ParentUnit.pas"/>
+    <File Path="ParentUnit.dfm"/>
+    <File Path="settings.pas"/>
+    <File Path="settings.dfm"/>
+    <File Path="sound.pas"/>
+    <File Path="sound.dfm"/>
+    <File Path="speedometer.pas"/>
+    <File Path="speedometer.dfm"/>
+    <File Path="StatisticsOptions.pas"/>
+    <File Path="StatisticsOptions.dfm"/>
+  </ProjectSortOrder>
+</BorlandProject>

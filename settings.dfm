@@ -3,7 +3,7 @@ object SettingForm: TSettingForm
   Top = 0
   BorderStyle = bsDialog
   Caption = #1053#1072#1089#1090#1088#1086#1081#1082#1080
-  ClientHeight = 375
+  ClientHeight = 418
   ClientWidth = 628
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -34,37 +34,92 @@ object SettingForm: TSettingForm
     TabOrder = 0
     OnClick = LBmenuClick
   end
-  object Panel1: TPanel
-    Left = 183
-    Top = 0
-    Width = 445
-    Height = 313
-    TabOrder = 1
-  end
   object OKButton: TButton
-    Left = 378
-    Top = 331
+    Left = 370
+    Top = 371
     Width = 75
     Height = 25
     Caption = #1054#1050
-    TabOrder = 2
+    TabOrder = 1
     OnClick = OKButtonClick
   end
   object CancelButton: TButton
-    Left = 459
-    Top = 331
+    Left = 451
+    Top = 371
     Width = 75
     Height = 25
     Caption = #1054#1090#1084#1077#1085#1072
-    TabOrder = 3
+    TabOrder = 2
     OnClick = CancelButtonClick
   end
   object ApplayButton: TButton
-    Left = 540
-    Top = 331
+    Left = 532
+    Top = 371
     Width = 75
     Height = 25
     Caption = #1055#1088#1080#1084#1077#1085#1080#1090#1100
+    TabOrder = 3
+    OnClick = ApplayButtonClick
+  end
+  object pcPanel: TPageControl
+    Left = 183
+    Top = 0
+    Width = 433
+    Height = 362
+    ActivePage = TabSheet1
     TabOrder = 4
+    object TabSheet1: TTabSheet
+      Caption = 'TabSheet1'
+      inline settingFrame: TsettingFrame
+        Left = 13
+        Top = 0
+        Width = 380
+        Height = 329
+        TabOrder = 0
+        ExplicitLeft = 13
+        ExplicitWidth = 380
+        ExplicitHeight = 329
+      end
+    end
+    object TabSheet2: TTabSheet
+      Caption = 'TabSheet2'
+      ImageIndex = 1
+      inline SoundFrame: TSoundFrame
+        Left = 64
+        Top = 56
+        Width = 246
+        Height = 137
+        TabOrder = 0
+        ExplicitLeft = 64
+        ExplicitTop = 56
+      end
+    end
+    object TabSheet3: TTabSheet
+      Caption = 'TabSheet3'
+      ImageIndex = 2
+      inline LangFrame1: TLangFrame
+        Left = 48
+        Top = 24
+        Width = 293
+        Height = 204
+        TabOrder = 0
+        ExplicitLeft = 48
+        ExplicitTop = 24
+      end
+    end
+    object TabSheet4: TTabSheet
+      Caption = 'TabSheet4'
+      ImageIndex = 3
+      inline StatisticsFrame1: TStatisticsFrame
+        Left = 3
+        Top = 33
+        Width = 431
+        Height = 247
+        TabOrder = 0
+        ExplicitLeft = 3
+        ExplicitTop = 33
+        ExplicitWidth = 431
+      end
+    end
   end
 end

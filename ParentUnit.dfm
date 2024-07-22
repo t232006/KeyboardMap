@@ -78,11 +78,12 @@ object ParentForm: TParentForm
     Top = 88
     Width = 641
     Height = 120
+    BevelOuter = bvSpace
+    BevelWidth = 5
     Color = clOlive
     ParentBackground = False
     TabOrder = 1
     Visible = False
-    OnResize = SettingFormResize
     DesignSize = (
       641
       120)
