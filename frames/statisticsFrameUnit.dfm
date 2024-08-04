@@ -4,8 +4,6 @@ object StatisticsFrame: TStatisticsFrame
   Width = 459
   Height = 247
   TabOrder = 0
-  OnEnter = FrameEnter
-  OnExit = FrameExit
   object Shape1: TShape
     Left = 224
     Top = 48

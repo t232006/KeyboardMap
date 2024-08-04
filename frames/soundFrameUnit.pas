@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
   Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls,
-  Vcl.WinXCtrls, InterfaceMyFrame, Types, Strutils, Registry, IOUtils, BackgroundUnit;
+  Vcl.WinXCtrls, InterfaceMyFrame, Types, Strutils, Registry, IOUtils ;
 
 type
   TSoundFrame = class(TFrame, IMyFrame)
@@ -29,7 +29,7 @@ type
     sPath: string;
 
 implementation
-
+uses BackgroundUnit;
 {$R *.dfm}
 
 procedure TSoundFrame.Applay;
@@ -79,6 +79,9 @@ end;
 procedure TSoundFrame.SaveParams;
 begin
    reg.WriteInteger('sounds', 'curScheme', currentScheme);
+   if playSound.State=tssOn then
+   reg.WriteBool('sounds','playSound',true) else
+   reg.WriteBool('sounds','playSound',false);
 end;
 
 procedure TSoundFrame.SoundFolderCloseUp(Sender: TObject);

@@ -41,7 +41,7 @@ type
     N2: TMenuItem;
     N3: TMenuItem;
     FormHeader: TFormHeader;
-    SettingForm: TPanel;
+    SettingPanel: TPanel;
     boardSize: TToggleSwitch;
     LogToggle: TToggleSwitch;
     playSound: TToggleSwitch;
@@ -85,10 +85,11 @@ type
     procedure playSoundClick(Sender: TObject);
   private
     statType: TStatType;
-    baseHeight, basePanelTop: Integer;
+    baseHeight: Integer;
     const toExtend:boolean=true;
     procedure Extend;
     procedure Retract;
+
   protected
       LangCode: HKL;
      instantticker:word;
@@ -100,10 +101,11 @@ type
     MapFile: array of string;
     sh1, sh2: TColor;
     showGradient: boolean;
+    procedure AfterStaticsForm(Sender: TObject; tag: byte);
     procedure Appearance(ColScheme: TColScheme;
                          KeyRad:byte; backgroundColor: Tcolor;
                          const KeyFont1, KeyFont2:TFont;
-                         ButtonColor, PressColor, HoverColor: TColor;
+                         AButtonColor, APressColor, AHoverColor: TColor;
                          CommonTransp, KeybTransp:byte);
   end;
 
@@ -116,7 +118,7 @@ uses MainUnitSmall, MainUnitLarge, StatisticsOptions, BackgroundUnit;
 
 procedure TParentForm.Appearance(ColScheme: TColScheme;
   KeyRad: byte; backgroundColor: Tcolor;  const KeyFont1,
-  KeyFont2: TFont; ButtonColor, PressColor, HoverColor: TColor;
+  KeyFont2: TFont; AButtonColor, APressColor, AHoverColor: TColor;
   CommonTransp, KeybTransp: byte);
 var k:byte; key:TKey;
   {pan: TBevel;}  curCol:Tcolor;
@@ -159,6 +161,7 @@ begin
              if DownFont.Color=curCol then DownFont.Color:=clWhite;
              if MiddleFont.Color=curCol then MiddleFont.Color:=clWhite;
              PictureColor:=clWhite;
+             KeyFont1.Color:=clWhite;
           end;
           Light: with key do
           begin
@@ -167,6 +170,7 @@ begin
             if DownFont.Color=curCol then DownFont.Color:=clBlack;
             if MiddleFont.Color=curCol then MiddleFont.Color:=clBlack;
             PictureColor:=clBlack;
+            KeyFont1.Color:=clBlack;
           end;
           Classic: with key do
           begin
@@ -180,52 +184,46 @@ begin
             if DownFont.Color=curCol then DownFont.Color:=clBlack;
             if MiddleFont.Color=curCol then MiddleFont.Color:=clBlack;
             PictureColor:=clBlack;
+            KeyFont1.Color:=clBlack;
           end;
-          Custom: key.Color:=ButtonColor;
+          Custom: key.Color:=AButtonColor;
         end;
 
           with key do
           begin
-          Round:=KeyRad;
+            Round:=KeyRad;
           //diff:=curFontSize-UpFont.Size; UpFont:=keyFont1; UpFont.Size:=UpFont.Size-diff;
-          if keyFont1<>nil then
-          begin
+
             diff:=curFontSize-UpFont.Size;
             if (keyType=ktNum) then
             begin
-              if (KeyFont2<>nil) then
-              begin
                 Upfont:=keyfont2;
-                Upfont.Size:=upfont.Size-diff;
-              end
+                //Upfont.Size:=upfont.Size-diff;
             end else
             begin
               Upfont:=keyfont1;
               Upfont.Size:=upfont.Size-diff;
             end;
 
+
             diff:=curFontSize-MiddleFont.Size;
             Middlefont:=keyfont1;
+            {if (k>=37) and (k<=40) or (k=8) or (k=9)
+            or (k=160) or (k=161) or (k=93) or (k=98)
+            or (k=100) or (k=102) or (k=104) then
+              PictureColor:=keyfont1.Color;}
             Middlefont.Size:=Middlefont.Size-diff;
 
             diff:=curFontSize-downFont.Size;
             if (keyType=ktLetters)or (keyType=ktTrippleLetters) then
+              downfont:=keyfont2
+            else
             begin
-              if keyFont2<>nil then
-              begin
-                downfont:=keyfont2;
-                downfont.Size:=downfont.Size-diff;
-              end;
-            end else
-            begin
-              downfont:=keyfont1;
+              downfont:=keyfont1;   //for exNumKey
               downfont.Size:=downfont.Size-diff;
             end;
-
-            key.PressColor:=PressColor;
-            key.HoverColor:=HoverColor;
-          end;
-
+            key.PressColor:=APressColor;
+            key.HoverColor:=AHoverColor;
         end;
 
         end;
@@ -275,8 +273,9 @@ begin
         Close_statisticsExecute(Sender);
         statType:=st_current;
         BackForm.Statistics.Init(virtKeyboard.map);
-         BackForm.Statistics.IsEmpty:=false;
+
          showStatistics(st_current);
+         BackForm.Statistics.IsEmpty:=false;
          close_statistics.Enabled:=true;
 end;
 procedure TParentForm.exit1Click(Sender: TObject);
@@ -288,7 +287,7 @@ procedure TParentForm.Extend;
 begin
    toExtend:=true;
    Extendtimer.Enabled:=true;
-   settingForm.visible:=true;
+   SettingPanel.visible:=true;
 end;
 
 procedure TParentForm.GetPressing(var msg: TMessage);
@@ -347,16 +346,16 @@ procedure TParentForm.FormCreate(Sender: TObject);
 
 begin
   instantticker:=0;
-  VirtKeyboard:=TKeyboard.create(soundSetting.SoundFolder.Text);
-  FillChar(DataArea^, SizeOf(DataArea^), 0);
+  VirtKeyboard:=TKeyboard.create(backform.settingform.SoundFrame.SoundFolder.Text);
+  {FillChar(DataArea^, SizeOf(DataArea^), 0);
   DataArea^.FormHandle:=self.Handle;
-  DataArea^.key:=loadparams.ReadInteger('HotKeys', 'Key', 0);
-  DataArea^.ExKey:=loadparams.ReadInteger('HotKeys', 'Ext', 0);
+  {DataArea^.key:=loadparams.ReadInteger('HotKeys', 'Key', 0);
+  DataArea^.ExKey:=loadparams.ReadInteger('HotKeys', 'Ext', 0);}
   FormHeader.Align:=alTop;
-  SettingForm.Align:=alTop;
+  SettingPanel.Align:=alTop;
   baseHeight:=Height;
   //basePanelTop:=(FindComponent('panel1') as TBevel).Top;
-  //SettingForm.Height:=0;
+  //SettingPanel.Height:=0;
   try
     boardSize.Tag:=0;
    if classname='TKeyboardFormLarge' then
@@ -386,7 +385,7 @@ begin
   //FormHeader.SpeedButton3Click(Sender);
   if boardSize.Tag=0 then exit;
     sendmessage((Owner as TForm).Handle,WM_WANT_CLOSE,0,0);
-  //settingForm.Tag:=1;
+  //SettingPanel.Tag:=1;
 end;
 
 procedure TParentForm.FormHeaderStatSwitchClick(Sender: TObject);
@@ -439,6 +438,25 @@ begin
     WindowState:=TWindowState.wsMinimized;
 end;
 
+procedure TParentForm.AfterStaticsForm(Sender: TObject; tag: byte);
+begin
+  if Tag=1 then  //if applay button is pressed
+       begin
+         if mapFile<>nil then
+         begin
+           //mapFile:=ExtractFileDir( Paramstr(0))+'\maps\'+mapFile;
+           //if BackForm.Statistics.IsEmpty then
+             BackForm.Statistics.Init(mapFile);
+             showStatistics(st_summary);
+             BackForm.Statistics.IsEmpty:=false;
+         end else
+           Cur_session_statExecute(Sender);
+         speedform.speedM.Value:=BackForm.statistics.avSpeed;
+         speedform.speedM.HighZoneValue:=BackForm.statistics.recordSpeed;
+         close_statistics.Enabled:=true;
+       end;
+end;
+
 procedure TParentForm.Open_statisticsExecute(Sender: TObject);
   var statForm: TForm2;
   begin
@@ -446,20 +464,7 @@ procedure TParentForm.Open_statisticsExecute(Sender: TObject);
        statType:=st_summary;
        statForm:= Tform2.Create(Self);
        statForm.showmodal;
-       if statForm.Tag=1 then  //if applay button is pressed
-       begin
-         if mapFile<>nil then
-         begin
-           //mapFile:=ExtractFileDir( Paramstr(0))+'\maps\'+mapFile;
-           BackForm.Statistics.Init(mapFile);
-           BackForm.Statistics.IsEmpty:=false;
-           showStatistics(st_summary);
-         end else
-           Cur_session_statExecute(Sender);
-         speedform.speedM.Value:=BackForm.statistics.avSpeed;
-         speedform.speedM.HighZoneValue:=BackForm.statistics.recordSpeed;
-         close_statistics.Enabled:=true;
-       end;
+       AfterStaticsForm(Sender, statForm.Tag);
        statForm.Destroy;
 end;
 
@@ -487,8 +492,8 @@ end;
 {procedure TParentForm.SettingFormResize(Sender: TObject);
 begin
   (BackForm.activeForm.FindComponent('panel1') as TBevel).Top:=basePanelTop+
-  SettingForm.Height;
-  Height:=baseHeight+settingForm.Height;
+  SettingPanel.Height;
+  Height:=baseHeight+SettingPanel.Height;
 end;  }
 
 procedure TParentForm.Show(keyb: TKeyboard);
@@ -532,7 +537,8 @@ var tempKey: TKey;
          begin
            tempKey:=FindComponent('Key'+inttostr(i)) as TKey;
            if tempKey=nil then continue;
-           BackForm.Statistics.saveKey(i, tempKey);
+           if BackForm.Statistics.IsEmpty then
+            BackForm.Statistics.saveKey(i, tempKey);
            if showGradient then
             BackForm.Statistics.ShowStatisticsByGrad(statType, i,sh1,sh2, tempKey )
            else
@@ -568,24 +574,25 @@ begin
       //VirtKeyboard.save(false, round(backform.Statistics.avSpeed), backform.Statistics.recordSpeed);
 //       BackForm.Statistics.Init(virtKeyboard.map, virtKeyboard.GetLastFile);
         BackForm.Statistics.Init(virtKeyboard.map, virtKeyboard.CURRENTMAP);
-         BackForm.Statistics.IsEmpty:=false;
+
          showStatistics(st_summary);
+         BackForm.Statistics.IsEmpty:=false;
          close_statistics.Enabled:=true;
        //Cur_session_statExecute(sender);
 end;
 procedure TParentForm.extendTimerTimer(Sender: TObject);
 begin
 if toExtend then
-      //with settingForm do
+      //with SettingPanel do
       begin
-        if settingForm.height<105 then settingForm.height:=settingForm.height+40
+        if SettingPanel.height<105 then SettingPanel.height:=SettingPanel.height+40
         else Extendtimer.Enabled:=false;
       end else
       begin
-        if settingForm.height>0 then settingForm.height:=settingForm.height-40 else
+        if SettingPanel.height>0 then SettingPanel.height:=SettingPanel.height-40 else
         begin
           extendtimer.Enabled:=false;
-          settingForm.visible:=false;
+          SettingPanel.visible:=false;
         end;
       end;
 end;

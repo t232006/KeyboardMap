@@ -225,7 +225,7 @@ end;
 procedure TStatistics.saveKey(item: byte; var MyKey: TKey);
 begin
     //resetStatistics;
-    Fkeymas[10].MidLabel.posx:=0;  //not empty
+    //Fkeymas[10].MidLabel.posx:=0;  //not empty
     with MyKey do
     begin
       FKeymas[item].color:=Color;

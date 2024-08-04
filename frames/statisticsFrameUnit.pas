@@ -6,7 +6,8 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics,  ParentUnit,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ButtonGroup,
-  Vcl.Buttons, Vcl.ExtCtrls, Vcl.WinXCtrls, Vcl.FileCtrl, registry, interfaceMyFrame;
+  Vcl.Buttons, Vcl.ExtCtrls, Vcl.WinXCtrls, Vcl.FileCtrl, registry,
+  interfaceMyFrame;
 
 type
   TStatisticsFrame = class(TFrame, IMyFrame)
@@ -17,8 +18,6 @@ type
     ToggleSwitch: TToggleSwitch;
     fileslist: TFileListBox;
     ColorDialog1: TColorDialog;
-    procedure FrameExit(Sender: TObject);
-    procedure FrameEnter(Sender: TObject);
     procedure Shape1MouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     procedure ToggleSwitchClick(Sender: TObject);
@@ -29,6 +28,7 @@ type
     procedure Applay;
     procedure SaveParams;
     procedure LoadParams;
+    procedure OnShow;
   end;
 
 var
@@ -36,6 +36,16 @@ var
   //savefile: TIniFile;
 implementation
 {$R *.dfm}
+uses BackgroundUnit;
+
+procedure TStatisticsFrame.OnShow;
+begin
+    shape1.Brush.Color:=reg.ReadInteger('gradient','shape1', clwhite);
+      shape2.Brush.Color:=reg.ReadInteger('gradient','shape2', clwhite);
+      fdPath:=ExtractFileDir( Paramstr(0))+'\maps';
+     fileslist.ApplyFilePath(fdpath);
+     tag:=0;
+end;
 
 procedure TStatisticsFrame.Applay;
 var j:word;
@@ -44,37 +54,19 @@ begin
    if fileslist.ItemIndex>-1 then
 
    //
-   setlength((Owner as TParentForm).mapfile, fileslist.SelCount);
+   setlength(BackForm.activeForm.mapfile, fileslist.SelCount);
    //fileslist.Selected[i]
    for var i := 0 to fileslist.Count-1 do
     if fileslist.selected[i] then
     begin
-      (Owner as TParentForm).mapfile[j]:=fileslist.items[i];
+      BackForm.activeForm.mapfile[j]:=fileslist.items[i];
       inc(j);
     end;
-   (Owner as TParentForm).sh1:=shape1.Brush.Color;
-   (Owner as TParentForm).sh2:=shape2.Brush.Color;
-   if ToggleSwitch.State=tssOff then (Owner as TParentForm).showGradient:=true
-   else (Owner as TParentForm).showGradient:=false;
+   BackForm.activeForm.sh1:=shape1.Brush.Color;
+   BackForm.activeForm.sh2:=shape2.Brush.Color;
+   if ToggleSwitch.State=tssOff then BackForm.activeForm.showGradient:=true
+   else BackForm.activeForm.showGradient:=false;
    tag:=1;
-end;
-
-procedure TStatisticsFrame.FrameEnter(Sender: TObject);
-begin
-       //reg.OpenKey('gradient', true);
-       //reg:=TRegIniFile.Create() ;
-      shape1.Brush.Color:=reg.ReadInteger('gradient','shape1', clwhite);
-      shape2.Brush.Color:=reg.ReadInteger('gradient','shape2', clwhite);
-      fdPath:=ExtractFileDir( Paramstr(0))+'\maps';
-     fileslist.ApplyFilePath(fdpath);
-     tag:=0;
-end;
-
-procedure TStatisticsFrame.FrameExit(Sender: TObject);
-begin
-   //reg.OpenKey('gradient', true);
-   reg.WriteInteger('gradient', 'shape1', shape1.Brush.Color);
-   reg.WriteInteger('gradient', 'shape2', shape2.Brush.Color);
 end;
 
 procedure TStatisticsFrame.LoadParams;

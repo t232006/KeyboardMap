@@ -64,19 +64,8 @@ object FormHeader: TFormHeader
       OnClick = SpeedButton2Click
       ExplicitHeight = 32
     end
-    object SpeedButton3: TSpeedButton
-      Left = 702
-      Top = 1
-      Width = 36
-      Height = 31
-      Align = alRight
-      ImageIndex = 3
-      Images = ImageList
-      OnClick = SpeedButton1Click
-      ExplicitHeight = 32
-    end
     object sbSetting: TSpeedButton
-      Left = 630
+      Left = 666
       Top = 1
       Width = 36
       Height = 31
@@ -87,20 +76,22 @@ object FormHeader: TFormHeader
       Images = ImageList
       NumGlyphs = 2
       SelectedImageIndex = 8
+      ExplicitLeft = 630
       ExplicitHeight = 32
     end
     object SpeedButton4: TSpeedButton
-      Left = 666
+      Left = 702
       Top = 1
       Width = 36
       Height = 31
       Align = alRight
       ImageIndex = 6
       Images = ImageList
+      ExplicitLeft = 666
       ExplicitHeight = 32
     end
     object SpeedButton5: TSpeedButton
-      Left = 594
+      Left = 630
       Top = 1
       Width = 36
       Height = 31
@@ -109,6 +100,7 @@ object FormHeader: TFormHeader
       Images = ImageList
       NumGlyphs = 2
       OnClick = SpeedButton5Click
+      ExplicitLeft = 594
       ExplicitHeight = 32
     end
   end

@@ -1,9 +1,6 @@
 ﻿[WinCaption]
 Coordinates=131,10,71,51
 
-[SpeedButton3]
-Coordinates=155,114,84,33
-
 [WinIcon]
 Coordinates=67,10,54,51
 
@@ -20,5 +17,5 @@ Coordinates=34,159,62,33
 Coordinates=10,71,84,33
 
 []
-Coordinates=212,10,87,33
+Coordinates=155,114,84,33
 

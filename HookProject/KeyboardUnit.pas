@@ -118,6 +118,7 @@ begin
         18: if byte(ls shr 24)=$21 then FVirtCode:=165 else FVirtCode:=164; //alt
         17: if byte(ls shr 24)=$01 then FVirtCode:=163 else FVirtCode:=162; //ctrl
       end;
+      if (WS=13) and (byte(ls shr 24)=$01) then inc(Fmap[12]) else //for right Enter
       inc(Fmap[FVirtCode]);
       if ord(letter)<>0 then
       Ftext:=Ftext+fletter else

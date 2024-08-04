@@ -11,7 +11,9 @@ object SettingForm: TSettingForm
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  OnClose = FormClose
   OnCreate = FormCreate
+  OnShow = FormShow
   TextHeight = 15
   object LBmenu: TListBox
     Left = 0
@@ -79,6 +81,10 @@ object SettingForm: TSettingForm
         ExplicitLeft = 13
         ExplicitWidth = 380
         ExplicitHeight = 329
+        inherited FontDialog1: TFontDialog
+          Left = 176
+          Top = 136
+        end
       end
     end
     object TabSheet2: TTabSheet
@@ -97,7 +103,7 @@ object SettingForm: TSettingForm
     object TabSheet3: TTabSheet
       Caption = 'TabSheet3'
       ImageIndex = 2
-      inline LangFrame1: TLangFrame
+      inline LangFrame: TLangFrame
         Left = 48
         Top = 24
         Width = 293
@@ -110,7 +116,7 @@ object SettingForm: TSettingForm
     object TabSheet4: TTabSheet
       Caption = 'TabSheet4'
       ImageIndex = 3
-      inline StatisticsFrame1: TStatisticsFrame
+      inline StatisticsFrame: TStatisticsFrame
         Left = 3
         Top = 33
         Width = 431

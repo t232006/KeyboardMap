@@ -237,8 +237,8 @@ if (FPicture<>nil) and (FPicture.Height>0) then
             canvas.CopyRect(PictureRect,
                             FInvertPicture.Canvas,
                             FPicture.Canvas.ClipRect);
-      if (FCurrentColor=FPressColor) then
-        canvas.FloodFill(Fround, Fround, clWhite, fsSurface);
+      if (FCurrentColor=FPressColor) or (FCurrentColor=FHoverColor) then
+        canvas.FloodFill(PicturePos.ALeft, PicturePos.ATop, clWhite, fsSurface);
     end
       else
     canvas.BrushCopy(PictureRect,

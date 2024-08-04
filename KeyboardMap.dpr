@@ -59,7 +59,7 @@ begin
 
   end;   }
    Application.CreateForm(TBackForm, BackForm);
-  Application.CreateForm(TSettingForm, SettingForm);
+  //Application.CreateForm(TSettingForm, SettingForm);
   //Application.CreateForm(TKeyboardFormLarge, KeyboardFormLarge);
   //Application.CreateForm(TKeyboardFormSmall, KeyboardFormSmall);
   //Application.CreateForm(TForm2, Form2);

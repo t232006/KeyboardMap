@@ -16,7 +16,6 @@ type
     WinCaption: TLabel;
     ImageList: TImageList;
     SpeedButton2: TSpeedButton;
-    SpeedButton3: TSpeedButton;
     sbSetting: TSpeedButton;
     SpeedButton4: TSpeedButton;
     SpeedButton5: TSpeedButton;
@@ -42,7 +41,7 @@ type
 const
     down:boolean=false;
 implementation
-uses ParentUnit, settings;
+uses ParentUnit, backgroundUnit;
 {$R *.dfm}
 
 procedure TFormHeader.FrameResize(Sender: TObject);
@@ -91,7 +90,7 @@ end;
 
 procedure TFormHeader.SpeedButton5Click(Sender: TObject);
 begin
-  settingform.showmodal;
+  backform.settingform.showmodal;
 end;
 
 procedure TFormHeader.WinIconClick(Sender: TObject);

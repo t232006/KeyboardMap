@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.056,=Z:\Программирование\repos\KeyboardMap\BackgroundUnit.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.444,=Z:\Программирование\repos\KeyboardSpy\Unit1.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.742,Z:\Программирование\repos\KeyboardSpy\Unit1.pas=Z:\Программирование\repos\KeyboardSpy\KeyboardUnit.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.055,Z:\Программирование\repos\KeyboardSpy\KeyboardHook.dproj=Z:\Программирование\repos\Project1.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.742,Z:\Программирование\repos\KeyboardSpy\KeyboardUnit.pas=Z:\Программирование\repos\KeyboardSpy\Unit1.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.560,Z:\Программирование\repos\KeyboardMap\BackgroundUnit.pas=</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.055,Z:\Программирование\repos\Project1.dproj=Z:\Программирование\repos\KeyboardSpy\KeyboardHook.dproj</Transaction>
     <Transaction>1899.12.30 00:00:00.000.863,=Z:\Программирование\repos\KeyboardMap\sound.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.532,Z:\Программирование\repos\KeyboardMap\sound.pas=</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.056,=Z:\Программирование\repos\KeyboardMap\BackgroundUnit.pas</Transaction>
   </Transactions>
 </BorlandProject>

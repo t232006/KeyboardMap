@@ -1,0 +1,128 @@
+unit settings;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls,
+  languageFrameUnit, appearanceFrameUnit, soundFrameUnit,
+  statisticsFrameUnit, registry, Vcl.ComCtrls;
+
+type
+  TSettingForm = class(TForm)
+    LBmenu: TListBox;
+    OKButton: TButton;
+    CancelButton: TButton;
+    ApplayButton: TButton;
+    pcPanel: TPageControl;
+    TabSheet1: TTabSheet;
+    TabSheet2: TTabSheet;
+    TabSheet3: TTabSheet;
+    TabSheet4: TTabSheet;
+    settingFrame: TsettingFrame;
+    SoundFrame: TSoundFrame;
+    LangFrame1: TLangFrame;
+    StatisticsFrame1: TStatisticsFrame;
+
+    procedure LBmenuClick(Sender: TObject);
+    procedure CancelButtonClick(Sender: TObject);
+    procedure OKButtonClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure ApplayButtonClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+  private
+    reg: TRegIniFile;
+   // procedure Includeframe<T>(MyFrame: Tframe);
+  public
+  end;
+
+var
+  //SettingForm: TSettingForm;
+   settingFrame: TsettingFrame;
+    soundFrame: TSoundFrame;
+    langFrame: TLangFrame;
+    statisticsFrame: TStatisticsFrame;
+
+implementation
+
+{$R *.dfm}
+
+procedure TSettingForm.ApplayButtonClick(Sender: TObject);
+begin
+  //settingFrame.SaveParams;
+  tag:=1;
+  SettingFrame.Applay;
+  Close;
+end;
+
+procedure TSettingForm.CancelButtonClick(Sender: TObject);
+begin
+  settingFrame.LoadParams;
+  settingFrame.Applay;
+  tag:=2;
+  close;
+end;
+
+procedure TSettingForm.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  if tag=1 then settingFrame.SaveParams;
+
+end;
+
+procedure TSettingForm.FormCreate(Sender: TObject);
+begin
+  reg:=TReginifile.Create('Software\'+ChangeFileExt(ExtractFileName(Paramstr(0)),''));
+  for var p := 0 to pcPanel.PageCount-1 do
+    pcpanel.Pages[p].TabVisible:=false;
+
+  settingFrame.reg:=self.reg;
+  SoundFrame.reg:=self.reg;
+  langFrame1.reg:=self.reg;
+  statisticsFrame1.reg:=self.reg;
+
+  settingFrame.LoadParams;
+    Settingframe.Applay;
+    SoundFrame.LoadParams;
+    SoundFrame.Applay;
+    LangFrame1.LoadParams;
+    LangFrame1.Applay;
+    StatisticsFrame1.LoadParams;
+    StatisticsFrame1.Applay;
+  LBmenu.ItemIndex:=0;
+  LBmenuClick(sender);
+end;
+
+procedure TSettingForm.FormShow(Sender: TObject);
+begin
+  tag:=0;
+end;
+
+procedure TSettingForm.LBmenuClick(Sender: TObject);
+begin
+    pcPanel.ActivePageIndex:=lbMenu.ItemIndex;
+    {case pcpanel.ActivePageIndex of
+0: begin
+    settingFrame.LoadParams;
+  end;
+1:begin
+    soundFrame.LoadParams;
+  end;
+end;  }
+
+    //(pcPanel.Pages[pcPanel.ActivePageIndex].Controls[0] as TFrame).reg:=self.reg;
+end;
+
+procedure TSettingForm.OKButtonClick(Sender: TObject);
+begin
+ case lbmenu.ItemIndex of
+ 0: Settingframe.Applay;
+ 1: soundFrame.Applay;
+ 2: langframe.Applay;
+ 3: statisticsFrame.Applay;
+
+  end;
+  tag:=1;
+end;
+
+end.
