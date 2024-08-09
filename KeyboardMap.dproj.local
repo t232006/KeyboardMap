@@ -1,6 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="Z:\Программирование"/>
+    <File Path="..\..\components"/>
+    <File Path="..\..\components\dllAux"/>
+    <File Path="..\..\components\dllAux\MyAuxProc.pas"/>
     <File Path="components"/>
     <File Path="components\AnalogMeter.pas"/>
     <File Path="components\key.pas"/>
@@ -30,7 +34,6 @@
     <File Path="MainUnitLarge.dfm"/>
     <File Path="MainUnitSmall.pas"/>
     <File Path="MainUnitSmall.dfm"/>
-    <File Path="..\..\myComponents\MyAuxProc.pas"/>
     <File Path="ParentUnit.pas"/>
     <File Path="ParentUnit.dfm"/>
     <File Path="settings.pas"/>

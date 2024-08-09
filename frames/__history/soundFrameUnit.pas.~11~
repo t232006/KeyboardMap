@@ -35,13 +35,7 @@ uses BackgroundUnit;
 procedure TSoundFrame.Applay;
 begin
     if playsound.Tag<>0 then exit;
-    try
-      playSound.Tag:=1;
-      Backform.activeForm.TogPlaySound.State:=playsound.state;
-    finally
-      playSound.Tag:=0;
-    end;
-
+  Backform.activeForm.playSound.State:=playsound.state;
 end;
 
 procedure TSoundFrame.LoadParams;

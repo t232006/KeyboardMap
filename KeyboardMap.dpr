@@ -19,14 +19,14 @@ uses
   BackgroundUnit in 'BackgroundUnit.pas' {BackForm},
   MainUnitLarge in 'MainUnitLarge.pas' {KeyboardFormLarge},
   key in 'components\key.pas',
-  MyAuxProc in '..\..\myComponents\MyAuxProc.pas',
   languageFrameUnit in 'frames\languageFrameUnit.pas' {LangFrame: TFrame},
   soundFrameUnit in 'frames\soundFrameUnit.pas' {SoundFrame: TFrame},
   statisticsFrameUnit in 'frames\statisticsFrameUnit.pas' {StatisticsFrame: TFrame},
   appearanceFrameUnit in 'frames\appearanceFrameUnit.pas' {settingFrame: TFrame},
   settings in 'settings.pas' {SettingForm},
   Language in 'Language.pas' {LangForm},
-  interfaceMyFrame in 'units\interfaceMyFrame.pas';
+  interfaceMyFrame in 'units\interfaceMyFrame.pas',
+  MyAuxProc in '..\..\components\dllAux\MyAuxProc.pas';
 
 {$R *.res}
 //var //pbuff: array[0..127] of char;

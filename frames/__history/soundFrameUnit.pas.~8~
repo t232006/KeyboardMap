@@ -12,10 +12,10 @@ type
     Label1: TLabel;
     playSound: TToggleSwitch;
     SoundFolder: TComboBox;
+    procedure FrameEnter(Sender: TObject);
     procedure SoundFolderCloseUp(Sender: TObject);
   private
-    currentSchemeNum: byte;
-    currentScheme: string;
+    currentScheme: byte;
 
     path: string;
   public
@@ -26,7 +26,7 @@ type
   end;
   var
    playSoundB: boolean;
-    //sPath: string;
+    sPath: string;
 
 implementation
 uses BackgroundUnit;
@@ -35,17 +35,17 @@ uses BackgroundUnit;
 procedure TSoundFrame.Applay;
 begin
     if playsound.Tag<>0 then exit;
-    try
-      playSound.Tag:=1;
-      Backform.activeForm.TogPlaySound.State:=playsound.state;
-    finally
-      playSound.Tag:=0;
-    end;
-
+  Backform.activeForm.playSound.State:=playsound.state;
 end;
 
-procedure TSoundFrame.LoadParams;
-  var folderslist: TStringDynArray;  st: string;
+procedure TSoundFrame.FrameEnter(Sender: TObject);
+var folderslist: TStringDynArray;  st: string;
+function GetDir(fullDir: string): string;
+var count: integer;// s:string;
+begin
+    count:=Pos('\',reverseString(fullDir));
+    result:=ansiRightStr(fullDir,count-1);
+end;
 
 begin
   path:=ExtractFileDir(Paramstr(0));
@@ -54,27 +54,31 @@ begin
   for st in folderslist do
     soundfolder.Items.Add(TPath.GetFileNameWithoutExtension(st));
 
-  currentSchemeNum:=reg.ReadInteger('sounds','curSchemeNum',0);
-  currentScheme:=reg.ReadString('sounds','curScheme','');
+  currentScheme:=reg.ReadInteger('sounds','curScheme',0);
   playSoundB:=reg.ReadBool('sounds','playSound', false);
 
   playSound.Tag:=1;
   try
-    if (playSoundB) and (currentScheme<>'') then
+    if playSoundB then
     playSound.State:=tssOn else playSound.State:=tssoff;
     finally
     playSound.Tag:=0;
   end;
   //reg.Destroy;
-  soundfolder.ItemIndex:=currentSchemeNum;
-  //sPath:=ExtractFileDir(Paramstr(0))+'\sounds\'+soundFolder.Items[currentSchemeNum]+'\';
+  soundfolder.ItemIndex:=currentScheme;
+  sPath:=ExtractFileDir(Paramstr(0))+'\sounds\'+soundFolder.Items[currentScheme]+'\';
 
+end;
+
+procedure TSoundFrame.LoadParams;
+begin
+  currentScheme:=reg.ReadInteger('sounds','curScheme',0);
+  playSoundB:=reg.ReadBool('sounds','playSound', false);
 end;
 
 procedure TSoundFrame.SaveParams;
 begin
-   reg.WriteInteger('sounds', 'curSchemeNum', currentSchemeNum);
-   reg.WriteString('sounds', 'curScheme', currentScheme);
+   reg.WriteInteger('sounds', 'curScheme', currentScheme);
    if playSound.State=tssOn then
    reg.WriteBool('sounds','playSound',true) else
    reg.WriteBool('sounds','playSound',false);
@@ -82,7 +86,7 @@ end;
 
 procedure TSoundFrame.SoundFolderCloseUp(Sender: TObject);
 begin
-  currentSchemeNum:=soundFolder.ItemIndex;
+  currentScheme:=soundFolder.ItemIndex;
 end;
 
 end.

@@ -74,9 +74,9 @@ begin
    if showSpeed then activeForm.showSpeed.State:=tssOn
                       else
                       activeForm.showSpeed.State:=tssOff;
-   if playSound then activeForm.playSound.State:=tssOn
+   {if playSound then activeForm.TogPlaySound.State:=tssOn
                       else
-                      activeForm.playSound.State:=tssOff;
+                      activeForm.TogPlaySound.State:=tssOff;}
 
    //loadparams.Destroy;
    //activeForm.Show;
@@ -129,7 +129,7 @@ begin
      //tempform.boardSize.State:=tssOff;
   tempform.VirtKeyboard:=activeform.VirtKeyboard;
   tempform.showSpeed.State:=activeform.showSpeed.State;
-  tempform.playSound.State:=activeform.playSound.State;
+  tempform.TogPlaySound.State:=activeform.TogPlaySound.State;
   tempform.boardSize.State:=activeform.boardSize.State;
   tempform.Show;//(activeform.VirtKeyboard);
   activeform.Close;

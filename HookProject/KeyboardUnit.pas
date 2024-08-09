@@ -132,7 +132,7 @@ begin
   fPath:=ExtractFileDir( Paramstr(0));
   FScans:=TDictionary<string,string>.create;
   LoadScans;
-  SetSoundLibrary(soundLib);
+  if soundLib<>'' then SetSoundLibrary(soundLib);
 end;
 
 function TKeyboard.CURRENTMAP: string;

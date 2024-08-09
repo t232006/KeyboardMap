@@ -107,7 +107,7 @@ object ParentForm: TParentForm
       TabStop = False
       ThumbWidth = 20
     end
-    object playSound: TToggleSwitch
+    object TogPlaySound: TToggleSwitch
       Left = 411
       Top = 19
       Width = 106
@@ -119,7 +119,7 @@ object ParentForm: TParentForm
       TabOrder = 2
       TabStop = False
       ThumbWidth = 20
-      OnClick = playSoundClick
+      OnClick = TogPlaySoundClick
     end
     object showSpeed: TToggleSwitch
       Left = 241

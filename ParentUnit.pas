@@ -44,7 +44,7 @@ type
     SettingPanel: TPanel;
     boardSize: TToggleSwitch;
     LogToggle: TToggleSwitch;
-    playSound: TToggleSwitch;
+    TogPlaySound: TToggleSwitch;
     showSpeed: TToggleSwitch;
     StatSwitch: TToggleSwitch;
     extendTimer: TTimer;
@@ -82,7 +82,7 @@ type
     procedure extendTimerTimer(Sender: TObject);
     procedure WinOverrideClick(Sender: TObject);
     procedure showSpeedClick(Sender: TObject);
-    procedure playSoundClick(Sender: TObject);
+    procedure TogPlaySoundClick(Sender: TObject);
   private
     statType: TStatType;
     baseHeight: Integer;
@@ -295,7 +295,7 @@ procedure TParentForm.GetPressing(var msg: TMessage);
     curspeed: word;
     plSound: boolean;
 begin
-   if playSound.State=tssOn then plSound:=true else plSound:=false;
+   if TogPlaySound.State=tssOn then plSound:=true else plSound:=false;
    VirtKeyboard.addPress(msg.WParam, msg.LParam, LangCode, plSound);
    ScanHex:=InttoHex(msg.LParam);
    if virtkeyboard.isPressed then
@@ -343,14 +343,17 @@ end;
 
 procedure TParentForm.FormCreate(Sender: TObject);
 //var n:longword;  //dWin:Hwnd;
-
+var reg: TRegIniFile; curScheme: string;
 begin
+  reg:=TRegIniFile.create('Software\'+ChangeFileExt(ExtractFileName(Paramstr(0)),''));
+  curScheme:=reg.ReadString('Sounds','curScheme','');
   instantticker:=0;
-  VirtKeyboard:=TKeyboard.create(backform.settingform.SoundFrame.SoundFolder.Text);
-  {FillChar(DataArea^, SizeOf(DataArea^), 0);
-  DataArea^.FormHandle:=self.Handle;
+  VirtKeyboard:=TKeyboard.create(curScheme);
+  {
   {DataArea^.key:=loadparams.ReadInteger('HotKeys', 'Key', 0);
   DataArea^.ExKey:=loadparams.ReadInteger('HotKeys', 'Ext', 0);}
+  FillChar(DataArea^, SizeOf(DataArea^), 0);
+  DataArea^.FormHandle:=self.Handle;
   FormHeader.Align:=alTop;
   SettingPanel.Align:=alTop;
   baseHeight:=Height;
@@ -468,13 +471,18 @@ procedure TParentForm.Open_statisticsExecute(Sender: TObject);
        statForm.Destroy;
 end;
 
-procedure TParentForm.playSoundClick(Sender: TObject);
+procedure TParentForm.TogPlaySoundClick(Sender: TObject);
 begin
-      soundSetting.playSound.Tag:=1;
-  try
-  soundsetting.playsound.state:=playSound.State;
-  finally
-    soundSetting.playSound.Tag:=0;
+
+  with BackForm.settingform.SoundFrame do
+  begin
+    if playSound.Tag<>0 then exit;
+    playSound.Tag:=1;
+    try
+    playsound.state:=TogPlaySound.State;
+    finally
+    playSound.Tag:=0;
+    end;
   end;
 end;
 

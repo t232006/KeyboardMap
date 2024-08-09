@@ -170,7 +170,6 @@
             <Form>KeyboardFormLarge</Form>
         </DCCReference>
         <DCCReference Include="components\key.pas"/>
-        <DCCReference Include="..\..\myComponents\MyAuxProc.pas"/>
         <DCCReference Include="frames\languageFrameUnit.pas">
             <Form>LangFrame</Form>
             <FormType>dfm</FormType>
@@ -200,6 +199,7 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="units\interfaceMyFrame.pas"/>
+        <DCCReference Include="..\..\components\dllAux\MyAuxProc.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

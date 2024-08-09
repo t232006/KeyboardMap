@@ -4,8 +4,8 @@ object soundSetting: TsoundSetting
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = #1079#1074#1091#1082
-  ClientHeight = 139
-  ClientWidth = 258
+  ClientHeight = 138
+  ClientWidth = 254
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
