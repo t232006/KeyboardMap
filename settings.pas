@@ -56,6 +56,7 @@ begin
   tag:=1;
   case LBmenu.ItemIndex of
   0: SettingFrame.Applay;
+  1: SoundFrame.Applay;
   3: begin
        statisticsFrame.Applay;
        BackForm.activeForm.AfterStaticsForm(sender, tag);
@@ -78,8 +79,6 @@ begin
     end;
 
   end;
-
-
   tag:=2;
   close;
 end;
@@ -87,6 +86,8 @@ end;
 procedure TSettingForm.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   if tag=1 then settingFrame.SaveParams;
+  StatisticsFrame.SaveParams;
+  SoundFrame.SaveParams;
 
 end;
 
@@ -107,6 +108,12 @@ end;
 procedure TSettingForm.FormShow(Sender: TObject);
 begin
   tag:=0;
+  case pcpanel.ActivePageIndex of
+  3:  begin
+      StatisticsFrame.OnShow;
+      end;
+    end;
+
 end;
 
 procedure TSettingForm.LBmenuClick(Sender: TObject);

@@ -198,7 +198,7 @@ begin
             if (keyType=ktNum) then
             begin
                 Upfont:=keyfont2;
-                //Upfont.Size:=upfont.Size-diff;
+                Upfont.Size:=upfont.Size-diff;
             end else
             begin
               Upfont:=keyfont1;
@@ -552,7 +552,7 @@ var tempKey: TKey;
            else
             BackForm.Statistics.ShowStatisticsByNum(stattype, i, tempKey);
            //n5.Enabled:=true;
-         end;
+          end;
     StatSwitch.Visible:=true;
     if sh1=sh2 then StatSwitch.Enabled:=false else
                       StatSwitch.Enabled:=true;

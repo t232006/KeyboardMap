@@ -69,7 +69,7 @@ begin
    activeForm.Left:=loadparams.ReadInteger('Windows', 'PosX', 0);
    activeForm.Top:=loadparams.ReadInteger('Windows', 'PosY', 0);
    showSpeed:=loadparams.ReadBool('Windows','showSpeed', false);
-   playSound:=loadparams.ReadBool('Sounds','playSound', false);
+   //playSound:=loadparams.ReadBool('Sounds','playSound', false);
 
    if showSpeed then activeForm.showSpeed.State:=tssOn
                       else
@@ -128,13 +128,16 @@ begin
      tempform:= TKeyboardFormLarge.Create(self);
      //tempform.boardSize.State:=tssOff;
   tempform.VirtKeyboard:=activeform.VirtKeyboard;
-  tempform.showSpeed.State:=activeform.showSpeed.State;
-  tempform.TogPlaySound.State:=activeform.TogPlaySound.State;
+  //tempform.showSpeed.State:=activeform.showSpeed.State;
+  //tempform.TogPlaySound.State:=activeform.TogPlaySound.State;
   tempform.boardSize.State:=activeform.boardSize.State;
+
   tempform.Show;//(activeform.VirtKeyboard);
+
   activeform.Close;
   activeform.TrayIcon.Visible:=false;
   //settingform.ApplayAll;
   activeform:=tempform;
+  settingForm.ApplayAll;
 end;
 end.

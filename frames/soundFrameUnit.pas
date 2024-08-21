@@ -41,6 +41,8 @@ begin
     finally
       playSound.Tag:=0;
     end;
+    if currentScheme<>'' then
+    backform.activeForm.VirtKeyboard.SetSoundLibrary(currentScheme);
 
 end;
 
@@ -73,6 +75,8 @@ end;
 
 procedure TSoundFrame.SaveParams;
 begin
+   currentSchemeNum:=soundFolder.ItemIndex;
+   currentScheme:=soundFolder.Text;
    reg.WriteInteger('sounds', 'curSchemeNum', currentSchemeNum);
    reg.WriteString('sounds', 'curScheme', currentScheme);
    if playSound.State=tssOn then
@@ -83,6 +87,7 @@ end;
 procedure TSoundFrame.SoundFolderCloseUp(Sender: TObject);
 begin
   currentSchemeNum:=soundFolder.ItemIndex;
+  currentScheme:=soundFolder.Text;
 end;
 
 end.

@@ -29,9 +29,11 @@ TKeyboard=class
     procedure CleanMap(var temp:TKeyboardMap);
     procedure LoadScans;
    public
+     //const CURRENTMAP='\maps\CurrentMap.h';
+     function CURRENTMAP: string;
      procedure addPress(ws:word; ls: longint; langcode:HKL; playsound: boolean);
      procedure save(newFile:boolean; avSpeed, recSpeed:word);
-     function GetLastFile:string;
+     //function GetLastFile:string;
      procedure SetSoundLibrary(soundLib: string);
      property VirtCode: word read FVirtCode;
      property map:TKeyboardMap read Fmap;
@@ -52,28 +54,31 @@ begin
     FreeLibrary(libhandle);
 end;
 
-function TKeyboard.GetLastFile:string;
-    var sr: TSearchRec;
-        fdPath: string;
-        CurFileTime, LatestTime: TDateTime;
-    begin
-        fdPath:=fPath+'\maps\*map.b';
+{$REGION 'GetLastFile'}
+  {function TKeyboard.GetLastFile:string;
+      var sr: TSearchRec;
+          fdPath: string;
+          CurFileTime, LatestTime: TDateTime;
+      begin
+          fdPath:=fPath+'\maps\*map.b';
 
-        if FindFirst(fdPath, faNormal,SR)=0 then
-        begin
-           result:=fPath+'\maps\'+SR.Name;
-           LatestTime:=FileDateToDateTime(FileAge(result));
-           repeat
-              CurFileTime:=FileDateToDateTime(FileAge(fPath+'\maps\'+SR.Name));
-              if CurFileTime > LatestTime then
-                begin
-                  result:=fPath+'\maps\'+sr.Name;
-                  LatestTime:=CurFileTime;
-                end;
-           until FindNext(SR)<>0;
-        end;
+          if FindFirst(fdPath, faNormal,SR)=0 then
+          begin
+             result:=fPath+'\maps\'+SR.Name;
+             LatestTime:=FileDateToDateTime(FileAge(result));
+             repeat
+                CurFileTime:=FileDateToDateTime(FileAge(fPath+'\maps\'+SR.Name));
+                if CurFileTime > LatestTime then
+                  begin
+                    result:=fPath+'\maps\'+sr.Name;
+                    LatestTime:=CurFileTime;
+                  end;
+             until FindNext(SR)<>0;
+          end;
 
-    end;
+      end;    }
+{$ENDREGION}
+
 
 function IfThen(AValue: boolean; const ATrue:string; const AFalse:string):string;
 begin
@@ -113,6 +118,7 @@ begin
         18: if byte(ls shr 24)=$21 then FVirtCode:=165 else FVirtCode:=164; //alt
         17: if byte(ls shr 24)=$01 then FVirtCode:=163 else FVirtCode:=162; //ctrl
       end;
+      if (WS=13) and (byte(ls shr 24)=$01) then inc(Fmap[12]) else //for right Enter
       inc(Fmap[FVirtCode]);
       if ord(letter)<>0 then
       Ftext:=Ftext+fletter else
@@ -126,7 +132,12 @@ begin
   fPath:=ExtractFileDir( Paramstr(0));
   FScans:=TDictionary<string,string>.create;
   LoadScans;
-  SetSoundLibrary(soundLib);
+  if soundLib<>'' then SetSoundLibrary(soundLib);
+end;
+
+function TKeyboard.CURRENTMAP: string;
+begin
+  result:=fPath+'\maps\CurrentMap.b';
 end;
 
 procedure TKeyboard.LoadScans;
@@ -163,6 +174,8 @@ procedure TKeyboard.SetSoundLibrary(soundLib: string);
 var s: string;
 begin
     if (@playClick<>nil) then FreeLibrary(libhandle);
+    //if length(soundLib)>13 then s:='Sounds\'+soundLib+'1.dll' else
+
     s:='Sounds\'+soundLib+'.dll' ;
     LibHandle:= LoadLibrary(Pchar(s));
      @playClick:= GetProcAddress(LibHandle,'playClick');
@@ -214,7 +227,7 @@ procedure TKeyboard.save(newFile: boolean; avSpeed, recSpeed:word);
     begin
        curDateTime:=now;
        result:=FormatDateTime('dd-mm-yyyy-hh-nn-ss',curDateTime);
-       result:=ExtractFileDir(Paramstr(0))+'\maps\'+result+'map.b';
+       result:=ExtractFileDir(Paramstr(0))+'\maps\'+result+'m.b';
     end;
  //=============================
 
@@ -224,9 +237,12 @@ begin
     textname:=fPath+'\text.txt' ;
     logname:=fPath+'\log.txt';
     if newFile then
-      mapname:=GetMapFilename
+    begin
+      mapname:=GetMapFilename;
+      Deletefile(pwidechar(CURRENTMAP));
+    end
     else
-      mapname:=GetLastFile;
+      mapname:=CURRENTMAP; //GetLastFile;
     if mapname='' then
     begin
       save(true, avSpeed, recSpeed);

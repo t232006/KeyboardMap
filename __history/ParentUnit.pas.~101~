@@ -44,7 +44,7 @@ type
     SettingPanel: TPanel;
     boardSize: TToggleSwitch;
     LogToggle: TToggleSwitch;
-    playSound: TToggleSwitch;
+    TogPlaySound: TToggleSwitch;
     showSpeed: TToggleSwitch;
     StatSwitch: TToggleSwitch;
     extendTimer: TTimer;
@@ -82,13 +82,14 @@ type
     procedure extendTimerTimer(Sender: TObject);
     procedure WinOverrideClick(Sender: TObject);
     procedure showSpeedClick(Sender: TObject);
-    procedure playSoundClick(Sender: TObject);
+    procedure TogPlaySoundClick(Sender: TObject);
   private
     statType: TStatType;
-    baseHeight, basePanelTop: Integer;
+    baseHeight: Integer;
     const toExtend:boolean=true;
     procedure Extend;
     procedure Retract;
+
   protected
       LangCode: HKL;
      instantticker:word;
@@ -100,6 +101,7 @@ type
     MapFile: array of string;
     sh1, sh2: TColor;
     showGradient: boolean;
+    procedure AfterStaticsForm(Sender: TObject; tag: byte);
     procedure Appearance(ColScheme: TColScheme;
                          KeyRad:byte; backgroundColor: Tcolor;
                          const KeyFont1, KeyFont2:TFont;
@@ -271,8 +273,9 @@ begin
         Close_statisticsExecute(Sender);
         statType:=st_current;
         BackForm.Statistics.Init(virtKeyboard.map);
-         BackForm.Statistics.IsEmpty:=false;
+
          showStatistics(st_current);
+         BackForm.Statistics.IsEmpty:=false;
          close_statistics.Enabled:=true;
 end;
 procedure TParentForm.exit1Click(Sender: TObject);
@@ -292,7 +295,7 @@ procedure TParentForm.GetPressing(var msg: TMessage);
     curspeed: word;
     plSound: boolean;
 begin
-   if playSound.State=tssOn then plSound:=true else plSound:=false;
+   if TogPlaySound.State=tssOn then plSound:=true else plSound:=false;
    VirtKeyboard.addPress(msg.WParam, msg.LParam, LangCode, plSound);
    ScanHex:=InttoHex(msg.LParam);
    if virtkeyboard.isPressed then
@@ -340,14 +343,17 @@ end;
 
 procedure TParentForm.FormCreate(Sender: TObject);
 //var n:longword;  //dWin:Hwnd;
-
+var reg: TRegIniFile; curScheme: string;
 begin
+  reg:=TRegIniFile.create('Software\'+ChangeFileExt(ExtractFileName(Paramstr(0)),''));
+  curScheme:=reg.ReadString('Sounds','curScheme','');
   instantticker:=0;
-  VirtKeyboard:=TKeyboard.create(backform.settingform.SoundFrame.SoundFolder.Text);
+  VirtKeyboard:=TKeyboard.create(curScheme);
+  {
+  {DataArea^.key:=loadparams.ReadInteger('HotKeys', 'Key', 0);
+  DataArea^.ExKey:=loadparams.ReadInteger('HotKeys', 'Ext', 0);}
   FillChar(DataArea^, SizeOf(DataArea^), 0);
   DataArea^.FormHandle:=self.Handle;
-  DataArea^.key:=loadparams.ReadInteger('HotKeys', 'Key', 0);
-  DataArea^.ExKey:=loadparams.ReadInteger('HotKeys', 'Ext', 0);
   FormHeader.Align:=alTop;
   SettingPanel.Align:=alTop;
   baseHeight:=Height;
@@ -361,7 +367,6 @@ begin
    finally
       boardSize.Tag:=1;
    end;
-  //BackForm.sett.applayAll;
 end;
 
 procedure TParentForm.FormHeaderCloseButClick(Sender: TObject);
@@ -436,6 +441,25 @@ begin
     WindowState:=TWindowState.wsMinimized;
 end;
 
+procedure TParentForm.AfterStaticsForm(Sender: TObject; tag: byte);
+begin
+  if Tag=1 then  //if applay button is pressed
+       begin
+         if mapFile<>nil then
+         begin
+           //mapFile:=ExtractFileDir( Paramstr(0))+'\maps\'+mapFile;
+           //if BackForm.Statistics.IsEmpty then
+             BackForm.Statistics.Init(mapFile);
+             showStatistics(st_summary);
+             BackForm.Statistics.IsEmpty:=false;
+         end else
+           Cur_session_statExecute(Sender);
+         speedform.speedM.Value:=BackForm.statistics.avSpeed;
+         speedform.speedM.HighZoneValue:=BackForm.statistics.recordSpeed;
+         close_statistics.Enabled:=true;
+       end;
+end;
+
 procedure TParentForm.Open_statisticsExecute(Sender: TObject);
   var statForm: TForm2;
   begin
@@ -443,30 +467,22 @@ procedure TParentForm.Open_statisticsExecute(Sender: TObject);
        statType:=st_summary;
        statForm:= Tform2.Create(Self);
        statForm.showmodal;
-       if statForm.Tag=1 then  //if applay button is pressed
-       begin
-         if mapFile<>nil then
-         begin
-           //mapFile:=ExtractFileDir( Paramstr(0))+'\maps\'+mapFile;
-           BackForm.Statistics.Init(mapFile);
-           BackForm.Statistics.IsEmpty:=false;
-           showStatistics(st_summary);
-         end else
-           Cur_session_statExecute(Sender);
-         speedform.speedM.Value:=BackForm.statistics.avSpeed;
-         speedform.speedM.HighZoneValue:=BackForm.statistics.recordSpeed;
-         close_statistics.Enabled:=true;
-       end;
+       AfterStaticsForm(Sender, statForm.Tag);
        statForm.Destroy;
 end;
 
-procedure TParentForm.playSoundClick(Sender: TObject);
+procedure TParentForm.TogPlaySoundClick(Sender: TObject);
 begin
-      soundSetting.playSound.Tag:=1;
-  try
-  soundsetting.playsound.state:=playSound.State;
-  finally
-    soundSetting.playSound.Tag:=0;
+
+  with BackForm.settingform.SoundFrame do
+  begin
+    if playSound.Tag<>0 then exit;
+    playSound.Tag:=1;
+    try
+    playsound.state:=TogPlaySound.State;
+    finally
+    playSound.Tag:=0;
+    end;
   end;
 end;
 
@@ -529,13 +545,14 @@ var tempKey: TKey;
          begin
            tempKey:=FindComponent('Key'+inttostr(i)) as TKey;
            if tempKey=nil then continue;
-           BackForm.Statistics.saveKey(i, tempKey);
+           if BackForm.Statistics.IsEmpty then
+            BackForm.Statistics.saveKey(i, tempKey);
            if showGradient then
             BackForm.Statistics.ShowStatisticsByGrad(statType, i,sh1,sh2, tempKey )
            else
             BackForm.Statistics.ShowStatisticsByNum(stattype, i, tempKey);
            //n5.Enabled:=true;
-         end;
+          end;
     StatSwitch.Visible:=true;
     if sh1=sh2 then StatSwitch.Enabled:=false else
                       StatSwitch.Enabled:=true;
@@ -565,8 +582,9 @@ begin
       //VirtKeyboard.save(false, round(backform.Statistics.avSpeed), backform.Statistics.recordSpeed);
 //       BackForm.Statistics.Init(virtKeyboard.map, virtKeyboard.GetLastFile);
         BackForm.Statistics.Init(virtKeyboard.map, virtKeyboard.CURRENTMAP);
-         BackForm.Statistics.IsEmpty:=false;
+
          showStatistics(st_summary);
+         BackForm.Statistics.IsEmpty:=false;
          close_statistics.Enabled:=true;
        //Cur_session_statExecute(sender);
 end;

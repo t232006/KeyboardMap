@@ -141,10 +141,10 @@ begin
    fpressMap:=Amap;
    assignfile(f, mapPath);
    reset(f);
-   if True then
+   //if True then
 
    i:=LO;
-   for j := Low(fPressMap) to High(fPressMap) do
+   //for j := Low(fPressMap) to High(fPressMap) do
     fsummaryMap:=fpressMap;
 
    recordSpeed:=fpressMap[REC];

@@ -5,10 +5,10 @@ uses
   Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, ParentUnit, MainUnitLarge, MainUnitSmall,
   Vcl.Imaging.pngimage, Vcl.ExtCtrls, Registry, PressCounter, speedometer,
-  Vcl.WinXCtrls, MyAuxProc, shlObj, sound;
+  Vcl.WinXCtrls, MyAuxProc, shlObj, settings;
   const WM_WANT_CLOSE = WM_USER+$345+10;
 type
-  TColScheme = (Dark, Light, Classic, Custom);
+  //TColScheme = (Dark, Light, Classic, Custom);
   TBackForm = class(TForm)
     Image1: TImage;
     procedure Image1Click(Sender: TObject);
@@ -20,23 +20,24 @@ type
     procedure FormDeactivate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
   private
-    { Private declarations }
+    FClassName: string;
   public
     avSpeed, MaxSpeed, n: Integer;
     Statistics: TStatistics;
     activeForm: TParentForm;
+    settingform: TSettingForm;
     showSpeed, playSound: boolean;
-    //settingFolder: string;
+    property ClassNameOfActiveForm: string read FClassName;
   end;
   procedure RunHook stdcall; external 'KeyboardHook.dll';
   procedure StopHook; stdcall; external 'KeyboardHook.dll';
 var
   BackForm: TBackForm;
   loadparams, saveparams: TRegIniFile;
-  soundSetting: TsoundSetting;
+
+  //soundSetting: TsoundSetting;
 implementation
 {$R *.dfm}
-
 procedure TBackForm.CloseMessage(var TMessage);
 begin
   close;
@@ -48,7 +49,6 @@ begin
   stophook;
 end;
 procedure TBackForm.FormCreate(Sender: TObject);
-var className:string;
 begin
    //settingFolder:= GetSpecialPath(CSIDL_APPDATA)+'\Individual dictionary';
    Runhook;
@@ -58,10 +58,13 @@ begin
    maxSpeed:=loadparams.ReadInteger('Speeds', 'recordSpeed', 0);
    n:=loadparams.ReadInteger('Speeds', 'count', 0);
    Statistics:= TStatistics.Create(n, round(avSpeed));
-   className:=loadparams.ReadString('Windows','Kind','TKeyboardFormLarge');
+   FclassName:=loadparams.ReadString('Windows','Kind','TKeyboardFormLarge');
    RegisterClasses([tKeyboardFormSmall, tKeyboardFormlarge, tparentform]);
-   soundSetting:=TSoundSetting.Create(Application);
-   activeForm:=TParentForm(TControlClass(GetClass(classname)).Create(self));
+   //soundSetting:=TSoundSetting.Create(Application);
+   //Application.CreateForm(TSettingForm, SettingForm);
+   settingForm:= TSettingForm.Create(Application);
+   activeForm:=TParentForm(TControlClass(GetClass(Fclassname)).Create(self));
+   settingForm.ApplayAll;
    //activeForm:=TKeyboardFormSmall.Create(self);
    activeForm.Left:=loadparams.ReadInteger('Windows', 'PosX', 0);
    activeForm.Top:=loadparams.ReadInteger('Windows', 'PosY', 0);
@@ -71,9 +74,10 @@ begin
    if showSpeed then activeForm.showSpeed.State:=tssOn
                       else
                       activeForm.showSpeed.State:=tssOff;
-   if playSound then activeForm.playSound.State:=tssOn
+   {if playSound then activeForm.TogPlaySound.State:=tssOn
                       else
-                      activeForm.playSound.State:=tssOff;
+                      activeForm.TogPlaySound.State:=tssOff;}
+
    //loadparams.Destroy;
    //activeForm.Show;
 end;
@@ -96,10 +100,10 @@ begin
       saveparams.WriteBool('Windows','showSpeed', true)
      else
       saveparams.WriteBool('Windows','showSpeed', false);
-     if playSound.State=tssOn then
+     {if playSound.State=tssOn then
       saveparams.WriteBool('Sounds','playSound', true)
      else
-      saveparams.WriteBool('Sounds','playSound', false);
+      saveparams.WriteBool('Sounds','playSound', false); }
      saveparams.Destroy;
    end;
 end;
@@ -117,26 +121,20 @@ end;
 procedure TBackForm.OpenAnotherKeyboard(var msg: TMessage);
 var tempform: TParentForm;
 begin
-  try
   if (activeform is TKeyboardFormlarge) then
-  begin
-     tempform:= TKeyboardFormSmall.Create(self);
-      tempform.boardSize.State:=tssOn
-  end
+     tempform:= TKeyboardFormSmall.Create(self)
+      //tempform.boardSize.State:=tssOn
   else
-  begin
      tempform:= TKeyboardFormLarge.Create(self);
-     tempform.boardSize.State:=tssOff;
-  end;
-  finally
-     tempForm.boardSize.tag:=1;
-  end;
+     //tempform.boardSize.State:=tssOff;
   tempform.VirtKeyboard:=activeform.VirtKeyboard;
   tempform.showSpeed.State:=activeform.showSpeed.State;
-  tempform.playSound.State:=activeform.playSound.State;
+  tempform.TogPlaySound.State:=activeform.TogPlaySound.State;
+  tempform.boardSize.State:=activeform.boardSize.State;
   tempform.Show;//(activeform.VirtKeyboard);
   activeform.Close;
   activeform.TrayIcon.Visible:=false;
+  //settingform.ApplayAll;
   activeform:=tempform;
 end;
 end.

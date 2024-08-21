@@ -132,7 +132,7 @@ begin
   fPath:=ExtractFileDir( Paramstr(0));
   FScans:=TDictionary<string,string>.create;
   LoadScans;
-  if soundLib<>'' then SetSoundLibrary(soundLib);
+  //if soundLib<>'' then SetSoundLibrary(soundLib);
 end;
 
 function TKeyboard.CURRENTMAP: string;
@@ -227,7 +227,7 @@ procedure TKeyboard.save(newFile: boolean; avSpeed, recSpeed:word);
     begin
        curDateTime:=now;
        result:=FormatDateTime('dd-mm-yyyy-hh-nn-ss',curDateTime);
-       result:=ExtractFileDir(Paramstr(0))+'\maps\'+result+'map.b';
+       result:=ExtractFileDir(Paramstr(0))+'\maps\'+result+'m.b';
     end;
  //=============================
 
@@ -237,7 +237,10 @@ begin
     textname:=fPath+'\text.txt' ;
     logname:=fPath+'\log.txt';
     if newFile then
-      mapname:=GetMapFilename
+    begin
+      mapname:=GetMapFilename;
+      Deletefile(pwidechar(CURRENTMAP));
+    end
     else
       mapname:=CURRENTMAP; //GetLastFile;
     if mapname='' then

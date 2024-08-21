@@ -129,7 +129,7 @@ begin
     fs:=font.Style;
     Move(FS, FontStyleInt, 1);
     //reg.CloseKey;
-    reg.OpenKey('appearance', false);
+    //reg.OpenKey('appearance\', false);
    reg.WriteString(key, 'fontName', f.Name);
    reg.WriteInteger(key, 'fontColor', f.Color);
    reg.WriteInteger(key, 'fontCharSet', f.Charset);
@@ -149,12 +149,12 @@ begin
   reg.WriteInteger('appearance','KeyboardTransp', keyboardTrack.Position);
   if BackForm.ClassNameOfActiveForm='TKeyboardFormLarge' then
   begin
-    SaveFonttoRegistry('font1', keyfont1);
-    SaveFonttoRegistry('font2', keyfont2);
+    SaveFonttoRegistry('appearance\font1', keyfont1);
+    SaveFonttoRegistry('appearance\font2', keyfont2);
   end else
   begin
-    SaveFonttoRegistry('font3', keyfont1);
-    SaveFonttoRegistry('font4', keyfont2);
+    SaveFonttoRegistry('appearance\font3', keyfont1);
+    SaveFonttoRegistry('appearance\font4', keyfont2);
   end;
 end;
 
@@ -181,7 +181,7 @@ function LoadFontFromRegistry(key: string): Tfont;
 var t:TFont;  FS: TfontStyles; fontStyleInt: byte;
 begin
    t:=tfont.Create;
-    reg.OpenKey('appearance',false);
+    //reg.OpenKey('appearance',false);
    t.Name:=reg.ReadString(key, 'fontName', 'Segoe UI');
    t.Color:=reg.ReadInteger(key,'fontColor', $00FFFFFF);
    t.Charset:=reg.ReadInteger(key, 'fontCharSet', 1);
@@ -203,14 +203,14 @@ begin
   Shape3.Brush.Color:=reg.ReadInteger('appearance', 'HoverColor', $00FFFFFF);
   CommonTrack.Position:=reg.ReadInteger('appearance', 'CommonTransp', 0);
   keyboardTrack.Position:=reg.ReadInteger('appearance', 'KeyboardTransp', 0);
-  if BackForm.ClassNameOfActiveForm='TKeyboardFormLarge' then
+  if BackForm.activeForm.ClassName='TKeyboardFormLarge' then
   begin
-    keyfont1:=LoadFontFromRegistry('font1');
-    keyfont2:=loadFontFromRegistry('font2');
+    keyfont1:=LoadFontFromRegistry('appearance\font1');
+    keyfont2:=loadFontFromRegistry('appearance\font2');
   end else
   begin
-    keyfont1:=LoadFontFromRegistry('font3');
-    keyfont2:=loadFontFromRegistry('font4');
+    keyfont1:=LoadFontFromRegistry('appearance\font3');
+    keyfont2:=loadFontFromRegistry('appearance\font4');
   end;
 
 end;

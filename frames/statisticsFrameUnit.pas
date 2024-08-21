@@ -40,8 +40,8 @@ uses BackgroundUnit;
 
 procedure TStatisticsFrame.OnShow;
 begin
-    shape1.Brush.Color:=reg.ReadInteger('gradient','shape1', clwhite);
-      shape2.Brush.Color:=reg.ReadInteger('gradient','shape2', clwhite);
+    {shape1.Brush.Color:=reg.ReadInteger('gradient','shape1', clwhite);
+      shape2.Brush.Color:=reg.ReadInteger('gradient','shape2', clwhite);}
       fdPath:=ExtractFileDir( Paramstr(0))+'\maps';
      fileslist.ApplyFilePath(fdpath);
      tag:=0;
