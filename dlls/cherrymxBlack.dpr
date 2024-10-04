@@ -4,7 +4,7 @@ uses
   System.SysUtils,
   System.Classes, mmSystem, WinAPI.Windows;
 
-{$R Cherrymx.res}
+{$R cherrymx.res}
 
 procedure playClick (button: pchar);
 var hResInfo: hrsrc;
