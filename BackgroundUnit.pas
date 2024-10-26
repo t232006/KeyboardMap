@@ -150,7 +150,7 @@ procedure TBackForm.Image1MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
     fdown:=true;
-    diff.X:=x+left;
+    diff.X:=x;
     diff.Y:=y;
 end;
 
@@ -171,6 +171,7 @@ procedure TBackForm.Image1MouseUp(Sender: TObject; Button: TMouseButton;
 begin
     fdown:=false;
     fmoved:=false;
+    //diff.X:=0; diff.Y:=0;
 end;
 
 procedure TBackForm.OpenAnotherKeyboard(var msg: TMessage);

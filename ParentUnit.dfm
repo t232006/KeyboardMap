@@ -12,6 +12,7 @@ object ParentForm: TParentForm
   Font.Name = 'Segoe UI'
   Font.Style = []
   OnCreate = FormCreate
+  OnShow = FormShow
   TextHeight = 15
   inline FormHeader: TFormHeader
     Left = -86
