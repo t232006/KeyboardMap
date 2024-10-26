@@ -5,12 +5,20 @@ uses
   Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, ParentUnit, MainUnitLarge, MainUnitSmall,
   Vcl.Imaging.pngimage, Vcl.ExtCtrls, Registry, PressCounter, speedometer,
-  Vcl.WinXCtrls, MyAuxProc, shlObj, settings;
+  Vcl.WinXCtrls, MyAuxProc, shlObj, settings, Vcl.Menus, System.Actions,
+  Vcl.ActnList;
   const WM_WANT_CLOSE = WM_USER+$345+10;
 type
   //TColScheme = (Dark, Light, Classic, Custom);
   TBackForm = class(TForm)
     Image1: TImage;
+    PopupMenu1: TPopupMenu;
+    ActionList1: TActionList;
+    Action1: TAction;
+    Action2: TAction;
+    Action11: TMenuItem;
+    Action21: TMenuItem;
+    TrayIcon: TTrayIcon;
     procedure Image1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -19,8 +27,21 @@ type
     procedure CloseMessage(var TMessage); message WM_QUERYENDSESSION;
     procedure FormDeactivate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure Image1MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    procedure Image1MouseMove(Sender: TObject; Shift: TShiftState; X,
+      Y: Integer);
+    procedure Image1MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    procedure Action1Execute(Sender: TObject);
+    procedure Action2Execute(Sender: TObject);
+    procedure TrayIconDblClick(Sender: TObject);
   private
     FClassName: string;
+    fDown: boolean;
+    fmoved: boolean;
+    diff: TPoint;
+    pos: TPoint;
   public
     avSpeed, MaxSpeed, n: Integer;
     Statistics: TStatistics;
@@ -38,6 +59,25 @@ var
   //soundSetting: TsoundSetting;
 implementation
 {$R *.dfm}
+procedure TBackForm.Action1Execute(Sender: TObject);
+begin
+  ShowWindow(Handle,SW_HIDE);  // Скрываем программу
+  ShowWindow(Application.Handle,SW_HIDE);  // Скрываем кнопку с TaskBar'а
+  SetWindowLong(Application.Handle, GWL_EXSTYLE,
+  GetWindowLong(Application.Handle, GWL_EXSTYLE) or (not WS_EX_APPWINDOW));
+  TrayIcon.Visible := True;
+  Application.MainForm.Hide;
+  ActiveForm.WinOverride.State:=tssOff;
+  Trayicon.ShowBalloonHint; // показываем наше уведомление
+  Trayicon.balloontitle:=('Keyboard Map');
+  Trayicon.balloonhint:=('Version');
+end;
+
+procedure TBackForm.Action2Execute(Sender: TObject);
+begin
+   close;
+end;
+
 procedure TBackForm.CloseMessage(var TMessage);
 begin
   close;
@@ -52,6 +92,7 @@ procedure TBackForm.FormCreate(Sender: TObject);
 begin
    //settingFolder:= GetSpecialPath(CSIDL_APPDATA)+'\Individual dictionary';
    Runhook;
+   fdown:=false; fmoved:=false;
    Application.OnDeactivate:=FormDeactivate;
    loadparams:=TReginifile.Create('Software\'+ChangeFileExt(ExtractFileName(Paramstr(0)),''));
    avSpeed:= loadparams.ReadInteger('Speeds', 'averageSpeed', 0);
@@ -60,26 +101,15 @@ begin
    Statistics:= TStatistics.Create(n, round(avSpeed));
    FclassName:=loadparams.ReadString('Windows','Kind','TKeyboardFormLarge');
    RegisterClasses([tKeyboardFormSmall, tKeyboardFormlarge, tparentform]);
-   //soundSetting:=TSoundSetting.Create(Application);
-   //Application.CreateForm(TSettingForm, SettingForm);
    settingForm:= TSettingForm.Create(Application);
    activeForm:=TParentForm(TControlClass(GetClass(Fclassname)).Create(self));
    settingForm.ApplayAll;
-   //activeForm:=TKeyboardFormSmall.Create(self);
    activeForm.Left:=loadparams.ReadInteger('Windows', 'PosX', 0);
    activeForm.Top:=loadparams.ReadInteger('Windows', 'PosY', 0);
    showSpeed:=loadparams.ReadBool('Windows','showSpeed', false);
-   //playSound:=loadparams.ReadBool('Sounds','playSound', false);
-
    if showSpeed then activeForm.showSpeed.State:=tssOn
                       else
                       activeForm.showSpeed.State:=tssOff;
-   {if playSound then activeForm.TogPlaySound.State:=tssOn
-                      else
-                      activeForm.TogPlaySound.State:=tssOff;}
-
-   //loadparams.Destroy;
-   //activeForm.Show;
 end;
 procedure TBackForm.FormDeactivate(Sender: TObject);
 begin  //nessesary to be on top
@@ -100,10 +130,6 @@ begin
       saveparams.WriteBool('Windows','showSpeed', true)
      else
       saveparams.WriteBool('Windows','showSpeed', false);
-     {if playSound.State=tssOn then
-      saveparams.WriteBool('Sounds','playSound', true)
-     else
-      saveparams.WriteBool('Sounds','playSound', false); }
      saveparams.Destroy;
    end;
 end;
@@ -113,31 +139,62 @@ begin
   if showSpeed then speedform.Show;
    left:=0;
   top:=screen.Height-self.Height-30;
+  //borderStyle:=bsnone;
 end;
+
 procedure TBackForm.Image1Click(Sender: TObject);
 begin
-   activeform.Show;
+ if not(fmoved) then   activeform.Show;
 end;
+procedure TBackForm.Image1MouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+begin
+    fdown:=true;
+    diff.X:=x+left;
+    diff.Y:=y;
+end;
+
+procedure TBackForm.Image1MouseMove(Sender: TObject; Shift: TShiftState; X,
+  Y: Integer);
+begin
+   if fdown then
+   begin
+      fmoved:=true;
+      pos:=mouse.CursorPos;
+      Left:=pos.X-diff.X;
+      top:=pos.Y-diff.Y;
+   end;
+end;
+
+procedure TBackForm.Image1MouseUp(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+begin
+    fdown:=false;
+    fmoved:=false;
+end;
+
 procedure TBackForm.OpenAnotherKeyboard(var msg: TMessage);
 var tempform: TParentForm;
 begin
   if (activeform is TKeyboardFormlarge) then
      tempform:= TKeyboardFormSmall.Create(self)
-      //tempform.boardSize.State:=tssOn
   else
      tempform:= TKeyboardFormLarge.Create(self);
-     //tempform.boardSize.State:=tssOff;
   tempform.VirtKeyboard:=activeform.VirtKeyboard;
-  //tempform.showSpeed.State:=activeform.showSpeed.State;
-  //tempform.TogPlaySound.State:=activeform.TogPlaySound.State;
   tempform.boardSize.State:=activeform.boardSize.State;
-
-  tempform.Show;//(activeform.VirtKeyboard);
-
+  tempform.Show;
   activeform.Close;
-  activeform.TrayIcon.Visible:=false;
-  //settingform.ApplayAll;
+  TrayIcon.Visible:=false;
   activeform:=tempform;
   settingForm.ApplayAll;
 end;
+
+procedure TBackForm.TrayIconDblClick(Sender: TObject);
+begin
+TrayIcon.Visible := False;
+    Show();
+    WindowState := wsNormal;
+    Application.BringToFront();
+end;
+
 end.

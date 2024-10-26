@@ -8,7 +8,7 @@ uses
   keyboardUnit, filemapping, Language, speedometer,
   AnalogMeter, PressCounter, SendKeyPressProc, Vcl.WinXCtrls, Key, sound,
   Vcl.Buttons,
-  Vcl.StdCtrls, Vcl.XPStyleActnCtrls;
+  Vcl.StdCtrls, Vcl.XPStyleActnCtrls, Vcl.StdActns;
 //const WM_WANT_CLOSE = WM_USER+$345+10;
 type
   TColScheme = (Dark, Light, Classic, Custom);
@@ -25,7 +25,6 @@ type
     N18: TMenuItem;
     ApplicationEvents1: TApplicationEvents;
     WinMonitor: TTimer;
-    TrayIcon: TTrayIcon;
     ActionManager1: TActionManager;
     Open_statistics: TAction;
     Close_statistics: TAction;
@@ -49,12 +48,13 @@ type
     StatSwitch: TToggleSwitch;
     extendTimer: TTimer;
     WinOverride: TToggleSwitch;
+    WindowMinimizeAll1: TWindowMinimizeAll;
+    WindowClose1: TWindowClose;
     procedure exit1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure GetPressing(var msg: TMessage); message WM_MYKEYPRESS;
     procedure LayoutChange(var msg: TMessage); message WM_CHANGELANG;
     procedure WinMonitorTimer(Sender: TObject);
-    procedure TrayIconDblClick(Sender: TObject);
     procedure ApplicationEvents1Minimize(Sender: TObject);
     procedure instantTimerTimer(Sender: TObject);
     procedure CreateParams(var AParams: TCreateParams); override;
@@ -234,8 +234,8 @@ procedure TParentForm.ApplicationEvents1Minimize(Sender: TObject);
 begin
       WindowState:=wsMinimized;
   //TrayIcon.Visible := True;
-  TrayIcon.Animate := True;
-  TrayIcon.ShowBalloonHint;
+  backform.TrayIcon.Animate := True;
+  backform.TrayIcon.ShowBalloonHint;
 end;
 procedure TParentForm.closeStatistics;
 var tempKey: TKey;
@@ -403,13 +403,13 @@ end;
 
 procedure TParentForm.FormHide(Sender: TObject);
 begin
-  trayIcon.Visible:=true;
+  //trayIcon.Visible:=true;
 end;
 
 procedure TParentForm.FormShow(Sender: TObject);
 begin
   (Owner as TForm).visible:=false;
-  TrayIcon.Visible:=false;
+  //TrayIcon.Visible:=false;
 end;
 
 procedure TParentForm.instantTimerTimer(Sender: TObject);
@@ -605,13 +605,6 @@ if toExtend then
       end;
 end;
 
-procedure TParentForm.TrayIconDblClick(Sender: TObject);
-begin
-    TrayIcon.Visible := False;
-    Show();
-    WindowState := wsNormal;
-    Application.BringToFront();
-end;
 procedure TParentForm.TrayMenuPopup(Sender: TObject);
 begin
   if WindowState=TWindowState.wsNormal then n1.Caption:='Свернуть'

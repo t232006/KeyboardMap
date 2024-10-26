@@ -92,9 +92,6 @@ Coordinates=0,211,40,36
 [FormHeader.WinOverride]
 Coordinates=10,170,162,36
 
-[TrayIcon]
-Coordinates=748,276,65,36
-
 [Stat_summary]
 Coordinates=729,321,97,36
 
@@ -102,7 +99,7 @@ Coordinates=729,321,97,36
 Coordinates=561,321,80,36
 
 []
-Coordinates=650,321,70,36
+Coordinates=748,276,65,36
 Visible=True
 
 [FormHeader.showSpeed]
