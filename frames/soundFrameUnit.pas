@@ -87,7 +87,7 @@ end;
 procedure TSoundFrame.SoundFolderCloseUp(Sender: TObject);
 begin
   currentSchemeNum:=soundFolder.ItemIndex;
-  currentScheme:=soundFolder.Text;
+  currentScheme:=soundFolder.Items[soundFolder.ItemIndex];
 end;
 
 end.

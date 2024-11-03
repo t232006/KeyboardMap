@@ -41,7 +41,7 @@ object SettingForm: TSettingForm
     Top = 371
     Width = 75
     Height = 25
-    Caption = #1054#1050
+    Caption = #1055#1088#1080#1084#1077#1085#1080#1090#1100
     TabOrder = 1
     OnClick = OKButtonClick
   end
@@ -59,7 +59,7 @@ object SettingForm: TSettingForm
     Top = 371
     Width = 75
     Height = 25
-    Caption = #1055#1088#1080#1084#1077#1085#1080#1090#1100
+    Caption = 'OK'
     TabOrder = 3
     OnClick = ApplayButtonClick
   end
@@ -68,7 +68,7 @@ object SettingForm: TSettingForm
     Top = 0
     Width = 433
     Height = 362
-    ActivePage = TabSheet1
+    ActivePage = TabSheet2
     TabOrder = 4
     object TabSheet1: TTabSheet
       Caption = 'TabSheet1'

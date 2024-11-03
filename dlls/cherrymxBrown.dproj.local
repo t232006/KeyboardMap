@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.359,=Z:\Программирование\repos\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.785,Z:\Программирование\repos\Project1.dproj=Z:\Программирование\repos\KeyboardMap\dlls\nkCream.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.808,Z:\Программирование\repos\KeyboardMap\dlls\cherrymxBrown.dproj=Z:\Программирование\repos\KeyboardMap\dlls\topre.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.791,Z:\Программирование\repos\KeyboardMap\dlls\topre.dproj=Z:\Программирование\repos\KeyboardMap\dlls\nkCream.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.253,=Z:\Программирование\repos\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.149,=Z:\Программирование\repos\Unit1.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.161,=Z:\Программирование\repos\Unit1.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.005,=Z:\Программирование\repos\Unit1.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.359,=Z:\Программирование\repos\Unit1.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.253,=Z:\Программирование\repos\Unit1.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.785,Z:\Программирование\repos\KeyboardMap\dlls\nkCream.dproj=Z:\Программирование\repos\Project1.dproj</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.791,Z:\Программирование\repos\KeyboardMap\dlls\nkCream.dproj=Z:\Программирование\repos\KeyboardMap\dlls\topre.dproj</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.808,Z:\Программирование\repos\KeyboardMap\dlls\topre.dproj=Z:\Программирование\repos\KeyboardMap\dlls\cherrymxBrown.dproj</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.149,=Z:\Программирование\repos\Unit1.pas</Transaction>
   </Transactions>
 </BorlandProject>
