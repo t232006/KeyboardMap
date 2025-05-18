@@ -199,7 +199,7 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="units\interfaceMyFrame.pas"/>
-        <DCCReference Include="..\..\components\dllAux\MyAuxProc.pas"/>
+        <DCCReference Include="..\..\myComponents\MyAuxProc.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

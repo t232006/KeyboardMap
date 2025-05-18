@@ -26,7 +26,7 @@ uses
   settings in 'settings.pas' {SettingForm},
   Language in 'Language.pas' {LangForm},
   interfaceMyFrame in 'units\interfaceMyFrame.pas',
-  MyAuxProc in '..\..\components\dllAux\MyAuxProc.pas';
+  MyAuxProc in '..\..\myComponents\MyAuxProc.pas';
 
 {$R *.res}
 //var //pbuff: array[0..127] of char;

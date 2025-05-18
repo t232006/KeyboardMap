@@ -147,7 +147,7 @@ begin
   reg.WriteInteger('appearance','HoverColor',Shape3.Brush.Color);
   reg.WriteInteger('appearance','CommonTransp',Commontrack.position);
   reg.WriteInteger('appearance','KeyboardTransp', keyboardTrack.Position);
-  if BackForm.ClassNameOfActiveForm='TKeyboardFormLarge' then
+  if BackForm.ActiveForm.ClassName='TKeyboardFormLarge' then
   begin
     SaveFonttoRegistry('appearance\font1', keyfont1);
     SaveFonttoRegistry('appearance\font2', keyfont2);

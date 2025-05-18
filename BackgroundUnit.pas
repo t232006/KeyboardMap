@@ -5,8 +5,8 @@ uses
   Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, ParentUnit, MainUnitLarge, MainUnitSmall,
   Vcl.Imaging.pngimage, Vcl.ExtCtrls, Registry, PressCounter, speedometer,
-  Vcl.WinXCtrls, MyAuxProc, shlObj, settings, Vcl.Menus, System.Actions,
-  Vcl.ActnList;
+  Vcl.WinXCtrls, MyAuxProc, shlObj, settings, System.Actions, Vcl.ActnList,
+  Vcl.Menus;
   const WM_WANT_CLOSE = WM_USER+$345+10;
 type
   //TColScheme = (Dark, Light, Classic, Custom);
