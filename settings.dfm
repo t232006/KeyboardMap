@@ -19,7 +19,7 @@ object SettingForm: TSettingForm
     Left = 0
     Top = 0
     Width = 177
-    Height = 362
+    Height = 418
     TabStop = False
     Style = lbOwnerDrawFixed
     AutoComplete = False
@@ -81,6 +81,39 @@ object SettingForm: TSettingForm
         ExplicitLeft = 13
         ExplicitWidth = 380
         ExplicitHeight = 329
+        inherited Label1: TLabel
+          StyleElements = [seFont, seClient, seBorder]
+        end
+        inherited Label2: TLabel
+          StyleElements = [seFont, seClient, seBorder]
+        end
+        inherited Label3: TLabel
+          StyleElements = [seFont, seClient, seBorder]
+        end
+        inherited Label4: TLabel
+          StyleElements = [seFont, seClient, seBorder]
+        end
+        inherited Label5: TLabel
+          StyleElements = [seFont, seClient, seBorder]
+        end
+        inherited Label6: TLabel
+          StyleElements = [seFont, seClient, seBorder]
+        end
+        inherited Label8: TLabel
+          StyleElements = [seFont, seClient, seBorder]
+        end
+        inherited Label9: TLabel
+          StyleElements = [seFont, seClient, seBorder]
+        end
+        inherited Label7: TLabel
+          StyleElements = [seFont, seClient, seBorder]
+        end
+        inherited Label10: TLabel
+          StyleElements = [seFont, seClient, seBorder]
+        end
+        inherited CBKeyRad: TComboBox
+          StyleElements = [seFont, seClient, seBorder]
+        end
         inherited FontDialog1: TFontDialog
           Left = 176
           Top = 136
@@ -98,6 +131,12 @@ object SettingForm: TSettingForm
         TabOrder = 0
         ExplicitLeft = 64
         ExplicitTop = 56
+        inherited Label1: TLabel
+          StyleElements = [seFont, seClient, seBorder]
+        end
+        inherited SoundFolder: TComboBox
+          StyleElements = [seFont, seClient, seBorder]
+        end
       end
     end
     object TabSheet3: TTabSheet
@@ -111,6 +150,9 @@ object SettingForm: TSettingForm
         TabOrder = 0
         ExplicitLeft = 48
         ExplicitTop = 24
+        inherited Status: TMemo
+          StyleElements = [seFont, seClient, seBorder]
+        end
       end
     end
     object TabSheet4: TTabSheet
@@ -125,6 +167,15 @@ object SettingForm: TSettingForm
         ExplicitLeft = 3
         ExplicitTop = 33
         ExplicitWidth = 431
+        inherited Label1: TLabel
+          StyleElements = [seFont, seClient, seBorder]
+        end
+        inherited Label2: TLabel
+          StyleElements = [seFont, seClient, seBorder]
+        end
+        inherited fileslist: TFileListBox
+          StyleElements = [seFont, seClient, seBorder]
+        end
       end
     end
   end

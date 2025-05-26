@@ -111,12 +111,12 @@ begin
     case key of
       $38: hotkeyind.ItemIndex:=1;
       $1D: hotkeyind.ItemIndex:=2;
-      $5B, $45: hotkeyind.ItemIndex:=3;
+      $5B: hotkeyind.ItemIndex:=3;
       $5C: hotkeyind.ItemIndex:=3;
       $1C: hotkeyind.ItemIndex:=4;
       else hotkeyind.ItemIndex:=0;
     end;
-    if (exKey=$21) or (exkey=$1) or (key=$45) then Extender.State:=tssOn else
+    if (exKey=$21) or (exkey=$1) then Extender.State:=tssOn else
     Extender.State:=tssOff;
 end;
 

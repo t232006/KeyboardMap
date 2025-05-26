@@ -88,6 +88,7 @@ begin
   if tag=1 then settingFrame.SaveParams;
   StatisticsFrame.SaveParams;
   SoundFrame.SaveParams;
+  langFrame.SaveParams;
 
 end;
 
