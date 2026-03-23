@@ -1,0 +1,24 @@
+unit KeyExchangeFrame;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
+  Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons,
+  Vcl.Grids, Vcl.ValEdit, keyboardunit;
+
+type
+  TKeyExchange = class(TFrame)
+    Label1: TLabel;
+    ValueListEditor1: TValueListEditor;
+  private
+  public
+    { Public declarations }
+  end;
+
+implementation
+{$R *.dfm}
+
+{ TFrame1 }
+
+end.

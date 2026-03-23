@@ -4,6 +4,6 @@
     <Transaction>1899.12.30 00:00:00.000.946,Z:\Программирование\repos\KeyboardSpy\ProjectGroup1.groupproj=Z:\Программирование\repos\ProjectGroup1.groupproj</Transaction>
   </Transactions>
 	<Default.Personality>
-		<Projects ActiveProject="Z:\Программирование\repos\KeyboardMap\KeyboardMap.dproj"/>
+		<Projects ActiveProject="G:\some folder\keyboardMap\KeyboardMap\KeyboardMap.dproj"/>
 	</Default.Personality>
 </BorlandProject>

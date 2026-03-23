@@ -1,0 +1,48 @@
+unit KeyExchangeFrame;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
+  Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons,
+  Vcl.Grids, Vcl.ValEdit, keyboardunit;
+
+type
+  TFrame1 = class(TFrame)
+    Label1: TLabel;
+    ValueListEditor1: TValueListEditor;
+    BitBtn: TBitBtn;
+  private
+    procedure GetPressing(var msg: TMessage); message WM_MYKEYPRESS;
+  public
+    { Public declarations }
+  end;
+
+implementation
+var HexKey1, HexKey2: string;
+const selector: boolean=true;
+{$R *.dfm}
+
+{ TFrame1 }
+
+procedure TFrame1.GetPressing(var msg: TMessage);
+begin
+  //VirtKeyboard.addPress(msg.WParam, msg.LParam, LangCode, plSound);
+   if selector then
+   begin
+       HexKey1:=InttoHex(msg.LParam);
+       label1.Caption:='Нажмите заменяющую клавишу';
+   end
+
+    else
+    begin
+      HexKey2:=InttoHex(msg.LParam);
+      label1.Caption:='Нажмите заменяемую клавишу';
+    end;
+
+    selector:=not(selector);
+    if (HexKey1<>'') and (HexKey2<>'') then
+    valueListEditor1.InsertRow(HexKey1, HexKey2, true);
+end;
+
+end.
