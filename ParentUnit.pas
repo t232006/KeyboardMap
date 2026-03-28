@@ -83,6 +83,7 @@ type
     procedure WinOverrideClick(Sender: TObject);
     procedure showSpeedClick(Sender: TObject);
     procedure TogPlaySoundClick(Sender: TObject);
+    procedure FormHeaderSpeedButton5Click(Sender: TObject);
   private
     statType: TStatType;
     baseHeight: Integer;
@@ -389,6 +390,12 @@ begin
   if boardSize.Tag=0 then exit;
     sendmessage((Owner as TForm).Handle,WM_WANT_CLOSE,0,0);
   //SettingPanel.Tag:=1;
+end;
+
+procedure TParentForm.FormHeaderSpeedButton5Click(Sender: TObject);
+begin
+  FormHeader.SpeedButton5Click(Sender);
+
 end;
 
 procedure TParentForm.FormHeaderStatSwitchClick(Sender: TObject);

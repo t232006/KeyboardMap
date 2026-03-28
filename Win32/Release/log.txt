@@ -199,3 +199,6 @@ Key = <Pause_Break>; Letter = ; Virt = 19; Scan = 00450001; Down; Time: 12:38:51
 
 
 Key = ; Letter = \; Virt = 226; Scan = 00560001; Down; Time: 21:32:46; Key = ; Letter = \; Virt = 226; Scan = 00560001; Down; Time: 21:32:46; Key = ; Letter = \; Virt = 226; Scan = C0560001;  Up ; Time: 21:32:46; Key = ; Letter = \; Virt = 226; Scan = C0560001;  Up ; Time: 21:32:46; Key = <LShift>; Letter = ; Virt = 16; Scan = 002A0001; Down; Time: 21:32:50; Key = <LShift>; Letter = ; Virt = 16; Scan = 002A0001; Down; Time: 21:32:50; Key = <LShift>; Letter = ; Virt = 16; Scan = C02A0001;  Up ; Time: 21:32:51; Key = <LShift>; Letter = ; Virt = 16; Scan = C02A0001;  Up ; Time: 21:32:51; 
+
+
+Key = <A>; Letter = ô; Virt = 65; Scan = 001E0001; Down; Time: 18:22:57; Key = <A>; Letter = ô; Virt = 65; Scan = C01E0001;  Up ; Time: 18:22:57; 

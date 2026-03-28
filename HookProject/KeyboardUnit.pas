@@ -1,8 +1,7 @@
 unit KeyboardUnit;
 
 interface
-uses Sharemem, SysUtils, windows, messages, inifiles,
-    System.Generics.Collections;
+uses Sharemem, SysUtils, windows, messages, inifiles, scans;
 const WM_MYKEYPRESS = WM_USER+$0400+10;
       WM_CHANGELANG = WM_USER+$115+15;
       LO=8;
@@ -23,11 +22,10 @@ TKeyboard=class
     LibHandle: LongWord;
     playClick: TplayClick;
     fPath: string;
-    FScans: TDictionary<string, string>;
+    FScans: TScans;
     procedure SaveText(filename, sometext:string);
     procedure SaveMap(filename:string);
     procedure CleanMap(var temp:TKeyboardMap);
-    procedure LoadScans;
    public
      //const CURRENTMAP='\maps\CurrentMap.h';
      function CURRENTMAP: string;
@@ -38,7 +36,6 @@ TKeyboard=class
      property VirtCode: word read FVirtCode;
      property map:TKeyboardMap read Fmap;
      property isPressed:boolean read FisPressed;
-     property button:string read FButton;
      property letter:char read Fletter;
      property     log:string read Flog;
      property text:string read FText;
@@ -48,10 +45,12 @@ end;
 //procedure playClick(button: pchar); stdcall; external 'Sounds\cherrymxBlack.dll';
 
 implementation
+uses backgroundunit;
 
 destructor TKeyboard.destroy;
 begin
     FreeLibrary(libhandle);
+    FScans.Destroy;
 end;
 
 {$REGION 'GetLastFile'}
@@ -96,9 +95,7 @@ begin
     ToUnicodeEx(WS, SC, KS, @fletter, sizeof(fletter), 0, langcode);
    if byte(LS shr 24)<$80 then fisPressed:=true else fisPressed:=false;
    scancode:=IntToHex(ls);
-   FScans.TryGetValue(scancode, fbutton);
-
-
+   fbutton:=FScans.getScan(scancode);
 
    FVirtCode:=WS;
    ss:=string.Format('Key = %s; Letter = %s; Virt = %u; Scan = %s; %s; Time: %s; %s',
@@ -123,15 +120,17 @@ begin
       if ord(letter)<>0 then
       Ftext:=Ftext+fletter else
       Ftext:=Ftext+fbutton;
-   end
+      if Assigned(backform.SettingForm) then
+        PostMessage(backform.SettingForm.Handle, WM_MYKEYPRESS, WPARAM(ws), LPARAM(ls));
+   end;
 end;
 
 constructor TKeyboard.create(soundLib: string);
 begin
   cleanMap(FMap);
   fPath:=ExtractFileDir( Paramstr(0));
-  FScans:=TDictionary<string,string>.create;
-  LoadScans;
+
+  FScans:=TScans.Create;
   //if soundLib<>'' then SetSoundLibrary(soundLib);
 end;
 
@@ -140,22 +139,7 @@ begin
   result:=fPath+'\maps\CurrentMap.b';
 end;
 
-procedure TKeyboard.LoadScans;
-var t:textfile; scancode, button, s :string;
-begin
-   s:=ExtractFileDir( Paramstr(0))+'\Auxilary\Scans.dict';
-   assignfile(t,s);
-   reset(t);
-   while not(eof(t)) do
-   begin
-     readln(t,s);
-     scancode:=copy(s,1,8); delete(s,1,9);
-     button:=trimright(s);
-     FScans.Add(scancode,button);
-   end;
-   closefile(t);
 
-end;
 
 procedure TKeyboard.savetext(filename, sometext:string);
 var f:textfile;

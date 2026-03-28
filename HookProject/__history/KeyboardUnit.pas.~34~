@@ -29,7 +29,8 @@ TKeyboard=class
     procedure CleanMap(var temp:TKeyboardMap);
     procedure LoadScans;
    public
-     const CURRENTMAP='maps\CurrentMap.h';
+     //const CURRENTMAP='\maps\CurrentMap.h';
+     function CURRENTMAP: string;
      procedure addPress(ws:word; ls: longint; langcode:HKL; playsound: boolean);
      procedure save(newFile:boolean; avSpeed, recSpeed:word);
      //function GetLastFile:string;
@@ -47,6 +48,7 @@ end;
 //procedure playClick(button: pchar); stdcall; external 'Sounds\cherrymxBlack.dll';
 
 implementation
+uses backgroundunit;
 
 destructor TKeyboard.destroy;
 begin
@@ -97,8 +99,6 @@ begin
    scancode:=IntToHex(ls);
    FScans.TryGetValue(scancode, fbutton);
 
-
-
    FVirtCode:=WS;
    ss:=string.Format('Key = %s; Letter = %s; Virt = %u; Scan = %s; %s; Time: %s; %s',
    [fbutton, fletter, fVirtCode, scancode, IfThen(isPressed,'Down',' Up '), TimeToStr(now), chr(13)]);
@@ -117,11 +117,14 @@ begin
         18: if byte(ls shr 24)=$21 then FVirtCode:=165 else FVirtCode:=164; //alt
         17: if byte(ls shr 24)=$01 then FVirtCode:=163 else FVirtCode:=162; //ctrl
       end;
+      if (WS=13) and (byte(ls shr 24)=$01) then inc(Fmap[12]) else //for right Enter
       inc(Fmap[FVirtCode]);
       if ord(letter)<>0 then
       Ftext:=Ftext+fletter else
       Ftext:=Ftext+fbutton;
-   end
+      if Assigned(backform.SettingForm) then
+        PostMessage(backform.SettingForm.Handle, WM_MYKEYPRESS, WPARAM(ws), LPARAM(ls));
+   end;
 end;
 
 constructor TKeyboard.create(soundLib: string);
@@ -130,7 +133,12 @@ begin
   fPath:=ExtractFileDir( Paramstr(0));
   FScans:=TDictionary<string,string>.create;
   LoadScans;
-  SetSoundLibrary(soundLib);
+  //if soundLib<>'' then SetSoundLibrary(soundLib);
+end;
+
+function TKeyboard.CURRENTMAP: string;
+begin
+  result:=fPath+'\maps\CurrentMap.b';
 end;
 
 procedure TKeyboard.LoadScans;
@@ -220,7 +228,7 @@ procedure TKeyboard.save(newFile: boolean; avSpeed, recSpeed:word);
     begin
        curDateTime:=now;
        result:=FormatDateTime('dd-mm-yyyy-hh-nn-ss',curDateTime);
-       result:=ExtractFileDir(Paramstr(0))+'\maps\'+result+'map.b';
+       result:=ExtractFileDir(Paramstr(0))+'\maps\'+result+'m.b';
     end;
  //=============================
 
@@ -230,7 +238,10 @@ begin
     textname:=fPath+'\text.txt' ;
     logname:=fPath+'\log.txt';
     if newFile then
-      mapname:=GetMapFilename
+    begin
+      mapname:=GetMapFilename;
+      Deletefile(pwidechar(CURRENTMAP));
+    end
     else
       mapname:=CURRENTMAP; //GetLastFile;
     if mapname='' then

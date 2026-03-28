@@ -18,6 +18,8 @@
     <File Path="frames\soundFrameUnit.dfm"/>
     <File Path="frames\statisticsFrameUnit.pas"/>
     <File Path="frames\statisticsFrameUnit.dfm"/>
+    <File Path="frames\KeyExchangeFrame.pas"/>
+    <File Path="frames\KeyExchangeFrame.dfm"/>
     <File Path="HookProject"/>
     <File Path="HookProject\FileMapping.pas"/>
     <File Path="HookProject\KeyboardUnit.pas"/>
@@ -25,6 +27,7 @@
     <File Path="units\interfaceMyFrame.pas"/>
     <File Path="units\PressCounter.pas"/>
     <File Path="units\SendKeyPressProc.pas"/>
+    <File Path="units\scans.pas"/>
     <File Path="BackgroundUnit.pas"/>
     <File Path="BackgroundUnit.dfm"/>
     <File Path="Language.pas"/>
@@ -43,5 +46,9 @@
     <File Path="speedometer.dfm"/>
     <File Path="StatisticsOptions.pas"/>
     <File Path="StatisticsOptions.dfm"/>
-  </ProjectSortOrder>
+  </ProjectSortOrder>  <Transactions>
+    <Transaction>2026.03.28 18:07:59.978,=G:\some folder\keyboardMap\KeyboardMap\frames\KeyExchangeFrame.pas</Transaction>
+    <Transaction>2026.03.28 19:21:47.489,=G:\some folder\keyboardMap\KeyboardMap\Unit1.pas</Transaction>
+    <Transaction>2026.03.28 19:22:38.882,G:\some folder\keyboardMap\KeyboardMap\units\scans.pas=G:\some folder\keyboardMap\KeyboardMap\Unit1.pas</Transaction>
+  </Transactions>
 </BorlandProject>

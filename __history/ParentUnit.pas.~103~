@@ -298,45 +298,42 @@ begin
    if TogPlaySound.State=tssOn then plSound:=true else plSound:=false;
    VirtKeyboard.addPress(msg.WParam, msg.LParam, LangCode, plSound);
    ScanHex:=InttoHex(msg.LParam);
+   if virtkeyboard.isPressed then
+   begin
+      if instantTimer.Enabled=false then instanttimer.Enabled:=true;
+     speedform.instSpeedM.Value := BackForm.Statistics.instantSpeed(instantticker);
+   end;
+  _key:=FindKey(ScanHex);
+  _key.Pressed:=VirtKeyboard.isPressed;
 
-    begin
-         if virtkeyboard.isPressed then
-         begin
-            if instantTimer.Enabled=false then instanttimer.Enabled:=true;
-           speedform.instSpeedM.Value := BackForm.Statistics.instantSpeed(instantticker);
-         end;
-        _key:=FindKey(ScanHex);
-        _key.Pressed:=VirtKeyboard.isPressed;
+   if virtkeyboard.isPressed then
+   begin
+     if (_key.KeyType<>ktScroll) and
+        (_key.KeyType<>ktSticked) and
+        (_key.KeyType<>ktFunc)
+      then   //don't count arrows and scroll, functions, shift and other
+     begin
+       curspeed := round(speedform.instSpeedM.Value);
+       speedform.SpeedM.Value:=BackForm.Statistics.averageSpeed(curspeed);
+       instantticker:=0;
+       //memo1.Lines.Add(floattostr(SpeedM.Value));
+     end;
+     if BackForm.statistics.IsShowing then
+     begin
+        BackForm.statistics.Init(virtKeyboard.map);
+        if sh1=sh2 then
+          BackForm.statistics.ShowStatisticsbyNum(st_current, virtKeyboard.VirtCode, _key)
+        else
+          BackForm.statistics.ShowStatisticsbyGrad(st_current, virtKeyboard.VirtCode, sh1, sh2, _key) ;
+     end;
+   end;
 
-         if virtkeyboard.isPressed then
-         begin
-           if (_key.KeyType<>ktScroll) and
-              (_key.KeyType<>ktSticked) and
-              (_key.KeyType<>ktFunc)
-            then   //don't count arrows and scroll, functions, shift and other
-           begin
-             curspeed := round(speedform.instSpeedM.Value);
-             speedform.SpeedM.Value:=BackForm.Statistics.averageSpeed(curspeed);
-             instantticker:=0;
-             //memo1.Lines.Add(floattostr(SpeedM.Value));
-           end;
-           if BackForm.statistics.IsShowing then
-           begin
-              BackForm.statistics.Init(virtKeyboard.map);
-              if sh1=sh2 then
-                BackForm.statistics.ShowStatisticsbyNum(st_current, virtKeyboard.VirtCode, _key)
-              else
-                BackForm.statistics.ShowStatisticsbyGrad(st_current, virtKeyboard.VirtCode, sh1, sh2, _key) ;
-           end;
-         end;
-
-         if _key.Name='Key20' then  //CapsLock
-            _key.Pressed:=Odd(GetKeyState(VK_CAPITAL)) else
-         if _Key.Name='Key144' then
-            _key.Pressed:=Odd(GetKeyState(VK_NUMLOCK)) else
-         if _key.Name='Key145' then
-            _key.Pressed:= Odd(GetKeyState(VK_SCROLL));
-    end;
+   if _key.Name='Key20' then  //CapsLock
+      _key.Pressed:=Odd(GetKeyState(VK_CAPITAL)) else
+   if _Key.Name='Key144' then
+      _key.Pressed:=Odd(GetKeyState(VK_NUMLOCK)) else
+   if _key.Name='Key145' then
+      _key.Pressed:= Odd(GetKeyState(VK_SCROLL));
 end;
 
 procedure TParentForm.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -498,7 +495,7 @@ end;
 procedure TParentForm.Save_cur_sessionExecute(Sender: TObject);
 begin
 VirtKeyboard.save(true, round(backform.Statistics.avSpeed), backform.Statistics.recordSpeed);  //save current session
- MessageDlg('РЎС‚Р°С‚РёСЃС‚РёРєР° СЃРѕС…СЂР°РЅРµРЅР°', TMsgDlgType.mtInformation, [mbOK], 0);
+ MessageDlg('Статистика сохранена', TMsgDlgType.mtInformation, [mbOK], 0);
 end;
 {procedure TParentForm.SettingFormResize(Sender: TObject);
 begin
@@ -610,9 +607,9 @@ end;
 
 procedure TParentForm.TrayMenuPopup(Sender: TObject);
 begin
-  if WindowState=TWindowState.wsNormal then n1.Caption:='РЎРІРµСЂРЅСѓС‚СЊ'
+  if WindowState=TWindowState.wsNormal then n1.Caption:='Свернуть'
   else
-  if WindowState=TWindowState.wsMinimized then n1.Caption:='Р Р°Р·РІРµСЂРЅСѓС‚СЊ';
+  if WindowState=TWindowState.wsMinimized then n1.Caption:='Развернуть';
 
 end;
 

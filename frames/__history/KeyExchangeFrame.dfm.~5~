@@ -22,7 +22,6 @@ object KeyExchange: TKeyExchange
     Top = 35
     Width = 289
     Height = 214
-    DefaultRowHeight = 30
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -16

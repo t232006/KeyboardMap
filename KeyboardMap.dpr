@@ -26,7 +26,9 @@ uses
   settings in 'settings.pas' {SettingForm},
   Language in 'Language.pas' {LangForm},
   interfaceMyFrame in 'units\interfaceMyFrame.pas',
-  MyAuxProc in '..\..\myComponents\MyAuxProc.pas';
+  MyAuxProc in '..\..\myComponents\MyAuxProc.pas',
+  KeyExchangeFrame in 'frames\KeyExchangeFrame.pas' {KeyExchange: TFrame},
+  scans in 'units\scans.pas';
 
 {$R *.res}
 //var //pbuff: array[0..127] of char;

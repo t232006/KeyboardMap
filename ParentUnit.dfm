@@ -26,6 +26,7 @@ object ParentForm: TParentForm
     inherited Panel1: TPanel
       Width = 789
       PopupMenu = TrayMenu
+      StyleElements = [seFont, seClient, seBorder]
       ExplicitWidth = 789
       inherited WinIcon: TImage
         PopupMenu = nil
@@ -37,6 +38,9 @@ object ParentForm: TParentForm
         OnClick = FormHeaderCloseButClick
         ExplicitLeft = 670
         ExplicitHeight = 39
+      end
+      inherited WinCaption: TLabel
+        StyleElements = [seFont, seClient, seBorder]
       end
       inherited SpeedButton2: TSpeedButton
         Left = 709
@@ -59,6 +63,7 @@ object ParentForm: TParentForm
       end
       inherited SpeedButton5: TSpeedButton
         Left = 601
+        OnClick = FormHeaderSpeedButton5Click
         ExplicitLeft = 565
         ExplicitTop = 2
         ExplicitHeight = 31

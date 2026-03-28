@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls,
   languageFrameUnit, appearanceFrameUnit, soundFrameUnit,
-  statisticsFrameUnit, registry, Vcl.ComCtrls, KeyExchangeFrame, keyboardunit;
+  statisticsFrameUnit, registry, Vcl.ComCtrls;
 
 type
   TSettingForm = class(TForm)
@@ -23,8 +23,6 @@ type
     SoundFrame: TSoundFrame;
     LangFrame: TLangFrame;
     StatisticsFrame: TStatisticsFrame;
-    TabSheet5: TTabSheet;
-    KeyExchange1: TKeyExchange;
 
     procedure LBmenuClick(Sender: TObject);
     procedure CancelButtonClick(Sender: TObject);
@@ -35,7 +33,7 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     reg: TRegIniFile;
-   procedure GetPressing(var msg: TMessage); message WM_MYKEYPRESS;
+   // procedure Includeframe<T>(MyFrame: Tframe);
   public
     procedure ApplayAll;
   end;
@@ -49,9 +47,6 @@ type
 
 implementation
 uses BackgroundUnit;
-
-var HexKey1, HexKey2: string;
-const selector: boolean=true;
 
 {$R *.dfm}
 
@@ -91,12 +86,9 @@ end;
 procedure TSettingForm.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   if tag=1 then settingFrame.SaveParams;
-  {if tag<>2 then
-  begin
-    StatisticsFrame.SaveParams;
-    SoundFrame.SaveParams;
-    langFrame.SaveParams;
-  end;*/}
+  StatisticsFrame.SaveParams;
+  SoundFrame.SaveParams;
+  langFrame.SaveParams;
 
 end;
 
@@ -123,28 +115,6 @@ begin
       end;
     end;
 
-end;
-
-procedure TSettingForm.GetPressing(var msg: TMessage);
-begin
- if selector then
-   begin
-       HexKey1:=InttoHex(msg.WParam);
-       KeyExchange1.label1.Caption:='Нажмите заменяющую клавишу';
-   end
-
-    else
-    begin
-      HexKey2:=InttoHex(msg.WParam);
-      KeyExchange1.label1.Caption:='Нажмите заменяемую клавишу';
-
-    end;
-    selector:=not(selector);
-    if (HexKey1<>'') and (HexKey2<>'') then
-    begin
-      KeyExchange1.valueListEditor1.InsertRow(HexKey1, HexKey2, true);
-      HexKey1:=''; HexKey2:='';
-    end;
 end;
 
 procedure TSettingForm.LBmenuClick(Sender: TObject);
@@ -192,6 +162,5 @@ begin
 
 
 end;
-
 
 end.
