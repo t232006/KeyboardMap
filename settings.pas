@@ -142,6 +142,8 @@ end;
 
 procedure TSettingForm.GetPressing(var msg: TMessage);
 begin
+ if pcPanel.ActivePageIndex=5 then
+
  if selector then
    begin
        HexKey1:=FScans.getScan(IntToHex(msg.LParam));//InttoHex(msg.WParam);
