@@ -29,7 +29,6 @@ object ParentForm: TParentForm
       StyleElements = [seFont, seClient, seBorder]
       ExplicitWidth = 789
       inherited WinIcon: TImage
-        PopupMenu = nil
         Transparent = True
         ExplicitHeight = 31
       end

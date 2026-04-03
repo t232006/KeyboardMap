@@ -69,7 +69,7 @@ type
     //procedure ChangeFormSize; virtual; abstract;
     procedure Show(keyb: TKeyboard); overload;
     procedure FormShow(Sender: TObject);
-    function FindKey(ScanCode: string):TKey;
+    function FindKey(VirtCode: word):TKey;
     procedure N1Click(Sender: TObject);
     procedure TrayMenuPopup(Sender: TObject);
     procedure FormHeaderSpeedButton3Click(Sender: TObject);
@@ -297,14 +297,15 @@ procedure TParentForm.GetPressing(var msg: TMessage);
     plSound: boolean;
 begin
    if TogPlaySound.State=tssOn then plSound:=true else plSound:=false;
-   VirtKeyboard.addPress(msg.WParam, msg.LParam, LangCode, plSound);
-   ScanHex:=InttoHex(msg.LParam);
+   VirtKeyboard.addPress(msg.WParam, msg.LParam, LangCode, plSound); //codes=virtCode+scanCode, pressBit
    if virtkeyboard.isPressed then
    begin
       if instantTimer.Enabled=false then instanttimer.Enabled:=true;
      speedform.instSpeedM.Value := BackForm.Statistics.instantSpeed(instantticker);
    end;
-  _key:=FindKey(ScanHex);
+  if (((msg.WParam shr 8)=13) and (msg.LParam>1)) then
+      _key:=FindKey(12) else //for RightEnter
+  _key:=FindKey((msg.WParam shr 8));
   _key.Pressed:=VirtKeyboard.isPressed;
 
    if virtkeyboard.isPressed then
@@ -504,34 +505,20 @@ begin
 VirtKeyboard.save(true, round(backform.Statistics.avSpeed), backform.Statistics.recordSpeed);  //save current session
  MessageDlg('Статистика сохранена', TMsgDlgType.mtInformation, [mbOK], 0);
 end;
-{procedure TParentForm.SettingFormResize(Sender: TObject);
-begin
-  (BackForm.activeForm.FindComponent('panel1') as TBevel).Top:=basePanelTop+
-  SettingPanel.Height;
-  Height:=baseHeight+SettingPanel.Height;
-end;  }
 
 procedure TParentForm.Show(keyb: TKeyboard);
 begin
   VirtKeyboard:=keyb;
   Show;
 end;
-function TParentForm.FindKey(ScanCode: string): TKey;
-var k, i:byte;  key:TKey;
+function TParentForm.FindKey(VirtCode: Word): TKey;
+var key:TKey;
 begin
    //result:=nil;
-   for k := 1 to 222 do
-   begin
-      key:=FindComponent('Key'+inttostr(k)) as TKey;
-      if key=nil then continue else
-      for I := 0 to key.ScanCodes.Count-1 do
-        if ScanCode=key.ScanCodes[i] then
-        begin
-          result:=key;
-          exit;
-        end;
-   end;
-   result:=FindComponent('Key223') as TKey;  //exception
+   key:=FindComponent('Key'+inttostr(VirtCode)) as TKey;
+   if key=nil then
+    result:=FindComponent('Key223') as TKey;  //exception
+   result:=key;
 end;
 
 procedure TParentForm.showSpeedClick(Sender: TObject);
