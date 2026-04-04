@@ -36,8 +36,19 @@ object KeyExchange: TKeyExchange
       ''
       '')
     OnDrawCell = KeyDictDrawCell
+    OnMouseDown = KeyDictMouseDown
     ColWidths = (
       132
       151)
+  end
+  object DelButton: TButton
+    Left = 246
+    Top = 255
+    Width = 75
+    Height = 25
+    Caption = #1059#1076#1072#1083#1080#1090#1100
+    Enabled = False
+    TabOrder = 1
+    OnClick = DelButtonClick
   end
 end

@@ -193,6 +193,9 @@ object SettingForm: TSettingForm
         inherited Label1: TLabel
           StyleElements = [seFont, seClient, seBorder]
         end
+        inherited KeyDict: TValueListEditor
+          KeyOptions = []
+        end
       end
     end
   end

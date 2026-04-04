@@ -11,8 +11,12 @@ type
   TKeyExchange = class(TFrame)
     Label1: TLabel;
     KeyDict: TValueListEditor;
+    DelButton: TButton;
     procedure KeyDictDrawCell(Sender: TObject; ACol, ARow: LongInt;
       Rect: TRect; State: TGridDrawState);
+    procedure KeyDictMouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    procedure DelButtonClick(Sender: TObject);
   private
     FSelectedCol: byte;
     FNoRows:boolean;
@@ -42,6 +46,12 @@ constructor TKeyExchange.Create(AOWner: TComponent);
 begin
   inherited;
   FNoRows:=true;
+end;
+
+procedure TKeyExchange.DelButtonClick(Sender: TObject);
+begin
+    KeyDict.DeleteRow(KeyDict.Row);
+  DelButton.Enabled:=false;
 end;
 
 procedure TKeyExchange.DrawTitle(SelectedCol: byte);
@@ -85,6 +95,13 @@ if (Arow=0) then
       KeyDict.Canvas.TextRect(rect, rect.Left, rect.top, text);
     end;
   end;
+end;
+
+procedure TKeyExchange.KeyDictMouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+begin
+   FnoRows:=false;
+    DelButton.Enabled:=true;
 end;
 
 procedure TKeyExchange.SetNoRows(const Value: boolean);
