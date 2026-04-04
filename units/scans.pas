@@ -24,7 +24,7 @@ begin
    while not(eof(t)) do
    begin
      readln(t,s);
-     scancode:=copy(s,1,8); delete(s,1,9);
+     scancode:=copy(s,1,4); delete(s,1,5);
      button:=trimright(s);
      FScans.Add(scancode,button);
    end;

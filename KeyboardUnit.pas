@@ -74,14 +74,10 @@ begin
     ToUnicodeEx(WS, SC, KS, @fletter, sizeof(fletter), 0, langcode);
    fisPressed:=(pressedBit and 1) = 1;
    scancode:=IntToHex(codes and 255);
-   fbutton:=FScans.getScan(scancode);
 
    FVirtCode:=WS;
 
-   ss:=string.Format('Key = %s; Letter = %s; Virt = %u; Scan = %s; %s; Time: %s; %s',
-   [fbutton, fletter, fVirtCode, scancode, IfThen(isPressed,'Down',' Up '), TimeToStr(now), chr(13)]);
-   //if evenbit then
-   Flog:=Flog+ss;
+
    if isPressed and (FVirtCode <= high(fmap)) then
    begin
       if playsound then
@@ -90,8 +86,19 @@ begin
         playClick(but);
       end;
 
-      if (WS=13) and (pressedBit>1) then inc(Fmap[12]) else //for right Enter
-      inc(Fmap[FVirtCode]);
+      if (WS=13) and (pressedBit>1) then
+      begin
+        inc(Fmap[12]);   //for right Enter
+        fbutton:=FScans.getScan('011C');
+      end else
+      begin
+        inc(Fmap[FVirtCode]);
+        fbutton:=FScans.getScan(scancode);
+      end;
+      ss:=string.Format('Key = %s; Letter = %s; Virt = %u; Scan = %s; %s; Time: %s; %s',
+      [fbutton, fletter, fVirtCode, scancode, IfThen(isPressed,'Down',' Up '), TimeToStr(now), chr(13)]);
+     //if evenbit then
+      Flog:=Flog+ss;
       if ord(letter)<>0 then
       Ftext:=Ftext+fletter else
       Ftext:=Ftext+fbutton;
