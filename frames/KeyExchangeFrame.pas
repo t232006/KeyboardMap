@@ -10,14 +10,18 @@ uses
 type
   TKeyExchange = class(TFrame)
     Label1: TLabel;
-    ValueListEditor1: TValueListEditor;
-    procedure ValueListEditor1DrawCell(Sender: TObject; ACol, ARow: LongInt;
+    KeyDict: TValueListEditor;
+    procedure KeyDictDrawCell(Sender: TObject; ACol, ARow: LongInt;
       Rect: TRect; State: TGridDrawState);
   private
     FSelectedCol: byte;
+    FNoRows:boolean;
+    procedure SetNoRows(const Value: boolean);
   public
     //ExchangeTable: Dictionary<string,string>;
+    property NoRows: boolean read FNoRows write SetNoRows default true;
     property _SelectedCol: byte read FSelectedCol;
+    constructor Create(AOWner: TComponent); override;
     procedure Applay;
     procedure DrawTitle(SelectedCol: byte);
   end;
@@ -34,33 +38,58 @@ begin
 
 end;
 
+constructor TKeyExchange.Create(AOWner: TComponent);
+begin
+  inherited;
+  FNoRows:=true;
+end;
+
 procedure TKeyExchange.DrawTitle(SelectedCol: byte);
 begin
     FSelectedCol:=selectedCol;
-    PostMessage(ValueListEditor1.Handle, WM_PAINT, 0, 0);
+    PostMessage(KeyDict.Handle, WM_PAINT, 0, 0);
 end;
 
-procedure TKeyExchange.ValueListEditor1DrawCell(Sender: TObject; ACol,
+procedure TKeyExchange.KeyDictDrawCell(Sender: TObject; ACol,
   ARow: LongInt; Rect: TRect; State: TGridDrawState);
 var text:string;
 begin
+  if FNoRows then
+  begin
+    KeyDict.Canvas.Brush.Color := clWindow;
+    KeyDict.Canvas.Font.Color := clBlack;
+
+    KeyDict.Canvas.FillRect(Rect);
+    KeyDict.Canvas.TextRect(
+    Rect,
+    Rect.Left + 2,
+    Rect.Top + 2,
+    KeyDict.Cells[ACol, ARow]
+  );
+  end;
+
 if (Arow=0) then
   begin
-    ValueListEditor1.Canvas.fillrect(rect);
+    KeyDict.Canvas.fillrect(rect);
     if (_SelectedCol=ACol) then
     begin
-      ValueListEditor1.Canvas.Font.Style:=[fsUnderline, fsBold];
+      KeyDict.Canvas.Font.Style:=[fsUnderline, fsBold];
       if _SelectedCol=0 then text:='Заменяемая' else text:='Заменяющая';
 
-      ValueListEditor1.Canvas.TextRect(rect, rect.Left, rect.top, text);
+      KeyDict.Canvas.TextRect(rect, rect.Left, rect.top, text);
     end
     else
     begin
-      ValueListEditor1.Canvas.Font.Style:=[];
+      KeyDict.Canvas.Font.Style:=[];
       if _SelectedCol=0 then text:='Заменяющая' else text:='Заменяемая';
-      ValueListEditor1.Canvas.TextRect(rect, rect.Left, rect.top, text);
+      KeyDict.Canvas.TextRect(rect, rect.Left, rect.top, text);
     end;
   end;
+end;
+
+procedure TKeyExchange.SetNoRows(const Value: boolean);
+begin
+     FNoRows:=value;
 end;
 
 end.

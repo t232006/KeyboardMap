@@ -141,7 +141,7 @@ end;}
 end;
 
 procedure TSettingForm.GetPressing(var msg: TMessage);
-var rect: TRect;
+var row: integer;
 begin
  if pcPanel.ActivePageIndex=4 then
 
@@ -151,7 +151,19 @@ begin
        with KeyExchange1 do
        begin
           label1.Caption:='Нажмите заменяющую клавишу';
-          valueListEditor1.InsertRow(HexKey1, HexKey2, true);
+          KeyDict.FindRow(HexKey1, row);
+          if row=-1 then
+          begin
+             NoRows:=true;
+             KeyDict.InsertRow(HexKey1, HexKey2, true);
+
+          end
+          else
+          begin
+            NoRows:=false;
+            KeyDict.Row:=row;
+            KeyDict.Invalidate;
+          end;
           drawTitle(1);
        end;
    end
@@ -162,9 +174,12 @@ begin
       with KeyExchange1 do
       begin
         label1.Caption:='Нажмите заменяемую клавишу';
-
-        ValueListEditor1.DeleteRow(ValueListEditor1.RowCount-1);
-        ValueListEditor1.InsertRow(Hexkey1,HexKey2,true);
+        if not(KeyExchange1.noRows) then
+          KeyDict.DeleteRow(KeyDict.Row)
+        else
+          KeyDict.DeleteRow(KeyDict.RowCount-1);
+        KeyDict.InsertRow(Hexkey1,HexKey2,true);
+        KeyDict.Row:=KeyDict.RowCount-1;
         drawTitle(0);
         HexKey1:=''; HexKey2:='';
       end;

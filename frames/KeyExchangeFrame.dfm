@@ -17,7 +17,7 @@ object KeyExchange: TKeyExchange
     Font.Style = []
     ParentFont = False
   end
-  object ValueListEditor1: TValueListEditor
+  object KeyDict: TValueListEditor
     Left = 32
     Top = 35
     Width = 289
@@ -29,12 +29,13 @@ object KeyExchange: TKeyExchange
     Font.Name = 'Segoe UI'
     Font.Style = []
     KeyOptions = [keyDelete]
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goColSizing, goEditing, goRowSelect, goThumbTracking]
     ParentFont = False
     TabOrder = 0
     TitleCaptions.Strings = (
       ''
       '')
-    OnDrawCell = ValueListEditor1DrawCell
+    OnDrawCell = KeyDictDrawCell
     ColWidths = (
       132
       151)

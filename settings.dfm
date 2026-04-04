@@ -38,7 +38,7 @@ object SettingForm: TSettingForm
     OnClick = LBmenuClick
   end
   object OKButton: TButton
-    Left = 370
+    Left = 534
     Top = 371
     Width = 75
     Height = 25
@@ -56,7 +56,7 @@ object SettingForm: TSettingForm
     OnClick = CancelButtonClick
   end
   object ApplayButton: TButton
-    Left = 532
+    Left = 368
     Top = 371
     Width = 75
     Height = 25
