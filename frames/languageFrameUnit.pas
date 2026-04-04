@@ -61,8 +61,8 @@ begin
   case HotKeyInd.ItemIndex of
   1: begin
         DataArea^.key:=$38;
-        DataArea^.exKey:=ifthen(Extender.State=tssOn, $21, $20);
-        if DataArea^.ExKey=$20 then
+        DataArea^.exKey:=ifthen(Extender.State=tssOn, 1, 0);
+        if DataArea^.ExKey=0 then
         begin
           Status.Text:='¬ настройках "языки и службы текстового ввода" установите сочетане клавиш <Ctrl>+<Shift>';
           strbutton:='<Left Alt>';
@@ -116,7 +116,7 @@ begin
       $1C: hotkeyind.ItemIndex:=4;
       else hotkeyind.ItemIndex:=0;
     end;
-    if (exKey=$21) or (exkey=$1) or (key=$45) then Extender.State:=tssOn else
+    if (exkey=$1) or (key=$45) then Extender.State:=tssOn else
     Extender.State:=tssOff;
 end;
 

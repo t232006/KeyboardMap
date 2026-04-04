@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{C17E1532-66FC-448A-B684-5BDFEFAE0F8A}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="KeyboardMap.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="HookProject\KeyboardHook.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="KeyboardMap">
+        <MSBuild Projects="KeyboardMap.dproj"/>
+    </Target>
+    <Target Name="KeyboardMap:Clean">
+        <MSBuild Projects="KeyboardMap.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="KeyboardMap:Make">
+        <MSBuild Projects="KeyboardMap.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="KeyboardHook">
+        <MSBuild Projects="HookProject\KeyboardHook.dproj"/>
+    </Target>
+    <Target Name="KeyboardHook:Clean">
+        <MSBuild Projects="HookProject\KeyboardHook.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="KeyboardHook:Make">
+        <MSBuild Projects="HookProject\KeyboardHook.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="KeyboardMap;KeyboardHook"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="KeyboardMap:Clean;KeyboardHook:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="KeyboardMap:Make;KeyboardHook:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

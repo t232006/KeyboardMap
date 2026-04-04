@@ -22,10 +22,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '004B0001'
-      'C04B0001'
-      '404B0001')
     Picture.Data = {
       9E130000424D9E13000000000000360000002800000048000000170000000100
       1800000000006813000000000000000000000000000000000000000000000000
@@ -221,9 +217,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '004C0001'
-      'C04C0001')
     PicturePos.Left = 16
     PicturePos.Top = 24
     PicturePos.Right = 36
@@ -259,9 +252,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '004D0001'
-      'C04D0001')
     Picture.Data = {
       9E130000424D9E13000000000000360000002800000048000000170000000100
       1800000000006813000000000000000000000000000000000000000000000000
@@ -457,10 +447,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '00470001'
-      'C0470001'
-      '40470001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -497,10 +483,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '00480001'
-      'C0480001'
-      '40480001')
     Picture.Data = {
       76140000424D7614000000000000360000002800000017000000480000000100
       1800000000004014000000000000000000000000000000000000000000000000
@@ -702,10 +684,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '00490001'
-      'C0490001'
-      '40490001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -742,10 +720,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '00370001'
-      'C0370001'
-      '40370001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -781,10 +755,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 60
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '004E0001'
-      'C04E0001'
-      '404E0001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -820,10 +790,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '004A0001'
-      'C04A0001'
-      '404A0001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -859,10 +825,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '00530001'
-      'C0530001'
-      '40530001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -899,10 +861,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '01350001'
-      'C1350001'
-      '41350001')
     PicturePos.Left = 16
     PicturePos.Top = 24
     PicturePos.Right = 36
@@ -938,10 +896,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '003B0001'
-      'C03B0001'
-      '403B0001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -977,10 +931,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '003C0001'
-      'C03C0001'
-      '403C0001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -1016,10 +966,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '003D0001'
-      'C03D0001'
-      '403D0001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -1055,10 +1001,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '003E0001'
-      'C03E0001'
-      '403E0001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -1094,10 +1036,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '003F0001'
-      'C03F0001'
-      '403F0001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -1133,10 +1071,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '00400001'
-      'C0400001'
-      '40400001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -1172,10 +1106,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '00410001'
-      'C0410001'
-      '40410001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -1211,10 +1141,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '00420001'
-      'C0420001'
-      '40420001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -1250,10 +1176,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 62
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '011C0001'
-      'C11C0001'
-      '411C0001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -1289,10 +1211,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '00430001'
-      'C0430001'
-      '40430001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -1328,10 +1246,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '00440001'
-      'C0440001'
-      '40440001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -1367,10 +1281,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '00570001'
-      'C0570001'
-      '40570001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -1406,10 +1316,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '00580001'
-      'C0580001'
-      '40580001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -1445,10 +1351,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 70
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '001C0001'
-      'C01C0001'
-      '401C0001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -1484,9 +1386,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '01450001'
-      'C1450001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -1522,9 +1421,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '00460001'
-      'C0460001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -1560,9 +1456,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '00450001'
-      'C0450001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -1598,10 +1491,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 67
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '002A0001'
-      'C02A0001'
-      '402A0001')
     Picture.Data = {
       76140000424D7614000000000000360000002800000017000000480000000100
       1800000000004014000000000000000000000000000000000000000000000000
@@ -1803,10 +1692,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 91
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '00360001'
-      'C0360001'
-      '40360001')
     Picture.Data = {
       76140000424D7614000000000000360000002800000017000000480000000100
       1800000000004014000000000000000000000000000000000000000000000000
@@ -2008,10 +1893,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 35
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '001D0001'
-      'C01D0001'
-      '401D0001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -2047,10 +1928,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 35
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '011D0001'
-      'C11D0001'
-      '411D0001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -2086,10 +1963,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 35
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '20380001'
-      'C0380001'
-      '40380001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -2125,10 +1998,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 35
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '21380001'
-      'C1380001'
-      '41380001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -2164,10 +2033,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '00270001'
-      'C0270001'
-      '40270001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -2204,10 +2069,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '000D0001'
-      'C00D0001'
-      '400D0001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -2243,10 +2104,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '00330001'
-      'C0330001'
-      '40330001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -2283,10 +2140,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '000C0001'
-      'C00C0001'
-      '400C0001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -2322,10 +2175,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '00340001'
-      'C0340001'
-      '40340001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -2362,10 +2211,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '00350001'
-      'C0350001'
-      '40350001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -2402,10 +2247,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 54
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '003A0001'
-      'C03A0001'
-      '403A0001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -2441,10 +2282,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '001A0001'
-      'C01A0001'
-      '401A0001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -2481,10 +2318,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 46
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '002B0001'
-      'C02B0001'
-      '402B0001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -2521,10 +2354,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '00280001'
-      'C0280001'
-      '40280001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -2595,9 +2424,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '00010001'
-      'C0010001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -2633,10 +2459,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 216
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '00390001'
-      'C0390001'
-      '40390001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -2671,10 +2493,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '01490001'
-      'C1490001'
-      '41490001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -2710,10 +2528,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '01510001'
-      'C1510001'
-      '41510001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -2749,10 +2563,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '014F0001'
-      'C14F0001'
-      '414F0001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -2788,10 +2598,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '01470001'
-      'C1470001'
-      '41470001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -2827,10 +2633,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '014B0001'
-      'C14B0001'
-      '414B0001')
     Picture.Data = {
       8E110000424D8E11000000000000360000002800000027000000250000000100
       1800000000005811000000000000000000000000000000000000000000000000
@@ -3008,10 +2810,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '01480001'
-      'C1480001'
-      '41530001')
     Picture.Data = {
       46110000424D4611000000000000360000002800000025000000270000000100
       1800000000001011000000000000000000000000000000000000000000000000
@@ -3187,10 +2985,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '014D0001'
-      'C14D0001'
-      '414D0001')
     Picture.Data = {
       8E110000424D8E11000000000000360000002800000027000000250000000100
       1800000000005811000000000000000000000000000000000000000000000000
@@ -3368,10 +3162,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '01500001'
-      'C1500001'
-      '41500001')
     Picture.Data = {
       46110000424D4611000000000000360000002800000025000000270000000100
       1800000000001011000000000000000000000000000000000000000000000000
@@ -3547,10 +3337,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '10290001'
-      'C0290001'
-      '40290001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -3587,9 +3373,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '01370001'
-      'C1370001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -3625,10 +3408,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '01520001'
-      'C1520001'
-      '41520001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -3664,10 +3443,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '01530001'
-      'C1530001'
-      '41530001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -3703,10 +3478,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '000B0001'
-      'C00B0001'
-      '400B0001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -3742,10 +3513,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '00020001'
-      'C0020001'
-      '40020001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -3781,10 +3548,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '00030001'
-      'C0030001'
-      '40030001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -3821,10 +3584,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '00040001'
-      'C0040001'
-      '40040001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -3861,10 +3620,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '00050001'
-      'C0050001'
-      '40050001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -3901,10 +3656,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '00060001'
-      'C0060001'
-      '40060001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -3940,10 +3691,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '00070001'
-      'C0070001'
-      '40070001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -3980,10 +3727,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '00080001'
-      'C0080001'
-      '40080001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -4020,10 +3763,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '00090001'
-      'C0090001'
-      '40090001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -4059,10 +3798,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '000A0001'
-      'C00A0001'
-      '400A0001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -4098,10 +3833,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '001E0001'
-      'C01E0001'
-      '401E0001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -4137,10 +3868,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '00300001'
-      'C0300001'
-      '40300001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -4176,10 +3903,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '002E0001'
-      'C02E0001'
-      '402E0001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -4215,10 +3938,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '00200001'
-      'C0200001'
-      '40200001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -4254,10 +3973,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '00120001'
-      'C0120001'
-      '40120001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -4293,10 +4008,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '00210001'
-      'C0210001'
-      '40210001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -4332,10 +4043,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '00220001'
-      'C0220001'
-      '40220001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -4371,10 +4078,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '00230001'
-      'C0230001'
-      '40230001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -4410,10 +4113,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '00170001'
-      'C0170001'
-      '40170001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -4449,10 +4148,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '00240001'
-      'C0240001'
-      '40240001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -4488,10 +4183,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '00250001'
-      'C0250001'
-      '40250001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -4527,10 +4218,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '00260001'
-      'C0260001'
-      '40260001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -4566,10 +4253,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '00320001'
-      'C0320001'
-      '40320001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -4605,10 +4288,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '00310001'
-      'C0310001'
-      '40310001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -4644,10 +4323,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '00180001'
-      'C0180001'
-      '40180001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -4683,10 +4358,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 62
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '000E0001'
-      'C00E0001'
-      '400E0001')
     Picture.Data = {
       5A0F0000424D5A0F000000000000360000002800000043000000130000000100
       180000000000240F000000000000000000000000000000000000000000000000
@@ -4846,10 +4517,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '00190001'
-      'C0190001'
-      '40190001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -4885,10 +4552,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '00100001'
-      'C0100001'
-      '40100001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -4924,10 +4587,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '00130001'
-      'C0130001'
-      '40130001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -4963,10 +4622,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '001F0001'
-      'C01F0001'
-      '401F0001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -5002,10 +4657,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '00140001'
-      'C0140001'
-      '40140001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -5041,10 +4692,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '00160001'
-      'C0160001'
-      '40160001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -5080,10 +4727,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '002F0001'
-      'C02F0001'
-      '402F0001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -5119,10 +4762,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '00110001'
-      'C0110001'
-      '40110001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -5158,10 +4797,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '002D0001'
-      'C02D0001'
-      '402D0001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -5197,10 +4832,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '00150001'
-      'C0150001'
-      '40150001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -5236,10 +4867,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 44
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '000F0001'
-      'C00F0001'
-      '400F0001')
     Picture.Data = {
       36140000424D361400000000000036000000280000002A000000280000000100
       1800000000000014000000000000000000000000000000000000000000000000
@@ -5439,10 +5066,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '002C0001'
-      'C02C0001'
-      '402C0001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -5478,10 +5101,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 35
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '015B0001'
-      'C15B0001'
-      '415B0001')
     Picture.Data = {
       F6060000424DF606000000000000360000002800000018000000180000000100
       180000000000C006000000000000000000000000000000000000000000000000
@@ -5573,10 +5192,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 35
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '015C0001'
-      'C15C0001'
-      '415C0001')
     Picture.Data = {
       F6060000424DF606000000000000360000002800000018000000180000000100
       180000000000C006000000000000000000000000000000000000000000000000
@@ -5668,10 +5283,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 35
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '015D0001'
-      'C15D0001'
-      '415D0001')
     Picture.Data = {
       36140000424D361400000000000036000000280000002A000000280000000100
       1800000000000014000000000000000000000000000000000000000000000000
@@ -5870,10 +5481,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '001B0001'
-      'C01B0001'
-      '401B0001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -5910,10 +5517,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 62
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '00520001'
-      'C0520001'
-      '40520001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -5950,10 +5553,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '004F0001'
-      'C04F0001'
-      '404F0001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -5990,10 +5589,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '00500001'
-      'C0500001'
-      '40500001')
     Picture.Data = {
       76140000424D7614000000000000360000002800000017000000480000000100
       1800000000004014000000000000000000000000000000000000000000000000
@@ -6195,10 +5790,6 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Width = 28
     Height = 28
     OnMouseDown = Key100MouseDown
-    ScanCodes.Strings = (
-      '00510001'
-      'C0510001'
-      '40510001')
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38

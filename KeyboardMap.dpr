@@ -12,7 +12,6 @@ uses
   PressCounter in 'units\PressCounter.pas',
   SendKeyPressProc in 'units\SendKeyPressProc.pas',
   FileMapping in 'HookProject\FileMapping.pas',
-  KeyboardUnit in 'HookProject\KeyboardUnit.pas',
   winHeader in 'components\winHeader.pas' {FormHeader: TFrame},
   sound in 'sound.pas' {soundSetting},
   ParentUnit in 'ParentUnit.pas' {ParentForm},
@@ -24,11 +23,12 @@ uses
   statisticsFrameUnit in 'frames\statisticsFrameUnit.pas' {StatisticsFrame: TFrame},
   appearanceFrameUnit in 'frames\appearanceFrameUnit.pas' {settingFrame: TFrame},
   settings in 'settings.pas' {SettingForm},
-  Language in 'Language.pas' {LangForm},
   interfaceMyFrame in 'units\interfaceMyFrame.pas',
   MyAuxProc in '..\..\myComponents\MyAuxProc.pas',
   KeyExchangeFrame in 'frames\KeyExchangeFrame.pas' {KeyExchange: TFrame},
-  scans in 'units\scans.pas';
+  scans in 'units\scans.pas',
+  uKeyboardHook in 'HookProject\uKeyboardHook.pas',
+  KeyboardUnit in 'KeyboardUnit.pas';
 
 {$R *.res}
 //var //pbuff: array[0..127] of char;
@@ -65,7 +65,7 @@ begin
   //Application.CreateForm(TKeyboardFormLarge, KeyboardFormLarge);
   //Application.CreateForm(TKeyboardFormSmall, KeyboardFormSmall);
   //Application.CreateForm(TForm2, Form2);
-  Application.CreateForm(TLangForm, LangForm);
+  //Application.CreateForm(TLangForm, LangForm);
   Application.CreateForm(TSpeedForm, SpeedForm);
   //Application.CreateForm(TsoundSetting, soundSetting);
   Application.Run;

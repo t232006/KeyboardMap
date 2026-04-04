@@ -503,7 +503,7 @@ end;
 procedure TParentForm.Save_cur_sessionExecute(Sender: TObject);
 begin
 VirtKeyboard.save(true, round(backform.Statistics.avSpeed), backform.Statistics.recordSpeed);  //save current session
- MessageDlg('���������� ���������', TMsgDlgType.mtInformation, [mbOK], 0);
+ MessageDlg('Статистика сохранена', TMsgDlgType.mtInformation, [mbOK], 0);
 end;
 
 procedure TParentForm.Show(keyb: TKeyboard);
@@ -601,9 +601,9 @@ end;
 
 procedure TParentForm.TrayMenuPopup(Sender: TObject);
 begin
-  if WindowState=TWindowState.wsNormal then n1.Caption:='��������'
+  if WindowState=TWindowState.wsNormal then n1.Caption:='Свернуть'
   else
-  if WindowState=TWindowState.wsMinimized then n1.Caption:='����������';
+  if WindowState=TWindowState.wsMinimized then n1.Caption:='Развернуть';
 
 end;
 

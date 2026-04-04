@@ -153,7 +153,6 @@
         <DCCReference Include="units\PressCounter.pas"/>
         <DCCReference Include="units\SendKeyPressProc.pas"/>
         <DCCReference Include="HookProject\FileMapping.pas"/>
-        <DCCReference Include="HookProject\KeyboardUnit.pas"/>
         <DCCReference Include="components\winHeader.pas">
             <Form>FormHeader</Form>
             <DesignClass>TFrame</DesignClass>
@@ -195,10 +194,6 @@
             <Form>SettingForm</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Language.pas">
-            <Form>LangForm</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="units\interfaceMyFrame.pas"/>
         <DCCReference Include="..\..\myComponents\MyAuxProc.pas"/>
         <DCCReference Include="frames\KeyExchangeFrame.pas">
@@ -207,6 +202,8 @@
             <DesignClass>TFrame</DesignClass>
         </DCCReference>
         <DCCReference Include="units\scans.pas"/>
+        <DCCReference Include="HookProject\uKeyboardHook.pas"/>
+        <DCCReference Include="KeyboardUnit.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

@@ -56,7 +56,6 @@ type
     FColor: TColor;
     FCurrentColor: TColor;
     FInvertPicture: TBitmap;
-    FScanCodes: TStringList;
     FPictureColor: TColor;
     FOnColorChange: TNotifyEvent;
     //FPictureRect: TRect;
@@ -80,7 +79,6 @@ type
     procedure SetRound(const Value: byte);
     function SetPictureRect: TRect;
     procedure SetPicturePos(const Value: TPicturePos);
-    procedure SetScanCodes(const Value: TStringList);
     procedure SetPressed(const Value: Boolean);
     procedure SetPictureColor(Value: TColor);
     property PictureRect: TRect read SetPictureRect;
@@ -110,7 +108,6 @@ type
     property OnMouseMove;
     property OnMouseDown;
     property OnMouseUp;
-    property ScanCodes: TStringList read FScanCodes write SetScanCodes;
     property Picture: TBitmap read FPicture write SetPicture;
     property PicturePos: TPicturePos read FPicturePos write SetPicturePos stored true;
 
@@ -166,7 +163,6 @@ begin
   FUpLabel.Font:=TFont.Create;
   FDownLabel.Font:=TFont.Create;
   FMidLabel.Font:=TFont.Create;
-  FScanCodes:=TStringList.Create;
   height:=42; width:=42;
   Fround:=4;
   FPicturePos:=TPicturePos.Create;
@@ -207,7 +203,6 @@ begin
   FPicture.Destroy;
   FPicturePos.Destroy;
   FInvertPicture.Destroy;
-  FScanCodes.Destroy;
   inherited;
 end;
 
@@ -536,11 +531,6 @@ procedure TKey.SetRound(const Value: byte);
 begin
    FRound:=Value;
    invalidate;
-end;
-
-procedure TKey.SetScanCodes(const Value: TStringList);
-begin
-  FScanCodes.Assign(Value);
 end;
 
 procedure TKey.MakeBlack;

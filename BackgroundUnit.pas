@@ -6,7 +6,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, ParentUnit, MainUnitLarge, MainUnitSmall,
   Vcl.Imaging.pngimage, Vcl.ExtCtrls, Registry, PressCounter, speedometer,
   Vcl.WinXCtrls, MyAuxProc, shlObj, settings, System.Actions, Vcl.ActnList,
-  Vcl.Menus;
+  Vcl.Menus, uKeyboardHook;
   const WM_WANT_CLOSE = WM_USER+$345+10;
 type
   //TColScheme = (Dark, Light, Classic, Custom);
@@ -42,6 +42,7 @@ type
     fmoved: boolean;
     diff: TPoint;
     pos: TPoint;
+    lowhook: TLowLevelKeyboardHook;
   public
     avSpeed, MaxSpeed, n: Integer;
     Statistics: TStatistics;
@@ -50,8 +51,8 @@ type
     showSpeed, playSound: boolean;
     property ClassNameOfActiveForm: string read FClassName;
   end;
-  procedure RunHook stdcall; external 'KeyboardHook.dll';
-  procedure StopHook; stdcall; external 'KeyboardHook.dll';
+  //procedure RunHook stdcall; external 'KeyboardHook.dll';
+  //procedure StopHook; stdcall; external 'KeyboardHook.dll';
 var
   BackForm: TBackForm;
   loadparams, saveparams: TRegIniFile;
@@ -86,12 +87,16 @@ procedure TBackForm.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
     //activeform.close; activeform.Free;
   loadparams.Destroy;
-  stophook;
+  //stophook;
+  lowhook.Stop;
+  lowhook.Destroy;
 end;
 procedure TBackForm.FormCreate(Sender: TObject);
 begin
    //settingFolder:= GetSpecialPath(CSIDL_APPDATA)+'\Individual dictionary';
-   Runhook;
+   //Runhook;
+   lowhook:=TLowLevelKeyboardHook.Create;
+   lowhook.Start;
    fdown:=false; fmoved:=false;
    Application.OnDeactivate:=FormDeactivate;
    loadparams:=TReginifile.Create('Software\'+ChangeFileExt(ExtractFileName(Paramstr(0)),''));

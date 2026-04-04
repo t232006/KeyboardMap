@@ -25,7 +25,6 @@ object FormHeader: TFormHeader
       Height = 31
       Cursor = crHandPoint
       Align = alLeft
-      PopupMenu = ParentForm.TrayMenu
       OnClick = WinIconClick
       ExplicitHeight = 32
     end
