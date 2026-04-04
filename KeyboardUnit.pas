@@ -103,7 +103,7 @@ begin
       Ftext:=Ftext+fletter else
       Ftext:=Ftext+fbutton;
       if Assigned(backform.SettingForm) then
-        PostMessage(backform.SettingForm.Handle, WM_MYKEYPRESS, codes, pressedBit);
+        PostMessage(backform.SettingForm.Handle, WM_MYKEYPRESS, WParam(codes), LParam(pressedBit));
    end;
 end;
 

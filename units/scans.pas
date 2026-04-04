@@ -1,7 +1,7 @@
 unit scans;
 
 interface
-uses System.Generics.Collections, SysUtils;
+uses System.Generics.Collections, SysUtils, strUtils;
 type TScans=class
 
   constructor Create;
@@ -41,6 +41,8 @@ end;
 function TScans.getScan(scancode: string): string;
 var fbutton:string;
 begin
+  if length(scancode)>4 then scancode:=rightStr(scancode,4);
+
   FScans.TryGetValue(scancode, fbutton);
   result:=fbutton;
 end;

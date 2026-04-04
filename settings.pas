@@ -141,27 +141,38 @@ end;}
 end;
 
 procedure TSettingForm.GetPressing(var msg: TMessage);
+var rect: TRect;
 begin
- if pcPanel.ActivePageIndex=5 then
+ if pcPanel.ActivePageIndex=4 then
 
  if selector then
    begin
-       HexKey1:=FScans.getScan(IntToHex(msg.LParam));//InttoHex(msg.WParam);
-       KeyExchange1.label1.Caption:='Нажмите заменяющую клавишу';
+       HexKey1:=FScans.getScan(IntToHex(msg.WParam and 255));//InttoHex(msg.WParam);
+       with KeyExchange1 do
+       begin
+          label1.Caption:='Нажмите заменяющую клавишу';
+          valueListEditor1.InsertRow(HexKey1, HexKey2, true);
+          drawTitle(1);
+       end;
    end
 
     else
     begin
-      HexKey2:=FScans.getScan(IntToHex(msg.LParam)); //InttoHex(msg.WParam);
-      KeyExchange1.label1.Caption:='Нажмите заменяемую клавишу';
+      HexKey2:=FScans.getScan(IntToHex(msg.WParam and 255)); //InttoHex(msg.WParam);
+      with KeyExchange1 do
+      begin
+        label1.Caption:='Нажмите заменяемую клавишу';
+
+        ValueListEditor1.DeleteRow(ValueListEditor1.RowCount-1);
+        ValueListEditor1.InsertRow(Hexkey1,HexKey2,true);
+        drawTitle(0);
+        HexKey1:=''; HexKey2:='';
+      end;
+
     end;
     selector:=not(selector);
-    if (HexKey1<>'') and (HexKey2<>'') then
-    begin
-      KeyExchange1.valueListEditor1.InsertRow(HexKey1, HexKey2, true);
-      HexKey1:=''; HexKey2:='';
-    end;
 end;
+
 
 procedure TSettingForm.OKButtonClick(Sender: TObject);
 begin

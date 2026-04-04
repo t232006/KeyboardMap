@@ -28,13 +28,15 @@ object KeyExchange: TKeyExchange
     Font.Height = -16
     Font.Name = 'Segoe UI'
     Font.Style = []
+    KeyOptions = [keyDelete]
     ParentFont = False
     TabOrder = 0
     TitleCaptions.Strings = (
-      #1047#1072#1084#1077#1085#1103#1077#1084#1072#1103
-      #1047#1072#1084#1077#1085#1103#1102#1097#1072#1103)
+      ''
+      '')
+    OnDrawCell = ValueListEditor1DrawCell
     ColWidths = (
-      150
-      133)
+      132
+      151)
   end
 end
