@@ -2,7 +2,7 @@ object KeyExchange: TKeyExchange
   Left = 0
   Top = 0
   Width = 376
-  Height = 301
+  Height = 305
   TabOrder = 0
   object Label1: TLabel
     Left = 32
@@ -17,30 +17,6 @@ object KeyExchange: TKeyExchange
     Font.Style = []
     ParentFont = False
   end
-  object KeyDict: TValueListEditor
-    Left = 32
-    Top = 35
-    Width = 289
-    Height = 214
-    DefaultRowHeight = 30
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -16
-    Font.Name = 'Segoe UI'
-    Font.Style = []
-    KeyOptions = [keyDelete]
-    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goColSizing, goEditing, goRowSelect, goThumbTracking]
-    ParentFont = False
-    TabOrder = 0
-    TitleCaptions.Strings = (
-      ''
-      '')
-    OnDrawCell = KeyDictDrawCell
-    OnMouseDown = KeyDictMouseDown
-    ColWidths = (
-      132
-      151)
-  end
   object DelButton: TButton
     Left = 246
     Top = 255
@@ -48,7 +24,28 @@ object KeyExchange: TKeyExchange
     Height = 25
     Caption = #1059#1076#1072#1083#1080#1090#1100
     Enabled = False
-    TabOrder = 1
+    TabOrder = 0
     OnClick = DelButtonClick
+  end
+  object KeyDict: TPairsList
+    Left = 32
+    Top = 35
+    Width = 289
+    Height = 214
+    ColCount = 2
+    DefaultColWidth = 142
+    DefaultRowHeight = 30
+    FixedCols = 0
+    RowCount = 2
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSelect, goFixedRowDefAlign]
+    ParentFont = False
+    TabOrder = 1
+    OnDrawCell = KeyDict1DrawCell
+    OnMouseDown = KeyDictMouseDown
   end
 end

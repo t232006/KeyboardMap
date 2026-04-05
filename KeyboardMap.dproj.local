@@ -9,6 +9,7 @@
     <File Path="components\key.pas"/>
     <File Path="components\winHeader.pas"/>
     <File Path="components\winHeader.dfm"/>
+    <File Path="components\PairsList.pas"/>
     <File Path="frames"/>
     <File Path="frames\appearanceFrameUnit.pas"/>
     <File Path="frames\appearanceFrameUnit.dfm"/>
@@ -47,16 +48,17 @@
     <File Path="KeyboardUnit.pas"/>
   </ProjectSortOrder>
 	<Transactions>
-    <Transaction>1899.12.30 00:00:00.000.978,=G:\some folder\keyboardMap\KeyboardMap\frames\KeyExchangeFrame.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.924,G:\some folder\keyboardMap\KeyboardMap\Language.pas=</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.913,G:\some folder\keyboardMap\KeyboardMap\HookProject\uKeyRemapper.pas=G:\some folder\keyboardMap\KeyboardMap\HookProject\uKeyboardHook.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.856,=G:\some folder\keyboardMap\KeyboardMap\Unit1.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.780,G:\some folder\keyboardMap\KeyboardMap\Unit1.pas=G:\some folder\keyboardMap\KeyboardMap\HookProject\uKeyRemapper.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.882,G:\some folder\keyboardMap\KeyboardMap\Unit1.pas=G:\some folder\keyboardMap\KeyboardMap\units\scans.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.489,=G:\some folder\keyboardMap\KeyboardMap\Unit1.pas</Transaction>
-    <Transaction>2026.04.03 23:30:14.817,G:\some folder\keyboardMap\KeyboardMap\HookProject\KeyboardUnit.pas=</Transaction>
-    <Transaction>2026.04.03 23:31:23.409,=G:\some folder\keyboardMap\KeyboardMap\HookProject\KeyboardUnit.pas</Transaction>
-    <Transaction>2026.04.03 23:31:41.023,G:\some folder\keyboardMap\KeyboardMap\HookProject\KeyboardUnit.pas=</Transaction>
-    <Transaction>2026.04.03 23:31:57.181,=G:\some folder\keyboardMap\KeyboardMap\KeyboardUnit.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.978,=G:\some folder\keyboardMap\KeyboardMap\frames\KeyExchangeFrame.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.780,G:\some folder\keyboardMap\KeyboardMap\HookProject\uKeyRemapper.pas=G:\some folder\keyboardMap\KeyboardMap\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.181,=G:\some folder\keyboardMap\KeyboardMap\KeyboardUnit.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.882,G:\some folder\keyboardMap\KeyboardMap\units\scans.pas=G:\some folder\keyboardMap\KeyboardMap\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.913,G:\some folder\keyboardMap\KeyboardMap\HookProject\uKeyboardHook.pas=G:\some folder\keyboardMap\KeyboardMap\HookProject\uKeyRemapper.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.924,G:\some folder\keyboardMap\KeyboardMap\Language.pas=</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.817,G:\some folder\keyboardMap\KeyboardMap\HookProject\KeyboardUnit.pas=</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.023,G:\some folder\keyboardMap\KeyboardMap\HookProject\KeyboardUnit.pas=</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.409,=G:\some folder\keyboardMap\KeyboardMap\HookProject\KeyboardUnit.pas</Transaction>
+    <Transaction>2026.04.05 22:55:24.996,=G:\some folder\keyboardMap\KeyboardMap\components\PairsList.pas</Transaction>
   </Transactions>
 </BorlandProject>

@@ -51,7 +51,11 @@ type
 
 implementation
 uses BackgroundUnit;
-var HexKey1, HexKey2: string;
+type TkeyPair=class
+  Vk:word;
+  KeyName:string;
+end;
+var KeyFrom, KeyTo: TkeyPair;
 const selector: boolean=true;
 
 {$R *.dfm}
@@ -147,43 +151,52 @@ begin
 
  if selector then
    begin
-       HexKey1:=FScans.getScan(IntToHex(msg.WParam and 255));//InttoHex(msg.WParam);
-       with KeyExchange1 do
+       KeyFrom:=TKeyPair.Create;
+       KeyFrom.Vk:=msg.WParam and 255;
+       KeyFrom.KeyName:=FScans.getScan(IntToHex(KeyFrom.Vk));//InttoHex(msg.WParam);
+       with KeyExchange1.KeyDict do
        begin
-          label1.Caption:='Нажмите заменяющую клавишу';
-          KeyDict.FindRow(HexKey1, row);
-          if row=-1 then
-          begin
-             NoRows:=true;
-             KeyDict.InsertRow(HexKey1, HexKey2, true);
+          KeyExchange1.label1.Caption:='Нажмите заменяющую клавишу';
 
+          if FindRow(KeyFrom.KeyName)=-1 then
+          begin
+             KeyExchange1.NoRows:=true;
+               Objects[0,RowCount-1]:=KeyFrom;
+               Cells[0,rowcount-1]:=KeyFrom.Keyname;
           end
           else
           begin
-            NoRows:=false;
-            KeyDict.Row:=row;
-            KeyDict.Invalidate;
+            KeyExchange1.NoRows:=false;
+            Invalidate;
           end;
-          drawTitle(1);
        end;
+       KeyExchange1.drawTitle(1);
+
    end
 
     else
     begin
-      HexKey2:=FScans.getScan(IntToHex(msg.WParam and 255)); //InttoHex(msg.WParam);
-      with KeyExchange1 do
+      KeyTo:=TkeyPair.Create;
+      KeyTo.Vk:=msg.WParam and 255;
+      KeyTo.KeyName:=FScans.getScan(IntToHex(KeyTo.Vk)); //InttoHex(msg.WParam);
+      with KeyExchange1.KeyDict do
       begin
-        label1.Caption:='Нажмите заменяемую клавишу';
-        if not(KeyExchange1.noRows) then
-          KeyDict.DeleteRow(KeyDict.Row)
+        KeyExchange1.label1.Caption:='Нажмите заменяемую клавишу';
+        if KeyExchange1.noRows then
+          begin
+            Objects[1,RowCount-1]:=KeyTo;
+            Cells[1,rowcount-1]:=KeyTo.Keyname;
+            RowCount:=RowCount+1;
+          end
         else
-          KeyDict.DeleteRow(KeyDict.RowCount-1);
-        KeyDict.InsertRow(Hexkey1,HexKey2,true);
-        KeyDict.Row:=KeyDict.RowCount-1;
-        drawTitle(0);
-        HexKey1:=''; HexKey2:='';
-      end;
+          begin
+            Objects[0,Row]:=KeyTo;
+            Cells[1,row]:=KeyTo.Keyname;
+          end;
+        KeyExchange1.drawTitle(0);
+        KeyFrom.KeyName:=''; KeyTo.KeyName:='';
 
+      end;
     end;
     selector:=not(selector);
 end;

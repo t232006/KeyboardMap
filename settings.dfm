@@ -190,11 +190,9 @@ object SettingForm: TSettingForm
         TabOrder = 0
         ExplicitLeft = -4
         ExplicitTop = 3
+        ExplicitHeight = 301
         inherited Label1: TLabel
           StyleElements = [seFont, seClient, seBorder]
-        end
-        inherited KeyDict: TValueListEditor
-          KeyOptions = []
         end
       end
     end

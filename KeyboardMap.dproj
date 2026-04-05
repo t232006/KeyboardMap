@@ -204,6 +204,7 @@
         <DCCReference Include="units\scans.pas"/>
         <DCCReference Include="HookProject\uKeyboardHook.pas"/>
         <DCCReference Include="KeyboardUnit.pas"/>
+        <DCCReference Include="components\PairsList.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

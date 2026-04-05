@@ -5,28 +5,36 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
   Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons,
-  Vcl.Grids, Vcl.ValEdit, keyboardunit,System.Generics.Collections;
+  Vcl.Grids, Vcl.ValEdit, keyboardunit,System.Generics.Collections, interfaceMyFrame,
+  registry, pairslist;
 
 type
-  TKeyExchange = class(TFrame)
+  TKeyExchange = class(TFrame, IMyFrame)
     Label1: TLabel;
-    KeyDict: TValueListEditor;
     DelButton: TButton;
-    procedure KeyDictDrawCell(Sender: TObject; ACol, ARow: LongInt;
+    KeyDict: TPairsList;
+    procedure KeyDict1DrawCell(Sender: TObject; ACol, ARow: LongInt;
       Rect: TRect; State: TGridDrawState);
+    procedure DelButtonClick(Sender: TObject);
     procedure KeyDictMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
-    procedure DelButtonClick(Sender: TObject);
   private
+    FSelectedRow: byte;
     FSelectedCol: byte;
     FNoRows:boolean;
+    //_ButtonsDict: TDictionary<word, word>;
+
     procedure SetNoRows(const Value: boolean);
   public
+    reg: TRegIniFile;
     //ExchangeTable: Dictionary<string,string>;
+    ButtonsDict: TDictionary<word, word>;
     property NoRows: boolean read FNoRows write SetNoRows default true;
     property _SelectedCol: byte read FSelectedCol;
     constructor Create(AOWner: TComponent); override;
     procedure Applay;
+    procedure SaveParams;
+    procedure LoadParams;
     procedure DrawTitle(SelectedCol: byte);
   end;
 
@@ -38,19 +46,26 @@ implementation
 { TKeyExchange }
 
 procedure TKeyExchange.Applay;
+//var butFrom, butTo: word;
 begin
-
+{    for var i := 0 to KeyDict.RowCount-1 do
+    begin
+      ButFrom:=strtoint('$'+keydict.Keys[i]);
+      ButTo:=strtoint('$'+keydict.Values[keydict.Keys[i]]);
+      _ButtonsDict.Add(ButFrom, ButTo);
+    end;}
 end;
 
 constructor TKeyExchange.Create(AOWner: TComponent);
 begin
   inherited;
   FNoRows:=true;
+  ButtonsDict:= TDictionary<word, word>.Create;
 end;
 
 procedure TKeyExchange.DelButtonClick(Sender: TObject);
 begin
-    KeyDict.DeleteRow(KeyDict.Row);
+    KeyDict.DeleteRow(keyDict.Cells[0,FSelectedRow]);
   DelButton.Enabled:=false;
 end;
 
@@ -60,7 +75,7 @@ begin
     PostMessage(KeyDict.Handle, WM_PAINT, 0, 0);
 end;
 
-procedure TKeyExchange.KeyDictDrawCell(Sender: TObject; ACol,
+procedure TKeyExchange.KeyDict1DrawCell(Sender: TObject; ACol,
   ARow: LongInt; Rect: TRect; State: TGridDrawState);
 var text:string;
 begin
@@ -99,9 +114,24 @@ end;
 
 procedure TKeyExchange.KeyDictMouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
+var curCell: TPoint;
 begin
-   FnoRows:=false;
+  keyDict.MouseToCell(x,y,curCell.X, curCell.Y);
+  FSelectedRow:=curCell.Y;
+  FnoRows:=false;
     DelButton.Enabled:=true;
+end;
+
+procedure TKeyExchange.LoadParams;
+begin
+
+end;
+
+procedure TKeyExchange.SaveParams;
+var ss: TStrings;
+
+begin
+
 end;
 
 procedure TKeyExchange.SetNoRows(const Value: boolean);
