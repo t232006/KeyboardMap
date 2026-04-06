@@ -44,15 +44,16 @@ procedure TPairsList.DeleteRow(key: string);
 var row: integer;
 begin
     row:=self.Cols[0].IndexOf(key);
-    if row=colcount-1 then exit;
+    if row=self.rowcount-1 then exit;
     for var i := row to rowCount-2 do
       begin
-        objects[0,i].Free;objects[1,i].Free;
+        //objects[0,i].Free;objects[1,i].Free;
         objects[0,i]:=objects[0,i+1];
         objects[1,i]:=objects[1,i+1];
         cells[0,i]:=cells[0,i+1];
         cells[1,i]:=cells[1,i+1];
       end;
+    objects[0,rowcount-1].Free; objects[1,rowcount-1].Free;
     rowcount:=rowcount-1;
 end;
 

@@ -69,7 +69,7 @@ object SettingForm: TSettingForm
     Top = 0
     Width = 433
     Height = 362
-    ActivePage = TabSheet5
+    ActivePage = TabSheet2
     TabOrder = 4
     object TabSheet1: TTabSheet
       Caption = 'TabSheet1'
@@ -182,7 +182,7 @@ object SettingForm: TSettingForm
     object TabSheet5: TTabSheet
       Caption = 'TabSheet5'
       ImageIndex = 4
-      inline KeyExchange1: TKeyExchange
+      inline KeyExchange: TKeyExchange
         Left = -4
         Top = 3
         Width = 376

@@ -24,7 +24,7 @@ type
     LangFrame: TLangFrame;
     StatisticsFrame: TStatisticsFrame;
     TabSheet5: TTabSheet;
-    KeyExchange1: TKeyExchange;
+    KeyExchange: TKeyExchange;
 
     procedure LBmenuClick(Sender: TObject);
     procedure CancelButtonClick(Sender: TObject);
@@ -35,7 +35,6 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     reg: TRegIniFile;
-    FScans: TScans;
     procedure GetPressing(var msg: TMessage); message WM_MYKEYPRESS;
    // procedure Includeframe<T>(MyFrame: Tframe);
   public
@@ -51,10 +50,7 @@ type
 
 implementation
 uses BackgroundUnit;
-type TkeyPair=class
-  Vk:word;
-  KeyName:string;
-end;
+
 var KeyFrom, KeyTo: TkeyPair;
 const selector: boolean=true;
 
@@ -71,6 +67,7 @@ begin
        statisticsFrame.Applay;
        BackForm.activeForm.AfterStaticsForm(sender, tag);
       end;
+  4: KeyExchange.Applay;
 
   end;
 
@@ -89,16 +86,20 @@ begin
     end;
 
   end;
-  tag:=2;
+  tag:=0;
   close;
 end;
 
 procedure TSettingForm.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  if tag=1 then settingFrame.SaveParams;
-  {StatisticsFrame.SaveParams;
-  SoundFrame.SaveParams;
-  langFrame.SaveParams;     }
+  if tag=1 then
+  begin
+    settingFrame.SaveParams;
+    StatisticsFrame.SaveParams;
+    SoundFrame.SaveParams;
+    langFrame.SaveParams;
+    KeyExchange.SaveParams;
+  end;
 
 end;
 
@@ -112,9 +113,9 @@ begin
   SoundFrame.reg:=self.reg;
   LangFrame.reg:=self.reg;
   StatisticsFrame.reg:=self.reg;
+  KeyExchange.reg:=self.reg;
   LBmenu.ItemIndex:=0;
   LBmenuClick(sender);
-  FScans:=TScans.Create;
 end;
 
 procedure TSettingForm.FormShow(Sender: TObject);
@@ -153,24 +154,24 @@ begin
    begin
        KeyFrom:=TKeyPair.Create;
        KeyFrom.Vk:=msg.WParam and 255;
-       KeyFrom.KeyName:=FScans.getScan(IntToHex(KeyFrom.Vk));//InttoHex(msg.WParam);
-       with KeyExchange1.KeyDict do
+       //KeyFrom.KeyName:=FScans.getScan(IntToHex(KeyFrom.Vk));//InttoHex(msg.WParam);
+       with keyExchange.KeyDict do
        begin
-          KeyExchange1.label1.Caption:='Нажмите заменяющую клавишу';
+          keyExchange.label1.Caption:='Нажмите заменяющую клавишу';
 
           if FindRow(KeyFrom.KeyName)=-1 then
           begin
-             KeyExchange1.NoRows:=true;
+             keyExchange.NoRows:=true;
                Objects[0,RowCount-1]:=KeyFrom;
                Cells[0,rowcount-1]:=KeyFrom.Keyname;
           end
           else
           begin
-            KeyExchange1.NoRows:=false;
+            keyExchange.NoRows:=false;
             Invalidate;
           end;
        end;
-       KeyExchange1.drawTitle(1);
+       keyExchange.drawTitle(1);
 
    end
 
@@ -178,11 +179,11 @@ begin
     begin
       KeyTo:=TkeyPair.Create;
       KeyTo.Vk:=msg.WParam and 255;
-      KeyTo.KeyName:=FScans.getScan(IntToHex(KeyTo.Vk)); //InttoHex(msg.WParam);
-      with KeyExchange1.KeyDict do
+      //KeyTo.KeyName:=FScans.getScan(IntToHex(KeyTo.Vk)); //InttoHex(msg.WParam);
+      with keyExchange.KeyDict do
       begin
-        KeyExchange1.label1.Caption:='Нажмите заменяемую клавишу';
-        if KeyExchange1.noRows then
+        keyExchange.label1.Caption:='Нажмите заменяемую клавишу';
+        if keyExchange.noRows then
           begin
             Objects[1,RowCount-1]:=KeyTo;
             Cells[1,rowcount-1]:=KeyTo.Keyname;
@@ -193,8 +194,8 @@ begin
             Objects[0,Row]:=KeyTo;
             Cells[1,row]:=KeyTo.Keyname;
           end;
-        KeyExchange1.drawTitle(0);
-        KeyFrom.KeyName:=''; KeyTo.KeyName:='';
+        keyExchange.drawTitle(0);
+        //KeyFrom.KeyName:=''; KeyTo.KeyName:='';
 
       end;
     end;
@@ -213,6 +214,7 @@ begin
       statisticsFrame.Applay;
       BackForm.activeForm.AfterStaticsForm(sender, tag);
       end;
+   4: keyexchange.Applay;
 
     end;
 
@@ -227,6 +229,7 @@ begin
     LangFrame.LoadParams;
     //LangFrame.Applay;
     StatisticsFrame.LoadParams;
+    KeyExchange.LoadParams;
     //StatisticsFrame.Applay;
 
 

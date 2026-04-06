@@ -139,22 +139,22 @@ begin
 end;
 begin
   //reg.OpenKey(reg.FileName, true);
-  reg.WriteInteger('appearance','Scheme',CBColScheme.ItemIndex);
-  reg.WriteInteger('appearance','Round',CBKeyRad.ItemIndex);
+  reg.WriteInteger('Appearance','Scheme',CBColScheme.ItemIndex);
+  reg.WriteInteger('Appearance','Round',CBKeyRad.ItemIndex);
 
-  reg.WriteInteger('appearance','ButtonColor',Shape1.Brush.Color);
-  reg.WriteInteger('appearance','PressColor', Shape2.Brush.Color);
-  reg.WriteInteger('appearance','HoverColor',Shape3.Brush.Color);
-  reg.WriteInteger('appearance','CommonTransp',Commontrack.position);
-  reg.WriteInteger('appearance','KeyboardTransp', keyboardTrack.Position);
+  reg.WriteInteger('Appearance','ButtonColor',Shape1.Brush.Color);
+  reg.WriteInteger('Appearance','PressColor', Shape2.Brush.Color);
+  reg.WriteInteger('Appearance','HoverColor',Shape3.Brush.Color);
+  reg.WriteInteger('Appearance','CommonTransp',Commontrack.position);
+  reg.WriteInteger('Appearance','KeyboardTransp', keyboardTrack.Position);
   if BackForm.ActiveForm.ClassName='TKeyboardFormLarge' then
   begin
-    SaveFonttoRegistry('appearance\font1', keyfont1);
-    SaveFonttoRegistry('appearance\font2', keyfont2);
+    SaveFonttoRegistry('Appearance\font1', keyfont1);
+    SaveFonttoRegistry('Appearance\font2', keyfont2);
   end else
   begin
-    SaveFonttoRegistry('appearance\font3', keyfont1);
-    SaveFonttoRegistry('appearance\font4', keyfont2);
+    SaveFonttoRegistry('Appearance\font3', keyfont1);
+    SaveFonttoRegistry('Appearance\font4', keyfont2);
   end;
 end;
 
@@ -181,7 +181,7 @@ function LoadFontFromRegistry(key: string): Tfont;
 var t:TFont;  FS: TfontStyles; fontStyleInt: byte;
 begin
    t:=tfont.Create;
-    //reg.OpenKey('appearance',false);
+    //reg.OpenKey('Appearance',false);
    t.Name:=reg.ReadString(key, 'fontName', 'Segoe UI');
    t.Color:=reg.ReadInteger(key,'fontColor', $00FFFFFF);
    t.Charset:=reg.ReadInteger(key, 'fontCharSet', 1);
@@ -195,22 +195,22 @@ begin
 end;
 begin
 
-  CBColScheme.ItemIndex:=reg.ReadInteger('appearance','Scheme',3);
-  CBKeyRad.ItemIndex:=reg.ReadInteger('appearance','Round',3);
+  CBColScheme.ItemIndex:=reg.ReadInteger('Appearance','Scheme',3);
+  CBKeyRad.ItemIndex:=reg.ReadInteger('Appearance','Round',3);
 
-  Shape1.Brush.Color:=reg.ReadInteger('appearance', 'ButtonColor', $00313031);
-  Shape2.Brush.Color:=reg.ReadInteger('appearance', 'PressColor', $008CBAD6);
-  Shape3.Brush.Color:=reg.ReadInteger('appearance', 'HoverColor', $00FFFFFF);
-  CommonTrack.Position:=reg.ReadInteger('appearance', 'CommonTransp', 0);
-  keyboardTrack.Position:=reg.ReadInteger('appearance', 'KeyboardTransp', 0);
+  Shape1.Brush.Color:=reg.ReadInteger('Appearance', 'ButtonColor', $00313031);
+  Shape2.Brush.Color:=reg.ReadInteger('Appearance', 'PressColor', $008CBAD6);
+  Shape3.Brush.Color:=reg.ReadInteger('Appearance', 'HoverColor', $00FFFFFF);
+  CommonTrack.Position:=reg.ReadInteger('Appearance', 'CommonTransp', 0);
+  keyboardTrack.Position:=reg.ReadInteger('Appearance', 'KeyboardTransp', 0);
   if BackForm.activeForm.ClassName='TKeyboardFormLarge' then
   begin
-    keyfont1:=LoadFontFromRegistry('appearance\font1');
-    keyfont2:=loadFontFromRegistry('appearance\font2');
+    keyfont1:=LoadFontFromRegistry('Appearance\font1');
+    keyfont2:=loadFontFromRegistry('Appearance\font2');
   end else
   begin
-    keyfont1:=LoadFontFromRegistry('appearance\font3');
-    keyfont2:=loadFontFromRegistry('appearance\font4');
+    keyfont1:=LoadFontFromRegistry('Appearance\font3');
+    keyfont2:=loadFontFromRegistry('Appearance\font4');
   end;
 
 end;

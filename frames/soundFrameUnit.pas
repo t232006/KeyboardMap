@@ -43,7 +43,6 @@ begin
     end;
     if currentScheme<>'' then
     backform.activeForm.VirtKeyboard.SetSoundLibrary(currentScheme);
-
 end;
 
 procedure TSoundFrame.LoadParams;
@@ -57,6 +56,7 @@ begin
     soundfolder.Items.Add(TPath.GetFileNameWithoutExtension(st));
 
   currentSchemeNum:=reg.ReadInteger('sounds','curSchemeNum',0);
+  soundFolder.ItemIndex:=currentSchemeNum;
   currentScheme:=reg.ReadString('sounds','curScheme','');
   playSoundB:=reg.ReadBool('sounds','playSound', false);
 
@@ -86,6 +86,7 @@ end;
 
 procedure TSoundFrame.SoundFolderCloseUp(Sender: TObject);
 begin
+  if soundFolder.ItemIndex>=1 then
   currentSchemeNum:=soundFolder.ItemIndex;
   currentScheme:=soundFolder.Items[soundFolder.ItemIndex];
 end;
