@@ -35,3 +35,8 @@ Key = <A>; Letter = a; Virt = 65; Scan = 001E; Down; Time: 13:06:17; Key = <G>;
 
 
 
+Key = <A>; Letter = a; Virt = 65; Scan = 001E; Down; Time: 17:31:34; Key = <Z>; Letter = z; Virt = 90; Scan = 002C; Down; Time: 17:31:35; Key = <S>; Letter = s; Virt = 83; Scan = 001F; Down; Time: 17:31:35; Key = <X>; Letter = x; Virt = 88; Scan = 002D; Down; Time: 17:31:35; Key = <D>; Letter = d; Virt = 68; Scan = 0020; Down; Time: 17:31:35; Key = <C>; Letter = c; Virt = 67; Scan = 002E; Down; Time: 17:31:35; 
+
+Key = <D>; Letter = d; Virt = 68; Scan = 0020; Down; Time: 17:44:33; Key = <C>; Letter = c; Virt = 67; Scan = 002E; Down; Time: 17:44:33; Key = <D>; Letter = d; Virt = 68; Scan = 0020; Down; Time: 17:44:34; Key = <F>; Letter = f; Virt = 70; Scan = 0021; Down; Time: 17:44:35; Key = <E>; Letter = e; Virt = 69; Scan = 0012; Down; Time: 17:44:36; Key = <D>; Letter = d; Virt = 68; Scan = 0020; Down; Time: 17:44:36; Key = <E>; Letter = e; Virt = 69; Scan = 0012; Down; Time: 17:44:37; Key = <R>; Letter = r; Virt = 82; Scan = 0013; Down; Time: 17:44:38; Key = <Y>; Letter = y; Virt = 89; Scan = 0015; Down; Time: 17:44:39; Key = <H>; Letter = h; Virt = 72; Scan = 0023; Down; Time: 17:44:40; Key = <O>; Letter = o; Virt = 79; Scan = 0018; Down; Time: 17:44:41; Key = <L>; Letter = l; Virt = 76; Scan = 0026; Down; Time: 17:44:41; 
+
+

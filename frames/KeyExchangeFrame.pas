@@ -35,14 +35,13 @@ end;
     FSelectedCol: byte;
     FNoRows:boolean;
     //_ButtonsDict: TDictionary<word, word>;
-    _reg: TRegistry;
+    //_reg: TRegIniFile;
     procedure SetNoRows(const Value: boolean);
-    procedure SetRegistry(const Value: TRegIniFile);
   public
 
     //ExchangeTable: Dictionary<string,string>;
     ButtonsDict: TDictionary<word, word>;
-    property reg: TRegIniFile write SetRegistry;
+    reg: TRegIniFile;
     property NoRows: boolean read FNoRows write SetNoRows default true;
     property _SelectedCol: byte read FSelectedCol;
     constructor Create(AOWner: TComponent); override;
@@ -143,23 +142,26 @@ var ss:TStrings; bkey, bvalue:word;
       i:byte;
 begin
     ss:=TStringList.Create;
-    _reg.GetValueNames(ss);
+    reg.OpenKey('ButtonsDict',true);
+    reg.GetValueNames(ss);
     i:=0;
     //if ss.Count>0 then
+    //reg.OpenKey('ButtonsDict',true);
       while i<ss.count-1 do
         begin
-          bkey:=strtoint(_reg.ReadString(ss[i]));
-          bValue:=strtoint(_reg.ReadString(ss[i+1]));
+          bkey:=reg.ReadInteger('',ss[i],0);
+          bValue:=reg.ReadInteger('',ss[i+1],0);
           ButtonsDict.Add(bkey,bvalue);
           keyPair:=TKeyPair.Create;
           with keyDict do
           begin
             keyPair.Vk:=bkey;
-            keyDict.Objects[0,rowcount-1]:=keyPair;
-            keyDict.Cells[0,rowCount-1]:=keyPair.keyName;
+            Objects[0,rowcount-1]:=keyPair;
+            Cells[0,rowCount-1]:=keyPair.keyName;
             keyPair.Vk:=bvalue;
-            keyDict.Objects[1,rowcount-1]:=keyPair;
-            keyDict.Cells[1,rowCount-1]:=keyPair.keyName;
+            Objects[1,rowcount-1]:=keyPair;
+            Cells[1,rowCount-1]:=keyPair.keyName;
+            rowcount:=rowcount+1;
           end;
           inc(i,2);
         end;
@@ -170,26 +172,16 @@ procedure TKeyExchange.SaveParams;
 var ar:TArray<TPair<word,word>>;
 begin
     ar:=ButtonsDict.ToArray;
-    if not Assigned(_reg) or not _reg.KeyExists('') then
-    Exit;
     for var i := Low(ar) to High(ar) do
     begin
-      _reg.WriteInteger('bKey('+inttostr(i)+')',ar[i].Key);
-      _reg.WriteInteger('bValue['+inttostr(i)+']',ar[i].Value);
+      reg.WriteInteger('ButtonsDict','bKey('+inttostr(i)+')',ar[i].Key);
+      reg.WriteInteger('ButtonsDict','bValue('+inttostr(i)+')',ar[i].Value);
     end;
 end;
 
 procedure TKeyExchange.SetNoRows(const Value: boolean);
 begin
      FNoRows:=value;
-end;
-
-procedure TKeyExchange.SetRegistry(const Value: TRegIniFile);
-begin
-  _reg:=TRegistry.Create(value.RootKey);
-  //_reg.OpenKey('ButtonsDict',true);
-  if not _reg.OpenKey('ButtonsDict', true) then
-  raise Exception.Create('Не удалось открыть ключ');
 end;
 
 { TkeyPair }
