@@ -74,9 +74,9 @@ end;
 
 procedure TPairsList.InsertRow(object1, object2: TObject);
 begin
-  self.rowCount:=rowcount+1;
   objects[0,rowcount-1]:=object1;
   objects[1,rowcount-1]:=object2;
+  self.rowCount:=rowcount+1;
 end;
 
 end.

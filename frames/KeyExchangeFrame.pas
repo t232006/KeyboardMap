@@ -81,7 +81,7 @@ end;
 
 procedure TKeyExchange.DelButtonClick(Sender: TObject);
 begin
-    KeyDict.DeleteRow(keyDict.Cells[0,FSelectedRow]);
+  KeyDict.DeleteRow(keyDict.Cells[0,FSelectedRow]);
   DelButton.Enabled:=false;
 end;
 
@@ -141,7 +141,7 @@ end;
 
 procedure TKeyExchange.LoadParams;
 var ss:TStrings; bkey, bvalue:word;
-      keyPair:TKeyPair;
+      keyPair, valuePair:TKeyPair;
       i:byte;
       localReg: TRegIniFile;
 begin
@@ -158,15 +158,14 @@ begin
           bValue:=localreg.ReadInteger('',ss[i+1],0);
           ButtonsDict.Add(bkey,bvalue);
           keyPair:=TKeyPair.Create;
+          valuePair:=TKeyPair.Create;
           with keyDict do
           begin
             keyPair.Vk:=bkey;
-            Objects[0,rowcount-1]:=keyPair;
-            Cells[0,rowCount-1]:=keyPair.keyName;
-            keyPair.Vk:=bvalue;
-            Objects[1,rowcount-1]:=keyPair;
-            Cells[1,rowCount-1]:=keyPair.keyName;
-            rowcount:=rowcount+1;
+            valuePair.Vk:=bValue;
+            Cells[0,rowCount-1]:=keyPair.KeyName;
+            Cells[1,rowCount-1]:=valuePair.KeyName;
+            Insertrow(keyPair,valuePair);
           end;
           inc(i,2);
         end;
