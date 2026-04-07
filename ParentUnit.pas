@@ -1,4 +1,4 @@
-unit ParentUnit;
+﻿unit ParentUnit;
 interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
@@ -517,7 +517,7 @@ begin
    //result:=nil;
    key:=FindComponent('Key'+inttostr(VirtCode)) as TKey;
    if key=nil then
-    result:=FindComponent('Key223') as TKey;  //exception
+    result:=FindComponent('Key223') as TKey else  //exception
    result:=key;
 end;
 

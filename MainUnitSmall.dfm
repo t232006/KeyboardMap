@@ -1450,7 +1450,7 @@ object KeyboardFormSmall: TKeyboardFormSmall
     MidPosX = 5
     PictureColor = clBlack
   end
-  object Key16: TKey
+  object Key19: TKey
     Left = 612
     Top = 46
     Width = 28

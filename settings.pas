@@ -146,14 +146,13 @@ end;}
 end;
 
 procedure TSettingForm.GetPressing(var msg: TMessage);
-var row: integer;
 begin
  if pcPanel.ActivePageIndex=4 then
 
  if selector then
    begin
        KeyFrom:=TKeyPair.Create;
-       KeyFrom.Vk:=msg.WParam and 255;
+       KeyFrom.Vk:=msg.WParam shr 8;
        //KeyFrom.KeyName:=FScans.getScan(IntToHex(KeyFrom.Vk));//InttoHex(msg.WParam);
        with keyExchange.KeyDict do
        begin
@@ -178,7 +177,7 @@ begin
     else
     begin
       KeyTo:=TkeyPair.Create;
-      KeyTo.Vk:=msg.WParam and 255;
+      KeyTo.Vk:=msg.WParam shr 8;
       //KeyTo.KeyName:=FScans.getScan(IntToHex(KeyTo.Vk)); //InttoHex(msg.WParam);
       with keyExchange.KeyDict do
       begin

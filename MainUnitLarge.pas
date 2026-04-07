@@ -8,7 +8,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.AppEvnts,
   Vcl.ToolWin, Vcl.ActnMan, Vcl.ActnCtrls, Vcl.ActnMenus, System.Actions,
   Vcl.ActnList, Vcl.PlatformDefaultStyleActnCtrls,
-   System.ImageList, speedometer, ParentUnit, SendKeyPressProc, Appearance;
+   System.ImageList, speedometer, ParentUnit, SendKeyPressProc;
 type
   TKeyboardFormLarge = class(TParentForm)
     Key100: TKey;
@@ -38,7 +38,7 @@ type
     Key13: TKey;
     Key144: TKey;
     Key145: TKey;
-    Key16: TKey;
+    Key19: TKey;
     Key160: TKey;
     Key161: TKey;
     Key162: TKey;

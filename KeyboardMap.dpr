@@ -28,8 +28,8 @@ uses
   KeyExchangeFrame in 'frames\KeyExchangeFrame.pas' {KeyExchange: TFrame},
   scans in 'units\scans.pas',
   uKeyboardHook in 'HookProject\uKeyboardHook.pas',
-  KeyboardUnit in 'KeyboardUnit.pas',
-  PairsList in 'components\PairsList.pas';
+  PairsList in 'components\PairsList.pas',
+  KeyboardUnit in 'HookProject\KeyboardUnit.pas';
 
 {$R *.res}
 //var //pbuff: array[0..127] of char;

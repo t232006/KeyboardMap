@@ -40,3 +40,18 @@ azsxdc
 dcdfederyhol
 
 
+<LCtrl><LShift><LCtrl><LAlt><LShift>
+<F1><Pause_Break><Pause_Break>
+<Pause_Break><F12>
+<Pause_Break><Pause_Break><Pause_Break><Pause_Break><Pause_Break>
+/*--<RShift>==<LShift>8
+1234QWEA+-<LCtrl><LShift><LCtrl><LAlt><LShift>
+<LShift><RShift><LAlt><LCtrl><LAlt>
+<RStart><LStart>
+<Num4><Num6>
+<Esc><F1><F2><F3><F4><F5><F6><F7><F8><F9><F10><F11>`1234567890-=	qwertyuiop[]<]>ASDFGHJKL;'\<Enter>ZXCVBNM,./<?><RShift><LCtrl><LStart> <Space><LAlt><RStart><Menu><LCtrl><LCtrl><LShift><LAlt><LAlt><Num*><Num0><Num,><Scroll_Lock><Num7><Num1><Pause_Break><Num9><Num3><Num8><Num2><Num4><Num6>/*-<Num-><Num7><Num8>+<Num+><Num4><Num5><Num6><Num1><Num2><Num3><Num0>
+/<?><Num*><LAlt><Pause_Break><Num7><Num8><Num9><Num4><Num6><Num1><Num2><Num3><Num0>
+aasaqw
+	<REnter>
+	<RCtrl>	<RCtrl>	<LShift>	<LAlt>	<LAlt>	<Pause_Break>	<Pause_Break>	<LShift>	<LAlt>	<LAlt>	<RCtrl>	<LAlt>	<RAlt>	<LAlt>	<RAlt>	<LAlt>	<LCtrl>	<RShift>
+

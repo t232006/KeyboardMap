@@ -26,16 +26,18 @@ TKeyboard=class
     procedure SaveText(filename, sometext:string);
     procedure SaveMap(filename:string);
     procedure CleanMap(var temp:TKeyboardMap);
+    //procedure LoadScans;
    public
      //const CURRENTMAP='\maps\CurrentMap.h';
      function CURRENTMAP: string;
-     procedure addPress(ws:word; ls: longint; langcode:HKL; playsound: boolean);
+     procedure addPress(codes:word; pressedBit: byte; langcode:HKL; playsound: boolean);
      procedure save(newFile:boolean; avSpeed, recSpeed:word);
      //function GetLastFile:string;
      procedure SetSoundLibrary(soundLib: string);
      property VirtCode: word read FVirtCode;
      property map:TKeyboardMap read Fmap;
      property isPressed:boolean read FisPressed;
+     property button:string read FButton;
      property letter:char read Fletter;
      property     log:string read Flog;
      property text:string read FText;
@@ -53,55 +55,29 @@ begin
     FScans.Destroy;
 end;
 
-{$REGION 'GetLastFile'}
-  {function TKeyboard.GetLastFile:string;
-      var sr: TSearchRec;
-          fdPath: string;
-          CurFileTime, LatestTime: TDateTime;
-      begin
-          fdPath:=fPath+'\maps\*map.b';
-
-          if FindFirst(fdPath, faNormal,SR)=0 then
-          begin
-             result:=fPath+'\maps\'+SR.Name;
-             LatestTime:=FileDateToDateTime(FileAge(result));
-             repeat
-                CurFileTime:=FileDateToDateTime(FileAge(fPath+'\maps\'+SR.Name));
-                if CurFileTime > LatestTime then
-                  begin
-                    result:=fPath+'\maps\'+sr.Name;
-                    LatestTime:=CurFileTime;
-                  end;
-             until FindNext(SR)<>0;
-          end;
-
-      end;    }
-{$ENDREGION}
-
 
 function IfThen(AValue: boolean; const ATrue:string; const AFalse:string):string;
 begin
   if AValue then result:=ATrue else result:=AFalse;
 end;
 
-procedure TKeyboard.addPress(ws:word; ls: longint; langcode:HKL; playsound:boolean);
+procedure TKeyboard.addPress(codes:word; pressedBit: byte; langcode:HKL; playsound:boolean);
 var Scancode, ss:string; but: pchar;
     KS: TKeyboardState;
     SC: integer;
+    ws: word;
 
 begin
-    SC:=MapVirtualKeyEx(WS, MAPVK_VK_TO_VSC, langcode);
+    ws:=codes shr 8;
+    SC:=MapVirtualKeyEx(ws, MAPVK_VK_TO_VSC, langcode);
     GetKeyboardState(KS);
     ToUnicodeEx(WS, SC, KS, @fletter, sizeof(fletter), 0, langcode);
-   if byte(LS shr 24)<$80 then fisPressed:=true else fisPressed:=false;
-   scancode:=IntToHex(ls);
-   fbutton:=FScans.getScan(scancode);
+   fisPressed:=(pressedBit and 1) = 1;
+   scancode:=IntToHex(codes and 255);
 
    FVirtCode:=WS;
-   ss:=string.Format('Key = %s; Letter = %s; Virt = %u; Scan = %s; %s; Time: %s; %s',
-   [fbutton, fletter, fVirtCode, scancode, IfThen(isPressed,'Down',' Up '), TimeToStr(now), chr(13)]);
-   //if evenbit then
-   Flog:=Flog+ss;
+
+
    if isPressed and (FVirtCode <= high(fmap)) then
    begin
       if playsound then
@@ -109,20 +85,28 @@ begin
         but:=pchar('e'+copy(fbutton,2,length(fbutton)-2));
         playClick(but);
       end;
-      if fbutton<>'' then
-      case FVirtCode of
-        16: if byte(ls shr 16)=$36 then FVirtCode:=161 else FVirtCode:=160; //shift
-        18: if byte(ls shr 24)=$21 then FVirtCode:=165 else FVirtCode:=164; //alt
-        17: if byte(ls shr 24)=$01 then FVirtCode:=163 else FVirtCode:=162; //ctrl
-      end;
-      if (WS=13) and (byte(ls shr 24)=$01) then inc(Fmap[12]) else //for right Enter
-      inc(Fmap[FVirtCode]);
+
+      if (WS=13) and (pressedBit>1) then
+        inc(Fmap[12])   //for right Enter
+      else
+        inc(Fmap[FVirtCode]);
       if ord(letter)<>0 then
       Ftext:=Ftext+fletter else
       Ftext:=Ftext+fbutton;
       if Assigned(backform.SettingForm) then
-        PostMessage(backform.SettingForm.Handle, WM_MYKEYPRESS, WPARAM(ws), LPARAM(ls));
+        PostMessage(backform.SettingForm.Handle, WM_MYKEYPRESS, WParam(codes), LParam(pressedBit));
    end;
+   if (WS=13) and (pressedBit>1) then
+   //fbutton:=FScans.getScan('011C') //for right Enter
+   fbutton:=FScans.getVirt(12)
+       else
+   //fbutton:=FScans.getScan(scancode);
+   fbutton:=FScans.getVirt(FVirtCode);
+
+   ss:=string.Format('Key = %s; Letter = %s; Virt = %u; Scan = %s; %s; Time: %s; %s',
+      [fbutton, fletter, fVirtCode, scancode, IfThen(isPressed,'Down',' Up '), TimeToStr(now), chr(13)]);
+     //if evenbit then
+      Flog:=Flog+ss;
 end;
 
 constructor TKeyboard.create(soundLib: string);
@@ -211,7 +195,7 @@ procedure TKeyboard.save(newFile: boolean; avSpeed, recSpeed:word);
     begin
        curDateTime:=now;
        result:=FormatDateTime('dd-mm-yyyy-hh-nn-ss',curDateTime);
-       result:=ExtractFileDir(Paramstr(0))+'\maps\'+result+'m.b';
+       result:=ExtractFileDir(Paramstr(0))+'\maps\'+result+'map.b';
     end;
  //=============================
 

@@ -199,7 +199,7 @@ end;
 
 procedure TkeyPair.SetVk(const Value: word);
 begin
-    _keyName:=FScans.getScan(inttohex(value));
+    _keyName:=FScans.getVirt(value);
     _vk:=value;
 end;
 

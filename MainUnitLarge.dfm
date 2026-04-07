@@ -5794,7 +5794,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     MidPosX = 5
     PictureColor = clBlack
   end
-  object Key16: TKey
+  object Key19: TKey
     Left = 832
     Top = 56
     Width = 42
