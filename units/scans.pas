@@ -3,7 +3,6 @@ unit scans;
 interface
 uses System.Generics.Collections, SysUtils, strUtils;
 type TScans=class
-
   constructor Create;
   destructor Destroy;
   public
@@ -36,6 +35,7 @@ end;
 
 destructor TScans.Destroy;
 begin
+  inherited;
   FScans.Destroy;
 end;
 

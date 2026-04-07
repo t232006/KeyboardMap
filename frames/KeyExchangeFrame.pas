@@ -34,6 +34,7 @@ end;
     FSelectedRow: byte;
     FSelectedCol: byte;
     FNoRows:boolean;
+    regKeyPath:string;
     //_ButtonsDict: TDictionary<word, word>;
     //_reg: TRegIniFile;
     procedure SetNoRows(const Value: boolean);
@@ -61,6 +62,7 @@ implementation
 procedure TKeyExchange.Applay;
 var butFrom, butTo: word;
 begin
+    ButtonsDict.Clear;
     for var i := 1 to KeyDict.RowCount-2 do
     begin
       ButFrom:=(keydict.Objects[0,i] as TKeyPair).Vk;
@@ -86,7 +88,8 @@ end;
 procedure TKeyExchange.DrawTitle(SelectedCol: byte);
 begin
     FSelectedCol:=selectedCol;
-    PostMessage(KeyDict.Handle, WM_PAINT, 0, 0);
+    //stMessage(KeyDict.Handle, WM_PAINT, 0, 0);
+    KeyDict.Invalidate;
 end;
 
 procedure TKeyExchange.KeyDict1DrawCell(Sender: TObject; ACol,
@@ -107,7 +110,7 @@ begin
   );
   end;
 
-if (Arow=0) then
+if gdFixed in State then
   begin
     KeyDict.Canvas.fillrect(rect);
     if (_SelectedCol=ACol) then
@@ -140,17 +143,19 @@ procedure TKeyExchange.LoadParams;
 var ss:TStrings; bkey, bvalue:word;
       keyPair:TKeyPair;
       i:byte;
+      localReg: TRegIniFile;
 begin
     ss:=TStringList.Create;
-    reg.OpenKey('ButtonsDict',true);
-    reg.GetValueNames(ss);
+    localReg:=TRegIniFile.Create(reg.CurrentPath);
+    localreg.OpenKey('ButtonsDict',false);
+    localreg.GetValueNames(ss);
     i:=0;
     //if ss.Count>0 then
-    //reg.OpenKey('ButtonsDict',true);
+
       while i<ss.count-1 do
         begin
-          bkey:=reg.ReadInteger('',ss[i],0);
-          bValue:=reg.ReadInteger('',ss[i+1],0);
+          bkey:=localreg.ReadInteger('',ss[i],0);
+          bValue:=localreg.ReadInteger('',ss[i+1],0);
           ButtonsDict.Add(bkey,bvalue);
           keyPair:=TKeyPair.Create;
           with keyDict do
@@ -165,18 +170,35 @@ begin
           end;
           inc(i,2);
         end;
+    localreg.CloseKey;
+    localreg.Free;
+
 
 end;
 
 procedure TKeyExchange.SaveParams;
 var ar:TArray<TPair<word,word>>;
+ss: TStringList; i:byte;
+    localreg:TRegIniFile;
 begin
+    ss:=TStringList.Create;
     ar:=ButtonsDict.ToArray;
-    for var i := Low(ar) to High(ar) do
+    localReg:=TRegIniFile.Create(reg.CurrentPath);
+    localreg.OpenKey('ButtonsDict',true);
+    localreg.GetValueNames(ss);
+
+    if ss.Count>0 then
+      for i:= 0 to ss.Count-1 do
+         localreg.DeleteKey('',ss[i]);
+
+    for i := Low(ar) to High(ar) do
     begin
-      reg.WriteInteger('ButtonsDict','bKey('+inttostr(i)+')',ar[i].Key);
-      reg.WriteInteger('ButtonsDict','bValue('+inttostr(i)+')',ar[i].Value);
+      localreg.WriteInteger('','bKey('+inttostr(i)+')',ar[i].Key);
+      localreg.WriteInteger('','bValue('+inttostr(i)+')',ar[i].Value);
     end;
+
+    localreg.CloseKey;
+    localreg.Free;
 end;
 
 procedure TKeyExchange.SetNoRows(const Value: boolean);
