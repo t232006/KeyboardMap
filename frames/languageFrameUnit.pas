@@ -88,10 +88,10 @@ begin
         strbutton:=ifthen(Extender.State=tssOn, '<Pause Break>','<Scroll Lock>');
       end;
   4:  begin
-        DataArea^.key:=$1C;
-        DataArea^.ExKey:=ifthen(Extender.State=tssOn, 1, 0);
+        DataArea^.Exkey:=1;
+        DataArea^.Key:=ifthen(Extender.State=tssOn, $5C, $5B);
         Status.Text:='';
-        strbutton:=ifthen(Extender.State=tssOn, '<RightEnter>','<LeftEnter>');
+        strbutton:=ifthen(Extender.State=tssOn, '<RightWindows>','<LeftWindows>');
       end;
   else
   begin
@@ -111,9 +111,9 @@ begin
     case key of
       $38: hotkeyind.ItemIndex:=1;
       $1D: hotkeyind.ItemIndex:=2;
-      $5B, $45: hotkeyind.ItemIndex:=3;
-      $5C: hotkeyind.ItemIndex:=3;
-      $1C: hotkeyind.ItemIndex:=4;
+      $46, $45: hotkeyind.ItemIndex:=3;
+      //$5C: hotkeyind.ItemIndex:=3;
+      $5C, $5B: hotkeyind.ItemIndex:=4;
       else hotkeyind.ItemIndex:=0;
     end;
     if (exkey=$1) or (key=$45) then Extender.State:=tssOn else

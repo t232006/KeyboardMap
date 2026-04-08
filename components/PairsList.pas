@@ -6,6 +6,7 @@ uses
   System.SysUtils, System.Classes, Vcl.Controls, Vcl.Grids;
 
 type
+  TStringGrid = class(vcl.Grids.TStringGrid);
   TPairsList = class(TStringGrid)
   private
     { Private declarations }
@@ -14,7 +15,7 @@ type
   public
     constructor Create(AOwner: TComponent);  override;
     function FindRow(needle: string): integer;
-    procedure DeleteRow(key: string);
+    procedure RemoveRow(row: longint);
     procedure InsertRow(object1, object2: TObject);
     function Find(needle: string): TObject;
   published
@@ -40,21 +41,9 @@ begin
   Options:=Options+[goRowSelect];
 end;
 
-procedure TPairsList.DeleteRow(key: string);
-var row: integer;
+procedure TPairsList.RemoveRow(row: longint);
 begin
-    row:=self.Cols[0].IndexOf(key);
-    if row=self.rowcount-1 then exit;
-    for var i := row to rowCount-2 do
-      begin
-        //objects[0,i].Free;objects[1,i].Free;
-        objects[0,i]:=objects[0,i+1];
-        objects[1,i]:=objects[1,i+1];
-        cells[0,i]:=cells[0,i+1];
-        cells[1,i]:=cells[1,i+1];
-      end;
-    objects[0,rowcount-1].Free; objects[1,rowcount-1].Free;
-    rowcount:=rowcount-1;
+  self.DeleteRow(row);
 end;
 
 function TPairsList.Find(needle: string): TObject;

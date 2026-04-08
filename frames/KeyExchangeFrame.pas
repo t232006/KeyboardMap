@@ -81,7 +81,7 @@ end;
 
 procedure TKeyExchange.DelButtonClick(Sender: TObject);
 begin
-  KeyDict.DeleteRow(keyDict.Cells[0,FSelectedRow]);
+  KeyDict.RemoveRow(FSelectedRow);
   DelButton.Enabled:=false;
 end;
 

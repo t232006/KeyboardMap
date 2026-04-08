@@ -36,7 +36,7 @@ object LangFrame: TLangFrame
       'Alt'
       'Ctrl'
       'Scroll Lock'
-      'Enter')
+      'Windows')
     ParentFont = False
     TabOrder = 1
     OnClick = hotKeyIndClick

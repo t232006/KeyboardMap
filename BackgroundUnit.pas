@@ -96,7 +96,6 @@ begin
    //settingFolder:= GetSpecialPath(CSIDL_APPDATA)+'\Individual dictionary';
    //Runhook;
    lowhook:=TLowLevelKeyboardHook.Create;
-   lowhook.Start;
    fdown:=false; fmoved:=false;
    Application.OnDeactivate:=FormDeactivate;
    loadparams:=TReginifile.Create('Software\'+ChangeFileExt(ExtractFileName(Paramstr(0)),''));
@@ -109,6 +108,7 @@ begin
    settingForm:= TSettingForm.Create(Application);
    activeForm:=TParentForm(TControlClass(GetClass(Fclassname)).Create(self));
    settingForm.ApplayAll;
+   lowhook.Start;
    activeForm.Left:=loadparams.ReadInteger('Windows', 'PosX', 0);
    activeForm.Top:=loadparams.ReadInteger('Windows', 'PosY', 0);
    showSpeed:=loadparams.ReadBool('Windows','showSpeed', false);

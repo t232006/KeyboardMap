@@ -68,7 +68,9 @@ begin
     playSound.Tag:=0;
   end;
   //reg.Destroy;
-  soundfolder.ItemIndex:=currentSchemeNum;
+  if (currentSchemeNum>-1) and (currentSchemeNum<soundFolder.GetCount-1) then
+  soundfolder.ItemIndex:=currentSchemeNum else
+  soundfolder.ItemIndex:=0;
   //sPath:=ExtractFileDir(Paramstr(0))+'\sounds\'+soundFolder.Items[currentSchemeNum]+'\';
 
 end;

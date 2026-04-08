@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls,
-  languageFrameUnit, appearanceFrameUnit, soundFrameUnit, scans,
+  languageFrameUnit, appearanceFrameUnit, soundFrameUnit, scans, System.Generics.Collections,
   statisticsFrameUnit, registry, Vcl.ComCtrls, KeyExchangeFrame, keyboardunit;
 
 type
@@ -35,9 +35,11 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     reg: TRegIniFile;
+    _buttonsDict: TDictionary<word, word>;
     procedure GetPressing(var msg: TMessage); message WM_MYKEYPRESS;
    // procedure Includeframe<T>(MyFrame: Tframe);
   public
+    property buttonsDict: TDictionary<word,word> read _buttonsDict;
     procedure ApplayAll;
   end;
 
@@ -68,7 +70,6 @@ begin
        BackForm.activeForm.AfterStaticsForm(sender, tag);
       end;
   4: KeyExchange.Applay;
-
   end;
 
   Close;
@@ -229,6 +230,7 @@ begin
     //LangFrame.Applay;
     StatisticsFrame.LoadParams;
     KeyExchange.LoadParams;
+    _buttonsDict:=keyExchange.ButtonsDict;
     //StatisticsFrame.Applay;
 
 

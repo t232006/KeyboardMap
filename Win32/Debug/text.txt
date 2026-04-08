@@ -89,3 +89,13 @@ rh
 	<LCtrl>	<LCtrl>	<LCtrl>	<LCtrl>	<LCtrl>	<LCtrl>	<LCtrl>	<LCtrl>	<LCtrl>	<LCtrl>	<LCtrl>	<LCtrl>	<LCtrl>	<LCtrl>	<LCtrl>	<LCtrl>	<LCtrl>	<LCtrl>	<LCtrl>	<LCtrl>	<LCtrl>	<LCtrl>	<LCtrl>	<LCtrl>	<LCtrl>	<LCtrl>	<LCtrl>	<LCtrl>	<LCtrl>	<LCtrl>	<LCtrl>	<LCtrl>	<LCtrl>	<LCtrl>
 azsxdcfv
 
+zzzzzzzzzzzzzz
+	<Esc>	<Esc>
+
+
+
+
+zzqzzzzzzzzz	<Z>	<Insert>	<Home>	<Page_Up>	<Up>	<Down>	<Left>14658789798978789879789789789777778465123456456454887789	<Num9>	<Down>	<Left>	<Right>//***	<Num*>	<Down>	<Left>	<Up>	<Left>	<Right>	<Up>	<Down>	<Up>
+	<Left>	<Right>	<Up>	<Down>	<Up>	<Up>777788998877789	<Num9>
+	<LStart>	<RStart>	<LStart>
+	<RStart>	<LStart>	<LStart>	<LShift>	<LAlt>
