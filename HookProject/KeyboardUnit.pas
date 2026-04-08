@@ -8,7 +8,7 @@ const WM_MYKEYPRESS = WM_USER+$0400+10;
       AV=14;
       REC=17;
 type
-TKeyboardMap=array[LO..222] of word;
+TKeyboardMap=array[LO..226] of word;
 TplayClick = procedure (button: pchar);
 
 TKeyboard=class
@@ -93,7 +93,7 @@ begin
       if ord(letter)<>0 then
       Ftext:=Ftext+fletter else
       Ftext:=Ftext+fbutton;
-      if Assigned(backform.SettingForm) then
+      if (Assigned(backform.SettingForm)) and (backform.settingform.active) then
         PostMessage(backform.SettingForm.Handle, WM_MYKEYPRESS, WParam(codes), LParam(pressedBit));
    end;
    if (WS=13) and (pressedBit>1) then

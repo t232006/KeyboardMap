@@ -19,13 +19,11 @@ object SettingForm: TSettingForm
     Left = 0
     Top = 0
     Width = 177
-    Height = 352
+    Height = 362
     TabStop = False
     Style = lbOwnerDrawFixed
     AutoComplete = False
-    Align = alLeft
     Ctl3D = False
-    IntegralHeight = True
     ItemHeight = 70
     Items.Strings = (
       #1074#1085#1077#1096#1085#1080#1081' '#1074#1080#1076

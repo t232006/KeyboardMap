@@ -44,8 +44,9 @@ var fbutton:string;
 begin
   if length(scancode)>4 then scancode:=rightStr(scancode,4);
 
-  FScans.TryGetValue(strtoint('$'+scancode), fbutton);
-  result:=fbutton;
+  if FScans.TryGetValue(strtoint('$'+scancode), fbutton) then
+  result:=fbutton else
+  result:='<'+scancode+'>';
 end;
 
 function TScans.getVirt(virtcode: byte): string;
@@ -53,8 +54,9 @@ var fbutton:string;
 begin
   //if length(virtcode)>4 then virtcode:=rightStr(virtcode,4);
 
-  FScans.TryGetValue(virtcode, fbutton);
-  result:=fbutton;
+  if FScans.TryGetValue(virtcode, fbutton) then
+  result:=fbutton else
+  result:='<'+inttostr(virtcode)+'>';
 end;
 
 end.
