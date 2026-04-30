@@ -23,9 +23,11 @@ TKeyboard=class
     playClick: TplayClick;
     fPath: string;
     FScans: TScans;
+    FKeepLog: boolean;
     procedure SaveText(filename, sometext:string);
     procedure SaveMap(filename:string);
     procedure CleanMap(var temp:TKeyboardMap);
+    procedure SetKeepLog(const Value: boolean);
     //procedure LoadScans;
    public
      //const CURRENTMAP='\maps\CurrentMap.h';
@@ -40,6 +42,7 @@ TKeyboard=class
      property button:string read FButton;
      property letter:char read Fletter;
      property     log:string read Flog;
+     property KeepLog:boolean write SetKeepLog;
      property text:string read FText;
      constructor create(soundLib: string);
      destructor destroy;
@@ -90,9 +93,12 @@ begin
         inc(Fmap[12])   //for right Enter
       else
         inc(Fmap[FVirtCode]);
-      if ord(letter)<>0 then
-      Ftext:=Ftext+fletter else
-      Ftext:=Ftext+fbutton;
+      if FKeepLog then
+      begin
+        if ord(letter)<>0 then
+        Ftext:=Ftext+fletter else
+        Ftext:=Ftext+fbutton;
+      end;
       if (Assigned(backform.SettingForm)) and (backform.settingform.active) then
         PostMessage(backform.SettingForm.Handle, WM_MYKEYPRESS, WParam(codes), LParam(pressedBit));
    end;
@@ -106,6 +112,7 @@ begin
    ss:=string.Format('Key = %s; Letter = %s; Virt = %u; Scan = %s; %s; Time: %s; %s',
       [fbutton, fletter, fVirtCode, scancode, IfThen(isPressed,'Down',' Up '), TimeToStr(now), chr(13)]);
      //if evenbit then
+     if FkeepLog  then
       Flog:=Flog+ss;
 end;
 
@@ -136,6 +143,12 @@ begin
   end;
   writeln(f, sometext);
   closefile(f);
+end;
+
+procedure TKeyboard.SetKeepLog(const Value: boolean);
+begin
+  KeepLog := Value;
+  FKeepLog:=value;
 end;
 
 procedure TKeyboard.SetSoundLibrary(soundLib: string);

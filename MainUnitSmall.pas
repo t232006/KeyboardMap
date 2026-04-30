@@ -119,6 +119,8 @@ type
     procedure FormCreate(Sender: TObject);
     procedure Key100MouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
+    procedure Key100MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
     //procedure CreateParams(var AParams: TCreateParams); override;
   private
 
@@ -145,8 +147,21 @@ procedure TKeyboardFormSmall.Key100MouseDown(Sender: TObject; Button: TMouseButt
   Shift: TShiftState; X, Y: Integer);
 var ShiftDown: boolean;
   begin
+  inherited;
   ShiftDown:=key160.Pressed or key161.Pressed or Odd(GetKeyState(VK_CAPITAL));
-  KeyClick((sender as TKey), shiftdown, langcode);
+  if ((sender as TKey).KeyType=ktSticked) and (sender as TKey).Pressed then
+    KeyClick((sender as TKey), shiftdown, langcode, false) else
+    KeyClick((sender as TKey), shiftdown, langcode, true);
   end;
+
+procedure TKeyboardFormSmall.Key100MouseUp(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+  var ShiftDown: boolean;
+begin
+  inherited;
+  if ((sender as TKey).KeyType=ktSticked) and (sender as TKey).Pressed then exit;
+  ShiftDown:=key160.Pressed or key161.Pressed or Odd(GetKeyState(VK_CAPITAL));
+  KeyClick((sender as TKey), shiftdown, langcode, false);
+end;
 
 end.

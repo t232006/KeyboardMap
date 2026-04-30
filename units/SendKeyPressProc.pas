@@ -8,7 +8,7 @@ procedure SendKeyDown(Key: WideChar); overload;
 procedure SendKeyUp(Key: WideChar); overload;
 procedure SendKeyDown(Key: integer); overload;
 procedure SendKeyUp(Key: integer); overload;
-procedure KeyClick(But: TKey; ShiftDown: boolean; langcode: HKL);
+procedure KeyClick(But: TKey; ShiftDown: boolean; langcode: HKL; keyDown:boolean);
 procedure LayoutChangeCtrl;
 procedure LayoutChangeAlt;
 
@@ -86,7 +86,7 @@ begin
     keybd_event(key, 0, KEYEVENTF_KEYUP, 0);
 end;
 
-procedure KeyClick(But: TKey; ShiftDown: boolean; langcode:HKL);
+procedure KeyClick(But: TKey; ShiftDown: boolean; langcode:HKL; keyDown:boolean);
 var
     state: WindowPlacement;
     ch:char;  en:boolean;
@@ -109,7 +109,7 @@ begin
           end
         else
           ch:=But.MiddleText[length(But.MiddleText)];
-        SendKeypress(ch);
+        if keydown then sendKeyDown(ch) else sendkeyup(ch);
 
       end;
     ktTrippleLetters:
@@ -127,7 +127,7 @@ begin
             if not(ShiftDown) then
               ch:=chr(ord(ch)+32);
           end;
-        SendKeypress(ch);
+        if keydown then sendKeyDown(ch) else sendkeyup(ch);
       end;
     ktLetters:
       begin
@@ -136,7 +136,7 @@ begin
         ch:=But.downtext[1];
         if not(ShiftDown) then
           ch:=chr(ord(ch)+32);
-        SendKeypress(ch);
+        if keydown then sendKeyDown(ch) else sendkeyup(ch);
       end;
     ktExNum:
     begin
@@ -145,20 +145,20 @@ begin
        if Odd(GetKeyState(VK_NUMLOCK)) then
        begin
 
-        sendkeypress(strtoint(temp));
+        if keydown then sendkeyDown(strtoint(temp)) else sendKeyUp(strtoint(temp));
        end else
        begin
          case strtoint(temp) of
-         96: sendkeypress(45);
-         97: sendkeypress(35);
-         98: sendkeypress(40);
-         99: sendkeypress(34);
-         100: sendkeypress(37);
-         101: sendkeypress(12);
-         102: sendkeypress(39);
-         103: sendkeypress(36);
-         104: sendkeypress(38);
-         105: sendkeypress(33)
+         96: if keydown then sendkeyDown(45) else SendKeyUp(45) ;
+         97: if keydown then sendkeyDown(35) else SendKeyUp(35);
+         98: if keydown then sendkeyDown(40) else SendKeyUp(40);
+         99: if keydown then sendkeyDown(34) else SendKeyUp(34);
+         100: if keydown then sendkeyDown(37) else SendKeyUp(37);
+         101: if keydown then sendkeyDown(12) else SendKeyUp(12);
+         102: if keydown then sendkeyDown(39) else SendKeyUp(39);
+         103: if keydown then sendkeyDown(36) else SendKeyUp(36);
+         104: if keydown then sendkeyDown(38) else SendKeyUp(38);
+         105: if keydown then sendkeyDown(33) else SendKeyUp(33);
          end;
        end;
 
@@ -170,7 +170,7 @@ begin
           if temp='12' then
 
           temp:='13';   //right enter
-          sendkeypress(strtoint(temp)) ;
+          if keydown then sendkeyDown(strtoint(temp)) else SendKeyUp(strtoint(temp)) ;
       end;
     end;
 end;

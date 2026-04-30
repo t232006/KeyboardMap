@@ -84,6 +84,7 @@ type
     procedure showSpeedClick(Sender: TObject);
     procedure TogPlaySoundClick(Sender: TObject);
     procedure FormHeaderSpeedButton5Click(Sender: TObject);
+    procedure LogToggleClick(Sender: TObject);
   private
     statType: TStatType;
     baseHeight: Integer;
@@ -438,6 +439,12 @@ end;
 procedure TParentForm.Layout_changeExecute(Sender: TObject);
 begin
   langForm.ShowModal;
+end;
+
+procedure TParentForm.LogToggleClick(Sender: TObject);
+begin
+  virtKeyboard.KeepLog:=LogToggle.isOn;
+
 end;
 
 procedure TParentForm.N1Click(Sender: TObject);

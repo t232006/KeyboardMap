@@ -86,6 +86,7 @@ object FormHeader: TFormHeader
       Align = alRight
       ImageIndex = 6
       Images = ImageList
+      OnClick = SpeedButton4Click
       ExplicitLeft = 666
       ExplicitHeight = 32
     end

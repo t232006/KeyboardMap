@@ -100,15 +100,16 @@ object ParentForm: TParentForm
     object LogToggle: TToggleSwitch
       Left = 241
       Top = 67
-      Width = 138
+      Width = 142
       Height = 20
       Anchors = []
       State = tssOn
-      StateCaptions.CaptionOn = #1074#1077#1089#1090#1080' '#1083#1086#1075
-      StateCaptions.CaptionOff = #1086#1090#1082#1083#1102#1095#1080#1090#1100' '#1083#1086#1075
+      StateCaptions.CaptionOn = #1074#1077#1076#1077#1090#1089#1103' '#1083#1086#1075
+      StateCaptions.CaptionOff = #1083#1086#1075' '#1086#1089#1090#1072#1085#1086#1074#1083#1077#1085
       TabOrder = 1
       TabStop = False
       ThumbWidth = 20
+      OnClick = LogToggleClick
     end
     object TogPlaySound: TToggleSwitch
       Left = 411

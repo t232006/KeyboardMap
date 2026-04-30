@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
   Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons,
-  Vcl.ExtCtrls, System.ImageList, Vcl.ImgList,
+  Vcl.ExtCtrls, System.ImageList, Vcl.ImgList, SendKeyPressProc,
   Vcl.WinXCtrls, MyAuxProc;
 const WM_WANT_CLOSE = WM_USER+$345+10;
 type
@@ -31,6 +31,7 @@ type
     procedure SpeedButton1Click(Sender: TObject);
     procedure WinIconClick(Sender: TObject);
     procedure SpeedButton5Click(Sender: TObject);
+    procedure SpeedButton4Click(Sender: TObject);
 
   private
 
@@ -86,6 +87,11 @@ procedure TFormHeader.SpeedButton2Click(Sender: TObject);
 begin
     GetParentForm(sender as tControl).Hide;
     (GetParentForm(sender as tControl).owner as tform).show;
+end;
+
+procedure TFormHeader.SpeedButton4Click(Sender: TObject);
+begin
+  LayoutChangeCtrl; LayoutChangeAlt;
 end;
 
 procedure TFormHeader.SpeedButton5Click(Sender: TObject);
