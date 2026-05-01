@@ -1,0 +1,245 @@
+unit KeyboardUnit;
+
+interface
+uses Sharemem, SysUtils, windows, messages, inifiles, scans;
+const WM_MYKEYPRESS = WM_USER+$0400+10;
+      WM_CHANGELANG = WM_USER+$115+15;
+      LO=8;
+      AV=14;
+      REC=17;
+type
+TKeyboardMap=array[LO..226] of word;
+TplayClick = procedure (button: pchar);
+
+TKeyboard=class
+   private
+    Fmap: TKeyboardMap ;
+    Flog, Ftext:string;
+    Fletter:char;
+    FButton: string;
+    FisPressed:boolean;
+    FVirtCode: word;
+    LibHandle: LongWord;
+    playClick: TplayClick;
+    fPath: string;
+    FScans: TScans;
+    FKeepLog: boolean;
+    procedure SaveText(filename, sometext:string);
+    procedure SaveMap(filename:string);
+    procedure CleanMap(var temp:TKeyboardMap);
+    procedure SetKeepLog(const Value: boolean);
+    //procedure LoadScans;
+   public
+     //const CURRENTMAP='\maps\CurrentMap.h';
+     function CURRENTMAP: string;
+     procedure addPress(codes:word; pressedBit: byte; langcode:HKL; playsound: boolean);
+     procedure save(newFile:boolean; avSpeed, recSpeed:word);
+     //function GetLastFile:string;
+     procedure SetSoundLibrary(soundLib: string);
+     property VirtCode: word read FVirtCode;
+     property map:TKeyboardMap read Fmap;
+     property isPressed:boolean read FisPressed;
+     property button:string read FButton;
+     property letter:char read Fletter;
+     property     log:string read Flog;
+     property KeepLog:boolean write SetKeepLog;
+     property text:string read FText;
+     constructor create(soundLib: string);
+     destructor destroy;
+end;
+//procedure playClick(button: pchar); stdcall; external 'Sounds\cherrymxBlack.dll';
+
+implementation
+uses backgroundunit;
+
+destructor TKeyboard.destroy;
+begin
+    inherited;
+    FreeLibrary(libhandle);
+    FScans.Destroy;
+end;
+
+
+function IfThen(AValue: boolean; const ATrue:string; const AFalse:string):string;
+begin
+  if AValue then result:=ATrue else result:=AFalse;
+end;
+
+procedure TKeyboard.addPress(codes:word; pressedBit: byte; langcode:HKL; playsound:boolean);
+var Scancode, ss:string; but: pchar;
+    KS: TKeyboardState;
+    SC: integer;
+    ws: word;
+
+begin
+    ws:=codes shr 8;
+    SC:=MapVirtualKeyEx(ws, MAPVK_VK_TO_VSC, langcode);
+    GetKeyboardState(KS);
+    ToUnicodeEx(WS, SC, KS, @fletter, sizeof(fletter), 0, langcode);
+   fisPressed:=(pressedBit and 1) = 1;
+   scancode:=IntToHex(codes and 255);
+
+   FVirtCode:=WS;
+
+
+   if isPressed and (FVirtCode <= high(fmap)) then
+   begin
+      if playsound then
+      begin
+        but:=pchar('e'+copy(fbutton,2,length(fbutton)-2));
+        playClick(but);
+      end;
+
+      if (WS=13) and (pressedBit>1) then
+        inc(Fmap[12])   //for right Enter
+      else
+        inc(Fmap[FVirtCode]);
+      if FKeepLog then
+      begin
+        if ord(letter)<>0 then
+        Ftext:=Ftext+fletter else
+        Ftext:=Ftext+fbutton;
+      end;
+      if (Assigned(backform.SettingForm)) and (backform.settingform.active) then
+        PostMessage(backform.SettingForm.Handle, WM_MYKEYPRESS, WParam(codes), LParam(pressedBit));
+   end;
+   if (WS=13) and (pressedBit>1) then
+   //fbutton:=FScans.getScan('011C') //for right Enter
+   fbutton:=FScans.getVirt(12)
+       else
+   //fbutton:=FScans.getScan(scancode);
+   fbutton:=FScans.getVirt(FVirtCode);
+
+   ss:=string.Format('Key = %s; Letter = %s; Virt = %u; Scan = %s; %s; Time: %s; %s',
+      [fbutton, fletter, fVirtCode, scancode, IfThen(isPressed,'Down',' Up '), TimeToStr(now), chr(13)]);
+     //if evenbit then
+     if FkeepLog  then
+      Flog:=Flog+ss;
+end;
+
+constructor TKeyboard.create(soundLib: string);
+begin
+  cleanMap(FMap);
+  fPath:=ExtractFileDir( Paramstr(0));
+
+  FScans:=TScans.Create;
+  //if soundLib<>'' then SetSoundLibrary(soundLib);
+end;
+
+function TKeyboard.CURRENTMAP: string;
+begin
+  result:=fPath+'\maps\CurrentMap.b';
+end;
+
+
+
+procedure TKeyboard.savetext(filename, sometext:string);
+var f:textfile;
+begin
+  assignfile(f, filename);
+  try
+    append(f);
+  except
+    rewrite(f);
+  end;
+  writeln(f, sometext);
+  closefile(f);
+end;
+
+procedure TKeyboard.SetKeepLog(const Value: boolean);
+begin
+  //KeepLog := Value;
+  FKeepLog := Value;
+end;
+
+procedure TKeyboard.SetSoundLibrary(soundLib: string);
+var s: string;
+begin
+    if (@playClick<>nil) then FreeLibrary(libhandle);
+    //if length(soundLib)>13 then s:='Sounds\'+soundLib+'1.dll' else
+
+    s:='Sounds\'+soundLib+'.dll' ;
+    LibHandle:= LoadLibrary(Pchar(s));
+     @playClick:= GetProcAddress(LibHandle,'playClick');
+end;
+
+procedure TKeyboard.cleanMap(var temp:TKeyboardMap);
+begin
+  for var i := Low(temp) to High(temp) do
+    temp[i]:=0;
+end;
+
+procedure TKeyboard.savemap(filename: string);
+var f: file of word;
+    tempMap:TKeyboardMap;
+    i:word;
+begin
+    i:=LO;
+    cleanmap(tempMap);
+   assignfile(f, filename);
+   if fileexists(filename) then
+   begin
+     reset(f);
+     while not(eof(f)) do
+     begin
+      read(f, tempmap[i]);
+      inc(i);
+     end;
+   end;
+   rewrite(f);
+   for I := Low(fmap) to High(fmap) do
+     begin
+       inc(fmap[i],tempmap[i]);
+       Write(f, fmap[i]);
+     end;
+   if tempmap[AV]>0 then      //don't average if write only
+      fmap[AV]:=fmap[AV] div 2;
+   seek(f,6);
+   write(f,fmap[AV]);
+   closefile(f);
+
+end;
+
+procedure TKeyboard.save(newFile: boolean; avSpeed, recSpeed:word);
+//=============================
+
+ //=============================
+    function GetMapFilename: string;
+    var curDateTime: TDateTime;
+    begin
+       curDateTime:=now;
+       result:=FormatDateTime('dd-mm-yyyy-hh-nn-ss',curDateTime);
+       result:=ExtractFileDir(Paramstr(0))+'\maps\'+result+'map.b';
+    end;
+ //=============================
+
+var textname, logname, mapname: string;
+   // savespeed: TInifile;
+begin
+    textname:=fPath+'\text.txt' ;
+    logname:=fPath+'\log.txt';
+    if newFile then
+    begin
+      mapname:=GetMapFilename;
+      Deletefile(pwidechar(CURRENTMAP));
+    end
+    else
+      mapname:=CURRENTMAP; //GetLastFile;
+    if mapname='' then
+    begin
+      save(true, avSpeed, recSpeed);
+      exit;
+    end;
+
+    savetext(logname,flog);
+    savetext(textname, ftext);
+
+    Fmap[AV]:=avSpeed;
+    Fmap[REC]:=recSpeed;
+
+
+    savemap(mapname);
+end;
+
+
+end.

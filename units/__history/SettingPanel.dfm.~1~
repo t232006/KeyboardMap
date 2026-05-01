@@ -1,0 +1,97 @@
+object Frame1: TFrame1
+  Left = 0
+  Top = 0
+  Width = 650
+  Height = 143
+  Anchors = []
+  TabOrder = 0
+  DesignSize = (
+    650
+    143)
+  object ToggleSwitch1: TToggleSwitch
+    Left = 410
+    Top = 26
+    Width = 106
+    Height = 20
+    Anchors = [akBottom]
+    State = tssOn
+    StateCaptions.CaptionOn = #1079#1074#1091#1082
+    StateCaptions.CaptionOff = #1085#1077#1090' '#1079#1074#1091#1082#1072
+    TabOrder = 0
+    TabStop = False
+    ThumbWidth = 20
+    ExplicitLeft = 436
+    ExplicitTop = 16
+  end
+  object showSpeed: TToggleSwitch
+    Left = 241
+    Top = 26
+    Width = 148
+    Height = 20
+    Anchors = [akBottom]
+    State = tssOn
+    StateCaptions.CaptionOn = #1089#1082#1086#1088#1086#1089#1090#1100
+    StateCaptions.CaptionOff = #1089#1082#1086#1088#1086#1089#1090#1100' '#1089#1082#1088#1099#1090#1072
+    TabOrder = 1
+    TabStop = False
+    ThumbWidth = 20
+    ExplicitLeft = 258
+    ExplicitTop = 16
+  end
+  object ToggleSwitch2: TToggleSwitch
+    Left = 72
+    Top = 26
+    Width = 141
+    Height = 20
+    Anchors = [akBottom]
+    State = tssOn
+    StateCaptions.CaptionOn = #1087#1086#1074#1077#1088#1093' '#1086#1082#1086#1085
+    StateCaptions.CaptionOff = #1085#1077' '#1087#1086#1074#1077#1088#1093' '#1086#1082#1086#1085
+    TabOrder = 2
+    TabStop = False
+    ThumbWidth = 20
+    ExplicitLeft = 80
+    ExplicitTop = 16
+  end
+  object ToggleSwitch3: TToggleSwitch
+    Left = 73
+    Top = 74
+    Width = 105
+    Height = 20
+    Anchors = [akBottom]
+    StateCaptions.CaptionOn = #1095#1080#1089#1083#1072
+    StateCaptions.CaptionOff = #1075#1088#1072#1076#1080#1077#1085#1090
+    TabOrder = 3
+    TabStop = False
+    ThumbWidth = 20
+    Visible = False
+    ExplicitLeft = 80
+    ExplicitTop = 64
+  end
+  object LogToggle: TToggleSwitch
+    Left = 241
+    Top = 74
+    Width = 138
+    Height = 20
+    Anchors = [akBottom]
+    StateCaptions.CaptionOn = #1074#1077#1089#1090#1080' '#1083#1086#1075
+    StateCaptions.CaptionOff = #1086#1090#1082#1083#1102#1095#1080#1090#1100' '#1083#1086#1075
+    TabOrder = 4
+    TabStop = False
+    ThumbWidth = 20
+    ExplicitLeft = 258
+    ExplicitTop = 64
+  end
+  object ToggleSwitch5: TToggleSwitch
+    Left = 411
+    Top = 74
+    Width = 73
+    Height = 20
+    Anchors = [akBottom]
+    TabOrder = 5
+    TabStop = False
+    ThumbWidth = 20
+    ExplicitLeft = 436
+    ExplicitTop = 64
+  end
+end

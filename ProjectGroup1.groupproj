@@ -1,0 +1,96 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{3DF5AA74-B65B-4F88-A3D3-D86A633F655C}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="KeyboardMap.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\My components\KeyboardButton\keyboardButton.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="HookProject\KeyboardHook.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="dlls\cherrymxBlack.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="dlls\cherrymxBlackPbt.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="dlls\egOreo.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="KeyboardMap">
+        <MSBuild Projects="KeyboardMap.dproj"/>
+    </Target>
+    <Target Name="KeyboardMap:Clean">
+        <MSBuild Projects="KeyboardMap.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="KeyboardMap:Make">
+        <MSBuild Projects="KeyboardMap.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="keyboardButton">
+        <MSBuild Projects="..\My components\KeyboardButton\keyboardButton.dproj"/>
+    </Target>
+    <Target Name="keyboardButton:Clean">
+        <MSBuild Projects="..\My components\KeyboardButton\keyboardButton.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="keyboardButton:Make">
+        <MSBuild Projects="..\My components\KeyboardButton\keyboardButton.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="KeyboardHook">
+        <MSBuild Projects="HookProject\KeyboardHook.dproj"/>
+    </Target>
+    <Target Name="KeyboardHook:Clean">
+        <MSBuild Projects="HookProject\KeyboardHook.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="KeyboardHook:Make">
+        <MSBuild Projects="HookProject\KeyboardHook.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="cherrymxBlack">
+        <MSBuild Projects="dlls\cherrymxBlack.dproj"/>
+    </Target>
+    <Target Name="cherrymxBlack:Clean">
+        <MSBuild Projects="dlls\cherrymxBlack.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="cherrymxBlack:Make">
+        <MSBuild Projects="dlls\cherrymxBlack.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="cherrymxBlackPbt">
+        <MSBuild Projects="dlls\cherrymxBlackPbt.dproj"/>
+    </Target>
+    <Target Name="cherrymxBlackPbt:Clean">
+        <MSBuild Projects="dlls\cherrymxBlackPbt.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="cherrymxBlackPbt:Make">
+        <MSBuild Projects="dlls\cherrymxBlackPbt.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="egOreo">
+        <MSBuild Projects="dlls\egOreo.dproj"/>
+    </Target>
+    <Target Name="egOreo:Clean">
+        <MSBuild Projects="dlls\egOreo.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="egOreo:Make">
+        <MSBuild Projects="dlls\egOreo.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="KeyboardMap;keyboardButton;KeyboardHook;cherrymxBlack;cherrymxBlackPbt;egOreo"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="KeyboardMap:Clean;keyboardButton:Clean;KeyboardHook:Clean;cherrymxBlack:Clean;cherrymxBlackPbt:Clean;egOreo:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="KeyboardMap:Make;keyboardButton:Make;KeyboardHook:Make;cherrymxBlack:Make;cherrymxBlackPbt:Make;egOreo:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

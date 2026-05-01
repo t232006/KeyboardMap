@@ -1,0 +1,32 @@
+library egOreo;
+
+uses
+  System.SysUtils,
+  System.Classes, mmSystem, WinAPI.Windows;
+
+{$R egOreo.res}
+
+procedure playClick (button: pchar);
+var hResInfo: hrsrc;
+    selfhandle: HWnd;
+begin
+    selfHandle:=GetModuleHandle('egOreo.dll');
+    if (ord(button[length(button)])>=48) and
+       (ord(button[length(button)])<=57)
+        then
+          PlaySound('eNumber', selfhandle, SND_RESOURCE + SND_ASYNC + SND_NODEFAULT)
+   else
+   if button='eSpace' then
+   PlaySound('eSpace', selfhandle, SND_RESOURCE + SND_ASYNC + SND_NODEFAULT)
+   else
+   if (button='eREnter') or (button='eLEnter') then
+   PlaySound('eEnter', selfhandle, SND_RESOURCE + SND_ASYNC + SND_NODEFAULT)
+   else
+   PlaySound('eKey', selfhandle, SND_RESOURCE + SND_ASYNC + SND_NODEFAULT)
+end;
+
+
+
+exports playClick;
+end.
+
