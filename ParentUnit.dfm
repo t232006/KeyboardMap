@@ -23,6 +23,7 @@ object ParentForm: TParentForm
     ExplicitLeft = -86
     ExplicitTop = 16
     ExplicitWidth = 789
+    ExplicitHeight = 35
     inherited Panel1: TPanel
       Width = 789
       PopupMenu = TrayMenu

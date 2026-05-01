@@ -54,6 +54,7 @@ uses backgroundunit;
 
 destructor TKeyboard.destroy;
 begin
+    inherited;
     FreeLibrary(libhandle);
     FScans.Destroy;
 end;
@@ -147,8 +148,8 @@ end;
 
 procedure TKeyboard.SetKeepLog(const Value: boolean);
 begin
-  KeepLog := Value;
-  FKeepLog:=value;
+  //KeepLog := Value;
+  FKeepLog := Value;
 end;
 
 procedure TKeyboard.SetSoundLibrary(soundLib: string);

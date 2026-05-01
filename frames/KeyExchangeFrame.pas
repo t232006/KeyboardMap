@@ -156,6 +156,7 @@ begin
         begin
           bkey:=localreg.ReadInteger('',ss[i],0);
           bValue:=localreg.ReadInteger('',ss[i+1],0);
+          if ButtonsDict.ContainsKey(bkey) then break;
           ButtonsDict.Add(bkey,bvalue);
           keyPair:=TKeyPair.Create;
           valuePair:=TKeyPair.Create;

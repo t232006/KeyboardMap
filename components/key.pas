@@ -7,7 +7,7 @@ uses
   Graphics, messages, stdctrls, strUtils;
 
 type
-  TKeyType = (ktFunc, ktScroll, ktNum, ktTrippleLetters, ktExNum, ktLetters, ktSticked, ktOthers);
+  TKeyType = (ktFunc, ktScroll, ktNum, ktTrippleLetters, ktExNum, ktLetters, ktSticked, ktOthers, ktIndicators);
 
   TMyLabel = record
     Caption: string;
@@ -16,25 +16,24 @@ type
   end;
 
   TPicturePos = class(TPersistent)
-    private
-      ALeft: word;
-      ATop: word;
-      ARight: word;
-      ABottom: word;
-      FOnChange: TNotifyEvent;
-      procedure SetBottom(const Value: word);
-      procedure SetLeft(const Value: word);
-      procedure SetRight(const Value: word);
-      procedure SetTop(const Value: word);
-    public
-      property OnChange: TNotifyEvent read FOnChange write FOnChange;
-    published
-      property Left: word read ALeft write SetLeft;
-      property Top: word read ATop write SetTop;
-      property Right: word read ARight write SetRight;
-      property Bottom: word read ABottom write SetBottom;
+  private
+    ALeft: word;
+    ATop: word;
+    ARight: word;
+    ABottom: word;
+    FOnChange: TNotifyEvent;
+    procedure SetBottom(const Value: word);
+    procedure SetLeft(const Value: word);
+    procedure SetRight(const Value: word);
+    procedure SetTop(const Value: word);
+  public
+    property OnChange: TNotifyEvent read FOnChange write FOnChange;
+  published
+    property Left: word read ALeft write SetLeft;
+    property Top: word read ATop write SetTop;
+    property Right: word read ARight write SetRight;
+    property Bottom: word read ABottom write SetBottom;
   end;
-
 
   TKey = class(TGraphicControl)
   private
@@ -44,7 +43,6 @@ type
     FRound: byte;
     FPicture: TBitmap;
     FPicturePos: TPicturePos;
-
     FUpLabel: TMyLabel;
     FDownLabel: TMyLabel;
     FMidLabel: TMyLabel;
@@ -88,19 +86,15 @@ type
     procedure MouseLeave(var Msg: TMessage); message CM_MOUSELEAVE;
     procedure MouseDown(var Msg: TMessage); overload; message WM_LBUTTONDOWN;
     procedure MouseUp(var Msg: TMessage); overload; message WM_LBUTTONUP;
-
   public
-
     SaveMiddleText: string;
     HidePicture: boolean;
     active: boolean;
-    constructor Create(AOwner: TComponent);  override;
+    constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
     property Pressed: Boolean read FPressed write SetPressed;
     procedure DoConstrast;
     procedure SetNewFont(curFontSize: byte; const newFont: TFont);
-
-
   published
     property OnClick;
     property OnMouseEnter;
@@ -110,9 +104,8 @@ type
     property OnMouseUp;
     property Picture: TBitmap read FPicture write SetPicture;
     property PicturePos: TPicturePos read FPicturePos write SetPicturePos stored true;
-
     property UpText: string index 0 read GetText write SetText;
-    property DownText: string index 1 read GetText  write SetText;
+    property DownText: string index 1 read GetText write SetText;
     property MiddleText: string index 2 read GetText write SetText;
     property UpFont: TFont index 0 read GetFont write SetFont;
     property DownFont: TFont index 1 read GetFont write SetFont;
@@ -191,7 +184,6 @@ begin
   end;
   //FMidLabel.Font:=FUpLabel.Font;
   FKeyType:=ktLetters;
-
   FUpLabel.Font.OnChange := Self.FontChange;
   FMidLabel.Font.OnChange := Self.FontChange;
   FDownLabel.Font.OnChange := Self.FontChange;
@@ -250,7 +242,6 @@ var midpos:ShortInt; TextSize: TSize;
 begin
     with Canvas do
     begin
-
       font:=FMidLabel.Font;
       TextSize:=TextExtent(FMidLabel.Caption);
       if FMidLabel.Caption<>'' then
@@ -263,7 +254,6 @@ begin
           begin
             midPos:=((height div 2) + (2 * font.Height));
             if midPos<0 then midPos:=0;
-
             s:=FMidLabel.Caption;
             p:= pos(' ',s);
             s1:=copy(s,1,p-1);
@@ -277,7 +267,6 @@ begin
         font:=FupLabel.Font;
         TextOut(FUpLabel.PosX, 1, FUpLabel.Caption);
       end;
-
       if FDownLabel.Caption<>'' then
       begin
         font:=FDownLabel.Font;
@@ -294,11 +283,11 @@ end;
 procedure TKey.SetText(const Index: Integer; const Value: string);
 begin
    case index of
-      0:   //up
+      0: //up
       begin
         FUpLabel.Caption:=Value;
       end;
-      1:    //down
+      1: //down
       begin
          FDownLabel.Caption:=Value;
       end;
@@ -342,7 +331,7 @@ begin
    if active then
    begin
      inherited;
-     if KeyType<>ktSticked then Pressed:=true else
+     if (KeyType<>ktSticked) and (KeyType<>ktIndicators) then Pressed:=true else
      begin
        pressed:=not(pressed); ReturnColors;
        if pressed=false then
@@ -359,10 +348,8 @@ begin
    if active then
    begin
      inherited;
-     if keytype<>ktSticked then pressed:=false
+     if (keytype<>ktSticked) and (keyType<>ktIndicators) then pressed:=false
    end;
-
-
 end;
 
 procedure TKey.MouseEnter(var Msg: TMessage);
@@ -377,7 +364,6 @@ begin
        MakeBlack;
      end;
    end;
-
 end;
 
 procedure TKey.MouseLeave(var Msg: TMessage);
@@ -387,7 +373,6 @@ begin
     inherited; hover:=false;
     if not(Pressed) then
      begin
-
        ReturnColors;
        CurrentColor:=FColor;
        Paint;
@@ -398,7 +383,6 @@ end;
 procedure TKey.Paint;
 begin
     canvas.RoundRect(0,0,width,height,FRound,FRound);
-
     if Assigned(FPicture) and HidePicture=false then
     DrawPicture;
     DrawText;
@@ -425,7 +409,6 @@ begin
     2: FColor:=value;
     end;
     if Assigned(FOnColorChange) then OnColorChange(self);
-
     canvas.Brush.Color:=value;
     repaint;
 end;
@@ -473,21 +456,18 @@ begin
     if FPictureColorEnable then
     begin
       if Value=clBlack then value:=RGB(1,1,1);
-
       with FPicture.Canvas do
       begin
       for i := 0 to FPicture.Width do
       for j := 0 to FPicture.Height do
         if Pixels[i,j]=clBlack then Continue else
         Pixels[i,j]:=Value;
-
       //Brush.Color:=ResColor;
       //FloodFill(i,j, clWhite, fsSurface);
       end;
       DrawPicture;
       FPictureColor := Value;
     end;
-
 end;
 
 procedure TKey.SetPicturePos(const Value: TPicturePos);
@@ -522,7 +502,6 @@ begin
     if FPressed=true then
     CurrentColor:=FPressColor
     else if hover then MakeBlack else CurrentColor:=Color;
-
     Paint;
   end;
 end;
@@ -548,7 +527,6 @@ procedure TPicturePos.SetBottom(const Value: word);
 begin
   ABottom:=Value;
   if Assigned(FOnChange) then OnChange(self);
-
 end;
 
 procedure TPicturePos.SetLeft(const Value: word);
@@ -570,4 +548,3 @@ begin
 end;
 
 end.
-

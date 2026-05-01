@@ -48,7 +48,7 @@ type
     Statistics: TStatistics;
     activeForm: TParentForm;
     settingform: TSettingForm;
-    showSpeed, playSound: boolean;
+    showSpeed, playSound, keepLog: boolean;
     property ClassNameOfActiveForm: string read FClassName;
   end;
   //procedure RunHook stdcall; external 'KeyboardHook.dll';
@@ -104,6 +104,7 @@ begin
    n:=loadparams.ReadInteger('Speeds', 'count', 0);
    Statistics:= TStatistics.Create(n, round(avSpeed));
    FclassName:=loadparams.ReadString('Windows','Kind','TKeyboardFormLarge');
+   keepLog:=loadparams.ReadBool('Other','KeepLog',true);
    RegisterClasses([tKeyboardFormSmall, tKeyboardFormlarge, tparentform]);
    settingForm:= TSettingForm.Create(Application);
    activeForm:=TParentForm(TControlClass(GetClass(Fclassname)).Create(self));
@@ -115,6 +116,9 @@ begin
    if showSpeed then activeForm.showSpeed.State:=tssOn
                       else
                       activeForm.showSpeed.State:=tssOff;
+   if keepLog then activeForm.LogToggle.State:=tssOn
+                      else
+                      activeForm.LogToggle.State:=tssOff;
 end;
 procedure TBackForm.FormDeactivate(Sender: TObject);
 begin  //nessesary to be on top
@@ -135,6 +139,10 @@ begin
       saveparams.WriteBool('Windows','showSpeed', true)
      else
       saveparams.WriteBool('Windows','showSpeed', false);
+     if LogToggle.State=tssOn then
+      saveparams.WriteBool('Other','KeepLog',true)
+      else
+      saveparams.WriteBool('Other','KeepLog',false);
      saveparams.Destroy;
    end;
 end;

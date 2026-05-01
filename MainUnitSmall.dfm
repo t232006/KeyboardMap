@@ -1423,7 +1423,7 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Color = clBlack
     PressColor = 9222870
     HoverColor = clWhite
-    KeyType = ktSticked
+    KeyType = ktIndicators
     UpPosX = 4
     DownPosX = 16
     MidPosX = 5
@@ -1459,7 +1459,7 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Color = clBlack
     PressColor = 9222870
     HoverColor = clWhite
-    KeyType = ktSticked
+    KeyType = ktIndicators
     UpPosX = 0
     DownPosX = 16
     MidPosX = 5
@@ -2299,7 +2299,7 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Color = clBlack
     PressColor = 9222870
     HoverColor = clWhite
-    KeyType = ktSticked
+    KeyType = ktIndicators
     UpPosX = 0
     DownPosX = 25
     MidPosX = 5
@@ -3366,7 +3366,7 @@ object KeyboardFormSmall: TKeyboardFormSmall
     Color = clBlack
     PressColor = 9222870
     HoverColor = clWhite
-    KeyType = ktScroll
+    KeyType = ktIndicators
     UpPosX = 0
     DownPosX = 16
     MidPosX = 5

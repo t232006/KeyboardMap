@@ -1,14 +1,14 @@
 object FormHeader: TFormHeader
   Left = 0
   Top = 0
-  Width = 818
-  Height = 35
+  Width = 435
+  Height = 266
   TabOrder = 0
   OnResize = FrameResize
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 818
+    Width = 435
     Height = 33
     Align = alTop
     Color = clActiveCaption
@@ -18,6 +18,7 @@ object FormHeader: TFormHeader
     OnMouseDown = Panel1MouseDown
     OnMouseMove = Panel1MouseMove
     OnMouseUp = Panel1MouseUp
+    ExplicitWidth = 818
     object WinIcon: TImage
       Left = 1
       Top = 1
@@ -29,7 +30,7 @@ object FormHeader: TFormHeader
       ExplicitHeight = 32
     end
     object CloseBut: TSpeedButton
-      Left = 774
+      Left = 391
       Top = 1
       Width = 43
       Height = 31
@@ -43,6 +44,7 @@ object FormHeader: TFormHeader
       Font.Style = []
       ParentFont = False
       OnClick = CloseButClick
+      ExplicitLeft = 774
       ExplicitHeight = 32
     end
     object WinCaption: TLabel
@@ -53,7 +55,7 @@ object FormHeader: TFormHeader
       Caption = 'label'
     end
     object SpeedButton2: TSpeedButton
-      Left = 738
+      Left = 355
       Top = 1
       Width = 36
       Height = 31
@@ -61,10 +63,11 @@ object FormHeader: TFormHeader
       ImageIndex = 1
       Images = ImageList
       OnClick = SpeedButton2Click
+      ExplicitLeft = 738
       ExplicitHeight = 32
     end
     object sbSetting: TSpeedButton
-      Left = 666
+      Left = 283
       Top = 1
       Width = 36
       Height = 31
@@ -79,7 +82,7 @@ object FormHeader: TFormHeader
       ExplicitHeight = 32
     end
     object SpeedButton4: TSpeedButton
-      Left = 702
+      Left = 319
       Top = 1
       Width = 36
       Height = 31
@@ -91,7 +94,7 @@ object FormHeader: TFormHeader
       ExplicitHeight = 32
     end
     object SpeedButton5: TSpeedButton
-      Left = 630
+      Left = 247
       Top = 1
       Width = 36
       Height = 31

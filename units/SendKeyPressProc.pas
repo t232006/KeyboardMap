@@ -170,7 +170,10 @@ begin
           if temp='12' then
 
           temp:='13';   //right enter
-          if keydown then sendkeyDown(strtoint(temp)) else SendKeyUp(strtoint(temp)) ;
+          if keydown then
+            sendkeyDown(strtoint(temp))
+          else
+            SendKeyUp(strtoint(temp)) ;
       end;
     end;
 end;

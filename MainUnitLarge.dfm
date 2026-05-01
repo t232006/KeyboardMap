@@ -5241,6 +5241,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -5276,6 +5277,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -5311,6 +5313,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -5346,6 +5349,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -5381,6 +5385,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -5416,6 +5421,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -5451,6 +5457,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -5486,6 +5493,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -5556,6 +5564,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -5591,6 +5600,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -5626,6 +5636,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -5661,6 +5672,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -5696,6 +5708,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 99
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -5754,7 +5767,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Color = 3223601
     PressColor = 9222870
     HoverColor = clWhite
-    KeyType = ktSticked
+    KeyType = ktIndicators
     UpPosX = 4
     DownPosX = 5
     MidPosX = 5
@@ -5766,6 +5779,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -5789,7 +5803,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Color = 3223601
     PressColor = 9222870
     HoverColor = clWhite
-    KeyType = ktSticked
+    KeyType = ktIndicators
     UpPosX = 0
     DownPosX = 25
     MidPosX = 5
@@ -5801,6 +5815,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -5836,6 +5851,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 97
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     Picture.Data = {
       12330200424D12330200000000003600000028000000D9000000DD0000000100
       180000000000DC32020000000000000000000000000000000000000000000000
@@ -10378,6 +10394,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 131
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     Picture.Data = {
       12330200424D12330200000000003600000028000000D9000000DD0000000100
       180000000000DC32020000000000000000000000000000000000000000000000
@@ -14920,6 +14937,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 52
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -14955,6 +14973,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 52
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -14990,6 +15009,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 52
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -15025,6 +15045,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 52
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -15060,6 +15081,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -15096,6 +15118,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -15131,6 +15154,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -15167,6 +15191,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -15202,6 +15227,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -15238,6 +15264,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -15274,6 +15301,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 81
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -15297,7 +15325,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Color = 3223601
     PressColor = 9222870
     HoverColor = clWhite
-    KeyType = ktSticked
+    KeyType = ktIndicators
     UpPosX = 0
     DownPosX = 25
     MidPosX = 5
@@ -15309,6 +15337,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -15345,6 +15374,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 67
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -15381,6 +15411,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -15450,6 +15481,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -15485,6 +15517,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 307
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -15519,6 +15552,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -15554,6 +15588,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -15589,6 +15624,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -15624,6 +15660,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -15659,6 +15696,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     Picture.Data = {
       0E330200424D0E330200000000003600000028000000DD000000D90000000100
       180000000000D832020000000000000000000000000000000000000000000000
@@ -20200,6 +20238,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     Picture.Data = {
       12330200424D12330200000000003600000028000000D9000000DD0000000100
       180000000000DC32020000000000000000000000000000000000000000000000
@@ -24741,6 +24780,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     Picture.Data = {
       0E330200424D0E330200000000003600000028000000DD000000D90000000100
       180000000000D832020000000000000000000000000000000000000000000000
@@ -29282,6 +29322,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     Picture.Data = {
       12330200424D12330200000000003600000028000000D9000000DD0000000100
       180000000000DC32020000000000000000000000000000000000000000000000
@@ -33823,6 +33864,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -33859,6 +33901,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -33894,6 +33937,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -33929,6 +33973,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -33964,6 +34009,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -33999,6 +34045,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -34034,6 +34081,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -34070,6 +34118,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -34106,6 +34155,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -34142,6 +34192,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -34177,6 +34228,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -34213,6 +34265,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -34249,6 +34302,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -34284,6 +34338,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -34319,6 +34374,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -34354,6 +34410,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -34389,6 +34446,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -34424,6 +34482,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -34459,6 +34518,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -34494,6 +34554,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -34529,6 +34590,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -34564,6 +34626,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -34599,6 +34662,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -34634,6 +34698,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -34669,6 +34734,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -34704,6 +34770,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -34739,6 +34806,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -34774,6 +34842,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -34809,6 +34878,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -34844,6 +34914,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 90
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     Picture.Data = {
       5A0F0000424D5A0F000000000000360000002800000043000000130000000100
       180000000000240F000000000000000000000000000000000000000000000000
@@ -35003,6 +35074,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -35038,6 +35110,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -35073,6 +35146,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -35108,6 +35182,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -35143,6 +35218,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -35178,6 +35254,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -35213,6 +35290,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -35248,6 +35326,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -35283,6 +35362,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -35318,6 +35398,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -35353,6 +35434,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 65
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     Picture.Data = {
       36140000424D361400000000000036000000280000002A000000280000000100
       1800000000000014000000000000000000000000000000000000000000000000
@@ -35552,6 +35634,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
@@ -35587,6 +35670,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 52
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     Picture.Data = {
       F6060000424DF606000000000000360000002800000018000000180000000100
       180000000000C006000000000000000000000000000000000000000000000000
@@ -35678,6 +35762,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 52
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     Picture.Data = {
       F6060000424DF606000000000000360000002800000018000000180000000100
       180000000000C006000000000000000000000000000000000000000000000000
@@ -35769,6 +35854,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 52
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     Picture.Data = {
       36140000424D361400000000000036000000280000002A000000280000000100
       1800000000000014000000000000000000000000000000000000000000000000
@@ -35967,6 +36053,7 @@ object KeyboardFormLarge: TKeyboardFormLarge
     Width = 42
     Height = 42
     OnMouseDown = Key100MouseDown
+    OnMouseUp = Key100MouseUp
     PicturePos.Left = 4
     PicturePos.Top = 4
     PicturePos.Right = 38
